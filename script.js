@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzJvwLxcdcu_DaY8Ijj6BOMb6XGldHP-MUhlQ7CEfFWVbTAW0heBlYhmgDgd6Av5Ig2sA/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbykiA0r-_0bSsxPzLGgYC-qQFyXNyvxpb3Jr9sHtTW-EIEvF_NWZl2TbkCw9-cX6IWOmQ/exec';
     
         const url = `${scriptURL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&message=${encodeURIComponent(message)}`;
     
