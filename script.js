@@ -123,28 +123,30 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const formData = {
-            name: contactForm.querySelector('[name="name"]').value,
-            email: contactForm.querySelector('[name="email"]').value,
-            phone: contactForm.querySelector('[name="phone"]').value,
-            message: contactForm.querySelector('[name="message"]').value
-        };
+        const name = contactForm.querySelector('[name="name"]').value;
+        const email = contactForm.querySelector('[name="email"]').value;
+        const phone = contactForm.querySelector('[name="phone"]').value;
+        const message = contactForm.querySelector('[name="message"]').value;
 
-        fetch('https://script.google.com/macros/s/AKfycbwBqBs96d6sHLIo5BNw_chbU46ojx2qCVXxKZ4E5yddhYxV2gvsNdjwD_hHDhXHwVZd/exec', {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        const baseUrl = 'https://script.google.com/macros/s/AKfycbwNbdVwlPf5kDDhoUGBDcnYm6LUNzWDuzedJx7Bh5XkpQq-FJIdDX8aIaCOOQUaaI1k/exec';
+        const params = new URLSearchParams({
+            name: name,
+            email: email,
+            phone: phone,
+            message: message
+        });
+
+        fetch(`${baseUrl}?${params.toString()}`, {
+            method: 'GET',
+            mode: 'no-cors'
         })
-        .then(res => res.json())
-        .then(data => {
-            alert("Thank you! Message submitted.");
+        .then(() => {
+            alert("Thank you! Your message has been submitted.");
             contactForm.reset();
         })
-        .catch(err => {
+        .catch((err) => {
             console.error("Submission failed", err);
-            alert("Oops! Something went wrong.");
+            alert("Something went wrong. Try again.");
         });
     });
 
