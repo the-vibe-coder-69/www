@@ -121,9 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
 
     contactForm.addEventListener('submit', function (e) {
-        const contactForm = document.querySelector('.contact-form');
-
-    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const name = contactForm.querySelector('[name="name"]').value;
@@ -131,19 +128,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const phone = contactForm.querySelector('[name="phone"]').value;
         const message = contactForm.querySelector('[name="message"]').value;
 
-        const originalURL = 'https://script.google.com/macros/s/AKfycbwBqBs96d6sHLIo5BNw_chbU46ojx2qCVXxKZ4E5yddhYxV2gvsNdjwD_hHDhXHwVZd/exec';
-        const proxyURL = `https://corsproxy.io/?${originalURL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&message=${encodeURIComponent(message)}`;
+        const scriptURL = 'YOUR_WEB_APP_URL_HERE'; // 👈 Replace this!
 
-        fetch(proxyURL)
-            .then(() => {
-                alert("Thank you! Your message has been submitted.");
-                contactForm.reset();
-            })
-            .catch((err) => {
-                console.error("Submission failed", err);
-                alert("Something went wrong. Please try again.");
-            });
-        });
+        const url = `${scriptURL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&message=${encodeURIComponent(message)}`;
+
+        fetch(url, {
+            method: 'GET',
+            mode: 'no-cors'
+        })
+        .then(() => {
+            alert("Thank you! Your message has been submitted.");
+            contactForm.reset();
+        })
+        .catch((err) => {
+            console.error("Submission failed", err);
+            alert("Something went wrong. Please try again.");
+        });    
+   
     });
 
 
