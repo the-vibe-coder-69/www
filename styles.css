@@ -42,7 +42,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
@@ -82,6 +82,12 @@ p {
     background-color: transparent;
     color: var(--gray-700);
 }
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
 .btn-outline:hover {
     background-color: var(--gray-50);

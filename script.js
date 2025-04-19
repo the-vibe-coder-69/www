@@ -15,6 +15,14 @@ window.onclick = function(event) {
     }
 }
 
+document.querySelector('.hero-buttons .btn-primary').addEventListener('click', () => {
+    document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.querySelector('.hero-buttons .btn-outline').addEventListener('click', () => {
+    document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });
+});
+
 function openLegalDoc(type) {
 let content = '';
 if (type === 'privacy') {
@@ -118,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Thank you for your message! We will get back to you soon.');
         this.reset();
     });
+
 
     // // Header scroll effect
     // const header = document.querySelector('.header');
