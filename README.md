@@ -1,4 +1,4 @@
-# The Vibe Coder
+# [The Vibe Coder](https://nihir1.github.io/thevibecoder/)
 
 A modern, responsive landing page website for a business offering AI-powered chatbots and social media growth services.
 
