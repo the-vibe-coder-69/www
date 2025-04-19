@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const phone = contactForm.querySelector('[name="phone"]').value;
         const message = contactForm.querySelector('[name="message"]').value;
 
-        const scriptURL = 'YOUR_WEB_APP_URL_HERE'; // 👈 Replace this!
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzJvwLxcdcu_DaY8Ijj6BOMb6XGldHP-MUhlQ7CEfFWVbTAW0heBlYhmgDgd6Av5Ig2sA/exec'; // 👈 Replace this!
 
         const url = `${scriptURL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&message=${encodeURIComponent(message)}`;
 
