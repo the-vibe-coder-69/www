@@ -119,12 +119,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form submission
     const contactForm = document.querySelector('.contact-form');
-    contactForm.addEventListener('submit', function(e) {
+
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
-        // Here you would typically send the form data to your server
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
+
+        const formData = {
+            name: contactForm.querySelector('[name="name"]').value,
+            email: contactForm.querySelector('[name="email"]').value,
+            phone: contactForm.querySelector('[name="phone"]').value,
+            message: contactForm.querySelector('[name="message"]').value
+        };
+
+        fetch('https://script.google.com/macros/s/AKfycbwBqBs96d6sHLIo5BNw_chbU46ojx2qCVXxKZ4E5yddhYxV2gvsNdjwD_hHDhXHwVZd/exec', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert("Thank you! Message submitted.");
+            contactForm.reset();
+        })
+        .catch(err => {
+            console.error("Submission failed", err);
+            alert("Oops! Something went wrong.");
+        });
     });
 
 
