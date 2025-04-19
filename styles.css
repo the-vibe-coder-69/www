@@ -506,3 +506,45 @@ p {
     color: var(--gray-700);
   }
   
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 10% auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.modal-content p {
+    color: var(--gray-700);
+    font-size: 1.1rem;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

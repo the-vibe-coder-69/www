@@ -7,11 +7,17 @@ const closeBtn = document.querySelector('.close');
 
 closeBtn.onclick = function() {
     modal.style.display = "none";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+
+    if (event.target.classList.contains('modal-overlay')) {
+        modal.style.display = "none";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
@@ -122,30 +128,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        const name = contactForm.querySelector('[name="name"]').value;
-        const email = contactForm.querySelector('[name="email"]').value;
-        const phone = contactForm.querySelector('[name="phone"]').value;
-        const message = contactForm.querySelector('[name="message"]').value;
-
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzJvwLxcdcu_DaY8Ijj6BOMb6XGldHP-MUhlQ7CEfFWVbTAW0heBlYhmgDgd6Av5Ig2sA/exec'; // 👈 Replace this!
-
+    
+        const name = contactForm.querySelector('[name="name"]').value.trim();
+        const email = contactForm.querySelector('[name="email"]').value.trim();
+        const phone = contactForm.querySelector('[name="phone"]').value.trim();
+        const message = contactForm.querySelector('[name="message"]').value.trim();
+    
+        // Validation checks
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^[0-9]{6,15}$/;
+    
+        if (!name) {
+            alert("Please enter your name.");
+            return;
+        }
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+        if (!phonePattern.test(phone)) {
+            alert("Please enter a valid 10-digit mobile number.");
+            return;
+        }
+        if (!message) {
+            alert("Please enter your message.");
+            return;
+        }
+    
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzJvwLxcdcu_DaY8Ijj6BOMb6XGldHP-MUhlQ7CEfFWVbTAW0heBlYhmgDgd6Av5Ig2sA/exec';
+    
         const url = `${scriptURL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&message=${encodeURIComponent(message)}`;
-
+    
         fetch(url, {
             method: 'GET',
             mode: 'no-cors'
         })
         .then(() => {
-            alert("Thank you! Your message has been submitted.");
+            modalContent.innerHTML = `
+                <h2>Thank You!</h2>
+                <p>Your message has been submitted successfully. We'll get back to you soon.</p>
+            `;
+            modal.style.display = "block";
             contactForm.reset();
         })
         .catch((err) => {
             console.error("Submission failed", err);
             alert("Something went wrong. Please try again.");
-        });    
-   
+        });
     });
+    
 
 
     // // Header scroll effect
@@ -173,5 +204,13 @@ function openSocialMedia(platform) {
     };
     window.open(urls[platform], '_blank');
 }
+
+// Scroll to top when clicking the logo text
+document.querySelectorAll('.logo img, .logo-text').forEach(el => {
+    el.style.cursor = 'pointer'; // optional: show hand cursor
+    el.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
 
 });
