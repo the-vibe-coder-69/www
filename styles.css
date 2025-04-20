@@ -548,3 +548,138 @@ p {
     font-size: 1.5rem;
     cursor: pointer;
 }
+
+.pricing {
+    padding: 6rem 0;
+    background-color: var(--gray-100);
+    text-align: center;
+  }
+  
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .pricing-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    color: #EC4899;
+    margin-bottom: 1rem;
+  }
+  
+  .pricing-card ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+  
+  .pricing-card ul li {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    color: var(--gray-700);
+  }
+  
+  .price {
+    font-size: 1.75rem;
+    color: var(--secondary);
+    font-weight: bold;
+  }
+  
+  .price small {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gray-600);
+  }
+  
+  
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .pricing-table th,
+  .pricing-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+    
+  }
+  
+  .pricing-table th {
+    background-color: var(--primary);
+    color: #fff;
+  }
+  
+  .pricing-table td strong {
+    color: #000;
+  }
+  
+
+  .view-details-btn {
+    margin-top: 1rem;
+    display: inline-block;
+  }
+
+
+  /* Responsive stacked table layout on small screens */
+@media (max-width: 768px) {
+    .pricing-table,
+    .pricing-table thead,
+    .pricing-table tbody,
+    .pricing-table th,
+    .pricing-table td,
+    .pricing-table tr {
+      display: block;
+      width: 100%;
+    }
+  
+    .pricing-table thead {
+      display: none;
+    }
+  
+    .pricing-table tr {
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+  
+    .pricing-table td {
+      padding: 0.5rem 0;
+      text-align: left;
+      border: none;
+    }
+  
+    .pricing-table td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      color: var(--gray-600);
+      margin-bottom: 0.25rem;
+    }
+  }
+  
+  .view-details-btn {
+    margin-top: 1rem;
+    display: inline-block;
+  }
+  
