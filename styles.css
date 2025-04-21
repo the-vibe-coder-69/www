@@ -682,4 +682,22 @@ p {
     margin-top: 1rem;
     display: inline-block;
   }
+
+  .view-details-wrapper {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .view-details-wrapper .btn {
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 999px;
+    background-color: var(--primary);
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-details-wrapper .btn:hover {
+    background-color: var(--primary-dark);
+  }
   
