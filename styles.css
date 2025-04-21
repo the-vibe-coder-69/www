@@ -701,3 +701,15 @@ p {
     background-color: var(--primary-dark);
   }
   
+
+  /* Match WhatsApp, Instagram, Instabot sections to service cards on mobile */
+.whatsapp-content,
+.instagram-content,
+.instagram-bot-content {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    margin-top: 2rem;
+}
