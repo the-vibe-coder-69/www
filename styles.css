@@ -714,3 +714,101 @@ p {
     margin-top: 2rem;
     
 }
+
+/* Responsive Design for Vibe Station */
+
+/* Features Section */
+.features-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 2rem;
+}
+
+.feature-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Pricing Section */
+.pricing-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card .price {
+    font-size: 1.75rem;
+    color: var(--secondary);
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 1rem 4rem;
+    background: linear-gradient(135deg, #EEF2FF 0%, #ffffff 50%, #FCE7F3 100%);
+    text-align: center;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+    padding: 4rem 1rem 2rem;
+    text-align: center;
+}
+
+.footer-brand,
+.footer-contact {
+    margin-bottom: 2rem;
+}
+
+.footer-contact p {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card {
+        margin-bottom: 2rem;
+    }
+}
