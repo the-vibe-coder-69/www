@@ -1,5 +1,3 @@
-
-
 // Modal functionality
 const modal = document.getElementById('modal');
 const modalContent = document.getElementById('modal-content');
@@ -69,11 +67,8 @@ modal.style.display = "block";
 
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    document.querySelector('.mobile-menu').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
     });
 
     // Testimonials slider
