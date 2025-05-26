@@ -8,21 +8,29 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo" onclick="window.location.href='index.html'" style="display: flex; align-items: center; cursor: pointer;">
-                <img src="images/vibe-station-logo.jpg" alt="Vibe Station Logo" style="height: 30px; width: auto; margin-right: 8px;">
-                <span class="logo-text" style="font-size: 1rem; font-weight: bold;">Vibe Station</span>
-            </div>
-            <nav class="nav">
-                <ul class="nav-links">
-                    <li>
-                        <a href="#pricing" class="btn btn-primary" style="color: white;">Buy Now</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Sidebar Toggle Button -->
+  <button id="sidebarToggle" class="sidebar-toggle">☰</button>
+
+  <!-- Sidebar -->
+  <nav id="sidebar" class="sidebar hidden">
+      <a href="/index.html" class="sidebar-link">← Go to Vibe Coder</a>
+  </nav>
+
+  <header class="header modern-header">
+      <div class="container header-container">
+          <a class="logo" href="index.html" aria-label="Vibe Station Home">
+              <img src="images/vibe-station-logo1.png" alt="Vibe Station Logo" class="logo-img" />
+              <span class="logo-text">Vibe Station</span>
+          </a>
+          <nav class="nav">
+              <ul class="nav-links">
+                  <li>
+                      <a href="#pricing" class="btn btn-primary">Buy Now</a>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+  </header>
 
     <main>
         <section id="home" class="hero">
@@ -91,7 +99,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="images/vibe-station-logo.jpg" alt="Vibe Station Logo" style="height: 50px;">
+                        <img src="images/vibe-station-logo1.png" alt="Vibe Station Logo" style="height: 50px;" class="logo-img">
                         <span class="logo-text">Vibe Station</span>
                     </div>
                     <p>Revolutionizing productivity with the ultimate phone-to-PC converter.</p>
@@ -109,5 +117,14 @@
             </div>
         </div>
     </footer>
+    <script>
+        const toggleButton = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+    
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+    
 </body>
 </html>
