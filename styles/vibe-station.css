@@ -397,3 +397,168 @@ body {
         font-size: 0.95em;
     }
 }
+
+/* --- Responsive & Mobile Improvements --- */
+@media (max-width: 900px) {
+  .header-container {
+    flex-direction: row;
+    padding: 0.75em 1em;
+  }
+  .logo-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .header-container {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5em 0.5em;
+  }
+  .logo-img {
+    height: 28px;
+    margin-right: 4px;
+  }
+  .logo-text {
+    font-size: 1rem;
+  }
+  .nav {
+    margin-left: auto;
+  }
+  .nav-links {
+    gap: 0.5em;
+  }
+}
+
+@media (max-width: 600px) {
+  #sidebarToggle {
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    font-size: 20px;
+    z-index: 1101;
+  }
+  .header.modern-header {
+    padding: 0;
+  }
+  .header-container {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5em 0.5em;
+    min-height: 56px;
+  }
+  .logo {
+    font-size: 1rem;
+  }
+  .nav {
+    display: none;
+  }
+  #sidebar {
+    width: 80vw;
+    max-width: 320px;
+    padding: 60px 16px 16px 16px;
+    font-size: 1.1rem;
+  }
+  #sidebar.visible {
+    box-shadow: 2px 0 12px rgba(0,0,0,0.18);
+  }
+}
+
+@media (max-width: 500px) {
+  .header-container {
+    padding: 0.25em 0.25em;
+    min-height: 48px;
+  }
+  .logo-img {
+    height: 22px;
+    margin-right: 3px;
+  }
+  .logo-text {
+    font-size: 0.95rem;
+  }
+  .visitor-stats-sticky {
+    right: 4px;
+    bottom: 4px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+    min-width: 110px;
+  }
+}
+
+/* Sidebar overlay for mobile */
+@media (max-width: 600px) {
+  #sidebar.visible {
+    background: rgba(255,255,255,0.98);
+    box-shadow: 2px 0 16px rgba(0,0,0,0.18);
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+}
+
+/* Hide nav links in header on mobile, use sidebar for navigation */
+@media (max-width: 600px) {
+  .nav {
+    display: none !important;
+  }
+}
+
+/* Responsive grid and cards */
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .footer-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .features {
+    padding: 3rem 0 2rem;
+  }
+  .feature-card {
+    padding: 1.2rem;
+  }
+  .pricing {
+    padding: 3rem 0 2rem;
+  }
+  .pricing-card {
+    padding: 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+  .footer {
+    padding: 2rem 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .visitor-stats-sticky {
+    font-size: 0.8rem;
+    min-width: 80px;
+    padding: 0.2rem 0.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-whatsapp-dark {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 1.1rem 0.5rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .pricing-card .btn-whatsapp-dark {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .btn-whatsapp-dark svg {
+    margin-right: 0.5em;
+    width: 28px;
+    height: 28px;
+  }
+}

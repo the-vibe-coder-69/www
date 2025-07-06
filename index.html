@@ -247,53 +247,51 @@
         </section>
     </main>
 
+    <!-- Subtle divider above footer -->
+    <div style="border-top: 1px solid #e5e7eb; margin-top: 2.5rem;"></div>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="images\thevibecoder.png" alt="The Vibe Coder Logo" style="height: 50px;">
+                        <img src="images/thevibecoder.png" alt="The Vibe Coder Logo" style="height: 40px;">
                         <span class="logo-text">The Vibe Coder</span>
                     </div>
-                    <p>Empowering businesses through intelligent conversational marketing and social media strategies.</p>
-                    <div class="social-links">
+                    <p style="font-size:0.95rem;">Empowering businesses through intelligent conversational marketing and social media strategies.</p>
+                    <div class="social-links" style="margin-top:0.5rem;">
                         <a href="https://www.instagram.com/chillscenehaibhai" class="social-link">Instagram</a>
                         <a href="https://x.com/laughclub007" class="social-link">Twitter</a>                                                
                     </div>
                 </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#whatsapp">WhatsApp Solutions</a></li>
-                        <li><a href="#instagram">Instagram Growth</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#whatsapp">Lead Qualification</a></li>
-                        <li><a href="#whatsapp">Chatbot Development</a></li>
-                        <li><a href="#instagram">Content Strategy</a></li>
-                        <li><a href="#instagram">Analytics & Reporting</a></li>
-                    </ul>
-                </div>
+                <nav class="footer-inline-links" aria-label="Quick Links">
+                  <strong>Quick Links:</strong>
+                  <a href="#home">Home</a>
+                  <a href="#services">Services</a>
+                  <a href="#pricing">Pricing</a>
+                </nav>
+                <nav class="footer-inline-links" aria-label="Services">
+                  <strong>Services:</strong>
+                  <a href="#whatsapp">Lead Qualification</a>
+                  <a href="#instagram">Content Strategy</a>
+                </nav>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p>Email: ayushxx7@gmail.com</p>
-                    <p>Phone: +91 9818994579</p>
-                    <p>Address: Delhi, India</p>
+                    <p style="font-size:0.95rem;">Email: ayushxx7@gmail.com</p>
+                    <p style="font-size:0.95rem;">Phone: +91 9818994579</p>
+                    <p style="font-size:0.95rem;">Delhi, India</p>
                 </div>
+                <a href="vibe-station.html" class="footer-vibe-image" title="Vibe Station">
+                  <img src="images/vibe-station-landing-page.jpeg" alt="Vibe Station" style="max-width: 120px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);" />
+                </a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 The Vibe Coder. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#" onclick="openLegalDoc('privacy')">Privacy Policy</a>
-                    <a href="#" onclick="openLegalDoc('terms')">Terms of Service</a>
-                </div>
+            <div class="footer-bottom" style="margin-top:1.2rem;">
             </div>
+            <div class="footer-legal-left">
+                <a href="#" onclick="openLegalDoc('privacy')">Privacy Policy</a>
+                <a href="#" onclick="openLegalDoc('terms')">Terms of Service</a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 The Vibe Coder. All rights reserved.</p>
         </div>
     </footer>
     <div id="modal" class="modal">
