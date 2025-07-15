@@ -926,13 +926,88 @@ p {
     margin-bottom: 0.5rem;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
+/* --- Playlist Showcase Section --- */
+.showcase {
+    padding: 5rem 0 4rem;
+    background: linear-gradient(135deg, #EEF2FF 0%, #FCE7F3 100%);
+    text-align: center;
+}
 
-    .pricing-card {
-        margin-bottom: 2rem;
+.showcase .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Ensures all child text is centered */
+}
+
+.showcase .badge,
+.showcase h2,
+.showcase p,
+.showcase .btn-primary {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.showcase .badge {
+    display: block;
+    background: var(--secondary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.4em 1em;
+    border-radius: 9999px;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.showcase h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+}
+
+.showcase p {
+    font-size: 1.15rem;
+    color: var(--gray-700);
+    margin-bottom: 2rem;
+}
+
+.showcase-video {
+    margin-top: 1.5rem;
+}
+
+.showcase .btn-primary {
+    font-size: 1.15rem;
+    padding: 0.9em 2em;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+    align-self: center; /* <-- Add this line */
+}
+
+.showcase .btn-primary:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25);
+}
+
+/* Responsive for showcase section */
+@media (max-width: 700px) {
+    .showcase {
+        padding: 2.5rem 0 2rem;
+    }
+    .showcase h2 {
+        font-size: 1.4rem;
+    }
+    .showcase p {
+        font-size: 1rem;
     }
 }
