@@ -63,6 +63,7 @@ function updateDonationInfo(amount) {
 document.addEventListener("DOMContentLoaded", function () {
   setupNavigation();
   setupScrollAnimations();
+  setupHamburgerMenu();
 
   const donationSlider = document.getElementById("donationSlider");
   if (donationSlider) {
@@ -233,3 +234,22 @@ window.addEventListener("scroll", function () {
     scrollButton.style.display = "none";
   }
 });
+function setupHamburgerMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  if (!hamburger || !navMenu) return;
+
+  // Toggle menu on hamburger click
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  // 🔥 CLOSE MENU when clicking any link
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+    });
+  });
+}
