@@ -141,18 +141,24 @@ function setupNavigation() {
   const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
   const mobileToggle = document.querySelector(".mobile-toggle");
   const navMenu = document.querySelector(".nav-menu");
+  const backdrop = document.querySelector(".menu-backdrop");
 
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener("click", () => {
+  if (mobileToggle && navMenu && backdrop) {
+    const toggleMenu = () => {
       mobileToggle.classList.toggle("active");
       navMenu.classList.toggle("active");
-    });
+      backdrop.classList.toggle("active");
+    };
+
+    mobileToggle.addEventListener("click", toggleMenu);
+    backdrop.addEventListener("click", toggleMenu);
 
     // Close menu when a link is clicked
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         mobileToggle.classList.remove("active");
         navMenu.classList.remove("active");
+        backdrop.classList.remove("active");
       });
     });
   }
