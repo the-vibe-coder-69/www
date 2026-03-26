@@ -139,6 +139,23 @@ Thank you for your support in powering digital inclusion!
 // Setup navigation
 function setupNavigation() {
   const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+  const mobileToggle = document.querySelector(".mobile-toggle");
+  const navMenu = document.querySelector(".nav-menu");
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener("click", () => {
+      mobileToggle.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileToggle.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
+    });
+  }
 
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -196,23 +213,6 @@ window.addEventListener("scroll", function () {
     const button = document.createElement("button");
     button.className = "scroll-to-top";
     button.innerHTML = "↑";
-    button.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: none;
-            z-index: 999;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        `;
     document.body.appendChild(button);
 
     button.addEventListener("click", function () {
