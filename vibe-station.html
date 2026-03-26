@@ -247,8 +247,16 @@
         const toggleButton = document.getElementById("sidebarToggle");
         const sidebar = document.getElementById("sidebar");
 
+        // Toggle menu
         toggleButton.addEventListener("click", () => {
           sidebar.classList.toggle("visible");
+        });
+
+        // ✅ CLOSE MENU WHEN CLICKING A LINK
+        document.querySelectorAll("#sidebar a").forEach((link) => {
+          link.addEventListener("click", () => {
+            sidebar.classList.remove("visible");
+          });
         });
       });
     </script>
