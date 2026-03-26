@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate Phone Setup - Vibe Station</title>
+    <link rel="stylesheet" href="assets/css/donate-site.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>Vibe Station - Donate</h2>
+          <span class="tagline">Empowering Digital Access for All</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#donation">Donate Now</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="vibe-station.html" class="btn-nav">Home</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Complete Phone to PC Setup</h1>
+        <p>
+          Donate to provide a complete system to those who need it most: Phone +
+          Monitor + Keyboard + Connector. Boost digital inclusion today.
+        </p>
+        <a href="#donation" class="btn btn-primary btn-large">Donate Now</a>
+      </div>
+      <div class="hero-overlay"></div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-works">
+      <div class="container">
+        <h2>How It Works</h2>
+        <p class="section-subtitle">
+          One donation, complete setup ready to use
+        </p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Choose Your Donation</h3>
+            <p>
+              Select a donation amount using our interactive slider. Each amount
+              tier corresponds to a specific phone model with desktop features.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>We Build for Needy</h3>
+            <p>
+              Each donation funds a full phone-to-PC bundle delivered to someone
+              who needs it the most, including setup and training.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Ongoing Support</h3>
+            <p>
+              Our team provides remote and local assistance, ensuring recipients
+              can use the setup confidently and sustainably.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>Impact Tracking</h3>
+            <p>
+              Track the progress of your donation through status updates and
+              stories from recipients.
+            </p>
+          </div>
+        </div>
+
+        <div class="features-highlight">
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>No Hidden Costs</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>All Components Included</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>Professional Support</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>Ready to Use</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donation Section with Slider -->
+    <section id="donation" class="donation-section">
+      <div class="container">
+        <h2>Empower a Digital Learning Setup</h2>
+        <p class="section-subtitle">
+          Slide to choose your donation amount and see which phone model your
+          support unlocks
+        </p>
+
+        <div class="slider-container">
+          <div class="slider-wrapper">
+            <input
+              type="range"
+              id="donationSlider"
+              min="5500"
+              max="95000"
+              value="10000"
+              step="500"
+              class="slider"
+            />
+            <div class="slider-labels">
+              <span>₹5,500</span>
+              <span>₹95,000</span>
+            </div>
+          </div>
+
+          <div class="selected-amount">
+            <div class="amount-display">
+              <span class="label">Chosen Donation:</span>
+              <span class="value" id="sliderAmount">₹10,000</span>
+            </div>
+          </div>
+
+          <!-- Phone Details Card -->
+          <div class="phone-details-card">
+            <div class="phone-header">
+              <h3>Estimated Supported Phone</h3>
+            </div>
+
+            <div class="phone-info">
+              <div class="info-row">
+                <span class="label">Phone Brand:</span>
+                <span class="value" id="phoneBrand">Loading...</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Phone Model:</span>
+                <span class="value" id="phoneModel">Loading...</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Desktop Feature:</span>
+                <span class="value" id="phoneFeature">Loading...</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Price Range:</span>
+                <span class="value" id="phonePrice">₹10,000 - ₹13,000</span>
+              </div>
+            </div>
+
+            <div class="setup-includes">
+              <h4>How your donation helps</h4>
+              <ul>
+                <li>Funds needed hardware (phone, adapter, monitor)</li>
+                <li>Supports professional phone-to-PC setup</li>
+                <li>Provides free training for the recipient</li>
+                <li>Includes follow-up support and maintenance</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- UPI Payment Section -->
+          <div class="payment-section">
+            <h3>Donation Information</h3>
+            <p>
+              Use UPI below to donate directly; your support funds one complete
+              phone-to-PC setup.
+            </p>
+
+            <div class="upi-box">
+              <div class="upi-detail">
+                <span class="label">Donation Amount:</span>
+                <span class="value" id="upiAmount">₹10,000</span>
+              </div>
+
+              <div class="upi-detail">
+                <span class="label">UPI Number:</span>
+                <span class="value upi-id">9818994579</span>
+                <button
+                  onclick="copyUPI('9818994579@upi', this)"
+                  class="copy-btn"
+                >
+                  Copy
+                </button>
+              </div>
+
+              <p class="payment-note">
+                Copy the UPI number above and pay using your preferred UPI app
+                (Google Pay, PhonePe, BHIM, etc.).
+              </p>
+
+              <p class="payment-note">
+                Your donation supports a complete phone-to-PC setup for a
+                deserving recipient.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+      <div class="container">
+        <h2>Our Mission & Impact</h2>
+        <p class="section-subtitle">
+          Creating affordable computing solutions for everyone
+        </p>
+
+        <div class="impact-grid">
+          <div class="impact-card">
+            <div class="impact-title">Affordable Computing</div>
+            <p>
+              We believe powerful computing should be accessible to everyone.
+              Our phone-to-PC solution delivers desktop-class performance at a
+              fraction of traditional PC costs.
+            </p>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-title">E-Waste Reduction</div>
+            <p>
+              By converting old phones into productive workstations, we reduce
+              electronic waste and promote sustainable technology adoption
+              globally.
+            </p>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-title">Digital Inclusion</div>
+            <p>
+              Our mission is to bridge the digital divide by providing complete
+              computing setups to students, professionals, and entrepreneurs in
+              emerging markets.
+            </p>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-title">Innovation in Mobile</div>
+            <p>
+              We're pioneering the future of mobile computing where smartphones
+              become the primary computing device, eliminating the need for
+              multiple gadgets.
+            </p>
+          </div>
+        </div>
+
+        <div class="impact-stats">
+          <div class="stat">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Lives Supported</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">80+</div>
+            <div class="stat-label">Phone Models Supported</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Cities Reached</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Ongoing Contributors</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <p class="section-subtitle">
+          Have questions about donating or our initiative?
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h4>Email</h4>
+            <p>
+              <a href="mailto:thevibecoder69@gmail.com"
+                >thevibecoder69@gmail.com</a
+              >
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <h4>Phone</h4>
+            <p><a href="tel:+916395906067">+91 6395906067</a></p>
+            <p><a href="tel:+919818994579">+91 9818994579</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h4>Office Location</h4>
+            <p>J-112, 3rd Floor<br />Ashok Vihar, Phase 1<br />Delhi 110052</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>Ready for Your Phone to PC Setup?</h2>
+        <p>
+          Donate now and join thousands of users experiencing desktop computing
+          anywhere
+        </p>
+        <a href="#donation" class="btn btn-secondary btn-large"
+          >Donate and Setup</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>Vibe Station</h4>
+          <p>
+            Transforming phones into productive PC workstations for communities
+            in need.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="vibe-station.html">Home</a></li>
+            <li><a href="compatible-phones.html">Phone Models</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Support</h4>
+          <p>
+            Email:
+            <a href="mailto:thevibecoder69@gmail.com"
+              >thevibecoder69@gmail.com</a
+            >
+          </p>
+          <p>Office: Delhi, India</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vibe Station. All rights reserved.</p>
+        <div class="footer-links"></div>
+      </div>
+    </footer>
+
+    <script src="assets/js/phones.js"></script>
+    <script src="assets/js/donate-site.js"></script>
+  </body>
+</html>
