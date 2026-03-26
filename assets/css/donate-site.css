@@ -982,3 +982,44 @@ h2 {
     width: 100%;
   }
 }
+/* ===== SLIDER FIX ===== */
+
+.slider-container {
+  margin: 2.5rem auto;
+  max-width: 900px; /* controls total width */
+}
+
+.slider-wrapper {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 14px; /* thickness */
+  border-radius: 10px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  outline: none;
+  cursor: pointer;
+}
+
+/* Thumb (circle) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid #667eea;
+  cursor: pointer;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #636e72;
+}
