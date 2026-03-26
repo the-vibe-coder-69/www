@@ -237,10 +237,19 @@ window.addEventListener("scroll", function () {
 function setupHamburgerMenu() {
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.querySelector(".nav-menu");
+  const navLinks = document.querySelectorAll(".nav-menu a");
 
   if (!hamburger || !navMenu) return;
 
+  // Toggle menu on hamburger click
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("active");
+  });
+
+  // 🔥 CLOSE MENU when clicking any link
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+    });
   });
 }
