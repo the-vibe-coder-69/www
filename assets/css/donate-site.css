@@ -1041,7 +1041,7 @@ h2 {
   .nav-menu {
     display: none;
     position: absolute;
-    top: 70px;
+    top: 100%;
     right: 0;
     width: 100%;
     background: white;
