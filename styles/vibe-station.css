@@ -524,7 +524,8 @@ body {
 @media (max-width: 600px) {
   #sidebarToggle {
     top: 12px;
-    left: 12px;
+    right: 12px; /* ✅ FIX */
+    left: auto;
     padding: 6px 10px;
     font-size: 20px;
     z-index: 1101;
