@@ -941,8 +941,9 @@ h2 {
 
 @media (max-width: 480px) {
   .nav-container {
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row; /* ✅ FIX */
+    justify-content: space-between; /* ✅ */
+    align-items: center;
   }
 
   .nav-menu {
@@ -980,5 +981,56 @@ h2 {
 
   .copy-btn {
     width: 100%;
+  }
+}
+/* ===== MOBILE NAV FIX ===== */
+
+/* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  /* Make header smaller on mobile */
+  .logo h2 {
+    font-size: 18px;
+  }
+
+  .tagline {
+    font-size: 12px;
   }
 }
