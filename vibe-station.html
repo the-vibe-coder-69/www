@@ -15,7 +15,10 @@
     <!-- Sidebar -->
     <nav id="sidebar" class="sidebar" aria-label="Sidebar navigation">
       <!-- Ensure this href points to your correct home page -->
-      <a href="index.html" class="sidebar-link">← Go to Vibe Coder Home</a>
+
+      <a href="#pricing" class="sidebar-link">Buy Now</a>
+      <a href="#features" class="sidebar-link">Learn More</a>
+      <a href="donate.html" class="sidebar-link">Donate</a>
     </nav>
 
     <header class="header modern-header">
@@ -244,8 +247,16 @@
         const toggleButton = document.getElementById("sidebarToggle");
         const sidebar = document.getElementById("sidebar");
 
+        // Toggle menu
         toggleButton.addEventListener("click", () => {
           sidebar.classList.toggle("visible");
+        });
+
+        // ✅ CLOSE MENU WHEN CLICKING A LINK
+        document.querySelectorAll("#sidebar a").forEach((link) => {
+          link.addEventListener("click", () => {
+            sidebar.classList.remove("visible");
+          });
         });
       });
     </script>
