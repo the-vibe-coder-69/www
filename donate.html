@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Donate Phone Setup - Vibe Station</title>
     <link rel="stylesheet" href="assets/css/donate-site.css" />
-
   </head>
   <body>
-    <div class="menu-backdrop"></div>
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
         <div class="logo">
-          <h2 class="vibe-title">Vibe Station</h2>
-          <h3 class="vibe-subtitle">Donate</h3>
-          <span class="tagline">Empowering Digital Access for All</span>
+          <h2>Vibe Station - Donate</h2>
+          <span class="tagline"
+            ><strong>Empowering Digital Access for All </strong></span
+          >
         </div>
         <ul class="nav-menu">
           <li><a href="#how-it-works">How It Works</a></li>
@@ -23,18 +22,13 @@
           <li><a href="#impact">Impact</a></li>
           <li><a href="vibe-station.html" class="btn-nav">Home</a></li>
         </ul>
-        <button class="mobile-toggle" aria-label="Toggle Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
-        <h1>Complete Phone<br>to PC<br>Setup</h1>
+        <h1>Complete Phone to PC Setup</h1>
         <p>
           Donate to provide a complete system to those who need it most: Phone +
           Monitor + Keyboard + Connector. Boost digital inclusion today.
@@ -47,7 +41,7 @@
     <!-- How It Works Section -->
     <section id="how-it-works" class="how-works">
       <div class="container">
-        <h2>How It<br>Works<br>Simply</h2>
+        <h2>How It Works</h2>
         <p class="section-subtitle">
           One donation, complete setup ready to use
         </p>
@@ -82,7 +76,6 @@
 
           <div class="step-card">
             <div class="step-number">4</div>
-
             <h3>Impact Tracking</h3>
             <p>
               Track the progress of your donation through status updates and
@@ -93,19 +86,19 @@
 
         <div class="features-highlight">
           <div class="feature-item">
-            <span class="feature-icon"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+            <span class="feature-icon">✓</span>
             <span>No Hidden Costs</span>
           </div>
           <div class="feature-item">
-            <span class="feature-icon"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+            <span class="feature-icon">✓</span>
             <span>All Components Included</span>
           </div>
           <div class="feature-item">
-            <span class="feature-icon"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+            <span class="feature-icon">✓</span>
             <span>Professional Support</span>
           </div>
           <div class="feature-item">
-            <span class="feature-icon"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+            <span class="feature-icon">✓</span>
             <span>Ready to Use</span>
           </div>
         </div>
@@ -183,19 +176,21 @@
 
           <!-- UPI Payment Section -->
           <div class="payment-section">
-            <h2>Donation<br>Information<br>& Process</h2>
-        <p class="section-subtitle">
-          Use UPI below to donate directly; your support funds one complete
-          phone-to-PC setup.
-        </p>
+            <h3>Donation Information</h3>
+            <p>
+              Use UPI below to donate directly; your support funds one complete
+              phone-to-PC setup.
+            </p>
+
             <div class="upi-box">
               <div class="upi-detail">
                 <span class="label">Donation Amount:</span>
                 <span class="value" id="upiAmount">₹10,000</span>
               </div>
 
-              <div class="upi-id-box">
-                <span id="upiId">9818994579@upi</span>
+              <div class="upi-detail">
+                <span class="label">UPI Number:</span>
+                <span class="value upi-id">9818994579</span>
                 <button
                   onclick="copyUPI('9818994579@upi', this)"
                   class="copy-btn"
@@ -205,7 +200,7 @@
               </div>
 
               <p class="payment-note">
-                Copy the UPI ID above and pay using your preferred UPI app
+                Copy the UPI number above and pay using your preferred UPI app
                 (Google Pay, PhonePe, BHIM, etc.).
               </p>
 
@@ -213,10 +208,6 @@
                 Your donation supports a complete phone-to-PC setup for a
                 deserving recipient.
               </p>
-
-              <button onclick="proceedToUPI()" class="btn btn-primary btn-full upi-pay-btn">
-                Pay with UPI
-              </button>
             </div>
           </div>
         </div>
@@ -226,15 +217,14 @@
     <!-- Impact Section -->
     <section id="impact" class="impact">
       <div class="container">
-        <h2>Our Mission<br>&<br>Impact</h2>
+        <h2>Our Mission & Impact</h2>
         <p class="section-subtitle">
           Creating affordable computing solutions for everyone
         </p>
 
         <div class="impact-grid">
           <div class="impact-card">
-            <div class="stat-number">01</div>
-            <h3>Affordable Computing</h3>
+            <div class="impact-title">Affordable Computing</div>
             <p>
               We believe powerful computing should be accessible to everyone.
               Our phone-to-PC solution delivers desktop-class performance at a
@@ -243,8 +233,7 @@
           </div>
 
           <div class="impact-card">
-            <div class="stat-number">02</div>
-            <h3>E-Waste Reduction</h3>
+            <div class="impact-title">E-Waste Reduction</div>
             <p>
               By converting old phones into productive workstations, we reduce
               electronic waste and promote sustainable technology adoption
@@ -253,20 +242,20 @@
           </div>
 
           <div class="impact-card">
-            <div class="stat-number">03</div>
-            <h3>Digital Inclusion</h3>
+            <div class="impact-title">Digital Inclusion</div>
             <p>
               Our mission is to bridge the digital divide by providing complete
-              computing setups to students, professionals, and entrepreneurs.
+              computing setups to students, professionals, and entrepreneurs in
+              emerging markets.
             </p>
           </div>
 
           <div class="impact-card">
-            <div class="stat-number">04</div>
-            <h3>Innovation</h3>
+            <div class="impact-title">Innovation in Mobile</div>
             <p>
               We're pioneering the future of mobile computing where smartphones
-              become the primary computing device for everything.
+              become the primary computing device, eliminating the need for
+              multiple gadgets.
             </p>
           </div>
         </div>
@@ -274,7 +263,7 @@
         <div class="impact-stats">
           <div class="stat">
             <div class="stat-number">150+</div>
-            <div class="stat-label">Lives Supported</div>
+            <div class="stat-label">Lives Impacted</div>
           </div>
           <div class="stat">
             <div class="stat-number">80+</div>
@@ -282,11 +271,11 @@
           </div>
           <div class="stat">
             <div class="stat-number">5</div>
-            <div class="stat-label">Cities Reached</div>
+            <div class="stat-label">Cities Served</div>
           </div>
           <div class="stat">
             <div class="stat-number">100+</div>
-            <div class="stat-label">Ongoing Contributors</div>
+            <div class="stat-label">Active Supporters</div>
           </div>
         </div>
       </div>
@@ -295,7 +284,7 @@
     <!-- Contact Section -->
     <section class="contact">
       <div class="container">
-        <h2>Get in<br>Touch<br>Today</h2>
+        <h2>Get in Touch</h2>
         <p class="section-subtitle">
           Have questions about donating or our initiative?
         </p>
@@ -372,11 +361,7 @@
 
       <div class="footer-bottom">
         <p>&copy; 2025 Vibe Station. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="https://www.instagram.com/chillscenehaibhai" target="_blank">Instagram</a>
-          <a href="https://x.com/laughclub007" target="_blank">X</a>
-          <a href="https://www.youtube.com/@TheVibeCoder" target="_blank">YouTube</a>
-        </div>
+        <div class="footer-links"></div>
       </div>
     </footer>
 
