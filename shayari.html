@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Vibe Coder | Shayari Collection</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      background: #020617;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #1e293b;
+      color: white;
+    }
+
+    button {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: #38bdf8;
+      color: black;
+      font-weight: 500;
+    }
+
+    .shayari-card {
+      background: #020617;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      transition: transform 0.15s ease;
+    }
+
+    .shayari-card:hover {
+      transform: scale(1.01);
+    }
+
+    .tag {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+
+    .text {
+      font-size: 16px;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  ✨ Shayari Vault — The Vibe Coder
+</header>
+
+<div class="container">
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search mood, words..." />
+    <button onclick="showRandom()">Random</button>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="footer">
+    Built with ❤️ by The Vibe Coder
+  </div>
+
+</div>
+
+<script>
+
+// 👉 EASY EDIT ZONE (just add more objects here)
+const shayaris = [
+  {
+    tag: "Motivation",
+    text: "Khud par bharosa karna seekh le dost,\nlog toh waqt ke saath badalte rehte hain."
+  },
+  {
+    tag: "Love",
+    text: "Teri muskaan se shuru hui meri kahani,\nwarna hum toh khud se bhi anjaan the."
+  },
+  {
+    tag: "Attitude",
+    text: "Jo log mujhe samajh nahi paaye,\nwoh meri kahani kya samjhenge."
+  },
+  {
+    tag: "Sad",
+    text: "Kuch khoya hai maine zindagi mein,\nwarna muskurana mujhe bhi aata tha."
+  }
+];
+
+const list = document.getElementById("list");
+const search = document.getElementById("search");
+
+function render(data) {
+  list.innerHTML = "";
+  data.forEach(s => {
+    const div = document.createElement("div");
+    div.className = "shayari-card";
+    div.innerHTML = `
+      <div class="tag">${s.tag}</div>
+      <div class="text">${s.text}</div>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function showRandom() {
+  const random = shayaris[Math.floor(Math.random() * shayaris.length)];
+  render([random]);
+}
+
+search.addEventListener("input", () => {
+  const val = search.value.toLowerCase();
+  const filtered = shayaris.filter(s =>
+    s.text.toLowerCase().includes(val) ||
+    s.tag.toLowerCase().includes(val)
+  );
+  render(filtered);
+});
+
+render(shayaris);
+
+</script>
+
+</body>
+</html>
+
