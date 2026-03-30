@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Pricing | The Vibe Coder</title>
+  <meta name="description" content="Website pricing, sample sites, and ready-to-customize design routes by The Vibe Coder.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07101d;
+      --surface: rgba(12, 19, 35, 0.9);
+      --surface-soft: rgba(255, 255, 255, 0.04);
+      --line: rgba(166, 185, 255, 0.16);
+      --text: #eef3ff;
+      --muted: #98a8cf;
+      --accent: #6a63ff;
+      --accent-2: #f18b4d;
+      --accent-3: #7be4b2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at top center, rgba(106, 99, 255, 0.2), transparent 26%),
+        linear-gradient(180deg, #050b16 0%, #08111f 52%, #050b15 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+
+    body::before {
+      width: 22rem;
+      height: 22rem;
+      left: -7rem;
+      bottom: 8vh;
+      background: radial-gradient(circle, rgba(123, 228, 178, 0.14), transparent 68%);
+    }
+
+    body::after {
+      width: 20rem;
+      height: 20rem;
+      right: 8vw;
+      top: 16vh;
+      background: radial-gradient(circle, rgba(241, 139, 77, 0.12), transparent 70%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 9, 18, 0.84);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .brand strong,
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", sans-serif;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 0.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      color: #d9e2ff;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      padding: 5.5rem 0 3rem;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 1.6rem;
+      align-items: stretch;
+    }
+
+    .eyebrow,
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(106, 99, 255, 0.26);
+      background: rgba(106, 99, 255, 0.12);
+      color: #dfe5ff;
+      font-size: 0.92rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 0.97;
+      margin: 1rem 0 1.1rem;
+      max-width: 820px;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 760px;
+    }
+
+    .hero-actions,
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #9183ff);
+      color: #fff;
+      box-shadow: 0 18px 44px rgba(106, 99, 255, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text);
+    }
+
+    .hero-note,
+    .offer-card,
+    .info-card,
+    .reference-card,
+    .sample-card,
+    .contact-card,
+    .disclaimer-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+    }
+
+    .hero-note {
+      padding: 1.4rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-note img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+
+    .hero-note p,
+    .hero-note li,
+    .offer-card p,
+    .offer-card li,
+    .info-card p,
+    .sample-card p,
+    .reference-card p,
+    .disclaimer-card p,
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .hero-note ul,
+    .offer-card ul,
+    .info-card ul {
+      display: grid;
+      gap: 0.7rem;
+      padding-left: 1.1rem;
+    }
+
+    section {
+      padding: 1.4rem 0 3rem;
+    }
+
+    .section-head {
+      margin-bottom: 1.4rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.75;
+    }
+
+    .offer-grid,
+    .info-grid,
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .offer-card,
+    .info-card,
+    .sample-card,
+    .reference-card,
+    .contact-card,
+    .disclaimer-card {
+      padding: 1.5rem;
+    }
+
+    .price-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(123, 228, 178, 0.12);
+      border: 1px solid rgba(123, 228, 178, 0.22);
+      color: #dff8eb;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .offer-card h3,
+    .sample-card h3,
+    .reference-card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
+    }
+
+    .offer-card .subline {
+      display: block;
+      color: #ffd7b9;
+      font-weight: 700;
+      margin-top: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .mini-grid span {
+      padding: 0.8rem 0.9rem;
+      border-radius: 18px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #dce5ff;
+      font-size: 0.92rem;
+    }
+
+    .sample-links,
+    .reference-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .sample-links a,
+    .reference-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .sample-links a:hover,
+    .reference-item:hover {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .sample-links span,
+    .reference-item span,
+    .reference-item small {
+      color: var(--muted);
+    }
+
+    .reference-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .reference-item strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .link-pair {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .link-pair a {
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      font-size: 0.88rem;
+      color: #eef3ff;
+    }
+
+    .contact-card strong,
+    .disclaimer-card strong {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
+    }
+
+    .contact-lines {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .contact-lines a {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .page-footer {
+      padding: 1rem 0 3rem;
+      color: var(--muted);
+    }
+
+    .page-footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 980px) {
+      .hero-shell,
+      .offer-grid,
+      .info-grid,
+      .samples-grid,
+      .reference-list {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        min-height: 84px;
+        align-items: flex-start;
+        padding: 1rem 0;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 4.6rem;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.7rem;
+      }
+
+      .sample-links a,
+      .reference-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .link-pair {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <img src="images/thevibecoder.png" alt="The Vibe Coder logo">
+          <div>
+            <strong>The Vibe Coder</strong>
+            <small>Strategic IT Solutions · Built in Bharat</small>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="web-design-list/">Gallery</a>
+          <a href="#offers">Offers</a>
+          <a href="#samples">Samples</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-shell">
+          <div class="hero-copy">
+            <span class="eyebrow">Ready website directions for fast client delivery</span>
+            <h1>Ready website designs we can customize fast for real clients.</h1>
+            <p>We no longer need to start from a blank screen for every website project. We can show proven directions, pick the right style, customize the entire content and branding, and close faster with a cleaner sales process across classic and premium categories.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://wa.me/919818994579?text=Hi%2C%20I%20want%20website%20pricing%20for%20The%20Vibe%20Coder." target="_blank" rel="noopener noreferrer">WhatsApp Ayush</a>
+              <a class="btn btn-secondary" href="web-design-list/">Open All 20 Designs</a>
+            </div>
+            <div class="button-row">
+              <span class="chip">Classic package from ₹3,500</span>
+              <span class="chip">Premium routes from ₹4,500</span>
+              <span class="chip">WhatsApp, enquiry, SEO ready</span>
+            </div>
+          </div>
+          <aside class="hero-note">
+            <img src="images/thevibecoder.png" alt="The Vibe Coder logo">
+            <div>
+              <strong>Ayush Mandowara</strong>
+              <p>Founder &amp; CEO, The Vibe Coder</p>
+            </div>
+            <ul>
+              <li>Strategic IT Solutions for business websites, AI, and automation</li>
+              <li>Fast customization across law, CA, travel, immigration, industrial, consulting, cloud, and IT categories</li>
+              <li>Live numbered routes already prepared for demos and sales calls</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="offers">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Website Product Offers</span>
+            <h2>Two easy website offers to pitch.</h2>
+            <p>I am positioning this as “similar style, fully customized for your brand” instead of promising blind copies. That keeps the sales message strong while sounding more credible and safer.</p>
+          </div>
+          <div class="offer-grid">
+            <article class="offer-card">
+              <span class="price-tag">Professional Business Website · ₹3,500</span>
+              <h3>Classic static business website</h3>
+              <p>Best for local business clients who want a familiar, trustworthy website and need fast turnaround.</p>
+              <span class="subline">Includes</span>
+              <ul>
+                <li>Up to 5 static pages</li>
+                <li>Mobile responsive design</li>
+                <li>WhatsApp chat integration</li>
+                <li>Social media links</li>
+                <li>Visitor counter</li>
+                <li>Dynamic enquiry form with email alerts</li>
+                <li>Minor content updates up to 5 times</li>
+                <li>Basic SEO setup with title, keywords, and description</li>
+              </ul>
+              <div class="mini-grid">
+                <span>WhatsApp floating button</span>
+                <span>Click-to-call for mobile</span>
+                <span>Great for brochure websites</span>
+              </div>
+            </article>
+            <article class="offer-card">
+              <span class="price-tag">Premium Theme Direction · ₹4,500</span>
+              <h3>Premium style customization</h3>
+              <p>Best for clients who want a stronger first impression with richer sections, more premium layout pacing, and a higher-value presentation.</p>
+              <span class="subline">Best use cases</span>
+              <ul>
+                <li>Consulting, software, cloud, support, agencies, and IT service brands</li>
+                <li>Founder-led service companies that want better positioning</li>
+                <li>Clients who respond well to modern motion, stronger hierarchy, and premium screenshots</li>
+                <li>Sales calls where design quality itself helps justify the price</li>
+              </ul>
+              <div class="mini-grid">
+                <span>20 live routes ready</span>
+                <span>Premium look and feel</span>
+                <span>Faster proposal-to-delivery cycle</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container info-grid">
+          <article class="info-card">
+            <h3>Add-ons</h3>
+            <ul>
+              <li>Extra page: ₹500</li>
+              <li>Flash banner: ₹1,000</li>
+              <li>Dynamic page: ₹2,500</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3>How we sell it better now</h3>
+            <ul>
+              <li>Show the client a live route instead of only describing the idea</li>
+              <li>Pick a design family based on the business category and budget</li>
+              <li>Customize colors, logos, copy, forms, and contact details quickly</li>
+              <li>Upsell WhatsApp, click-to-call, SEO, automation, and future pages</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="samples">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Classic Market Proof</span>
+            <h2>Business styles clients already understand.</h2>
+            <p>These external sites are useful as market references when talking to classic business clients. They help show the kind of familiar brochure-style result we can recreate in a customized way.</p>
+          </div>
+          <div class="samples-grid">
+            <article class="sample-card">
+              <h3>Sample business sites</h3>
+              <p>Good reference categories for legal, industrial, CA, travel, immigration, and business brochure websites.</p>
+              <div class="sample-links">
+                <a href="https://www.divorcelawyerncr.org.in" target="_blank" rel="noopener noreferrer"><strong>divorcelawyerncr.org.in</strong><span>Law / consultancy reference</span></a>
+                <a href="https://www.mekaster.com" target="_blank" rel="noopener noreferrer"><strong>mekaster.com</strong><span>Industrial / company profile reference</span></a>
+                <a href="https://www.jcgoel.com" target="_blank" rel="noopener noreferrer"><strong>jcgoel.com</strong><span>CA / business services reference</span></a>
+                <a href="https://www.maasonatours.com" target="_blank" rel="noopener noreferrer"><strong>maasonatours.com</strong><span>Travel business reference</span></a>
+                <a href="https://www.hapjourneys.com" target="_blank" rel="noopener noreferrer"><strong>hapjourneys.com</strong><span>Travel and packages reference</span></a>
+                <a href="https://www.videshvision.com" target="_blank" rel="noopener noreferrer"><strong>videshvision.com</strong><span>Overseas / immigration reference</span></a>
+                <a href="https://www.casperimmigration.com" target="_blank" rel="noopener noreferrer"><strong>casperimmigration.com</strong><span>Immigration consultancy reference</span></a>
+              </div>
+            </article>
+            <article class="sample-card">
+              <h3>Premium design routes</h3>
+              <p>The local gallery is better for premium IT and consulting sales because it lets the client open routes instantly and compare moods side by side.</p>
+              <div class="button-row">
+                <a class="btn btn-primary" href="web-design-list/">Open 20-route gallery</a>
+                <a class="btn btn-secondary" href="card.html">Open quick card</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Premium Reference Stack</span>
+            <h2>Theme directions already mapped to local routes.</h2>
+            <p>This makes the premium sales side easier: we can show the local route first, then open the original inspiration only when needed.</p>
+          </div>
+          <div class="reference-card">
+            <div class="reference-list">
+              <div class="reference-item"><div><strong>1 Boardroom Advisory</strong><small>Consulting</small></div><div class="link-pair"><a href="web-design-list/1/">Local route</a><a href="https://html.themehour.net/atek/demo/home-consulting.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>2 Nimbus Cloud</strong><small>Cloud</small></div><div class="link-pair"><a href="web-design-list/2/">Local route</a><a href="https://html.themehour.net/atek/demo/home-cloud.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>3 Helpdesk Pro</strong><small>Tech support</small></div><div class="link-pair"><a href="web-design-list/3/">Local route</a><a href="https://html.themehour.net/atek/demo/home-tech-support.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>4 AppForge Studio</strong><small>App development</small></div><div class="link-pair"><a href="web-design-list/4/">Local route</a><a href="https://html.themehour.net/atek/demo/home-app-development.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>5 Engitech Systems</strong><small>IT services</small></div><div class="link-pair"><a href="web-design-list/5/">Local route</a><a href="https://templates.thememodern.com/engitech/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>6 iThub Nexus</strong><small>IT services</small></div><div class="link-pair"><a href="web-design-list/6/">Local route</a><a href="https://expert-themes.com/html/ithub/ithub/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>7 iThub Velocity</strong><small>IT startup</small></div><div class="link-pair"><a href="web-design-list/7/">Local route</a><a href="https://expert-themes.com/html/ithub/ithub/index-3.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>8 Ziptech Core</strong><small>IT services</small></div><div class="link-pair"><a href="web-design-list/8/">Local route</a><a href="https://html.webextheme.com/ziptech/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>9 Globex Orbit</strong><small>Global services</small></div><div class="link-pair"><a href="web-design-list/9/">Local route</a><a href="https://expert-themes.com/html/globex/index-3.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>10 Globex Prime</strong><small>Corporate services</small></div><div class="link-pair"><a href="web-design-list/10/">Local route</a><a href="https://expert-themes.com/html/globex/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>11 Ziptech Motion</strong><small>IT solutions</small></div><div class="link-pair"><a href="web-design-list/11/">Local route</a><a href="https://html.webextheme.com/ziptech/home2.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>12 Techzo Matrix</strong><small>Tech agency</small></div><div class="link-pair"><a href="web-design-list/12/">Local route</a><a href="https://html.themegenix.com/techzo/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>13 Techzo Pulse</strong><small>Startup tech</small></div><div class="link-pair"><a href="web-design-list/13/">Local route</a><a href="https://html.themegenix.com/techzo/index-3.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>14 Oitech Horizon</strong><small>Corporate IT</small></div><div class="link-pair"><a href="web-design-list/14/">Local route</a><a href="https://html.kodesolution.com/2022/oitech-html/index-2.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+              <div class="reference-item"><div><strong>15 Quantech Works</strong><small>Modern services</small></div><div class="link-pair"><a href="web-design-list/15/">Local route</a><a href="https://modinatheme.com/html/quantech-html/index-2.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container info-grid">
+          <article class="contact-card">
+            <strong>Talk to Ayush</strong>
+            <p>If a client says “show me options,” this page, the gallery, and the quick card now work together as your sales kit.</p>
+            <div class="contact-lines">
+              <a href="tel:+919818994579">+91 9818994579</a>
+              <a href="mailto:ayushxx7@gmail.com">ayushxx7@gmail.com</a>
+              <a href="https://wa.me/919818994579?text=YES%20-%20I%20want%20a%20website%20quote." target="_blank" rel="noopener noreferrer">Reply YES on WhatsApp</a>
+            </div>
+          </article>
+          <article class="disclaimer-card">
+            <strong>Important note</strong>
+            <p>Domain name, business email, and SSL certificate charges are not included in the base website package. The cleanest positioning is: we build a similar style, then customize it completely for the client’s own brand, content, and business use case.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <p>The Vibe Coder website sales system: quick card, pricing page, 20 live design routes, and premium/classic sample references.</p>
+        <a href="index.html">Back to home</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

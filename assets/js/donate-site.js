@@ -163,7 +163,7 @@ function setupNavigation() {
 // Setup scroll animations
 function setupScrollAnimations() {
   const elements = document.querySelectorAll(
-    ".benefit-card, .stat-card, .faq-item, .timeline-item",
+    ".benefit-card, .stat-card, .faq-item, .step-card, .impact-card, .info-panel, .phone-details-card, .payment-section",
   );
 
   const observer = new IntersectionObserver(

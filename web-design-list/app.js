@@ -681,6 +681,7 @@ function buildHeader(currentPage) {
         </a>
         <nav class="nav-links">
           <a href="${buildPath("/web-design-list/")}">All Designs</a>
+          <a href="${buildPath("/web-design-pricing.html")}">Pricing</a>
           ${currentPage ? `<a href="#services">Services</a><a href="#contact">Contact Layout</a>` : `<a href="#premium">Premium Set</a><a href="#classic">Classic Set</a>`}
         </nav>
       </div>
@@ -694,6 +695,7 @@ function buildFooter() {
       <div class="shell footer-inner">
         <p class="footer-copy">Twenty static website directions prepared for Vibe Coder. Premium set: 1-15. Classic business set: 16-20.</p>
         <div class="footer-links">
+          <a href="${buildPath("/web-design-pricing.html")}" class="ghost-link">Pricing page</a>
           <a href="${buildPath("/web-design-list/")}" class="ghost-link">Back to gallery</a>
           <a href="https://thevibecoder.github.io/www/web-design-list/" class="outline-link">GitHub Pages path</a>
         </div>
@@ -713,9 +715,10 @@ function renderGallery() {
         <div class="gallery-copy">
           <span class="eyebrow">20 separate routes for website design demos</span>
           <h1>Premium technology layouts and classic business themes, all mapped to numbered links.</h1>
-          <p>The collection below translates the references you shared into twenty standalone routes under <strong>/web-design-list/1-20</strong>. Routes <strong>1-15</strong> are premium IT and business directions. Routes <strong>16-20</strong> are classic local-business styles inspired by legal, industrial, accounting, travel, and immigration websites.</p>
+          <p>The collection below translates the references you shared into twenty standalone routes under <strong>/web-design-list/1-20</strong>. Routes <strong>1-15</strong> are premium IT and business directions. Routes <strong>16-20</strong> are classic local-business styles inspired by legal, industrial, accounting, travel, and immigration websites. The matching sales sheet now lives on the pricing page.</p>
           <div class="button-row">
             <a class="primary-link" href="${buildPath("/web-design-list/1/")}">Open Design 1</a>
+            <a class="outline-link" href="${buildPath("/web-design-pricing.html")}">Pricing & packages</a>
             <a class="outline-link" href="#premium">Browse Premium Pages</a>
           </div>
           <div class="pill-row">
@@ -733,7 +736,7 @@ function renderGallery() {
           <div class="classic-banner">
             <span class="preview-tag">Classic Stack</span>
             <h3>Traditional business websites with cleaner structure.</h3>
-            <p>Built for the familiar static-website market: 5-page style layouts, direct contact blocks, simple service sections, and trustworthy visual language.</p>
+            <p>Built for the familiar static-website market: 5-page style layouts, direct contact blocks, simple service sections, and trustworthy visual language. This is where the ₹3,500 offer becomes easy to pitch.</p>
             <div class="classic-points">
               <span>Mobile responsive</span>
               <span>WhatsApp button</span>
