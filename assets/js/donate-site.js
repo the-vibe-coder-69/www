@@ -99,7 +99,7 @@ function proceedToUPI() {
     return;
   }
 
-  const upiId = "9818994579@upi";
+  const upiId = "6395906067@ptsbi";
   const payeeName = "Vibe Station";
   const transactionRef = "Donation-" + Date.now();
 
@@ -125,7 +125,7 @@ Amount: ${formatCurrency(selectedAmount)}
 
 1. Open your UPI app (Google Pay, PhonePe, BHIM, etc.)
 2. Select "Send Money" or "Pay"
-3. Enter UPI ID: 9818994579@upi
+3. Enter UPI ID: 6395906067@ptsbi
 4. Enter amount: ${formatCurrency(selectedAmount)}
 5. Complete the payment
 
@@ -183,8 +183,8 @@ function setupScrollAnimations() {
   );
 
   elements.forEach((element) => {
-    element.style.opacity = "0";
-    element.style.transform = "translateY(20px)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(12px)";
     element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     observer.observe(element);
   });

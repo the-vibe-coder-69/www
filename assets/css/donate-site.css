@@ -363,6 +363,13 @@ h2 {
   gap: 1.2rem;
 }
 
+.device-drive-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 1.2rem;
+  align-items: center;
+}
+
 .story-copy {
   max-width: 860px;
 }
@@ -417,6 +424,85 @@ h2 {
 .impact-title,
 .faq-item summary {
   color: var(--text);
+}
+
+.device-drive-copy {
+  max-width: 540px;
+}
+
+.device-drive-copy h2 {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.device-drive-copy p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.device-drive-points,
+.device-drive-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.device-drive-points span,
+.device-drive-notes div {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.2);
+}
+
+.device-drive-points span {
+  padding: 0.8rem 1rem;
+  color: #e4eeff;
+  font-weight: 700;
+}
+
+.device-drive-notes div {
+  padding: 0.95rem 1rem;
+  color: var(--muted);
+}
+
+.device-drive-visual {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  min-height: 520px;
+}
+
+.device-drive-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.device-drive-stamp {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 22px;
+  background: rgba(8, 13, 24, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.device-drive-stamp strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.device-drive-stamp span {
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .benefit-card p,
@@ -668,6 +754,7 @@ h2 {
 
 @media (max-width: 1080px) {
   .hero-shell,
+  .device-drive-shell,
   .funding-notes,
   .donation-grid,
   .faq-shell,
@@ -771,6 +858,19 @@ h2 {
   .impact-stats,
   .features-highlight {
     grid-template-columns: 1fr;
+  }
+
+  .device-drive-copy h2 {
+    text-align: left;
+  }
+
+  .device-drive-points span,
+  .device-drive-notes div {
+    width: 100%;
+  }
+
+  .device-drive-visual {
+    min-height: 360px;
   }
 
   .slider-labels,

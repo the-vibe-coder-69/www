@@ -643,6 +643,55 @@ const pageData = [
 
 const pageLookup = new Map(pageData.map((item) => [String(item.id), item]));
 
+function compactText(text, maxLength = 130) {
+  if (!text) return "";
+  const cleaned = text.replace(/\s+/g, " ").trim();
+  if (cleaned.length <= maxLength) return cleaned;
+  const sliced = cleaned.slice(0, maxLength);
+  const lastSpace = sliced.lastIndexOf(" ");
+  return `${sliced.slice(0, lastSpace > 0 ? lastSpace : maxLength)}...`;
+}
+
+function getPrimaryItems(items, count = 2) {
+  return items.slice(0, count);
+}
+
+function getVisualAsset(page, template) {
+  const defaultAssets = {
+    editorial: {
+      src: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Business team meeting",
+      label: "Corporate mood",
+    },
+    dashboard: {
+      src: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Data dashboard screens",
+      label: "Tech mood",
+    },
+    service: {
+      src: "https://images.pexels.com/photos/8867434/pexels-photo-8867434.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Support and service workspace",
+      label: "Support mood",
+    },
+    showcase: {
+      src: "https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Creative digital setup",
+      label: "Creative mood",
+    },
+    "classic-formal": {
+      src: "https://images.pexels.com/photos/8112172/pexels-photo-8112172.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Formal office desk",
+      label: "Classic business",
+    },
+    "classic-brochure": {
+      src: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Business presentation desk",
+      label: "Brochure mood",
+    },
+  };
+  return defaultAssets[template] || defaultAssets.editorial;
+}
+
 function getBasePrefix() {
   return window.location.pathname.startsWith("/www/") ? "/www" : "";
 }
@@ -715,7 +764,7 @@ function renderGallery() {
         <div class="gallery-copy">
           <span class="eyebrow">20 separate routes for website design demos</span>
           <h1>Premium technology layouts and classic business themes, all mapped to numbered links.</h1>
-          <p>The collection below translates the references you shared into twenty standalone routes under <strong>/web-design-list/1-20</strong>. Routes <strong>1-15</strong> are premium IT and business directions. Routes <strong>16-20</strong> are classic local-business styles inspired by legal, industrial, accounting, travel, and immigration websites. The matching sales sheet now lives on the pricing page.</p>
+          <p>Twenty live routes. Premium pages for IT and consulting. Classic pages for brochure-style business clients.</p>
           <div class="button-row">
             <a class="primary-link" href="${buildPath("/web-design-list/1/")}">Open Design 1</a>
             <a class="outline-link" href="${buildPath("/web-design-pricing.html")}">Pricing & packages</a>
@@ -781,6 +830,7 @@ function renderGallery() {
 
 function buildPreviewCard(page) {
   const template = getPageTemplate(page);
+  const visual = getVisualAsset(page, template);
   const ctaLabelMap = {
     editorial: "View concept",
     dashboard: "Open build",
@@ -792,19 +842,23 @@ function buildPreviewCard(page) {
 
   return `
     <article class="preview-card preview-card-${template} ${page.style === "classic" ? "classic-theme-card" : ""}">
+      <div class="preview-media">
+        <img src="${visual.src}" alt="${visual.alt}">
+        <span class="preview-media-label">${visual.label}</span>
+      </div>
       <div class="preview-head">
         <span class="preview-number">${page.id}</span>
         <span class="preview-tag">${page.category}</span>
       </div>
       <div>
         <strong>${page.name}</strong>
-        <p>${page.lede}</p>
+        <p>${compactText(page.lede, 96)}</p>
       </div>
       <div class="preview-signature">
         <span>${page.signatureTitle}</span>
       </div>
       <div class="pill-row">
-        ${page.highlights.slice(0, 3).map((item) => `<span class="meta-chip">${item}</span>`).join("")}
+        ${getPrimaryItems(page.highlights, 2).map((item) => `<span class="meta-chip">${item}</span>`).join("")}
       </div>
       <div class="preview-links">
         <a href="${buildPath(`/web-design-list/${page.id}/`)}">${ctaLabelMap[template]}</a>
@@ -824,17 +878,21 @@ function getPageTemplate(page) {
 }
 
 function buildHeroVisual(page, template) {
+  const visual = getVisualAsset(page, template);
   if (template === "editorial") {
     return `
       <div class="hero-showcase template-editorial">
         <div class="editorial-visual">
+          <div class="hero-photo-card">
+            <img src="${visual.src}" alt="${visual.alt}">
+          </div>
           <div class="editorial-column">
             <span class="editorial-label">Advisory led</span>
             <strong>${page.name}</strong>
-            <p>${page.signatureText}</p>
+            <p>${compactText(page.signatureText, 110)}</p>
           </div>
           <div class="editorial-stack">
-            ${page.highlights.map((item) => `<span>${item}</span>`).join("")}
+            ${getPrimaryItems(page.highlights, 3).map((item) => `<span>${item}</span>`).join("")}
           </div>
         </div>
       </div>
@@ -871,11 +929,14 @@ function buildHeroVisual(page, template) {
     return `
       <div class="hero-showcase template-service">
         <div class="service-hero-grid">
-          ${page.services.map(([title, text], index) => `
+          <div class="hero-photo-card service-photo-card">
+            <img src="${visual.src}" alt="${visual.alt}">
+          </div>
+          ${getPrimaryItems(page.services, 2).map(([title, text], index) => `
             <article class="service-hero-card">
               <small>${String(index + 1).padStart(2, "0")}</small>
               <strong>${title}</strong>
-              <p>${text}</p>
+              <p>${compactText(text, 78)}</p>
             </article>
           `).join("")}
         </div>
@@ -887,12 +948,13 @@ function buildHeroVisual(page, template) {
     return `
       <div class="hero-showcase template-showcase">
         <div class="showcase-poster">
+          <img class="showcase-photo" src="${visual.src}" alt="${visual.alt}">
           <div class="showcase-orb a"></div>
           <div class="showcase-orb b"></div>
           <div class="showcase-copy">
             <span class="preview-tag">${page.category}</span>
             <strong>${page.name}</strong>
-            <p>${page.offer}</p>
+            <p>${compactText(page.offer, 92)}</p>
           </div>
         </div>
       </div>
@@ -903,6 +965,9 @@ function buildHeroVisual(page, template) {
     return `
       <div class="hero-showcase template-classic-formal">
         <div class="classic-formal-frame">
+          <div class="hero-photo-card classic-photo-card">
+            <img src="${visual.src}" alt="${visual.alt}">
+          </div>
           <div class="classic-badge-bar">
             <span>Consultation</span>
             <span>WhatsApp</span>
@@ -910,7 +975,7 @@ function buildHeroVisual(page, template) {
           </div>
           <div class="classic-formal-panel">
             <strong>${page.name}</strong>
-            <p>${page.signatureText}</p>
+            <p>${compactText(page.signatureText, 96)}</p>
             <div class="classic-formal-lines">
               <span></span><span></span><span></span><span></span>
             </div>
@@ -923,12 +988,15 @@ function buildHeroVisual(page, template) {
   return `
     <div class="hero-showcase template-classic-brochure">
       <div class="brochure-frame">
+        <div class="hero-photo-card brochure-photo-card">
+          <img src="${visual.src}" alt="${visual.alt}">
+        </div>
         <div class="brochure-top">
           <strong>${page.name}</strong>
           <span>${page.category}</span>
         </div>
         <div class="brochure-grid">
-          ${page.highlights.map((item) => `<div>${item}</div>`).join("")}
+          ${getPrimaryItems(page.highlights, 4).map((item) => `<div>${item}</div>`).join("")}
         </div>
       </div>
     </div>
@@ -944,7 +1012,7 @@ function buildServicesSection(page, template) {
             <article class="metric-panel">
               <small>Module ${index + 1}</small>
               <h3>${title}</h3>
-              <p>${text}</p>
+              <p>${compactText(text, 84)}</p>
             </article>
           `).join("")}
         </div>
@@ -966,11 +1034,11 @@ function buildServicesSection(page, template) {
           <div class="service-strip">
             ${page.services.map(([title, text], index) => `
               <article class="service-strip-card">
-                <div class="service-index">${String(index + 1).padStart(2, "0")}</div>
-                <h3>${title}</h3>
-                <p>${text}</p>
-              </article>
-            `).join("")}
+              <div class="service-index">${String(index + 1).padStart(2, "0")}</div>
+              <h3>${title}</h3>
+              <p>${compactText(text, 76)}</p>
+            </article>
+          `).join("")}
           </div>
         </div>
       </section>
@@ -984,16 +1052,16 @@ function buildServicesSection(page, template) {
           <article class="classic-side-card">
             <span class="section-label">Business profile</span>
             <h3>${page.name}</h3>
-            <p>${page.offer}</p>
+            <p>${compactText(page.offer, 92)}</p>
             <div class="pill-row">
               ${page.stats.map(([value, label]) => `<span class="meta-chip">${value} ${label}</span>`).join("")}
             </div>
           </article>
           <div class="classic-service-list">
-            ${page.services.map(([title, text]) => `
+            ${getPrimaryItems(page.services, 2).map(([title, text]) => `
               <article class="classic-service-row">
                 <h3>${title}</h3>
-                <p>${text}</p>
+                <p>${compactText(text, 82)}</p>
               </article>
             `).join("")}
           </div>
@@ -1009,18 +1077,18 @@ function buildServicesSection(page, template) {
           <div class="section-intro">
             <span class="section-label">Layout character</span>
             <h2>Service framing that matches the target buyer.</h2>
-            <p>Each route is tuned around a different business category, but stays easy to adapt for Vibe Coder’s website clients.</p>
+            <p>Clear category fit with quick adaptation for real client work.</p>
           </div>
           <div class="pill-row">
-            ${page.highlights.map((item) => `<span class="meta-chip">${item}</span>`).join("")}
+            ${getPrimaryItems(page.highlights, 3).map((item) => `<span class="meta-chip">${item}</span>`).join("")}
           </div>
         </div>
         <div class="service-grid">
-          ${page.services.map(([title, text], index) => `
+          ${getPrimaryItems(page.services, 2).map(([title, text], index) => `
             <article class="service-card">
               <div class="service-index">${String(index + 1).padStart(2, "0")}</div>
               <h3>${title}</h3>
-              <p>${text}</p>
+              <p>${compactText(text, 82)}</p>
             </article>
           `).join("")}
         </div>
@@ -1030,6 +1098,7 @@ function buildServicesSection(page, template) {
 }
 
 function buildMiddleSection(page, template) {
+  const visual = getVisualAsset(page, template);
   if (template === "showcase") {
     return `
       <section class="section-block">
@@ -1037,10 +1106,11 @@ function buildMiddleSection(page, template) {
           <div class="showcase-story-copy">
             <span class="section-label">Visual language</span>
             <h2>${page.signatureTitle}</h2>
-            <p>${page.signatureText}</p>
+            <p>${compactText(page.signatureText, 100)}</p>
           </div>
           <div class="showcase-panels">
-            ${page.highlights.map((item) => `<div class="showcase-panel">${item}</div>`).join("")}
+            <div class="showcase-image-panel"><img src="${visual.src}" alt="${visual.alt}"></div>
+            ${getPrimaryItems(page.highlights, 3).map((item) => `<div class="showcase-panel">${item}</div>`).join("")}
           </div>
         </div>
       </section>
@@ -1054,12 +1124,13 @@ function buildMiddleSection(page, template) {
           <div class="detail-panel">
             <span class="section-label">Why this route works</span>
             <h3>${page.signatureTitle}</h3>
-            <p>${page.signatureText}</p>
+            <p>${compactText(page.signatureText, 96)}</p>
           </div>
           <div class="detail-panel">
             <span class="section-label">Package fit</span>
-            <h3>Classic brochure-style structure with direct enquiry focus.</h3>
-            <p>Responsive design, service sections, enquiry form area, WhatsApp action, mobile click-to-call, and SEO-ready copy zones.</p>
+            <div class="showcase-image-panel compact-image-panel"><img src="${visual.src}" alt="${visual.alt}"></div>
+            <h3>Classic brochure-style structure.</h3>
+            <p>Responsive, enquiry-ready, and easy to pitch.</p>
           </div>
         </div>
       </section>
@@ -1068,21 +1139,22 @@ function buildMiddleSection(page, template) {
 
   return `
     <section class="section-block">
-      <div class="shell detail-grid">
-        <div class="signature-box">
-          <div class="signature-copy">
-            <span class="preview-tag">Signature mood</span>
-            <h3>${page.signatureTitle}</h3>
-            <p>${page.signatureText}</p>
+        <div class="shell detail-grid">
+          <div class="signature-box">
+            <img class="signature-image" src="${visual.src}" alt="${visual.alt}">
+            <div class="signature-copy">
+              <span class="preview-tag">Signature mood</span>
+              <h3>${page.signatureTitle}</h3>
+              <p>${compactText(page.signatureText, 100)}</p>
+            </div>
           </div>
-        </div>
-        <div class="detail-panel">
-          <span class="section-label">Why this route works</span>
-          <h3>${page.name} is set up to sell with clearer hierarchy and cleaner spacing.</h3>
-          <p>${page.offer}</p>
-          <div class="pill-row">
-            <span class="meta-chip">Responsive layout</span>
-            <span class="meta-chip">WhatsApp action</span>
+          <div class="detail-panel">
+            <span class="section-label">Why this route works</span>
+            <h3>${page.name} is set up to sell with clearer hierarchy and cleaner spacing.</h3>
+            <p>${compactText(page.offer, 100)}</p>
+            <div class="pill-row">
+              <span class="meta-chip">Responsive layout</span>
+              <span class="meta-chip">WhatsApp action</span>
             <span class="meta-chip">Click-to-call ready</span>
             <span class="meta-chip">SEO-friendly copy zones</span>
           </div>
@@ -1109,28 +1181,7 @@ function buildFlowSection(page, template) {
     `;
   }
 
-  return `
-    <section class="section-block">
-      <div class="shell">
-        <div class="section-head">
-          <div class="section-intro">
-            <span class="section-label">Suggested flow</span>
-            <h2>How the visitor journey is structured.</h2>
-            <p>The steps below show how this specific design direction turns website traffic into calls, WhatsApp chats, or enquiry form submissions.</p>
-          </div>
-        </div>
-        <div class="steps-grid">
-          ${page.steps.map(([title, text], index) => `
-            <article class="step-card">
-              <div class="step-index">${index + 1}</div>
-              <h3>${title}</h3>
-              <p>${text}</p>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    </section>
-  `;
+  return "";
 }
 
 function buildContactSection(page, template) {
@@ -1141,8 +1192,8 @@ function buildContactSection(page, template) {
       <div class="shell contact-layout">
         <article class="${contactClass}">
           <span class="section-label">Contact block</span>
-          <h2>Request this website direction for a client project.</h2>
-          <p>This page is already structured like a sales-ready static website concept, with space for service copy, form handling, click-to-call, and WhatsApp conversion.</p>
+          <h2>Request this website direction.</h2>
+          <p>Fast customization for premium or classic client work.</p>
           <div class="contact-row">
             <div class="contact-item">
               <strong>Suggested route</strong>
@@ -1159,7 +1210,7 @@ function buildContactSection(page, template) {
           </div>
           <div class="offer-box">
             <strong>Static package-friendly features</strong>
-            <span>Responsive design, enquiry form area, SEO-ready metadata zones, social link space, WhatsApp button, and mobile click-to-call actions.</span>
+            <span>Responsive, enquiry-ready, SEO-friendly, and built for WhatsApp conversion.</span>
           </div>
         </article>
         <article class="${formClass}">
@@ -1174,8 +1225,8 @@ function buildContactSection(page, template) {
             </div>
             <textarea name="message" placeholder="Tell us which design number you want and what edits are needed"></textarea>
             <div class="button-row">
-              <a href="https://wa.me/919716486412" class="primary-link" target="_blank" rel="noreferrer">WhatsApp now</a>
-              <a href="tel:+919716486412" class="outline-link">Call now</a>
+              <a href="https://wa.me/916395906067" class="primary-link" target="_blank" rel="noreferrer">WhatsApp Kritika</a>
+              <a href="tel:+919312645200" class="outline-link">Call Suresh ji</a>
             </div>
           </form>
         </article>
@@ -1199,7 +1250,7 @@ function renderSinglePage(page) {
         <div class="hero-copy">
           <span class="eyebrow">${page.heroLabel}</span>
           <h1>${page.title}</h1>
-          <p class="lede">${page.lede}</p>
+          <p class="lede">${compactText(page.lede, 120)}</p>
           <div class="hero-actions">
             <a class="primary-link" href="#contact">Request this style</a>
             <a class="outline-link" href="${page.source}" target="_blank" rel="noreferrer">View source inspiration</a>
@@ -1213,30 +1264,10 @@ function renderSinglePage(page) {
     </section>
     ${buildServicesSection(page, template)}
     ${buildMiddleSection(page, template)}
-    ${buildFlowSection(page, template)}
-    <section class="section-block">
-      <div class="shell">
-        <div class="section-head">
-          <div class="section-intro">
-            <span class="section-label">Social proof</span>
-            <h2>How this style feels in sales conversations.</h2>
-            <p>Short positioning notes that help explain who the design is for when you present it to a client.</p>
-          </div>
-        </div>
-        <div class="testimonial-strip">
-          ${page.testimonials.map(([quote, author]) => `
-            <article class="testimonial-card">
-              <p>${quote}</p>
-              <strong>${author}</strong>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    </section>
     ${buildContactSection(page, template)}
     <div class="floating-actions">
-      <a class="floating-action" href="https://wa.me/919716486412" target="_blank" rel="noreferrer">WhatsApp</a>
-      <a class="floating-action" href="tel:+919716486412">Call</a>
+      <a class="floating-action" href="https://wa.me/916395906067" target="_blank" rel="noreferrer">WhatsApp</a>
+      <a class="floating-action" href="tel:+919312645200">Call</a>
     </div>
     ${buildFooter()}
   `;
