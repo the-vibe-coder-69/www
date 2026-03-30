@@ -409,6 +409,7 @@ h2 {
 .step-card,
 .info-panel,
 .phone-details-card,
+.contribution-card,
 .payment-section,
 .impact-card,
 .stat-card,
@@ -424,6 +425,27 @@ h2 {
 .impact-title,
 .faq-item summary {
   color: var(--text);
+}
+
+.contribution-options {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contribution-card {
+  border-radius: 22px;
+  padding: 1rem 1.1rem;
+}
+
+.contribution-card strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.contribution-card span {
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .device-drive-copy {
