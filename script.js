@@ -23,26 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Hero buttons scroll
-    const btnPrimary = document.querySelector('.hero-buttons .btn-primary');
-    const btnOutline = document.querySelector('.hero-buttons .btn-outline');
-
-    if (btnPrimary) {
-        btnPrimary.addEventListener('click', () => {
-            const contactSection = document.querySelector('#contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.hero-buttons [data-scroll-target]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const target = document.querySelector(button.dataset.scrollTarget);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
-    }
-
-    if (btnOutline) {
-        btnOutline.addEventListener('click', () => {
-            const servicesSection = document.querySelector('#services');
-            if (servicesSection) {
-                servicesSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    }
+    });
 
     // Legal documents modal content
     function openLegalDoc(type) {
@@ -112,11 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Auto-advance slides every 5 seconds
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % testimonials.length;
-        showSlide(currentSlide);
-    }, 5000);
+    if (testimonials.length > 0) {
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % testimonials.length;
+            showSlide(currentSlide);
+        }, 5000);
+    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

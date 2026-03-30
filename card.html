@@ -13,14 +13,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
 
     .card {
-      width: 400px;
+      width: min(440px, calc(100vw - 32px));
       background: linear-gradient(145deg, #020617, #0f172a);
       border-radius: 20px;
-      padding: 20px;
+      padding: 22px;
       color: #fff;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.05);
@@ -55,8 +55,8 @@
 
     .service {
       background: rgba(255,255,255,0.03);
-      padding: 10px;
-      border-radius: 10px;
+      padding: 12px;
+      border-radius: 12px;
       font-size: 12px;
       border: 1px solid rgba(255,255,255,0.05);
     }
@@ -65,6 +65,67 @@
       display: block;
       color: #38bdf8;
       margin-bottom: 4px;
+    }
+
+    .web-design-toggle {
+      margin: 8px 0 14px;
+      text-align: center;
+    }
+
+    .web-design-toggle button {
+      background: rgba(255,255,255,0.04);
+      color: #cbd5e1;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .web-design-panel {
+      display: none;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 15px;
+    }
+
+    .web-design-panel.active {
+      display: block;
+    }
+
+    .web-design-panel strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .route-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .route-pills a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 34px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .route-pills a:hover {
+      background: linear-gradient(90deg, #38bdf8, #a78bfa);
     }
 
     .why {
@@ -79,7 +140,8 @@
     }
 
     .cta {
-      text-align: center;
+      display: grid;
+      gap: 10px;
       margin-top: 10px;
     }
 
@@ -94,11 +156,18 @@
       cursor: pointer;
       font-size: 13px;
       box-shadow: 0 5px 15px rgba(56,189,248,0.3);
+      text-align: center;
     }
 
     .cta a:hover {
       transform: translateY(-1px);
       box-shadow: 0 8px 20px rgba(167,139,250,0.4);
+    }
+
+    .cta a.secondary {
+      background: rgba(255,255,255,0.05);
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .footer {
@@ -166,6 +235,23 @@
     </div>
   </div>
 
+  <div class="web-design-toggle">
+    <button type="button" id="webDesignToggle">Also view ready website designs</button>
+  </div>
+
+  <div class="web-design-panel" id="webDesignPanel">
+    <strong>20 ready website designs</strong>
+    Premium + classic business styles we can customize quickly for lawyers, consultants, CA firms, travel, immigration, tech, cloud, and local businesses.
+    <div class="route-pills">
+      <a href="web-design-list/">All</a>
+      <a href="web-design-list/1/">1</a>
+      <a href="web-design-list/4/">4</a>
+      <a href="web-design-list/10/">10</a>
+      <a href="web-design-list/16/">16</a>
+      <a href="web-design-list/20/">20</a>
+    </div>
+  </div>
+
   <div class="why">
     <span>✔ Low-cost start</span>
     <span>✔ Fast delivery</span>
@@ -176,9 +262,12 @@
     <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20your%20services%20(The%20Vibe%20Coder)" target="_blank">
       WhatsApp Kritika: +91 63959 06067 🚀
     </a>
+    <a class="secondary" href="web-design-list/">
+      Open Website Designs Gallery
+    </a>
   </div>
 
-  <audio controls autoplay loop>
+  <audio controls loop>
     <source src="audio/vibe_coder_card_background.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -188,6 +277,16 @@
   </div>
 </div>
 
+<script>
+  const webDesignToggle = document.getElementById('webDesignToggle');
+  const webDesignPanel = document.getElementById('webDesignPanel');
+
+  if (webDesignToggle && webDesignPanel) {
+    webDesignToggle.addEventListener('click', () => {
+      webDesignPanel.classList.toggle('active');
+    });
+  }
+</script>
+
 </body>
 </html>
-

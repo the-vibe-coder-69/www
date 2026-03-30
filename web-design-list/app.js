@@ -777,8 +777,18 @@ function renderGallery() {
 }
 
 function buildPreviewCard(page) {
+  const template = getPageTemplate(page);
+  const ctaLabelMap = {
+    editorial: "View concept",
+    dashboard: "Open build",
+    service: "See service page",
+    showcase: "Open creative",
+    "classic-formal": "View brochure",
+    "classic-brochure": "Open classic",
+  };
+
   return `
-    <article class="preview-card ${page.style === "classic" ? "classic-theme-card" : ""}">
+    <article class="preview-card preview-card-${template} ${page.style === "classic" ? "classic-theme-card" : ""}">
       <div class="preview-head">
         <span class="preview-number">${page.id}</span>
         <span class="preview-tag">${page.category}</span>
@@ -787,76 +797,209 @@ function buildPreviewCard(page) {
         <strong>${page.name}</strong>
         <p>${page.lede}</p>
       </div>
+      <div class="preview-signature">
+        <span>${page.signatureTitle}</span>
+      </div>
       <div class="pill-row">
         ${page.highlights.slice(0, 3).map((item) => `<span class="meta-chip">${item}</span>`).join("")}
       </div>
       <div class="preview-links">
-        <a href="${buildPath(`/web-design-list/${page.id}/`)}">Open page</a>
+        <a href="${buildPath(`/web-design-list/${page.id}/`)}">${ctaLabelMap[template]}</a>
         <a href="${page.source}" target="_blank" rel="noreferrer">Reference</a>
       </div>
     </article>
   `;
 }
 
-function renderSinglePage(page) {
-  document.body.classList.toggle("classic-theme", page.style === "classic");
-  applyPalette(page.palette);
+function getPageTemplate(page) {
+  if ([1, 10, 14].includes(page.id)) return "editorial";
+  if ([2, 5, 12, 15].includes(page.id)) return "dashboard";
+  if ([3, 6, 8, 11].includes(page.id)) return "service";
+  if ([4, 7, 9, 13].includes(page.id)) return "showcase";
+  if ([16, 18, 20].includes(page.id)) return "classic-formal";
+  return "classic-brochure";
+}
 
-  document.title = `${page.id}. ${page.name} | Web Design List`;
-
-  document.getElementById("app").innerHTML = `
-    ${buildHeader(page)}
-    <section class="page-hero">
-      <div class="shell hero-layout">
-        <div class="hero-copy">
-          <span class="eyebrow">${page.heroLabel}</span>
-          <h1>${page.title}</h1>
-          <p class="lede">${page.lede}</p>
-          <div class="hero-actions">
-            <a class="primary-link" href="#contact">Request this style</a>
-            <a class="outline-link" href="${page.source}" target="_blank" rel="noreferrer">View source inspiration</a>
+function buildHeroVisual(page, template) {
+  if (template === "editorial") {
+    return `
+      <div class="hero-showcase template-editorial">
+        <div class="editorial-visual">
+          <div class="editorial-column">
+            <span class="editorial-label">Advisory led</span>
+            <strong>${page.name}</strong>
+            <p>${page.signatureText}</p>
           </div>
-          <div class="stats-row">
-            ${page.stats.map(([value, label]) => `<div class="mini-stat"><strong>${value}</strong><span>${label}</span></div>`).join("")}
+          <div class="editorial-stack">
+            ${page.highlights.map((item) => `<span>${item}</span>`).join("")}
           </div>
         </div>
-        <div class="hero-showcase">
-          <div class="orbital-card main">
-            <div class="hero-frame">
-              <div class="hero-frame-grid">
-                <div class="hero-frame-main">
-                  <div class="hero-frame-lines">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-                <div class="hero-frame-side">
-                  <div class="hero-chart">
-                    <span class="chart-line"></span>
-                    <span class="chart-line"></span>
-                    <span class="chart-line"></span>
-                    <span class="chart-line"></span>
-                  </div>
-                </div>
-              </div>
+      </div>
+    `;
+  }
+
+  if (template === "dashboard") {
+    return `
+      <div class="hero-showcase template-dashboard">
+        <div class="dashboard-frame">
+          <div class="dashboard-sidebar">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="dashboard-main">
+            <div class="dashboard-top">
+              <div class="dashboard-card large"></div>
+              <div class="dashboard-card small"></div>
             </div>
-          </div>
-          <div class="orbital-card side">
-            <span class="preview-tag">${page.category}</span>
-            <strong>${page.name}</strong>
-            <p>${page.offer}</p>
-          </div>
-          <div class="orbital-card bottom">
-            <span class="preview-tag">Key details</span>
-            <div class="line-bars">
-              ${page.highlights.slice(0, 4).map((item) => `<span title="${item}"></span>`).join("")}
+            <div class="dashboard-bottom">
+              <div class="dashboard-chart">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="dashboard-metrics">
+                ${page.stats.map(([value, label]) => `<div><strong>${value}</strong><small>${label}</small></div>`).join("")}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    `;
+  }
+
+  if (template === "service") {
+    return `
+      <div class="hero-showcase template-service">
+        <div class="service-hero-grid">
+          ${page.services.map(([title, text], index) => `
+            <article class="service-hero-card">
+              <small>${String(index + 1).padStart(2, "0")}</small>
+              <strong>${title}</strong>
+              <p>${text}</p>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  if (template === "showcase") {
+    return `
+      <div class="hero-showcase template-showcase">
+        <div class="showcase-poster">
+          <div class="showcase-orb a"></div>
+          <div class="showcase-orb b"></div>
+          <div class="showcase-copy">
+            <span class="preview-tag">${page.category}</span>
+            <strong>${page.name}</strong>
+            <p>${page.offer}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (template === "classic-formal") {
+    return `
+      <div class="hero-showcase template-classic-formal">
+        <div class="classic-formal-frame">
+          <div class="classic-badge-bar">
+            <span>Consultation</span>
+            <span>WhatsApp</span>
+            <span>Call now</span>
+          </div>
+          <div class="classic-formal-panel">
+            <strong>${page.name}</strong>
+            <p>${page.signatureText}</p>
+            <div class="classic-formal-lines">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="hero-showcase template-classic-brochure">
+      <div class="brochure-frame">
+        <div class="brochure-top">
+          <strong>${page.name}</strong>
+          <span>${page.category}</span>
+        </div>
+        <div class="brochure-grid">
+          ${page.highlights.map((item) => `<div>${item}</div>`).join("")}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function buildServicesSection(page, template) {
+  if (template === "dashboard") {
+    return `
+      <section class="section-block" id="services">
+        <div class="shell metric-band">
+          ${page.services.map(([title, text], index) => `
+            <article class="metric-panel">
+              <small>Module ${index + 1}</small>
+              <h3>${title}</h3>
+              <p>${text}</p>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  if (template === "service") {
+    return `
+      <section class="section-block" id="services">
+        <div class="shell">
+          <div class="section-head">
+            <div class="section-intro">
+              <span class="section-label">Service blocks</span>
+              <h2>Built like a practical service company homepage.</h2>
+              <p>These layouts favor clarity, offers, contact actions, and conversion over high-concept presentation.</p>
+            </div>
+          </div>
+          <div class="service-strip">
+            ${page.services.map(([title, text], index) => `
+              <article class="service-strip-card">
+                <div class="service-index">${String(index + 1).padStart(2, "0")}</div>
+                <h3>${title}</h3>
+                <p>${text}</p>
+              </article>
+            `).join("")}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  if (template === "classic-formal" || template === "classic-brochure") {
+    return `
+      <section class="section-block" id="services">
+        <div class="shell classic-services-layout">
+          <article class="classic-side-card">
+            <span class="section-label">Business profile</span>
+            <h3>${page.name}</h3>
+            <p>${page.offer}</p>
+            <div class="pill-row">
+              ${page.stats.map(([value, label]) => `<span class="meta-chip">${value} ${label}</span>`).join("")}
+            </div>
+          </article>
+          <div class="classic-service-list">
+            ${page.services.map(([title, text]) => `
+              <article class="classic-service-row">
+                <h3>${title}</h3>
+                <p>${text}</p>
+              </article>
+            `).join("")}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  return `
     <section class="section-block" id="services">
       <div class="shell">
         <div class="section-head">
@@ -880,6 +1023,47 @@ function renderSinglePage(page) {
         </div>
       </div>
     </section>
+  `;
+}
+
+function buildMiddleSection(page, template) {
+  if (template === "showcase") {
+    return `
+      <section class="section-block">
+        <div class="shell showcase-story">
+          <div class="showcase-story-copy">
+            <span class="section-label">Visual language</span>
+            <h2>${page.signatureTitle}</h2>
+            <p>${page.signatureText}</p>
+          </div>
+          <div class="showcase-panels">
+            ${page.highlights.map((item) => `<div class="showcase-panel">${item}</div>`).join("")}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  if (template === "classic-brochure") {
+    return `
+      <section class="section-block">
+        <div class="shell brochure-columns">
+          <div class="detail-panel">
+            <span class="section-label">Why this route works</span>
+            <h3>${page.signatureTitle}</h3>
+            <p>${page.signatureText}</p>
+          </div>
+          <div class="detail-panel">
+            <span class="section-label">Package fit</span>
+            <h3>Classic brochure-style structure with direct enquiry focus.</h3>
+            <p>Responsive design, service sections, enquiry form area, WhatsApp action, mobile click-to-call, and SEO-ready copy zones.</p>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  return `
     <section class="section-block">
       <div class="shell detail-grid">
         <div class="signature-box">
@@ -902,6 +1086,27 @@ function renderSinglePage(page) {
         </div>
       </div>
     </section>
+  `;
+}
+
+function buildFlowSection(page, template) {
+  if (template === "editorial") {
+    return `
+      <section class="section-block">
+        <div class="shell timeline-layout">
+          ${page.steps.map(([title, text], index) => `
+            <article class="timeline-card">
+              <small>Phase ${index + 1}</small>
+              <h3>${title}</h3>
+              <p>${text}</p>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  return `
     <section class="section-block">
       <div class="shell">
         <div class="section-head">
@@ -922,28 +1127,16 @@ function renderSinglePage(page) {
         </div>
       </div>
     </section>
-    <section class="section-block">
-      <div class="shell">
-        <div class="section-head">
-          <div class="section-intro">
-            <span class="section-label">Social proof</span>
-            <h2>How this style feels in sales conversations.</h2>
-            <p>Short positioning notes that help explain who the design is for when you present it to a client.</p>
-          </div>
-        </div>
-        <div class="testimonial-strip">
-          ${page.testimonials.map(([quote, author]) => `
-            <article class="testimonial-card">
-              <p>${quote}</p>
-              <strong>${author}</strong>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    </section>
+  `;
+}
+
+function buildContactSection(page, template) {
+  const formClass = template.startsWith("classic") ? "form-panel classic-contact-panel" : "form-panel";
+  const contactClass = template.startsWith("classic") ? "contact-card classic-contact-card" : "contact-card";
+  return `
     <section class="section-block" id="contact">
       <div class="shell contact-layout">
-        <article class="contact-card">
+        <article class="${contactClass}">
           <span class="section-label">Contact block</span>
           <h2>Request this website direction for a client project.</h2>
           <p>This page is already structured like a sales-ready static website concept, with space for service copy, form handling, click-to-call, and WhatsApp conversion.</p>
@@ -966,7 +1159,7 @@ function renderSinglePage(page) {
             <span>Responsive design, enquiry form area, SEO-ready metadata zones, social link space, WhatsApp button, and mobile click-to-call actions.</span>
           </div>
         </article>
-        <article class="form-panel">
+        <article class="${formClass}">
           <form>
             <div class="field-grid">
               <input type="text" name="name" placeholder="Your name">
@@ -985,6 +1178,59 @@ function renderSinglePage(page) {
         </article>
       </div>
     </section>
+  `;
+}
+
+function renderSinglePage(page) {
+  document.body.classList.toggle("classic-theme", page.style === "classic");
+  const template = getPageTemplate(page);
+  document.body.dataset.template = template;
+  applyPalette(page.palette);
+
+  document.title = `${page.id}. ${page.name} | Web Design List`;
+
+  document.getElementById("app").innerHTML = `
+    ${buildHeader(page)}
+    <section class="page-hero">
+      <div class="shell hero-layout">
+        <div class="hero-copy">
+          <span class="eyebrow">${page.heroLabel}</span>
+          <h1>${page.title}</h1>
+          <p class="lede">${page.lede}</p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#contact">Request this style</a>
+            <a class="outline-link" href="${page.source}" target="_blank" rel="noreferrer">View source inspiration</a>
+          </div>
+          <div class="stats-row">
+            ${page.stats.map(([value, label]) => `<div class="mini-stat"><strong>${value}</strong><span>${label}</span></div>`).join("")}
+          </div>
+        </div>
+        ${buildHeroVisual(page, template)}
+      </div>
+    </section>
+    ${buildServicesSection(page, template)}
+    ${buildMiddleSection(page, template)}
+    ${buildFlowSection(page, template)}
+    <section class="section-block">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-intro">
+            <span class="section-label">Social proof</span>
+            <h2>How this style feels in sales conversations.</h2>
+            <p>Short positioning notes that help explain who the design is for when you present it to a client.</p>
+          </div>
+        </div>
+        <div class="testimonial-strip">
+          ${page.testimonials.map(([quote, author]) => `
+            <article class="testimonial-card">
+              <p>${quote}</p>
+              <strong>${author}</strong>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    </section>
+    ${buildContactSection(page, template)}
     <div class="floating-actions">
       <a class="floating-action" href="https://wa.me/919716486412" target="_blank" rel="noreferrer">WhatsApp</a>
       <a class="floating-action" href="tel:+919716486412">Call</a>

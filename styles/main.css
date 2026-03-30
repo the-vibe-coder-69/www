@@ -264,6 +264,14 @@ p {
   .hero-buttons {
     justify-content: center;
   }
+  .design-overview,
+  .design-category-grid {
+    grid-template-columns: 1fr;
+  }
+  .design-cta-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /*================About team===========*/
@@ -320,6 +328,137 @@ p {
   padding: 4rem 0;
   background: var(--gray-50);
   text-align: center;
+}
+.web-designs {
+  padding: 5rem 0;
+  background:
+    radial-gradient(circle at top right, rgba(79, 70, 229, 0.08), transparent 24%),
+    linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+}
+.design-overview {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 2rem;
+}
+.design-overview-copy,
+.design-overview-panel,
+.design-category-card,
+.design-cta-strip {
+  background: #fff;
+  border: 1px solid rgba(79, 70, 229, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06);
+}
+.design-overview-copy,
+.design-overview-panel,
+.design-category-card {
+  padding: 2rem;
+}
+.design-overview-copy p,
+.design-overview-panel p,
+.design-category-card p,
+.design-cta-strip p {
+  color: var(--gray-600);
+}
+.design-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+.design-stat {
+  min-width: 120px;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: var(--gray-50);
+  border: 1px solid rgba(79, 70, 229, 0.08);
+}
+.design-stat strong {
+  display: block;
+  font-size: 1.35rem;
+  color: var(--gray-900);
+}
+.design-point-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+.design-point-list li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--gray-700);
+}
+.design-point-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: 700;
+}
+.design-panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+.design-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.design-category-card h3 {
+  margin-top: 0.5rem;
+}
+.design-category-label {
+  display: inline-block;
+  color: var(--primary);
+  background: #eef2ff;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.design-route-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+.design-route-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: var(--gray-50);
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid rgba(79, 70, 229, 0.12);
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+.design-route-list a:hover {
+  transform: translateY(-2px);
+  background: var(--primary);
+  color: #fff;
+}
+.design-cta-strip {
+  margin-top: 1.75rem;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.design-cta-strip strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--gray-900);
+  margin-bottom: 0.35rem;
 }
 .services-grid {
   display: grid;
@@ -790,4 +929,468 @@ p {
 ::-webkit-scrollbar-thumb {
   background: var(--gray-300);
   border-radius: 4px;
+}
+
+/* ====== Immersive Home Redesign ====== */
+.immersive-home {
+  --site-bg: #070a14;
+  --site-surface: #0f1526;
+  --site-surface-2: #131b31;
+  --site-line: rgba(173, 190, 255, 0.14);
+  --site-text: #eef2ff;
+  --site-muted: #a7b3d1;
+  --site-accent: #7c5cff;
+  --site-accent-2: #37c6ff;
+  background:
+    radial-gradient(circle at top center, rgba(124, 92, 255, 0.15), transparent 24%),
+    linear-gradient(180deg, #060914 0%, #0a1020 36%, #0a0f1d 100%);
+  color: var(--site-text);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+.immersive-home .container {
+  max-width: 1220px;
+}
+
+.immersive-home h1,
+.immersive-home h2,
+.immersive-home h3,
+.immersive-home h4 {
+  color: var(--site-text);
+  font-family: "Syne", "Space Grotesk", sans-serif;
+}
+
+.immersive-home p,
+.immersive-home li,
+.immersive-home span,
+.immersive-home td,
+.immersive-home th {
+  color: var(--site-muted);
+}
+
+.immersive-home .header {
+  position: sticky;
+  top: 0;
+  background: rgba(6, 9, 20, 0.82);
+  border-bottom: 1px solid var(--site-line);
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+.immersive-home .logo-text {
+  color: var(--site-text);
+  font-family: "Syne", sans-serif;
+  font-size: 1.5rem;
+}
+
+.immersive-home .nav-links a {
+  color: #d6dcf6;
+}
+
+.immersive-home .nav-links a:hover,
+.immersive-home .nav-links .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.immersive-home .hero {
+  position: relative;
+  padding: 7rem 0 4rem;
+  background:
+    radial-gradient(circle at center, rgba(124, 92, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.01) 100%);
+  overflow: hidden;
+}
+
+.immersive-home .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.immersive-home .hero .container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  gap: 3rem;
+  align-items: center;
+}
+
+.immersive-home .hero-content {
+  max-width: 760px;
+}
+
+.immersive-home .hero-trust-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 92, 255, 0.32);
+  background: rgba(124, 92, 255, 0.12);
+  color: #dfe3ff;
+  font-size: 0.92rem;
+  margin-bottom: 1.2rem;
+}
+
+.immersive-home .hero .badge,
+.immersive-home .web-designs .badge,
+.immersive-home .services .badge,
+.immersive-home .showcase .badge,
+.immersive-home .about .badge,
+.immersive-home .pricing .badge,
+.immersive-home .whatsapp .badge,
+.immersive-home .instagram .badge,
+.immersive-home .instagram-bot .badge {
+  background: rgba(124, 92, 255, 0.12);
+  color: #cfd4ff;
+  border: 1px solid rgba(124, 92, 255, 0.22);
+}
+
+.immersive-home .hero h1 {
+  font-size: clamp(3.4rem, 8vw, 6.2rem);
+  line-height: 0.93;
+  letter-spacing: -0.05em;
+  max-width: 900px;
+  margin-bottom: 1.3rem;
+}
+
+.immersive-home .hero p {
+  font-size: 1.16rem;
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+.immersive-home .btn-primary {
+  background: linear-gradient(135deg, var(--site-accent), #9b82ff);
+  color: #fff;
+  box-shadow: 0 16px 42px rgba(124, 92, 255, 0.32);
+}
+
+.immersive-home .btn-primary:hover {
+  background: linear-gradient(135deg, #6a4cff, #8e74ff);
+}
+
+.immersive-home .btn-outline {
+  border-color: rgba(205, 214, 255, 0.24);
+  color: #eaf0ff;
+  background: rgba(255,255,255,0.03);
+}
+
+.immersive-home .btn-outline:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.immersive-home .hero-image {
+  position: relative;
+}
+
+.immersive-home .hero-image::before {
+  content: "";
+  position: absolute;
+  inset: -32px;
+  background:
+    radial-gradient(circle, rgba(55, 198, 255, 0.24), transparent 46%),
+    radial-gradient(circle at top, rgba(124, 92, 255, 0.22), transparent 40%);
+  filter: blur(22px);
+  z-index: 0;
+}
+
+.immersive-home .hero-image img {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 24px 90px rgba(0,0,0,0.34);
+}
+
+.immersive-home .hero-proof-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.immersive-home .hero-proof-item {
+  min-width: 170px;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid var(--site-line);
+  background: rgba(255,255,255,0.03);
+}
+
+.immersive-home .hero-proof-item strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.immersive-home .services,
+.immersive-home .showcase,
+.immersive-home .web-designs,
+.immersive-home .whatsapp,
+.immersive-home .instagram,
+.immersive-home .instagram-bot,
+.immersive-home .testimonials,
+.immersive-home .pricing,
+.immersive-home .about,
+.immersive-home .contact {
+  background: transparent;
+  padding: 5rem 0;
+  text-align: left;
+}
+
+.immersive-home .services .section-description,
+.immersive-home .about .section-description {
+  max-width: 760px;
+}
+
+.immersive-home .services-grid,
+.immersive-home .pricing-grid,
+.immersive-home .team-grid {
+  gap: 1.5rem;
+}
+
+.immersive-home .service-card,
+.immersive-home .pricing-card,
+.immersive-home .team-card,
+.immersive-home .testimonial-card,
+.immersive-home .contact-card,
+.immersive-home .design-overview-copy,
+.immersive-home .design-overview-panel,
+.immersive-home .design-category-card,
+.immersive-home .design-cta-strip {
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+  border: 1px solid var(--site-line);
+  box-shadow: none;
+  backdrop-filter: blur(14px);
+}
+
+.immersive-home .service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.immersive-home .service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--site-accent), var(--site-accent-2));
+  opacity: 0.7;
+}
+
+.immersive-home .service-card-web::before {
+  background: linear-gradient(90deg, #7c5cff, #ad7dff);
+}
+
+.immersive-home .service-card-chat::before {
+  background: linear-gradient(90deg, #2dd4bf, #0ea5e9);
+}
+
+.immersive-home .service-card-social::before {
+  background: linear-gradient(90deg, #fb7185, #f59e0b);
+}
+
+.immersive-home .service-card-analytics::before {
+  background: linear-gradient(90deg, #60a5fa, #22d3ee);
+}
+
+.immersive-home .service-card img,
+.immersive-home .feature-image,
+.immersive-home .team-card img {
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: none;
+}
+
+.immersive-home .service-card a {
+  color: #dbe2ff;
+}
+
+.immersive-home .showcase .container,
+.immersive-home .contact .container {
+  text-align: center;
+}
+
+.immersive-home .showcase .container > p {
+  max-width: 760px;
+  margin: 0 auto 1.4rem;
+}
+
+.immersive-home .showcase-video iframe {
+  border: 1px solid var(--site-line);
+  background: #0a1020;
+}
+
+.immersive-home .showcase-link {
+  margin-top: 1.4rem;
+}
+
+.immersive-home .design-overview {
+  align-items: stretch;
+}
+
+.immersive-home .design-overview-copy h2,
+.immersive-home .web-designs h2,
+.immersive-home .services h2,
+.immersive-home .showcase h2,
+.immersive-home .pricing h2,
+.immersive-home .about h2,
+.immersive-home .contact h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.immersive-home .design-category-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.immersive-home .design-category-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -30px -40px auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  opacity: 0.16;
+  filter: blur(2px);
+}
+
+.immersive-home .design-category-corporate::after {
+  background: #7c5cff;
+}
+
+.immersive-home .design-category-tech::after {
+  background: #22d3ee;
+}
+
+.immersive-home .design-category-startup::after {
+  background: #fb7185;
+}
+
+.immersive-home .design-category-classic::after {
+  background: #f59e0b;
+}
+
+.immersive-home .design-category-label {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.immersive-home .design-route-list a {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.immersive-home .pricing-table th {
+  background: rgba(124, 92, 255, 0.22);
+  color: #fff;
+}
+
+.immersive-home .pricing-table th,
+.immersive-home .pricing-table td {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.immersive-home .about .team-grid {
+  justify-content: stretch;
+}
+
+.immersive-home .team-card p,
+.immersive-home .footer-brand p,
+.immersive-home .footer-contact p {
+  color: var(--site-muted);
+}
+
+.immersive-home .contact-info {
+  max-width: 760px;
+}
+
+.immersive-home .contact-form {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid var(--site-line);
+}
+
+.immersive-home .form-group input,
+.immersive-home .form-group textarea {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.12);
+  color: #fff;
+}
+
+.immersive-home .form-group input::placeholder,
+.immersive-home .form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.immersive-home .footer {
+  background: transparent;
+  border-top: 1px solid var(--site-line);
+}
+
+.immersive-home .footer-brand .logo-text,
+.immersive-home .footer-contact h3,
+.immersive-home .footer-bottom p,
+.immersive-home .social-link {
+  color: #eef2ff;
+}
+
+.immersive-home .social-link:hover {
+  color: #9ea6ff;
+}
+
+.immersive-home .mobile-menu {
+  color: #fff;
+}
+
+@media (max-width: 960px) {
+  .immersive-home .hero .container,
+  .immersive-home .design-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .immersive-home .hero {
+    padding-top: 6rem;
+  }
+
+  .immersive-home .hero-image {
+    order: -1;
+  }
+
+  .immersive-home .hero-content,
+  .immersive-home .contact-info,
+  .immersive-home .services,
+  .immersive-home .showcase,
+  .immersive-home .web-designs,
+  .immersive-home .whatsapp,
+  .immersive-home .instagram,
+  .immersive-home .instagram-bot,
+  .immersive-home .pricing,
+  .immersive-home .about,
+  .immersive-home .contact {
+    text-align: center;
+  }
+
+  .immersive-home .hero-proof-row,
+  .immersive-home .design-panel-actions,
+  .immersive-home .social-links {
+    justify-content: center;
+  }
 }
