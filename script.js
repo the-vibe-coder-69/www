@@ -90,6 +90,15 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
+
+        document.addEventListener('click', (event) => {
+            const clickedInsideMenu = navLinks.contains(event.target);
+            const clickedToggle = mobileMenuBtn.contains(event.target);
+
+            if (!clickedInsideMenu && !clickedToggle) {
+                navLinks.classList.remove('active');
+            }
+        });
     }
 
     // Testimonials slider

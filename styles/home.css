@@ -899,11 +899,46 @@
 
   .home-header .container {
     flex-direction: row;
+    align-items: center;
+    min-height: 72px;
+  }
+
+  .home-page .nav {
+    width: auto;
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+
+  .home-page .mobile-menu {
+    display: block;
+    margin-left: auto;
+    position: relative;
+    z-index: 1003;
   }
 
   .home-page .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.4rem;
     background: rgba(5, 8, 18, 0.96);
     border: 1px solid var(--home-line);
+    position: absolute;
+    top: 72px;
+    right: 1rem;
+    min-width: 210px;
+    padding: 0.9rem;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    z-index: 1002;
+    backdrop-filter: blur(18px);
+  }
+
+  .home-page .nav-links.active {
+    display: flex;
+  }
+
+  .home-page .nav-links a {
+    width: 100%;
   }
 
   .home-hero {

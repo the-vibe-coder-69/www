@@ -689,8 +689,42 @@ body {
   .features {
     padding: 3rem 0 2rem;
   }
+  .hero {
+    padding: 4.25rem 1rem 2.5rem;
+  }
+  .hero h1 {
+    font-size: 2.15rem;
+    line-height: 1.05;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  .hero-image img {
+    max-width: 280px;
+  }
   .feature-card {
     padding: 1.2rem;
+  }
+  .playlist-showcase iframe {
+    height: 220px !important;
+  }
+  .playlist-showcase .btn-primary {
+    width: 100%;
+  }
+  .donate-cta {
+    margin: 1.2rem 0 !important;
+  }
+  .donate-cta p {
+    font-size: 1rem !important;
+    line-height: 1.6;
   }
   .pricing {
     padding: 3rem 0 2rem;
