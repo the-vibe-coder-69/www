@@ -216,7 +216,8 @@
     .reference-card,
     .sample-card,
     .contact-card,
-    .disclaimer-card {
+    .disclaimer-card,
+    .showcase-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -367,6 +368,60 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .showcase-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      background-image:
+        linear-gradient(180deg, rgba(5, 11, 22, 0.18), rgba(5, 11, 22, 0.9)),
+        var(--shot);
+      background-size: cover;
+      background-position: top center;
+    }
+
+    .showcase-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 11, 22, 0.05), rgba(5, 11, 22, 0.82));
+      pointer-events: none;
+    }
+
+    .showcase-card-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 0.55rem;
+      padding: 1.35rem;
+    }
+
+    .showcase-card-content span {
+      color: #dce5ff;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .showcase-card-content p {
+      color: #d7e1ff;
+      line-height: 1.7;
+      max-width: 28rem;
+    }
+
+    .showcase-card .link-pair a {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+    }
+
     .reference-item strong {
       display: block;
       margin-bottom: 0.2rem;
@@ -425,7 +480,8 @@
       .offer-grid,
       .info-grid,
       .samples-grid,
-      .reference-list {
+      .reference-list,
+      .showcase-grid {
         grid-template-columns: 1fr;
       }
 
@@ -492,15 +548,15 @@
           <div class="hero-copy">
             <span class="eyebrow">Ready website directions for fast client delivery</span>
             <h1>Ready website designs we can customize fast for real clients.</h1>
-            <p>Show the route, pick the style, customize the brand, and close faster across classic and premium website categories.</p>
+            <p>Use a cleaner two-tier pitch: Classic for familiar brochure websites, Modern for stronger visual business websites.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20website%20pricing%20for%20The%20Vibe%20Coder." target="_blank" rel="noopener noreferrer">WhatsApp Kritika</a>
-              <a class="btn btn-secondary" href="web-design-list/">Open All 20 Designs</a>
+              <a class="btn btn-secondary" href="#reference-library">Open Reference Library</a>
             </div>
             <div class="button-row">
               <span class="chip">Classic package from ₹3,500</span>
-              <span class="chip">Premium routes from ₹4,500</span>
-              <span class="chip">WhatsApp, enquiry, SEO ready</span>
+              <span class="chip">Modern package from ₹4,500</span>
+              <span class="chip">2 in-house demos + external references</span>
             </div>
           </div>
           <aside class="hero-note">
@@ -512,7 +568,7 @@
             <ul>
               <li>Strategic IT Solutions for business websites, AI, and automation</li>
               <li>Fast customization across law, CA, travel, immigration, industrial, consulting, cloud, and IT categories</li>
-              <li>Live numbered routes already prepared for demos and sales calls</li>
+              <li>Reference-led sales flow with only two in-house demo builds</li>
             </ul>
           </aside>
         </div>
@@ -548,19 +604,19 @@
               </div>
             </article>
             <article class="offer-card">
-              <span class="price-tag">Premium Theme Direction · ₹4,500</span>
-              <h3>Premium style customization</h3>
-              <p>Best for clients who want a stronger first impression with richer sections, more premium layout pacing, and a higher-value presentation.</p>
+              <span class="price-tag">Modern Design Direction · ₹4,500</span>
+              <h3>Modern business website</h3>
+              <p>Best for clients who want a stronger first impression with richer sections, sharper visuals, and a more current digital presentation.</p>
               <span class="subline">Best use cases</span>
               <ul>
                 <li>Consulting, software, cloud, support, agencies, and IT service brands</li>
                 <li>Founder-led service companies that want better positioning</li>
-                <li>Clients who respond well to modern motion, stronger hierarchy, and premium screenshots</li>
+                <li>Clients who respond well to modern motion, stronger hierarchy, and more visual sales material</li>
                 <li>Sales calls where design quality itself helps justify the price</li>
               </ul>
               <div class="mini-grid">
-                <span>20 live routes ready</span>
-                <span>Premium look and feel</span>
+                <span>Reference-first selling</span>
+                <span>Modern look and feel</span>
                 <span>Faster proposal-to-delivery cycle</span>
               </div>
             </article>
@@ -581,7 +637,7 @@
           <article class="info-card">
             <h3>How we sell it better now</h3>
             <ul>
-              <li>Show the client a live route instead of only describing the idea</li>
+              <li>Show the client a reference screenshot instead of only describing the idea</li>
               <li>Pick a design family based on the business category and budget</li>
               <li>Customize colors, logos, copy, forms, and contact details quickly</li>
               <li>Upsell WhatsApp, click-to-call, SEO, automation, and future pages</li>
@@ -590,16 +646,16 @@
         </div>
       </section>
 
-      <section id="samples">
+      <section id="reference-library">
         <div class="container">
           <div class="section-head">
-            <span class="eyebrow">Classic Market Proof</span>
-            <h2>Business styles clients already understand.</h2>
-            <p>Use these as market references when a classic business client wants something familiar and trustworthy.</p>
+            <span class="eyebrow">Classic + Modern Library</span>
+            <h2>Use references for most projects. Keep only two in-house demos.</h2>
+            <p>Classic clients usually buy on trust and familiarity. Modern clients usually respond better to strong screenshots and cleaner visual hierarchy.</p>
           </div>
           <div class="samples-grid">
             <article class="sample-card">
-              <h3>Sample business sites</h3>
+              <h3>Classic business references</h3>
               <p>Good reference categories for legal, industrial, CA, travel, immigration, and business brochure websites.</p>
               <div class="sample-links">
                 <a href="https://www.divorcelawyerncr.org.in" target="_blank" rel="noopener noreferrer"><strong>divorcelawyerncr.org.in</strong><span>Law / consultancy reference</span></a>
@@ -612,11 +668,17 @@
               </div>
             </article>
             <article class="sample-card">
-              <h3>Premium design routes</h3>
-              <p>The local gallery is better for premium IT and consulting sales because it lets the client open routes instantly and compare moods side by side.</p>
+              <h3>2 in-house demos</h3>
+              <p>These are the only local demo builds we keep in the pitch flow. Everything else points outside to the original references.</p>
               <div class="button-row">
-                <a class="btn btn-primary" href="web-design-list/">Open 20-route gallery</a>
-                <a class="btn btn-secondary" href="card.html">Open quick card</a>
+                <a class="btn btn-primary" href="web-design-list/4/">Open modern demo</a>
+                <a class="btn btn-secondary" href="web-design-list/18/">Open classic demo</a>
+              </div>
+              <div class="sample-links">
+                <a href="web-design-list/4/"><strong>AppForge Studio</strong><span>In-house modern demo</span></a>
+                <a href="web-design-list/18/"><strong>Goel Chambers</strong><span>In-house classic demo</span></a>
+                <a href="card.html"><strong>Quick card</strong><span>Portable sales entry point</span></a>
+                <a href="https://www.globalweb.net.in" target="_blank" rel="noopener noreferrer"><strong>globalweb.net.in</strong><span>Market context reference</span></a>
               </div>
             </article>
           </div>
@@ -626,28 +688,26 @@
       <section>
         <div class="container">
           <div class="section-head">
-            <span class="eyebrow">Premium Reference Stack</span>
-            <h2>Theme directions already mapped to local routes.</h2>
-            <p>Show the local route first, then open the original inspiration only when needed.</p>
+            <span class="eyebrow">Modern Reference Stack</span>
+            <h2>Open the reference directly. Use the screenshot as the sales backdrop.</h2>
+            <p>Only two demos stay in-house. The rest are direct outbound references for faster browsing and less maintenance.</p>
           </div>
-          <div class="reference-card">
-            <div class="reference-list">
-              <div class="reference-item"><div><strong>1 Boardroom Advisory</strong><small>Consulting</small></div><div class="link-pair"><a href="web-design-list/1/">Local route</a><a href="https://html.themehour.net/atek/demo/home-consulting.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>2 Nimbus Cloud</strong><small>Cloud</small></div><div class="link-pair"><a href="web-design-list/2/">Local route</a><a href="https://html.themehour.net/atek/demo/home-cloud.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>3 Helpdesk Pro</strong><small>Tech support</small></div><div class="link-pair"><a href="web-design-list/3/">Local route</a><a href="https://html.themehour.net/atek/demo/home-tech-support.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>4 AppForge Studio</strong><small>App development</small></div><div class="link-pair"><a href="web-design-list/4/">Local route</a><a href="https://html.themehour.net/atek/demo/home-app-development.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>5 Engitech Systems</strong><small>IT services</small></div><div class="link-pair"><a href="web-design-list/5/">Local route</a><a href="https://templates.thememodern.com/engitech/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>6 iThub Nexus</strong><small>IT services</small></div><div class="link-pair"><a href="web-design-list/6/">Local route</a><a href="https://expert-themes.com/html/ithub/ithub/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>7 iThub Velocity</strong><small>IT startup</small></div><div class="link-pair"><a href="web-design-list/7/">Local route</a><a href="https://expert-themes.com/html/ithub/ithub/index-3.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>8 Ziptech Core</strong><small>IT services</small></div><div class="link-pair"><a href="web-design-list/8/">Local route</a><a href="https://html.webextheme.com/ziptech/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>9 Globex Orbit</strong><small>Global services</small></div><div class="link-pair"><a href="web-design-list/9/">Local route</a><a href="https://expert-themes.com/html/globex/index-3.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>10 Globex Prime</strong><small>Corporate services</small></div><div class="link-pair"><a href="web-design-list/10/">Local route</a><a href="https://expert-themes.com/html/globex/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>11 Ziptech Motion</strong><small>IT solutions</small></div><div class="link-pair"><a href="web-design-list/11/">Local route</a><a href="https://html.webextheme.com/ziptech/home2.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>12 Techzo Matrix</strong><small>Tech agency</small></div><div class="link-pair"><a href="web-design-list/12/">Local route</a><a href="https://html.themegenix.com/techzo/index.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>13 Techzo Pulse</strong><small>Startup tech</small></div><div class="link-pair"><a href="web-design-list/13/">Local route</a><a href="https://html.themegenix.com/techzo/index-3.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>14 Oitech Horizon</strong><small>Corporate IT</small></div><div class="link-pair"><a href="web-design-list/14/">Local route</a><a href="https://html.kodesolution.com/2022/oitech-html/index-2.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-              <div class="reference-item"><div><strong>15 Quantech Works</strong><small>Modern services</small></div><div class="link-pair"><a href="web-design-list/15/">Local route</a><a href="https://modinatheme.com/html/quantech-html/index-2.html" target="_blank" rel="noopener noreferrer">Reference</a></div></div>
-            </div>
+          <div class="showcase-grid">
+            <article class="showcase-card" style="--shot:url('images/reference-shots/atek-consulting.png')"><div class="showcase-card-content"><span>Modern • Consulting</span><h3>Boardroom Advisory</h3><p>Structured consulting and strategy mood with corporate trust.</p><div class="link-pair"><a href="https://html.themehour.net/atek/demo/home-consulting.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/atek-cloud.png')"><div class="showcase-card-content"><span>Modern • Cloud</span><h3>Nimbus Cloud</h3><p>Cloud hosting, migration, and infrastructure visual language.</p><div class="link-pair"><a href="https://html.themehour.net/atek/demo/home-cloud.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/atek-support.png')"><div class="showcase-card-content"><span>Modern • Support</span><h3>Helpdesk Pro</h3><p>Support-led layout for AMC, maintenance, and service teams.</p><div class="link-pair"><a href="https://html.themehour.net/atek/demo/home-tech-support.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/inhouse-modern.png')"><div class="showcase-card-content"><span>In-house demo • Modern</span><h3>AppForge Studio</h3><p>Our own modern demo route for startup, app, and creative client pitches.</p><div class="link-pair"><a href="web-design-list/4/">Open in-house demo</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/engitech.png')"><div class="showcase-card-content"><span>Modern • Software</span><h3>Engitech Systems</h3><p>Enterprise software and IT services reference with more depth.</p><div class="link-pair"><a href="https://templates.thememodern.com/engitech/index.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/ithub-1.png')"><div class="showcase-card-content"><span>Modern • IT Services</span><h3>iThub Nexus</h3><p>All-purpose IT solutions presentation with clean service depth.</p><div class="link-pair"><a href="https://expert-themes.com/html/ithub/ithub/index.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/ithub-3.png')"><div class="showcase-card-content"><span>Modern • Startup IT</span><h3>iThub Velocity</h3><p>Sharper, more startup-facing IT services direction.</p><div class="link-pair"><a href="https://expert-themes.com/html/ithub/ithub/index-3.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/ziptech-1.png')"><div class="showcase-card-content"><span>Modern • IT Solutions</span><h3>Ziptech Core</h3><p>Dependable modern business style for mainstream IT companies.</p><div class="link-pair"><a href="https://html.webextheme.com/ziptech/index.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/globex-3.png')"><div class="showcase-card-content"><span>Modern • Global Services</span><h3>Globex Orbit</h3><p>Commercial framing for globally-positioned services brands.</p><div class="link-pair"><a href="https://expert-themes.com/html/globex/index-3.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('images/reference-shots/globex-1.png')"><div class="showcase-card-content"><span>Modern • Corporate</span><h3>Globex Prime</h3><p>Corporate-safe modern direction for service websites.</p><div class="link-pair"><a href="https://expert-themes.com/html/globex/index.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('https://image.thum.io/get/width/1200/noanimate/https://html.webextheme.com/ziptech/home2.html')"><div class="showcase-card-content"><span>Modern • Service</span><h3>Ziptech Motion</h3><p>Warmer modern service layout with more local-business warmth.</p><div class="link-pair"><a href="https://html.webextheme.com/ziptech/home2.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('https://image.thum.io/get/width/1200/noanimate/https://html.themegenix.com/techzo/index.html')"><div class="showcase-card-content"><span>Modern • Tech</span><h3>Techzo Matrix</h3><p>Clean tech agency framing with stronger motion cues.</p><div class="link-pair"><a href="https://html.themegenix.com/techzo/index.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('https://image.thum.io/get/width/1200/noanimate/https://html.themegenix.com/techzo/index-3.html')"><div class="showcase-card-content"><span>Modern • Creative Tech</span><h3>Techzo Pulse</h3><p>More expressive creative-tech option for bolder sales decks.</p><div class="link-pair"><a href="https://html.themegenix.com/techzo/index-3.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('https://image.thum.io/get/width/1200/noanimate/https://html.kodesolution.com/2022/oitech-html/index-2.html')"><div class="showcase-card-content"><span>Modern • Solutions</span><h3>Oitech Horizon</h3><p>Calm and refined option for conservative modern clients.</p><div class="link-pair"><a href="https://html.kodesolution.com/2022/oitech-html/index-2.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
+            <article class="showcase-card" style="--shot:url('https://image.thum.io/get/width/1200/noanimate/https://modinatheme.com/html/quantech-html/index-2.html')"><div class="showcase-card-content"><span>Modern • Software Agency</span><h3>Quantech Works</h3><p>High-end software agency direction for strong digital positioning.</p><div class="link-pair"><a href="https://modinatheme.com/html/quantech-html/index-2.html" target="_blank" rel="noopener noreferrer">Open reference</a></div></div></article>
           </div>
         </div>
       </section>
@@ -673,7 +733,7 @@
 
     <footer class="page-footer">
       <div class="container">
-        <p>The Vibe Coder website sales system: quick card, pricing page, 20 live design routes, and premium/classic sample references.</p>
+        <p>The Vibe Coder website sales system: quick card, pricing page, direct external references, and two in-house demo sites.</p>
         <a href="index.html">Back to home</a>
       </div>
     </footer>

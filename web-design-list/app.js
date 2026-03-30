@@ -731,7 +731,7 @@ function buildHeader(currentPage) {
         <nav class="nav-links">
           <a href="${buildPath("/web-design-list/")}">All Designs</a>
           <a href="${buildPath("/web-design-pricing.html")}">Pricing</a>
-          ${currentPage ? `<a href="#services">Services</a><a href="#contact">Contact Layout</a>` : `<a href="#premium">Premium Set</a><a href="#classic">Classic Set</a>`}
+          ${currentPage ? `<a href="#services">Services</a><a href="#contact">Contact Layout</a>` : `<a href="#premium">Modern Set</a><a href="#classic">Classic Set</a>`}
         </nav>
       </div>
     </header>
@@ -742,7 +742,7 @@ function buildFooter() {
   return `
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p class="footer-copy">Twenty static website directions prepared for Vibe Coder. Premium set: 1-15. Classic business set: 16-20.</p>
+        <p class="footer-copy">Website direction library for Vibe Coder. Modern set: 1-15. Classic business set: 16-20.</p>
         <div class="footer-links">
           <a href="${buildPath("/web-design-pricing.html")}" class="ghost-link">Pricing page</a>
           <a href="${buildPath("/web-design-list/")}" class="ghost-link">Back to gallery</a>
@@ -762,13 +762,13 @@ function renderGallery() {
     <section class="gallery-hero">
       <div class="shell gallery-layout">
         <div class="gallery-copy">
-          <span class="eyebrow">20 separate routes for website design demos</span>
-          <h1>Premium technology layouts and classic business themes, all mapped to numbered links.</h1>
-          <p>Twenty live routes. Premium pages for IT and consulting. Classic pages for brochure-style business clients.</p>
+          <span class="eyebrow">Website direction library for demo calls</span>
+          <h1>Modern technology layouts and classic business themes, all mapped to numbered links.</h1>
+          <p>Modern pages for IT and consulting. Classic pages for brochure-style business clients.</p>
           <div class="button-row">
             <a class="primary-link" href="${buildPath("/web-design-list/1/")}">Open Design 1</a>
             <a class="outline-link" href="${buildPath("/web-design-pricing.html")}">Pricing & packages</a>
-            <a class="outline-link" href="#premium">Browse Premium Pages</a>
+            <a class="outline-link" href="#premium">Browse Modern Pages</a>
           </div>
           <div class="pill-row">
             <span class="meta-chip">Separate numbered links</span>
@@ -778,9 +778,9 @@ function renderGallery() {
         </div>
         <aside class="gallery-aside">
           <div class="preview-card">
-            <span class="preview-tag">Premium Stack</span>
+            <span class="preview-tag">Modern Stack</span>
             <strong>Consulting, cloud, support, software, agency, and tech demo directions.</strong>
-            <p>Designed for modern clients who want “premium website” energy with more motion, stronger hierarchy, and a polished first screen.</p>
+            <p>Designed for clients who want stronger hierarchy, richer sections, and a more current website feel.</p>
           </div>
           <div class="classic-banner">
             <span class="preview-tag">Classic Stack</span>
@@ -801,7 +801,7 @@ function renderGallery() {
         <div class="section-head">
           <div class="section-intro">
             <span class="section-label">1-15</span>
-            <h2>Premium website directions</h2>
+            <h2>Modern website directions</h2>
             <p>These pages mirror the higher-end, multi-section IT and business themes from the references you shared.</p>
           </div>
         </div>
@@ -1193,7 +1193,7 @@ function buildContactSection(page, template) {
         <article class="${contactClass}">
           <span class="section-label">Contact block</span>
           <h2>Request this website direction.</h2>
-          <p>Fast customization for premium or classic client work.</p>
+          <p>Fast customization for modern or classic client work.</p>
           <div class="contact-row">
             <div class="contact-item">
               <strong>Suggested route</strong>
@@ -1205,7 +1205,7 @@ function buildContactSection(page, template) {
             </div>
             <div class="contact-item">
               <strong>Style type</strong>
-              <span>${page.style === "classic" ? "Classic business" : "Premium business"}</span>
+              <span>${page.style === "classic" ? "Classic business" : "Modern business"}</span>
             </div>
           </div>
           <div class="offer-box">
