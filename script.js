@@ -32,6 +32,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    if (document.body.classList.contains('home-page')) {
+        document.addEventListener('mousemove', (event) => {
+            document.body.style.setProperty('--mouse-x', `${event.clientX}px`);
+            document.body.style.setProperty('--mouse-y', `${event.clientY}px`);
+        });
+
+        document.body.addEventListener('mouseleave', () => {
+            document.body.style.setProperty('--mouse-x', '50vw');
+            document.body.style.setProperty('--mouse-y', '50vh');
+        });
+    }
+
     // Legal documents modal content
     function openLegalDoc(type) {
         let content = '';
@@ -207,13 +219,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Sidebar toggle
-    document.addEventListener('DOMContentLoaded', () => {
-        const toggleButton = document.getElementById('sidebarToggle');
-        const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
 
+    if (toggleButton && sidebar) {
         toggleButton.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('visible');
         });
-    });
+    }
 
 });
