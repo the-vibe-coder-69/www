@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LastMinute</title>
+    <meta
+      name="description"
+      content="LastMinute is a mobile-first India marketplace for officially transferable last-minute event and bus tickets."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="overview-panel">
+        <p class="eyebrow">India launch wedge</p>
+        <h1>LastMinute</h1>
+        <p class="overview-copy">
+          Can’t go? Recover money in 5 minutes. A trusted resale and transfer
+          marketplace for officially transferable concerts, comedy, college
+          fests, and selected bus tickets.
+        </p>
+
+        <section class="overview-block">
+          <h2>Why this works</h2>
+          <ul>
+            <li>Events have urgency, social proof, and better margins than rail.</li>
+            <li>Transfer mechanics are easier to explain and verify.</li>
+            <li>Metro cities and campuses concentrate both supply and demand.</li>
+          </ul>
+        </section>
+
+        <section class="overview-block">
+          <h2>Core loop</h2>
+          <ol>
+            <li>Seller uploads proof.</li>
+            <li>Eligibility engine checks transferability.</li>
+            <li>Buyer pays into escrow.</li>
+            <li>Seller transfers officially.</li>
+            <li>Buyer confirms and payout is released.</li>
+          </ol>
+        </section>
+
+        <section class="overview-block">
+          <h2>What’s built</h2>
+          <ul>
+            <li>Home feed with live countdowns and filters</li>
+            <li>Listing detail with trust and transfer signals</li>
+            <li>Sell flow that can publish a new listing</li>
+            <li>Escrow checkout with buyer protection steps</li>
+            <li>Trust center with reputation and safety cues</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="device-stage">
+        <div class="phone-shell">
+          <div class="phone-header">
+            <div>
+              <p class="header-label" id="headerLabel">Bangalore</p>
+              <h2 id="headerTitle">LastMinute</h2>
+            </div>
+            <button class="ghost-button" id="headerAction" type="button">
+              Search
+            </button>
+          </div>
+
+          <div class="screen-container">
+            <section class="screen screen-active" data-screen="home">
+              <div class="hero-strip">
+                <div>
+                  <p class="eyebrow">Same-day resale</p>
+                  <h3>Ending soon around you</h3>
+                </div>
+                <div class="hero-badge">Escrow on</div>
+              </div>
+
+              <label class="search-box">
+                <span>Search events, venues, routes</span>
+                <input id="searchInput" type="search" placeholder="Try comedy in Koramangala" />
+              </label>
+
+              <div class="location-row">
+                <button class="pill active" data-location="Bangalore" type="button">Bangalore</button>
+                <button class="pill" data-location="Delhi" type="button">Delhi</button>
+                <button class="pill" data-location="Mumbai" type="button">Mumbai</button>
+              </div>
+
+              <div class="chip-row" id="categoryChips"></div>
+
+              <div class="section-title">
+                <div>
+                  <h3>Expiring listings</h3>
+                  <p>High-trust inventory for tonight and tomorrow.</p>
+                </div>
+                <button class="mini-link" id="sellShortcut" type="button">Sell now</button>
+              </div>
+
+              <div class="listing-stack" id="listingFeed"></div>
+            </section>
+
+            <section class="screen" data-screen="details">
+              <div class="visual-card" id="detailVisual"></div>
+              <div class="detail-head">
+                <div>
+                  <p class="eyebrow" id="detailCategory">Concerts</p>
+                  <h3 id="detailTitle">Loading listing</h3>
+                </div>
+                <div class="timer-badge" id="detailTimer">12m left</div>
+              </div>
+
+              <div class="info-grid">
+                <article>
+                  <span>Date</span>
+                  <strong id="detailDate">Today</strong>
+                </article>
+                <article>
+                  <span>Venue</span>
+                  <strong id="detailVenue">Venue</strong>
+                </article>
+                <article>
+                  <span>Seat</span>
+                  <strong id="detailSeat">GA</strong>
+                </article>
+                <article>
+                  <span>Transfer</span>
+                  <strong id="detailTransfer">Allowed</strong>
+                </article>
+              </div>
+
+              <div class="price-panel">
+                <div>
+                  <span>Original</span>
+                  <strong id="detailOriginal">₹0</strong>
+                </div>
+                <div>
+                  <span>Asking</span>
+                  <strong id="detailAsking">₹0</strong>
+                </div>
+              </div>
+
+              <div class="trust-panel">
+                <div class="trust-copy">
+                  <p class="eyebrow">Seller trust</p>
+                  <h4 id="detailSeller">Verified seller</h4>
+                  <p id="detailTrust">4.9 score from 12 completed transfers.</p>
+                </div>
+                <div class="score-ring">
+                  <span id="detailScore">4.9</span>
+                </div>
+              </div>
+
+              <div class="detail-note" id="detailNote"></div>
+
+              <button class="primary-button sticky-button" id="buyNowButton" type="button">
+                Buy Now With Escrow
+              </button>
+            </section>
+
+            <section class="screen" data-screen="sell">
+              <div class="section-title compact">
+                <div>
+                  <h3>Sell your booking</h3>
+                  <p>Only officially transferable inventory gets listed.</p>
+                </div>
+              </div>
+
+              <div class="upload-panel">
+                <div class="upload-icon">+</div>
+                <div>
+                  <strong>Upload booking proof</strong>
+                  <p>PDF or screenshot. We use this to verify transferability.</p>
+                </div>
+              </div>
+
+              <form id="sellForm" class="form-stack">
+                <label>
+                  <span>Title</span>
+                  <input name="title" type="text" placeholder="Sunburn Arena ft. Martin Garrix" required />
+                </label>
+                <label>
+                  <span>Category</span>
+                  <select name="category">
+                    <option>Events</option>
+                    <option>Comedy</option>
+                    <option>Concerts</option>
+                    <option>Buses</option>
+                    <option>Movies</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Venue / route</span>
+                  <input name="venue" type="text" placeholder="Bangalore, NICE Grounds" required />
+                </label>
+                <div class="split-fields">
+                  <label>
+                    <span>Original price</span>
+                    <input name="originalPrice" type="number" min="1" placeholder="2499" required />
+                  </label>
+                  <label>
+                    <span>Resale price</span>
+                    <input name="askingPrice" type="number" min="1" placeholder="1899" required />
+                  </label>
+                </div>
+                <div class="split-fields">
+                  <label>
+                    <span>Expires in</span>
+                    <select name="expiresIn">
+                      <option value="10">10 minutes</option>
+                      <option value="30" selected>30 minutes</option>
+                      <option value="60">1 hour</option>
+                      <option value="180">3 hours</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Transferability</span>
+                    <select name="transferable">
+                      <option value="Official transfer allowed">Official transfer allowed</option>
+                      <option value="Name change supported">Name change supported</option>
+                      <option value="Entry QR transfer only">Entry QR transfer only</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  <span>Notes for buyer</span>
+                  <textarea name="note" rows="4" placeholder="Selling because I can’t make it tonight. Transfer happens through BookMyShow within minutes."></textarea>
+                </label>
+                <div class="eligibility-card" id="eligibilityCard">
+                  <strong>Eligibility engine</strong>
+                  <p>Concerts and comedy default to fast-track review in Bangalore, Delhi, and Mumbai.</p>
+                </div>
+                <button class="primary-button" type="submit">Publish Listing</button>
+              </form>
+            </section>
+
+            <section class="screen" data-screen="checkout">
+              <div class="section-title compact">
+                <div>
+                  <h3>Secure checkout</h3>
+                  <p>Funds stay locked until the buyer confirms the transfer.</p>
+                </div>
+                <div class="hero-badge">Encrypted</div>
+              </div>
+
+              <div class="checkout-card">
+                <div>
+                  <p class="eyebrow">Order summary</p>
+                  <h4 id="checkoutTitle">Listing title</h4>
+                  <p id="checkoutMeta">Venue</p>
+                </div>
+                <div class="summary-list">
+                  <div><span>Ticket price</span><strong id="checkoutPrice">₹0</strong></div>
+                  <div><span>Platform fee</span><strong id="checkoutFee">₹0</strong></div>
+                  <div class="summary-total"><span>Total</span><strong id="checkoutTotal">₹0</strong></div>
+                </div>
+              </div>
+
+              <div class="protection-card">
+                <p class="eyebrow">Buyer protection</p>
+                <ol class="step-list">
+                  <li><strong>Pay securely</strong><span>Money is held in LastMinute escrow.</span></li>
+                  <li><strong>Receive official transfer</strong><span>Seller sends the ticket through the original platform.</span></li>
+                  <li><strong>Confirm and release</strong><span>Payout reaches the seller only after your confirmation.</span></li>
+                </ol>
+              </div>
+
+              <div class="payment-list">
+                <button class="payment-option active" type="button">
+                  <strong>UPI</strong>
+                  <span>PhonePe, Google Pay, Paytm</span>
+                </button>
+                <button class="payment-option" type="button">
+                  <strong>Card</strong>
+                  <span>Visa, Mastercard, RuPay</span>
+                </button>
+              </div>
+
+              <button class="primary-button sticky-button" id="payButton" type="button">
+                Pay Securely
+              </button>
+            </section>
+
+            <section class="screen" data-screen="trust">
+              <div class="section-title compact">
+                <div>
+                  <h3>Trust center</h3>
+                  <p>Your profile, protection, and transfer history at a glance.</p>
+                </div>
+              </div>
+
+              <div class="trust-overview">
+                <div class="trust-score-card">
+                  <span class="trust-score-label">Trust score</span>
+                  <strong>9.6</strong>
+                  <p>Excellent</p>
+                </div>
+                <div class="trust-stats">
+                  <div><span>Completed transfers</span><strong>128</strong></div>
+                  <div><span>Verified sellers met</span><strong>42</strong></div>
+                  <div><span>Payout success</span><strong>99.2%</strong></div>
+                </div>
+              </div>
+
+              <div class="badge-row">
+                <span class="badge">Identity verified</span>
+                <span class="badge">Fast payer</span>
+                <span class="badge">Fair dealer</span>
+                <span class="badge">Power user</span>
+              </div>
+
+              <div class="safety-list">
+                <article>
+                  <strong>Verified sellers only</strong>
+                  <p>High-risk sellers are throttled before listings go live.</p>
+                </article>
+                <article>
+                  <strong>Fraud protection workflow</strong>
+                  <p>Escrow, transfer checks, and user confirmation protect both sides.</p>
+                </article>
+                <article>
+                  <strong>Report a scam fast</strong>
+                  <p>Dedicated review path for suspicious listings and failed transfers.</p>
+                </article>
+              </div>
+
+              <button class="secondary-button sticky-button" type="button">
+                View Past Transfers
+              </button>
+            </section>
+          </div>
+
+          <nav class="bottom-nav">
+            <button class="nav-item active" data-target="home" type="button">Home</button>
+            <button class="nav-item" data-target="sell" type="button">Sell</button>
+            <button class="nav-item" data-target="checkout" type="button">Escrow</button>
+            <button class="nav-item" data-target="trust" type="button">Trust</button>
+          </nav>
+        </div>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
