@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Brass Tiffin Box | Deep Market Online</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C84B31', // Terracotta
+                        background: '#F4EFE6', // Warm Cream
+                        surface: '#FCFAF8', // Off-White
+                        text: '#2D2825', // Deep Espresso
+                        muted: '#8C827A', // Warm Taupe
+                        accent: '#E9A33A', // Mustard
+                    },
+                    fontFamily: {
+                        heading: ['Fraunces', 'serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'card': '16px',
+                        'button': '8px',
+                    },
+                    boxShadow: {
+                        'soft': '0 12px 24px -4px rgba(45, 40, 37, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-text font-body antialiased;
+            }
+            h1, h2, h3, h4 {
+                @apply font-heading font-semibold;
+            }
+        }
+        @layer components {
+            .btn-primary {
+                @apply bg-primary text-background px-8 py-5 rounded-button font-bold transition-all duration-300 hover:opacity-90 active:scale-95 text-sm uppercase tracking-[3px] shadow-xl;
+            }
+            .accordion-header {
+                @apply flex justify-between items-center py-8 border-b border-muted/20 cursor-pointer hover:text-primary transition-all group;
+            }
+        }
+    </style>
+</head>
+<body x-data="{ mobileMenu: false }">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b border-muted/10">
+        <div class="container mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-heading font-bold text-primary tracking-tight">Deep Market Online</a>
+            <nav class="hidden md:flex space-x-10 text-[13px] font-medium uppercase tracking-[2px]">
+                <a href="curations.html" class="hover:text-primary transition-colors">The Curations</a>
+                <a href="spotlights.html" class="hover:text-primary transition-colors">Shop Spotlights</a>
+                <a href="how-it-works.html" class="hover:text-primary transition-colors">How it works</a>
+            </nav>
+            <a href="https://wa.me/919999999999" class="btn-primary py-3 px-6 text-xs shadow-none">WhatsApp Us</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-8 py-20">
+        <div class="flex flex-col md:flex-row gap-24">
+            <!-- Left: Image Stack (Polished Aesthetic) -->
+            <div class="md:w-1/2 space-y-12">
+                <!-- Polished background look -->
+                <div class="rounded-card overflow-hidden bg-white p-12 shadow-soft border border-muted/5 group">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e730f162b?auto=format&fit=crop&q=80&w=1200" alt="Polished Main View" class="w-full h-auto transition-transform duration-1000 group-hover:scale-105">
+                </div>
+                <div class="rounded-card overflow-hidden bg-[#F9F7F2] p-12 shadow-soft border border-muted/5 group">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200" alt="Detail Angle" class="w-full h-auto transition-transform duration-1000 group-hover:scale-105">
+                </div>
+                <div class="rounded-card overflow-hidden bg-white p-12 shadow-soft border border-muted/5 group">
+                    <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4ee0?auto=format&fit=crop&q=80&w=1200" alt="Texture View" class="w-full h-auto transition-transform duration-1000 group-hover:scale-105">
+                </div>
+            </div>
+
+            <!-- Right: Details (Sticky Editorial) -->
+            <div class="md:w-1/2">
+                <div class="md:sticky md:top-32 space-y-12">
+                    <div>
+                        <nav class="flex text-[10px] uppercase tracking-[4px] font-bold text-muted mb-8 space-x-3 items-center">
+                            <a href="curations.html" class="hover:text-primary transition-colors">Curations</a>
+                            <span class="w-1 h-1 bg-muted rounded-full"></span>
+                            <span>Kitchen & Dining</span>
+                        </nav>
+                        <h1 class="text-6xl md:text-8xl italic leading-[0.8] tracking-tighter mb-8 text-text">Vintage Brass<br>Tiffin Box</h1>
+                        <div class="flex items-center space-x-6">
+                            <span class="text-4xl font-heading font-bold text-primary italic">₹3,450</span>
+                            <span class="text-[10px] uppercase tracking-[3px] font-bold text-muted bg-surface px-4 py-2 rounded-full border border-muted/10">In Stock • Market Lane 4</span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-md">
+                        <p class="text-xl italic leading-relaxed text-muted font-light">A heavy, three-tiered brass tiffin found in the deep lanes of Ashok Vihar. Polished to a mirror finish while retaining its 1960s soul. Every scratch tells a story of a thousand market mornings.</p>
+                    </div>
+
+                    <div class="space-y-6 pt-8">
+                        <a href="https://wa.me/919999999999?text=I'm%20interested%20in%20the%20Vintage%20Brass%20Tiffin%20Box" class="btn-primary w-full text-center block">Claim on WhatsApp</a>
+                        <div class="flex items-center justify-center space-x-8 text-[10px] uppercase tracking-[2px] font-bold text-muted opacity-60">
+                            <span>Free Local Delivery</span>
+                            <span class="w-1 h-1 bg-muted rounded-full"></span>
+                            <span>Ships in 48 Hours</span>
+                        </div>
+                    </div>
+
+                    <!-- Editorial Accordions -->
+                    <div x-data="{ active: 1 }" class="border-t border-muted/20 mt-20">
+                        <div>
+                            <div @click="active = active === 1 ? null : 1" class="accordion-header">
+                                <span class="uppercase tracking-[3px] font-bold text-xs group-hover:translate-x-2 transition-transform">Backstory & Origin</span>
+                                <svg :class="active === 1 ? 'rotate-180' : ''" class="w-5 h-5 transition-transform text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                            <div x-show="active === 1" x-collapse class="py-10 text-lg text-muted font-light italic leading-relaxed">
+                                Sourced from a family estate in Ashok Vihar Phase II. This piece was originally hand-beaten by artisans in the late 60s. We've polished it to a premium web aesthetic while ensuring its authentic bazaar character remains intact.
+                            </div>
+                        </div>
+                        <div>
+                            <div @click="active = active === 2 ? null : 2" class="accordion-header">
+                                <span class="uppercase tracking-[3px] font-bold text-xs group-hover:translate-x-2 transition-transform">Dimensions</span>
+                                <svg :class="active === 2 ? 'rotate-180' : ''" class="w-5 h-5 transition-transform text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                            <div x-show="active === 2" x-collapse class="py-10 text-lg text-muted font-light italic leading-relaxed">
+                                Height: 12 inches (including handle)<br>
+                                Diameter: 6 inches per tier<br>
+                                Weight: 1.8 kg heavy-gauge brass.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-text text-background py-24 mt-32">
+        <div class="container mx-auto px-8 text-center">
+            <h2 class="text-4xl font-heading italic text-primary mb-8 tracking-tighter">Deep Market Online</h2>
+            <p class="text-[10px] text-muted uppercase tracking-[4px] mb-12">&copy; 2026 A Vibe Coder Project</p>
+            <a href="index.html" class="text-xs font-bold uppercase tracking-[3px] border-b border-muted/30 pb-2 hover:border-primary transition-all">Back to Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>

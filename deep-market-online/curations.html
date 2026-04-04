@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Curations | Deep Market Online</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C84B31', // Terracotta
+                        background: '#F4EFE6', // Warm Cream
+                        surface: '#FCFAF8', // Off-White
+                        text: '#2D2825', // Deep Espresso
+                        muted: '#8C827A', // Warm Taupe
+                        accent: '#E9A33A', // Mustard
+                    },
+                    fontFamily: {
+                        heading: ['Fraunces', 'serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'card': '16px',
+                        'button': '8px',
+                    },
+                    boxShadow: {
+                        'soft': '0 12px 24px -4px rgba(45, 40, 37, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-text font-body antialiased;
+            }
+            h1, h2, h3, h4 {
+                @apply font-heading font-semibold;
+            }
+        }
+        @layer components {
+            .btn-primary {
+                @apply bg-primary text-background px-8 py-4 rounded-button font-bold transition-all duration-300 hover:opacity-90 active:scale-95 text-sm uppercase tracking-wider;
+            }
+            .filter-pill {
+                @apply px-8 py-3 border border-accent/30 rounded-full text-[10px] font-bold uppercase tracking-[3px] transition-all cursor-pointer hover:border-accent hover:text-primary whitespace-nowrap;
+            }
+            .filter-pill.active {
+                @apply bg-accent text-text border-accent shadow-lg shadow-accent/20;
+            }
+        }
+    </style>
+</head>
+<body x-data="{ 
+    filter: 'All',
+    items: [
+        { id: 1, title: 'Gifting Chocolates', category: 'Sweets', price: '₹499+', img: '../local-market-drops/assets/chocolates.jpg', aspect: 'aspect-[4/5]', bg: 'bg-[#F9F7F2]' },
+        { id: 2, title: 'Fashion Purses', category: 'Bags', price: '₹899+', img: '../local-market-drops/assets/purses.jpg', aspect: 'aspect-[1/1]', bg: 'bg-white' },
+        { id: 3, title: 'Vintage Brass Tiffin', category: 'Kitchen', price: '₹3,450', img: 'https://images.unsplash.com/photo-1555529669-e69e730f162b?auto=format&fit=crop&q=80&w=800', aspect: 'aspect-[3/4]', bg: 'bg-[#F9F7F2]' },
+        { id: 4, title: 'Hand-Woven Ikat', category: 'Textiles', price: '₹1,250', img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=800', aspect: 'aspect-[4/5]', bg: 'bg-white' },
+        { id: 5, title: 'Ceramic Tea Set', category: 'Pottery', price: '₹2,800', img: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&q=80&w=800', aspect: 'aspect-[1/1]', bg: 'bg-[#F9F7F2]' },
+        { id: 6, title: 'Teak Wood Stool', category: 'Furniture', price: '₹4,500', img: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=800', aspect: 'aspect-[3/4]', bg: 'bg-white' },
+        { id: 7, title: 'Midnight Brass', category: 'Decor', price: '₹2,450', img: 'https://images.unsplash.com/photo-1606722590583-6951b5ea92ce?auto=format&fit=crop&q=80&w=800', aspect: 'aspect-[4/5]', bg: 'bg-[#F9F7F2]' },
+        { id: 8, title: 'Silk Scarf', category: 'Textiles', price: '₹950', img: 'https://images.unsplash.com/photo-1584030373081-f37b7bb4fa82?auto=format&fit=crop&q=80&w=800', aspect: 'aspect-[1/1]', bg: 'bg-white' }
+    ]
+}">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b border-muted/10">
+        <div class="container mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-heading font-bold text-primary tracking-tight">Deep Market Online</a>
+            <nav class="hidden md:flex space-x-10 text-[13px] font-medium uppercase tracking-[2px]">
+                <a href="curations.html" class="text-primary font-bold">The Curations</a>
+                <a href="spotlights.html" class="hover:text-primary transition-colors">Shop Spotlights</a>
+                <a href="how-it-works.html" class="hover:text-primary transition-colors">How it works</a>
+            </nav>
+            <a href="https://wa.me/919999999999" class="btn-primary py-3 px-6 text-xs shadow-none">WhatsApp Us</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-8 py-24">
+        <div class="text-center mb-24">
+            <span class="text-xs uppercase tracking-[6px] font-bold text-muted mb-6 block">Polished & Pure</span>
+            <h1 class="text-6xl md:text-8xl italic mb-8 leading-[0.9]">The Curations</h1>
+            <p class="text-xl text-muted font-light leading-relaxed italic max-w-2xl mx-auto">A living catalog of polished bazaar treasures. Clean aesthetics meet deep-market souls.</p>
+        </div>
+
+        <!-- Filter Pills: Horizontal Row -->
+        <div class="flex overflow-x-auto pb-8 justify-start md:justify-center gap-4 no-scrollbar mb-20">
+            <template x-for="cat in ['All', 'Sweets', 'Bags', 'Kitchen', 'Textiles', 'Pottery', 'Furniture', 'Decor']">
+                <div @click="filter = cat" 
+                     :class="filter === cat ? 'active' : ''" 
+                     class="filter-pill" 
+                     x-text="cat"></div>
+            </template>
+        </div>
+
+        <!-- Masonry Grid: 4 Columns with Random Aspect Ratios -->
+        <div class="columns-1 md:columns-2 lg:columns-4 gap-12 space-y-12">
+            <template x-for="item in items" :key="item.id">
+                <div x-show="filter === 'All' || filter === item.category" 
+                     x-transition:enter="transition ease-out duration-500 transform"
+                     x-transition:enter-start="opacity-0 scale-95 translate-y-8"
+                     x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                     class="break-inside-avoid">
+                    <a href="product.html" class="block bg-surface rounded-card p-6 shadow-soft hover:shadow-2xl transition-all group border border-muted/5">
+                        <div :class="[item.aspect, item.bg]" class="overflow-hidden rounded-lg mb-6 p-4">
+                            <img :src="item.img" :alt="item.title" class="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110">
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="max-w-[70%]">
+                                <h3 class="text-xl italic mb-2 leading-tight" x-text="item.title"></h3>
+                                <p class="text-[10px] text-muted uppercase tracking-[2px] font-bold" x-text="item.category"></p>
+                            </div>
+                            <span class="text-primary font-heading font-bold text-lg italic whitespace-nowrap" x-text="item.price"></span>
+                        </div>
+                    </a>
+                </div>
+            </template>
+        </div>
+
+        <!-- Empty State -->
+        <div x-show="items.filter(i => filter === 'All' || i.category === filter).length === 0" class="text-center py-40">
+            <h2 class="text-4xl font-heading italic text-muted opacity-30">Nothing in this drop yet.</h2>
+            <p class="text-[10px] uppercase tracking-[4px] text-muted mt-6 font-bold">Check back soon for new polished finds.</p>
+        </div>
+    </main>
+
+    <footer class="bg-text text-background py-24 mt-24">
+        <div class="container mx-auto px-8 text-center">
+            <h2 class="text-3xl font-heading italic text-primary mb-8 tracking-tighter">Deep Market Online</h2>
+            <p class="text-[10px] text-muted uppercase tracking-[4px] mb-12">&copy; 2026 A Vibe Coder Project</p>
+        </div>
+    </footer>
+
+</body>
+</html>

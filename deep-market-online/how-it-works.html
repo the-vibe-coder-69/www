@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | Deep Market Online</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C84B31', // Terracotta
+                        background: '#F4EFE6', // Warm Cream
+                        surface: '#FCFAF8', // Off-White
+                        text: '#2D2825', // Deep Espresso
+                        muted: '#8C827A', // Warm Taupe
+                        accent: '#E9A33A', // Mustard
+                    },
+                    fontFamily: {
+                        heading: ['Fraunces', 'serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'card': '16px',
+                        'button': '8px',
+                    },
+                    boxShadow: {
+                        'soft': '0 12px 24px -4px rgba(45, 40, 37, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-text font-body;
+            }
+            h1, h2, h3, h4 {
+                @apply font-heading;
+            }
+        }
+        @layer components {
+            .btn-primary {
+                @apply bg-primary text-background px-6 py-3 rounded-button font-bold transition-all duration-300 hover:opacity-90 active:scale-95;
+            }
+            .step-card {
+                @apply bg-surface rounded-card p-12 shadow-soft border border-muted/5 flex flex-col items-center text-center;
+            }
+        }
+    </style>
+</head>
+<body x-data="{ mobileMenu: false }">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-muted/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-heading font-semibold text-primary">Deep Market Online</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider">
+                <a href="curations.html" class="hover:text-primary transition-colors">Curations</a>
+                <a href="reels.html" class="hover:text-primary transition-colors">Reels</a>
+                <a href="how-it-works.html" class="text-primary font-bold">How it works</a>
+            </nav>
+            <a href="https://wa.me/919999999999" class="btn-primary text-sm py-2">WhatsApp Us</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-24">
+        <div class="max-w-4xl mx-auto text-center mb-24">
+            <h1 class="text-5xl md:text-7xl italic mb-8">Conscious, Conversational Commerce.</h1>
+            <p class="text-lg md:text-xl text-muted leading-relaxed italic">We believe shopping should be a conversation, not just a transaction. Here's how we bring the bazaar to your screen.</p>
+        </div>
+
+        <div class="space-y-16 max-w-5xl mx-auto">
+            <!-- Step 1 -->
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+                <div class="md:w-1/2 step-card">
+                    <div class="text-6xl font-heading font-bold text-accent italic mb-6">01</div>
+                    <h2 class="text-3xl italic mb-4">Discover the Drop</h2>
+                    <p class="text-muted leading-relaxed">Browse our curated collections and reels. Each item is hand-selected from the deep market of Ashok Vihar. We don't do mass-produced; we do stories.</p>
+                </div>
+                <div class="md:w-1/2 rounded-card overflow-hidden h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-24">
+                <div class="md:w-1/2 step-card">
+                    <div class="text-6xl font-heading font-bold text-accent italic mb-6">02</div>
+                    <h2 class="text-3xl italic mb-4">Claim on WhatsApp</h2>
+                    <p class="text-muted leading-relaxed">Found something you love? Click the 'Claim' button. It will open a direct chat with our concierge. Ask about the history, request more photos, or confirm the size.</p>
+                </div>
+                <div class="md:w-1/2 rounded-card overflow-hidden h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1577563908411-5077b6cf7624?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+                <div class="md:w-1/2 step-card">
+                    <div class="text-6xl font-heading font-bold text-accent italic mb-6">03</div>
+                    <h2 class="text-3xl italic mb-4">Safe & Swift Delivery</h2>
+                    <p class="text-muted leading-relaxed">Once confirmed, we handle the rest. We use eco-friendly packaging to ensure your treasure arrives safely. Free local delivery within Delhi, and standard shipping elsewhere.</p>
+                </div>
+                <div class="md:w-1/2 rounded-card overflow-hidden h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ or CTA -->
+        <div class="mt-32 text-center bg-primary text-background p-16 rounded-card">
+            <h2 class="text-4xl italic mb-6">Ready to start exploring?</h2>
+            <p class="mb-8 opacity-90 italic">Our concierge is online and ready to help.</p>
+            <a href="curations.html" class="bg-background text-primary px-12 py-4 rounded-button font-bold text-lg hover:bg-accent hover:text-text transition-colors inline-block">View Current Drop</a>
+        </div>
+    </main>
+
+    <footer class="bg-text text-background py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-heading italic text-primary mb-6">Deep Market Online</h2>
+            <p class="text-xs text-muted uppercase tracking-widest mb-8">&copy; 2026 A Vibe Coder Project</p>
+        </div>
+    </footer>
+
+</body>
+</html>
