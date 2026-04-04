@@ -3,338 +3,314 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LastMinute | Last-Minute Ticket Resale & Transfer</title>
+    <title>LastMinute</title>
     <meta
       name="description"
-      content="LastMinute helps people recover money from unused bookings and helps buyers find discounted last-minute tickets from verified sellers in safer, transferable categories."
+      content="LastMinute is a mobile-first marketplace for last-minute tickets, spontaneous plans, and instant resale energy."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="LastMinute home">
-          <span class="brand-mark"></span>
-          <span class="brand-copy">
-            <strong>LastMinute</strong>
-            <span>India-focused last-minute resale</span>
-          </span>
-        </a>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="#how-it-works">How it works</a>
-          <a href="#categories">Categories</a>
-          <a href="#safety">Safety</a>
-          <a href="#waitlist">Waitlist</a>
-        </nav>
-      </header>
+    <div class="ticker ticker-top" aria-hidden="true">
+      <div class="ticker-track">
+        TONIGHT IN MUMBAI • CONCERTS • COMEDY • UNDER ₹1000 • VERIFIED SELLERS
+        • INSTANT UPI • TONIGHT IN MUMBAI • CONCERTS • COMEDY • UNDER ₹1000 •
+        VERIFIED SELLERS • INSTANT UPI •
+      </div>
+    </div>
 
-      <main id="top">
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Trust-first waitlist</p>
-            <h1>Can’t go? Recover money before your booking goes to waste.</h1>
-            <p class="hero-text">
-              LastMinute is building a marketplace for unused last-minute
-              bookings in categories where transfer is officially allowed or
-              operationally practical, starting with events, comedy, concerts,
-              college fests, and selected bus tickets.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
-              <a
-                class="btn btn-secondary"
-                href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20early%20access%20to%20LastMinute."
-                target="_blank"
-                rel="noopener noreferrer"
-                >Talk on WhatsApp</a
-              >
-            </div>
-            <div class="hero-microcopy">
-              Focused on safer launch wedges. Not a generic “resell anything”
-              marketplace.
-            </div>
+    <main class="stage">
+      <div class="phone-shell">
+        <header class="app-bar">
+          <button class="pill location-pill" id="locationButton" type="button">
+            MUMBAI
+          </button>
+          <div class="brand-lockup">
+            <strong>LASTMINUTE</strong>
+            <span>TONIGHT ONLY</span>
           </div>
+          <button class="sell-entry" id="sellEntry" type="button">SELL</button>
+        </header>
 
-          <div class="hero-visual">
-            <div class="hero-card hero-card-primary">
-              <span class="card-label">For sellers</span>
-              <strong>Recover value fast</strong>
-              <p>Upload proof, get checked, list before the booking expires.</p>
+        <div class="screen-wrap">
+          <section class="screen screen-active" data-screen="home">
+            <div class="hero-search">
+              <span class="search-label">WHAT'S THE PLAN?</span>
+              <div class="search-field">
+                <span class="search-icon">⌕</span>
+                <input
+                  id="searchInput"
+                  type="search"
+                  placeholder="Comedy, Diljit, Boiler Room"
+                />
+              </div>
             </div>
-            <div class="hero-card hero-card-secondary">
-              <span class="card-label">For buyers</span>
-              <strong>Buy discounted last-minute tickets from verified sellers</strong>
-              <p>See eligibility, trust signals, and transfer steps before you pay.</p>
+
+            <div class="marquee-band">
+              <div class="marquee-track">
+                CONCERTS • COMEDY • COLLEGE FESTS • BUSES • TONIGHT • UNDER
+                ₹1000 • CONCERTS • COMEDY • COLLEGE FESTS • BUSES • TONIGHT •
+                UNDER ₹1000 •
+              </div>
             </div>
-            <div class="hero-status">
+
+            <div class="section-head">
               <div>
-                <span>Launch focus</span>
-                <strong>Bangalore, Delhi, Mumbai</strong>
+                <p class="eyebrow">RIGHT NOW</p>
+                <h1 id="homeHeadline">TONIGHT IN MUMBAI</h1>
               </div>
+              <div class="mini-status">LIVE 24</div>
+            </div>
+
+            <div class="category-pills" id="homeCategories"></div>
+
+            <div class="home-feed" id="homeFeed"></div>
+          </section>
+
+          <section class="screen" data-screen="feed">
+            <div class="section-head tight">
               <div>
-                <span>First categories</span>
-                <strong>Events, comedy, concerts, campus</strong>
+                <p class="eyebrow">LIVE GRID</p>
+                <h2 id="feedTitle">CONCERTS GRID</h2>
+              </div>
+              <div class="mini-status" id="feedCount">08 LEFT</div>
+            </div>
+
+            <div class="filter-row" id="feedFilters"></div>
+            <div class="grid-feed" id="feedGrid"></div>
+          </section>
+
+          <section class="screen" data-screen="details">
+            <div class="detail-hero">
+              <img
+                id="detailImage"
+                src=""
+                alt="Ticket artwork"
+              />
+              <div class="detail-title">
+                <p class="eyebrow" id="detailCategory">CONCERT</p>
+                <h2 id="detailName">BOILER ROOM MUMBAI</h2>
               </div>
             </div>
-          </div>
-        </section>
 
-        <section class="trust-strip" aria-label="Trust signals">
-          <article>
-            <strong>Transfer-first</strong>
-            <p>Listings are framed around categories where transfer is allowed or practically workable.</p>
-          </article>
-          <article>
-            <strong>Proof review</strong>
-            <p>Sellers upload booking proof before a listing is promoted as eligible.</p>
-          </article>
-          <article>
-            <strong>Escrow-style flow</strong>
-            <p>Buyer payment, transfer confirmation, and seller payout are kept separate in the flow.</p>
-          </article>
-        </section>
+            <div class="warning-tape" id="detailUrgency">
+              HOT RIGHT NOW • 3 PEOPLE LOOKING AT THIS TICKET
+            </div>
 
-        <section id="how-it-works" class="section">
-          <div class="section-head">
-            <p class="eyebrow">How it works</p>
-            <h2>Built for trust, speed, and urgency.</h2>
-            <p>
-              The goal is simple: help one person recover money and help another
-              person get a real last-minute deal without the usual chaos.
-            </p>
-          </div>
-          <div class="steps">
-            <article>
-              <span>1</span>
-              <h3>Seller uploads proof</h3>
-              <p>Booking proof and category details are reviewed before a listing is surfaced.</p>
-            </article>
-            <article>
-              <span>2</span>
-              <h3>Eligibility is checked</h3>
-              <p>We prioritize categories where transfer is officially allowed or practically supported.</p>
-            </article>
-            <article>
-              <span>3</span>
-              <h3>Buyer pays with clarity</h3>
-              <p>Transfer steps, seller trust signals, and payout flow are shown upfront.</p>
-            </article>
-            <article>
-              <span>4</span>
-              <h3>Transfer happens first</h3>
-              <p>The buyer confirms receipt before seller payout is treated as complete.</p>
-            </article>
-          </div>
-        </section>
+            <div class="detail-grid">
+              <article>
+                <span>DATE / TIME</span>
+                <strong id="detailTime">TONIGHT 10:30 PM</strong>
+              </article>
+              <article>
+                <span>VENUE</span>
+                <strong id="detailVenue">NSCI DOME</strong>
+              </article>
+              <article>
+                <span>SELLER</span>
+                <strong id="detailSeller">4.9/5 VERIFIED</strong>
+              </article>
+              <article>
+                <span>SEAT / TYPE</span>
+                <strong id="detailSeat">GA FLOOR</strong>
+              </article>
+            </div>
 
-        <section id="categories" class="section">
-          <div class="section-head">
-            <p class="eyebrow">Supported categories</p>
-            <h2>Start with the wedges that feel safer and easier to trust.</h2>
-            <p>
-              The homepage should make the launch scope clear. That means
-              emphasizing categories with strong urgency and cleaner transfer
-              mechanics, not everything under the sun.
-            </p>
-          </div>
-          <div class="category-grid">
-            <article class="category-card priority">
-              <span class="category-tag">Primary</span>
-              <h3>Concerts & events</h3>
-              <p>High urgency, stronger margins, and buyer behavior people already understand.</p>
-            </article>
-            <article class="category-card priority">
-              <span class="category-tag">Primary</span>
-              <h3>Stand-up comedy</h3>
-              <p>Fast-moving city inventory with simpler decision-making and less legal ambiguity.</p>
-            </article>
-            <article class="category-card priority">
-              <span class="category-tag">Primary</span>
-              <h3>College fests</h3>
-              <p>Campus concentration makes supply and demand easier to activate early.</p>
-            </article>
-            <article class="category-card secondary">
-              <span class="category-tag">Secondary</span>
-              <h3>Selected bus tickets</h3>
-              <p>Only where operator rules support name change or transferability in practice.</p>
-            </article>
-            <article class="category-card muted">
-              <span class="category-tag">Later</span>
-              <h3>Movies</h3>
-              <p>Possible later, but only if entry mechanics and transfer experience are genuinely workable.</p>
-            </article>
-            <article class="category-card muted">
-              <span class="category-tag">Not the wedge</span>
-              <h3>Trains</h3>
-              <p>Do not hero this. Too much trust and legal friction for day-one positioning.</p>
-            </article>
-          </div>
-        </section>
+            <div class="detail-note" id="detailCountdown">T-03:12:00</div>
 
-        <section class="section">
-          <div class="section-head">
-            <p class="eyebrow">Why people use it</p>
-            <h2>Because wasted bookings feel bad, and last-minute demand is real.</h2>
-          </div>
-          <div class="reason-grid">
-            <article>
-              <h3>Recover money fast</h3>
-              <p>If plans changed, the booking should not automatically become a full loss.</p>
-            </article>
-            <article>
-              <h3>Find genuine last-minute deals</h3>
-              <p>Buyers get discounted access instead of scrolling random groups and DMs.</p>
-            </article>
-            <article>
-              <h3>Know what is actually supported</h3>
-              <p>The product should say clearly when a category is eligible, limited, or not yet live.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="safety" class="section safety-section">
-          <div class="section-head">
-            <p class="eyebrow">Safety & protection</p>
-            <h2>Trust messaging has to be explicit, not implied.</h2>
-            <p>
-              This should feel like a careful marketplace for eligible transfers,
-              not a shady resale bazaar. The language matters as much as the UI.
-            </p>
-          </div>
-          <div class="safety-grid">
-            <article>
-              <h3>Use “eligible” more than “guaranteed”</h3>
-              <p>Say that listings are reviewed for transferability signals. Do not imply universal approval.</p>
-            </article>
-            <article>
-              <h3>Avoid unauthorized resale language</h3>
-              <p>Never suggest that any ticket can be flipped. Keep the framing around officially transferable or practically transferable categories.</p>
-            </article>
-            <article>
-              <h3>Explain buyer protection precisely</h3>
-              <p>Use careful wording like “payment held until confirmation flow is complete,” not broad insurance-style claims.</p>
-            </article>
-            <article>
-              <h3>Keep disclaimers visible</h3>
-              <p>Put the rules in the footer and FAQ so they build trust instead of feeling hidden.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="waitlist" class="section waitlist-section">
-          <div class="waitlist-card">
-            <div class="waitlist-copy">
-              <p class="eyebrow">Waitlist</p>
-              <h2>Get early access when your city and category go live.</h2>
-              <p>
-                Join if you want to sell unused bookings, buy discounted
-                last-minute tickets, or help test the transfer flow in your city.
-              </p>
-              <div class="waitlist-links">
-                <a
-                  class="btn btn-primary"
-                  href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20join%20the%20LastMinute%20waitlist."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Join on WhatsApp</a
-                >
-                <a class="btn btn-secondary" href="mailto:thevibecoder69@gmail.com?subject=LastMinute%20Waitlist">
-                  Join by email
-                </a>
+            <div class="sticky-buybar">
+              <div class="price-stack">
+                <span id="detailOriginal">₹2,499</span>
+                <strong id="detailPrice">₹999</strong>
               </div>
-              <p class="waitlist-microcopy">
-                Early access is likely to roll out city by city, not all at once.
+              <button class="cta-electric" id="stealButton" type="button">
+                STEAL IT
+              </button>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="seller">
+            <div class="seller-poster">
+              <p class="seller-kicker">SELL FAST</p>
+              <h2>SUNK COSTS SUCK. GET PAID INSTEAD.</h2>
+              <p class="seller-subcopy">
+                Don’t let it burn. Sell it now.
               </p>
             </div>
 
-            <form id="waitlistForm" class="waitlist-form">
-              <label>
-                <span>Email</span>
-                <input name="email" type="email" placeholder="you@example.com" required />
+            <div class="seller-steps">
+              <article>
+                <span>01</span>
+                <div>
+                  <strong>UPLOAD PDF / QR</strong>
+                  <p>DROP THE BOOKING. WE HANDLE THE FAST CHECK.</p>
+                </div>
+              </article>
+              <article>
+                <span>02</span>
+                <div>
+                  <strong>SLASH THE PRICE</strong>
+                  <p>SET A NUMBER THAT MOVES BEFORE SHOWTIME.</p>
+                </div>
+              </article>
+              <article>
+                <span>03</span>
+                <div>
+                  <strong>GET INSTANT UPI PAYOUT</strong>
+                  <p>BUYER LOCKS IT. MONEY MOVES AFTER THE FLOW CLEARS.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="trust-note">
+              100% SECURE ESCROW. WE HOLD THE MONEY, YOU HOLD THE POWER.
+            </div>
+
+            <button class="cta-electric full-width" id="dropTicket" type="button">
+              DROP TICKET
+            </button>
+          </section>
+
+          <section class="screen" data-screen="form">
+            <div class="section-head tight">
+              <div>
+                <p class="eyebrow">DROP IT NOW</p>
+                <h2>DROP THE TICKET</h2>
+              </div>
+              <div class="mini-status">FAST</div>
+            </div>
+
+            <form class="ticket-form" id="ticketForm">
+              <label class="upload-zone">
+                <input type="file" hidden />
+                <span class="upload-title">UPLOAD PDF / QR</span>
+                <span class="upload-copy">TAP TO ADD PROOF</span>
               </label>
+
               <label>
-                <span>City</span>
-                <select name="city">
-                  <option>Bangalore</option>
-                  <option>Delhi</option>
-                  <option>Mumbai</option>
-                  <option>Pune</option>
-                  <option>Other</option>
+                <span>CATEGORY</span>
+                <select name="category">
+                  <option>Concerts</option>
+                  <option>Comedy</option>
+                  <option>College Fests</option>
+                  <option>Buses</option>
                 </select>
               </label>
+
               <label>
-                <span>I want to use it for</span>
-                <select name="role">
-                  <option>Buying discounted last-minute bookings</option>
-                  <option>Selling unused bookings</option>
-                  <option>Both buying and selling</option>
-                </select>
+                <span>EVENT / ROUTE</span>
+                <input
+                  name="title"
+                  type="text"
+                  placeholder="BOILER ROOM MUMBAI"
+                  required
+                />
               </label>
-              <button class="btn btn-primary btn-block" type="submit">Request early access</button>
-              <p class="form-note" id="formNote">
-                We will open your email app so you can send a waitlist request directly.
-              </p>
+
+              <label>
+                <span>VENUE / BOARDING</span>
+                <input
+                  name="venue"
+                  type="text"
+                  placeholder="NSCI DOME"
+                  required
+                />
+              </label>
+
+              <div class="split-grid">
+                <label>
+                  <span>ORIGINAL ₹</span>
+                  <input
+                    name="original"
+                    type="number"
+                    placeholder="2499"
+                    required
+                  />
+                </label>
+                <label>
+                  <span>DROP TO ₹</span>
+                  <input
+                    name="price"
+                    type="number"
+                    placeholder="999"
+                    required
+                  />
+                </label>
+              </div>
+
+              <div class="split-grid">
+                <label>
+                  <span>EXPIRES IN</span>
+                  <select name="expires">
+                    <option value="45">45 MIN</option>
+                    <option value="120">2 HOURS</option>
+                    <option value="240">4 HOURS</option>
+                  </select>
+                </label>
+                <label>
+                  <span>SEAT / TIER</span>
+                  <input name="seat" type="text" placeholder="GA FLOOR" />
+                </label>
+              </div>
+
+              <button class="cta-accent full-width" type="submit">
+                GO LIVE
+              </button>
             </form>
-          </div>
-        </section>
-
-        <section class="section faq-section">
-          <div class="section-head">
-            <p class="eyebrow">FAQ</p>
-            <h2>Questions people will have immediately.</h2>
-          </div>
-          <div class="faq-list">
-            <details open>
-              <summary>Is this live for every category right now?</summary>
-              <p>No. The launch focus is narrower: events, comedy, concerts, college fests, and selected bus tickets where transfer is supported.</p>
-            </details>
-            <details>
-              <summary>Are train tickets part of the launch wedge?</summary>
-              <p>No. Train tickets are not the primary wedge and should not be the hero use case.</p>
-            </details>
-            <details>
-              <summary>What does “transferable” mean here?</summary>
-              <p>It means the listing appears to fall into a category where official transfer, name change, or a workable operational transfer path may exist. Final eligibility still depends on platform or operator rules.</p>
-            </details>
-            <details>
-              <summary>What does “verified” mean?</summary>
-              <p>It should mean the seller uploaded proof and the listing passed a review flow. It should not imply government certification or blanket legal approval.</p>
-            </details>
-            <details>
-              <summary>How should buyer protection be described?</summary>
-              <p>Keep it concrete: payment, transfer, confirmation, payout. Avoid oversized guarantees that sound like fake insurance.</p>
-            </details>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <div class="footer-brand">
-          <strong>LastMinute</strong>
-          <p>Built for trust-first last-minute resale and transfer in safer categories.</p>
+          </section>
         </div>
-        <div class="footer-disclaimer">
-          <p>
-            LastMinute is intended for categories where transfer is officially
-            allowed or practically supported. Listings should remain subject to
-            event platform, operator, venue, and organizer rules. The site
-            should not imply support for unauthorized resale or every ticket
-            type.
-          </p>
-          <p>
-            Contact:
-            <a href="mailto:thevibecoder69@gmail.com">thevibecoder69@gmail.com</a>
-            |
-            <a href="tel:+919312645200">+91 9312645200</a>
-          </p>
+
+        <nav class="bottom-nav">
+          <button class="nav-button active" data-target="home" type="button">
+            HOME
+          </button>
+          <button class="nav-button" data-target="feed" type="button">
+            FEED
+          </button>
+          <button class="nav-button" data-target="seller" type="button">
+            SELL
+          </button>
+        </nav>
+      </div>
+    </main>
+
+    <div class="sheet hidden" id="upiSheet">
+      <div class="sheet-card">
+        <div class="sheet-head">
+          <div>
+            <p class="eyebrow">INSTANT UPI CHECKOUT</p>
+            <h3>LOCK IT IN</h3>
+          </div>
+          <button class="close-sheet" id="closeSheet" type="button">X</button>
         </div>
-      </footer>
+
+        <div class="upi-options">
+          <button class="upi-option active" type="button">PHONEPE</button>
+          <button class="upi-option" type="button">G PAY</button>
+          <button class="upi-option" type="button">PAYTM</button>
+        </div>
+
+        <div class="sheet-summary">
+          <div>
+            <span>DEAL</span>
+            <strong id="sheetTitle">BOILER ROOM MUMBAI</strong>
+          </div>
+          <div>
+            <span>PAY NOW</span>
+            <strong id="sheetPrice">₹999</strong>
+          </div>
+        </div>
+
+        <button class="cta-electric full-width" id="confirmBuy" type="button">
+          PAY WITH UPI
+        </button>
+      </div>
     </div>
 
     <script src="./app.js"></script>
