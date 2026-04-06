@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibe Coder | Code Meets Emotion</title>
+    <meta name="description" content="Strategic IT solutions, custom software, and digital experiences built with a unique vibe.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/home-minimal.css">
+    <style>
+        :root {
+            --accent-gradient: linear-gradient(90deg, #38bdf8, #a78bfa);
+        }
+
+        .hero-vibe {
+            position: relative;
+            padding: 120px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero-vibe::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 50%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+            z-index: -1;
+            filter: blur(60px);
+        }
+
+        .vibe-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .vibe-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin-bottom: 32px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .vibe-section {
+            padding: 100px 0;
+            background: #050505;
+            border-radius: 60px 60px 0 0;
+            margin-top: 80px;
+        }
+
+        .vibe-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .vibe-image img {
+            width: 100%;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .quote-block {
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding-left: 24px;
+            margin: 40px 0;
+            color: var(--text);
+        }
+
+        .fixed-whatsapp {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 1000;
+            background: #25D366;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 999px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .fixed-whatsapp:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+            opacity: 1;
+        }
+
+        @media (max-width: 992px) {
+            .vibe-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vibe-title {
+                font-size: 3.5rem;
+            }
+            .fixed-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">THE VIBE CODER</a>
+            <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="btn btn-secondary" style="padding: 8px 20px; font-size: 0.85rem;">Get in Touch</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-vibe">
+            <div class="container">
+                <span class="vibe-tag">Built in Bharat • Strategic IT</span>
+                <h1 class="vibe-title">Code meets <br> Emotion.</h1>
+                <p class="hero-p" style="font-size: 1.4rem; color: var(--text-muted); max-width: 700px; line-height: 1.5;">
+                    We don't just build software; we craft digital vibes that resonate with your users and drive real business growth.
+                </p>
+                <div class="hero-actions" style="margin-top: 48px;">
+                    <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="btn btn-primary" style="background: var(--accent-gradient); color: white; border: none; padding: 18px 36px;">Start a Project</a>
+                    <a href="web-design-list/" class="btn btn-secondary" style="padding: 18px 36px;">Explore Gallery</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">Core Capabilities</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Website Dev</h3>
+                        <p>Fast, modern, and conversion-focused websites that look stunning on every screen.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>App Dev</h3>
+                        <p>High-performance Android and iOS solutions tailored to your business needs.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>AI Solutions</h3>
+                        <p>Smart chatbots and automation workflows that save time and delight customers.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Custom Software</h3>
+                        <p>Bespoke dashboards, billing systems, and tools built to solve your unique challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vibe-section">
+            <div class="container">
+                <div class="vibe-content">
+                    <div class="vibe-copy">
+                        <h2 style="font-size: 3rem; margin-bottom: 24px;">The Vibe Philosophy</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                            In a world of templated solutions, we believe in the power of "Vibe". It's the intersection of technical excellence and emotional resonance. Whether it's a line of code or a line of poetry, we bring the same passion and precision to everything we create.
+                        </p>
+                        <div class="quote-block">
+                            "Khud par bharosa karna seekh le dost, <br>
+                            log toh waqt ke saath badalte rehte hain."
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                            Our mission is to empower local businesses with global-standard technology, while keeping the soul of our work intact.
+                        </p>
+                    </div>
+                    <div class="vibe-image">
+                        <img src="images/thevibecoderoriginal.jpeg" alt="The Vibe Coder Artwork">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-final" style="padding: 100px 0; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 32px;">Ready to vibe?</h2>
+                <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Let's discuss your project and see how we can build something extraordinary together.
+                </p>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I'm%20ready%20to%20vibe%20on%20a%20new%20project." class="btn btn-primary" style="background: var(--accent-gradient); color: white; border: none; padding: 20px 48px; font-size: 1.2rem;">Let's Connect</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #000; padding: 80px 0 40px;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="footer-brand" style="margin-bottom: 24px;">THE VIBE CODER</div>
+            <p style="color: var(--text-muted); margin-bottom: 40px; text-align: center; max-width: 500px;">
+                Strategic IT Solutions • Built in Bharat <br>
+                Part of The Vibe Coder & Maheshwari Tech & Solutions ecosystem <br>
+                Websites • Apps • AI • Automation
+            </p>
+            <div style="display: flex; gap: 24px; margin-bottom: 40px;">
+                <a href="index.html" style="color: var(--text-muted);">Home</a>
+                <a href="web-design-list/" style="color: var(--text-muted);">Gallery</a>
+                <a href="vibe-station.html" style="color: var(--text-muted);">Vibe Station</a>
+            </div>
+            <p style="font-size: 0.8rem; color: #333;">&copy; 2026 The Vibe Coder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="fixed-whatsapp" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+    </a>
+</body>
+</html>
