@@ -1225,7 +1225,7 @@ function buildContactSection(page, template) {
             </div>
             <textarea name="message" placeholder="Tell us which design number you want and what edits are needed"></textarea>
             <div class="button-row">
-              <a href="https://wa.me/916395906067" class="primary-link" target="_blank" rel="noreferrer">WhatsApp Kritika</a>
+              <a href="https://wa.me/916395906067" class="primary-link" target="_blank" rel="noopener noreferrer">WhatsApp Kritika</a>
               <a href="tel:+919312645200" class="outline-link">Call Suresh ji</a>
             </div>
           </form>
@@ -1266,7 +1266,7 @@ function renderSinglePage(page) {
     ${buildMiddleSection(page, template)}
     ${buildContactSection(page, template)}
     <div class="floating-actions">
-      <a class="floating-action" href="https://wa.me/916395906067" target="_blank" rel="noreferrer">WhatsApp</a>
+      <a class="floating-action" href="https://wa.me/916395906067" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       <a class="floating-action" href="tel:+919312645200">Call</a>
     </div>
     ${buildFooter()}
