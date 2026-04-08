@@ -164,7 +164,7 @@ header .container {
 
 .btn-secondary {
   border: 1px solid var(--border);
-  background-color: transparent;
+  background-color: var(--card-bg);
   color: var(--text);
 }
 
@@ -277,6 +277,8 @@ header .container {
 footer {
   padding: 60px 0;
   border-top: 1px solid var(--border);
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 footer .container {

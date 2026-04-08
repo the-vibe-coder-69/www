@@ -1,6 +1,21 @@
 :root {
   --max-width: 1180px;
   --radius: 32px;
+  --bg: #fdfaf6;
+  --surface: #ffffff;
+  --surface-strong: #f9f9f9;
+  --line: rgba(0, 0, 0, 0.08);
+  --text: #1a1a1a;
+  --muted: #666666;
+  --accent: #0055ff;
+  --accent-2: #00aaff;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
+  --grid-line: rgba(0, 0, 0, 0.02);
+  --glow-a: rgba(0, 85, 255, 0.05);
+  --glow-b: rgba(0, 170, 255, 0.05);
+}
+
+[data-theme="dark"] {
   --bg: #06070d;
   --surface: rgba(15, 16, 24, 0.76);
   --surface-strong: rgba(8, 9, 14, 0.88);
@@ -29,6 +44,11 @@ body {
   overflow-x: hidden;
   color: var(--text);
   font-family: "Manrope", sans-serif;
+  background: var(--bg);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body {
   background:
     radial-gradient(circle at 16% 12%, var(--glow-a), transparent 30%),
     radial-gradient(circle at 84% 16%, var(--glow-b), transparent 28%),

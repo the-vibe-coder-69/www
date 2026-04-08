@@ -1,4 +1,18 @@
 :root {
+  --bg: #fdfaf6;
+  --surface: #ffffff;
+  --surface-soft: rgba(0, 0, 0, 0.04);
+  --panel: #f9f9f9;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --line: rgba(0, 0, 0, 0.08);
+  --accent: #0055ff;
+  --accent-2: #00aaff;
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+  --max-width: 1180px;
+}
+
+[data-theme="dark"] {
   --bg: #07111f;
   --surface: rgba(10, 18, 34, 0.76);
   --surface-soft: rgba(255, 255, 255, 0.06);
@@ -9,7 +23,6 @@
   --accent: #45d0ff;
   --accent-2: #8ef3c4;
   --shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
-  --max-width: 1180px;
 }
 
 * {
@@ -24,11 +37,16 @@ body {
   margin: 0;
   font-family: "Manrope", sans-serif;
   color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body {
   background:
     radial-gradient(circle at top right, rgba(69, 208, 255, 0.16), transparent 30%),
     radial-gradient(circle at left center, rgba(142, 243, 196, 0.14), transparent 28%),
     linear-gradient(180deg, #07111f 0%, #091728 50%, #050c17 100%);
-  min-height: 100vh;
 }
 
 body.classic-theme {
@@ -64,7 +82,7 @@ img {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(18px);
-  background: rgba(5, 12, 23, 0.72);
+  background: var(--surface);
   border-bottom: 1px solid var(--line);
 }
 
@@ -398,6 +416,8 @@ body.classic-theme .topbar {
 .testimonial-card,
 .contact-card,
 .form-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 26px;
   padding: 24px;
   backdrop-filter: blur(12px);
@@ -614,6 +634,8 @@ textarea {
 }
 
 .preview-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 28px;
   padding: 22px;
   backdrop-filter: blur(16px);

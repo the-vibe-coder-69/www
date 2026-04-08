@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles/home-minimal.css">
+    <script src="theme.js"></script>
     <style>
         :root {
             --accent-gradient: linear-gradient(90deg, #38bdf8, #a78bfa);
@@ -60,25 +61,28 @@
             <div class="header-actions" style="display: flex; gap: 12px; align-items: center;">
                 <a href="internship.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem; border: 1px solid var(--accent); color: var(--accent);">Explore Opportunities</a>
                 <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem; background: var(--accent-gradient); color: white; border: none;" target="_blank" rel="noopener noreferrer">Build Projects</a>
+                <button class="theme-toggle" aria-label="Toggle dark mode" style="padding: 6px 12px; font-size: 0.75rem; background: none; border: 1px solid var(--border); border-radius: 999px; cursor: pointer; color: var(--text);">
+                    <span>🌙</span>
+                </button>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="internships" style="padding: 120px 0; background: #000; color: #fff; font-family: 'Manrope', sans-serif;">
+        <section class="internships" style="padding: 120px 0; background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif;">
             <div class="container" style="max-width: 800px;">
                 <!-- Hero Section -->
                 <div style="margin-bottom: 100px;">
-                    <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(3rem, 10vw, 5rem); line-height: 0.9; margin-bottom: 40px; text-transform: uppercase; font-weight: 800;">
+                    <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(3rem, 10vw, 5rem); line-height: 0.9; margin-bottom: 40px; text-transform: uppercase; font-weight: 800; color: var(--text);">
                         Real work.<br>
                         Fast learning.<br>
                         <span style="color: #a78bfa;">Modest pay.</span>
                     </h2>
-                    <p style="font-size: 1.25rem; color: #a0a0a0; max-width: 600px; line-height: 1.6; margin-bottom: 48px;">
+                    <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; line-height: 1.6; margin-bottom: 48px;">
                         For ambitious beginners who want reps, feedback, and ownership—not fake internship certificates.
                     </p>
                     <a href="https://wa.me/916395906067?text=Hi%2C%20I'm%20ready%20for%20The%20Vibe%20Apprenticeship." class="btn btn-primary" style="background: #a78bfa; color: #000; padding: 20px 40px; border-radius: 4px; font-family: 'Syne', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; max-width: 400px;" target="_blank" rel="noopener noreferrer">Apply for the next cohort</a>
-                    <div style="margin-top: 24px; font-size: 0.9rem; letter-spacing: 0.1em; color: #666; text-transform: uppercase;">
+                    <div style="margin-top: 24px; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">
                         ——— Status: Hiring Open
                     </div>
                 </div>
@@ -86,11 +90,11 @@
                 <!-- The Model -->
                 <div style="margin-bottom: 80px;">
                     <div style="font-size: 0.8rem; letter-spacing: 0.2em; color: #a78bfa; margin-bottom: 16px; text-transform: uppercase;">01 / THE MODEL</div>
-                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 24px; text-transform: uppercase;">The Vibe Apprenticeship</h3>
-                    <p style="color: #a0a0a0; line-height: 1.8; margin-bottom: 24px;">
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 24px; text-transform: uppercase; color: var(--text);">The Vibe Apprenticeship</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 24px;">
                         We don't do simulations. We don't do "shadowing." From day one, you are integrated into a high-output technical cell. You are responsible for shipping production-ready code, managing live automations, and owning outcomes.
                     </p>
-                    <p style="color: #a0a0a0; line-height: 1.8;">
+                    <p style="color: var(--text-muted); line-height: 1.8;">
                         This is optimized for skill acquisition density. You will learn more in 3 months here than in 2 years of traditional junior-level corporate work.
                     </p>
                 </div>
@@ -98,8 +102,8 @@
                 <!-- Who You Are -->
                 <div style="margin-bottom: 80px;">
                     <div style="font-size: 0.8rem; letter-spacing: 0.2em; color: #a78bfa; margin-bottom: 16px; text-transform: uppercase;">02 / WHO YOU ARE</div>
-                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 24px; text-transform: uppercase;">The Builder</h3>
-                    <p style="color: #a0a0a0; line-height: 1.8;">
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 24px; text-transform: uppercase; color: var(--text);">The Builder</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8;">
                         Self-taught developers, student builders, and junior engineers who value raw skill over a prestigious title.
                     </p>
                 </div>
@@ -107,40 +111,40 @@
                 <!-- Who You Aren't -->
                 <div style="margin-bottom: 100px;">
                     <div style="font-size: 0.8rem; letter-spacing: 0.2em; color: #f87171; margin-bottom: 16px; text-transform: uppercase;">03 / WHO YOU AREN'T</div>
-                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 24px; text-transform: uppercase;">The Tourist</h3>
-                    <p style="color: #a0a0a0; line-height: 1.8;">
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 24px; text-transform: uppercase; color: var(--text);">The Tourist</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8;">
                         Those seeking "chill" internships, heavy hand-holding, or safety in bureaucracy. If ambiguity scares you, don't apply.
                     </p>
                 </div>
 
                 <!-- The Output -->
                 <div style="margin-bottom: 100px;">
-                    <div style="font-size: 0.8rem; letter-spacing: 0.2em; color: #666; margin-bottom: 16px; text-transform: uppercase; text-align: center;">THE STACK</div>
-                    <h3 style="font-family: 'Syne', sans-serif; font-size: 3rem; margin-bottom: 16px; text-transform: uppercase; text-align: center;">The Output.</h3>
-                    <p style="color: #666; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 60px;">You won't be fetching coffee. You'll be building core infrastructure.</p>
+                    <div style="font-size: 0.8rem; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase; text-align: center;">THE STACK</div>
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 3rem; margin-bottom: 16px; text-transform: uppercase; text-align: center; color: var(--text);">The Output.</h3>
+                    <p style="color: var(--text-muted); text-align: center; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 60px;">You won't be fetching coffee. You'll be building core infrastructure.</p>
                     
                     <div style="display: grid; gap: 24px;">
-                        <div style="background: #111; padding: 40px; border-radius: 4px; border: 1px solid #222;">
+                        <div style="background: var(--card-bg); padding: 40px; border-radius: 4px; border: 1px solid var(--border);">
                             <div style="font-size: 1.5rem; margin-bottom: 16px;">🚀</div>
-                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 16px;">AI Prototypes</h4>
-                            <p style="color: #888; font-size: 0.95rem;">Building and deploying LLM-powered internal tools and customer-facing interfaces.</p>
+                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 16px; color: var(--text);">AI Prototypes</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">Building and deploying LLM-powered internal tools and customer-facing interfaces.</p>
                         </div>
-                        <div style="background: #111; padding: 40px; border-radius: 4px; border: 1px solid #222;">
+                        <div style="background: var(--card-bg); padding: 40px; border-radius: 4px; border: 1px solid var(--border);">
                             <div style="font-size: 1.5rem; margin-bottom: 16px;">↔️</div>
-                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 16px;">Automations</h4>
-                            <p style="color: #888; font-size: 0.95rem;">Architecting complex back-end workflows that connect disparate data systems at scale.</p>
+                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 16px; color: var(--text);">Automations</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">Architecting complex back-end workflows that connect disparate data systems at scale.</p>
                         </div>
-                        <div style="background: #111; padding: 40px; border-radius: 4px; border: 1px solid #222;">
+                        <div style="background: var(--card-bg); padding: 40px; border-radius: 4px; border: 1px solid var(--border);">
                             <div style="font-size: 1.5rem; margin-bottom: 16px;">🌐</div>
-                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 16px;">High-Perf Landing Pages</h4>
-                            <p style="color: #888; font-size: 0.95rem;">Developing lightning-fast, high-conversion front-ends using modern frameworks.</p>
+                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 16px; color: var(--text);">High-Perf Landing Pages</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">Developing lightning-fast, high-conversion front-ends using modern frameworks.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- What You Get -->
                 <div style="margin-bottom: 100px;">
-                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2.5rem; margin-bottom: 48px; text-transform: uppercase; display: flex; align-items: center; gap: 16px;">
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2.5rem; margin-bottom: 48px; text-transform: uppercase; display: flex; align-items: center; gap: 16px; color: var(--text);">
                         <span style="display: inline-block; width: 24px; height: 24px; background: #fb923c;"></span> What you get
                     </h3>
                     
@@ -148,49 +152,49 @@
                         <div style="display: flex; gap: 24px;">
                             <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; font-style: italic; color: #a78bfa;">01</div>
                             <div>
-                                <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px;">Modest Stipend</h4>
-                                <p style="color: #888;">Fair compensation for your focus. We pay for your time, you pay in effort.</p>
+                                <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px; color: var(--text);">Modest Stipend</h4>
+                                <p style="color: var(--text-muted);">Fair compensation for your focus. We pay for your time, you pay in effort.</p>
                             </div>
                         </div>
                         <div style="display: flex; gap: 24px;">
                             <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; font-style: italic; color: #a78bfa;">02</div>
                             <div>
-                                <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px;">Technical Mentorship</h4>
-                                <p style="color: #888;">Direct feedback loops from operators who have shipped products used by thousands.</p>
+                                <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px; color: var(--text);">Technical Mentorship</h4>
+                                <p style="color: var(--text-muted);">Direct feedback loops from operators who have shipped products used by thousands.</p>
                             </div>
                         </div>
                         <div style="display: flex; gap: 24px;">
                             <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; font-style: italic; color: #a78bfa;">03</div>
                             <div>
-                                <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px;">The Portfolio</h4>
-                                <p style="color: #888;">Leave with public-facing projects that prove you can actually build products from zero.</p>
+                                <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px; color: var(--text);">The Portfolio</h4>
+                                <p style="color: var(--text-muted);">Leave with public-facing projects that prove you can actually build products from zero.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- The Filter -->
-                <div style="background: #111; padding: 60px; border-radius: 4px; border: 1px solid #222; margin-bottom: 100px;">
-                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2.5rem; margin-bottom: 24px; text-transform: uppercase;">The Filter</h3>
-                    <p style="color: #888; font-style: italic; margin-bottom: 48px; border-left: 2px solid #a78bfa; padding-left: 24px;">
+                <div style="background: var(--card-bg); padding: 60px; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 100px;">
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2.5rem; margin-bottom: 24px; text-transform: uppercase; color: var(--text);">The Filter</h3>
+                    <p style="color: var(--text-muted); font-style: italic; margin-bottom: 48px; border-left: 2px solid #a78bfa; padding-left: 24px;">
                         "We don't care where you went to school. We care what you can ship."
                     </p>
                     
                     <div style="display: grid; gap: 24px;">
-                        <div style="background: #1a1a1a; padding: 32px; border-radius: 4px;">
+                        <div style="background: var(--bg); padding: 32px; border-radius: 4px; border: 1px solid var(--border);">
                             <div style="font-size: 0.7rem; letter-spacing: 0.1em; color: #a78bfa; margin-bottom: 8px; text-transform: uppercase;">Step 01</div>
-                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px;">The Assignment</h4>
-                            <p style="color: #666; font-size: 0.9rem;">A 48-hour build challenge. This is 90% of the decision.</p>
+                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px; color: var(--text);">The Assignment</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">A 48-hour build challenge. This is 90% of the decision.</p>
                         </div>
-                        <div style="background: #1a1a1a; padding: 32px; border-radius: 4px;">
+                        <div style="background: var(--bg); padding: 32px; border-radius: 4px; border: 1px solid var(--border);">
                             <div style="font-size: 0.7rem; letter-spacing: 0.1em; color: #a78bfa; margin-bottom: 8px; text-transform: uppercase;">Step 02</div>
-                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px;">The Review</h4>
-                            <p style="color: #666; font-size: 0.9rem;">Resume and portfolio check to verify consistency and obsession.</p>
+                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px; color: var(--text);">The Review</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Resume and portfolio check to verify consistency and obsession.</p>
                         </div>
-                        <div style="background: #1a1a1a; padding: 32px; border-radius: 4px;">
+                        <div style="background: var(--bg); padding: 32px; border-radius: 4px; border: 1px solid var(--border);">
                             <div style="font-size: 0.7rem; letter-spacing: 0.1em; color: #a78bfa; margin-bottom: 8px; text-transform: uppercase;">Step 03</div>
-                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px;">The Cohort</h4>
-                            <p style="color: #666; font-size: 0.9rem;">Shortlist of 2-3 builders selected for the 12-week sprint.</p>
+                            <h4 style="font-family: 'Syne', sans-serif; text-transform: uppercase; margin-bottom: 8px; color: var(--text);">The Cohort</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Shortlist of 2-3 builders selected for the 12-week sprint.</p>
                         </div>
                     </div>
                 </div>
@@ -207,7 +211,7 @@
         </section>
     </main>
 
-    <footer style="background: #000; padding: 80px 0 40px;">
+    <footer style="background: var(--bg); border-top: 1px solid var(--border); padding: 80px 0 40px;">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
             <div class="footer-brand" style="margin-bottom: 24px;">THE VIBE CODER</div>
             <p style="color: var(--text-muted); margin-bottom: 40px; text-align: center; max-width: 500px;">

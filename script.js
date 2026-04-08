@@ -1,28 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Theme Toggle Logic
-    const themeToggle = document.querySelector('.theme-toggle');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-
-    if (currentTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        if (themeToggle) themeToggle.innerHTML = '<span>☀️</span> Light Mode';
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
-            if (theme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                themeToggle.innerHTML = '<span>🌙</span> Dark Mode';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                themeToggle.innerHTML = '<span>☀️</span> Light Mode';
-            }
-        });
-    }
-
     // Modal elements
     const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');

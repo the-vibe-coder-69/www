@@ -8,8 +8,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="theme.js"></script>
   <style>
     :root {
+      --bg: #fdfaf6;
+      --surface: #ffffff;
+      --surface-soft: rgba(0, 0, 0, 0.04);
+      --line: rgba(0, 0, 0, 0.08);
+      --text: #1a1a1a;
+      --muted: #666666;
+      --accent: #0055ff;
+      --accent-2: #f18b4d;
+      --accent-3: #7be4b2;
+    }
+
+    [data-theme="dark"] {
       --bg: #07101d;
       --surface: rgba(12, 19, 35, 0.9);
       --surface-soft: rgba(255, 255, 255, 0.04);
@@ -33,11 +46,16 @@
 
     body {
       font-family: "Manrope", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    [data-theme="dark"] body {
       background:
         radial-gradient(circle at top center, rgba(106, 99, 255, 0.2), transparent 26%),
         linear-gradient(180deg, #050b16 0%, #08111f 52%, #050b15 100%);
-      color: var(--text);
-      overflow-x: hidden;
     }
 
     body::before,
@@ -87,7 +105,7 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(18px);
-      background: rgba(4, 9, 18, 0.84);
+      background: var(--surface);
       border-bottom: 1px solid var(--line);
     }
 
@@ -129,12 +147,15 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1.2rem;
-      color: #d9e2ff;
       font-weight: 600;
     }
 
+    .nav-links a {
+      color: var(--muted);
+    }
+
     .nav-links a:hover {
-      color: #fff;
+      color: var(--text);
     }
 
     .hero {
@@ -155,9 +176,9 @@
       gap: 0.45rem;
       padding: 0.65rem 0.95rem;
       border-radius: 999px;
-      border: 1px solid rgba(106, 99, 255, 0.26);
-      background: rgba(106, 99, 255, 0.12);
-      color: #dfe5ff;
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      color: var(--text);
       font-size: 0.92rem;
     }
 
@@ -205,8 +226,8 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
       color: var(--text);
     }
 
@@ -218,9 +239,21 @@
     .contact-card,
     .disclaimer-card,
     .showcase-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+      background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="dark"] .hero-note,
+    [data-theme="dark"] .offer-card,
+    [data-theme="dark"] .info-card,
+    [data-theme="dark"] .reference-card,
+    [data-theme="dark"] .sample-card,
+    [data-theme="dark"] .contact-card,
+    [data-theme="dark"] .disclaimer-card,
+    [data-theme="dark"] .showcase-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
     }
 
@@ -295,9 +328,9 @@
       align-items: center;
       padding: 0.5rem 0.85rem;
       border-radius: 999px;
-      background: rgba(123, 228, 178, 0.12);
-      border: 1px solid rgba(123, 228, 178, 0.22);
-      color: #dff8eb;
+      background: var(--surface-soft);
+      border: 1px solid var(--accent-3);
+      color: var(--accent-3);
       font-weight: 700;
       margin-bottom: 0.9rem;
     }
@@ -307,11 +340,12 @@
     .reference-card h3 {
       margin-bottom: 0.6rem;
       font-size: 1.3rem;
+      color: var(--text);
     }
 
     .offer-card .subline {
       display: block;
-      color: #ffd7b9;
+      color: var(--accent-2);
       font-weight: 700;
       margin-top: 0.6rem;
       margin-bottom: 0.9rem;
@@ -328,8 +362,8 @@
       padding: 0.8rem 0.9rem;
       border-radius: 18px;
       background: var(--surface-soft);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #dce5ff;
+      border: 1px solid var(--line);
+      color: var(--text);
       font-size: 0.92rem;
     }
 
@@ -348,14 +382,15 @@
       gap: 1rem;
       padding: 0.95rem 1rem;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      color: var(--text);
     }
 
     .sample-links a:hover,
     .reference-item:hover {
-      border-color: rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent);
+      background: var(--surface);
     }
 
     .sample-links span,
@@ -378,19 +413,21 @@
       position: relative;
       overflow: hidden;
       min-height: 260px;
-      background-image:
-        linear-gradient(180deg, rgba(5, 11, 22, 0.18), rgba(5, 11, 22, 0.9)),
-        var(--shot);
       background-size: cover;
       background-position: top center;
+      background-image: var(--shot);
     }
 
     .showcase-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(5, 11, 22, 0.05), rgba(5, 11, 22, 0.82));
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
       pointer-events: none;
+    }
+
+    [data-theme="dark"] .showcase-card::after {
+      background: linear-gradient(180deg, rgba(5, 11, 22, 0.05), rgba(5, 11, 22, 0.82));
     }
 
     .showcase-card-content {
@@ -405,14 +442,14 @@
     }
 
     .showcase-card-content span {
-      color: #dce5ff;
+      color: #fff;
       font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
     }
 
     .showcase-card-content p {
-      color: #d7e1ff;
+      color: rgba(255, 255, 255, 0.9);
       line-height: 1.7;
       max-width: 28rem;
     }
@@ -420,11 +457,14 @@
     .showcase-card .link-pair a {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .reference-item strong {
       display: block;
       margin-bottom: 0.2rem;
+      color: var(--text);
     }
 
     .link-pair {
@@ -437,10 +477,10 @@
     .link-pair a {
       padding: 0.45rem 0.75rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
       font-size: 0.88rem;
-      color: #eef3ff;
+      color: var(--text);
     }
 
     .contact-card strong,
@@ -448,6 +488,7 @@
       display: block;
       margin-bottom: 0.6rem;
       font-size: 1.15rem;
+      color: var(--text);
     }
 
     .contact-lines {
@@ -457,7 +498,7 @@
     }
 
     .contact-lines a {
-      color: #fff;
+      color: var(--accent);
       font-weight: 700;
     }
 
@@ -575,6 +616,9 @@
           <a href="#offers">Offers</a>
           <a href="#design-library">Samples</a>
           <a href="#contact">Contact</a>
+          <button class="theme-toggle" aria-label="Toggle dark mode" style="padding: 6px 12px; font-size: 0.75rem; background: none; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; color: var(--text);">
+            <span>🌙</span>
+          </button>
         </nav>
       </div>
     </header>

@@ -4,26 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Vibe Coder - Services Card</title>
+  <script src="theme.js"></script>
   <style>
+    :root {
+      --bg: #fdfaf6;
+      --card-bg: linear-gradient(145deg, #ffffff, #f0f0f0);
+      --text: #1a1a1a;
+      --muted: #666666;
+      --border: rgba(0, 0, 0, 0.08);
+      --surface: rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card-bg: linear-gradient(145deg, #020617, #0f172a);
+      --text: #ffffff;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.05);
+      --surface: rgba(255, 255, 255, 0.03);
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background: #0f172a;
+      background: var(--bg);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .card {
       width: min(440px, calc(100vw - 32px));
-      background: linear-gradient(145deg, #020617, #0f172a);
+      background: var(--card-bg);
       border-radius: 20px;
       padding: 22px;
-      color: #fff;
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+    }
+
+    [data-theme="dark"] .card {
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.05);
     }
 
     .header {
@@ -42,7 +66,7 @@
     .tagline {
       text-align: center;
       font-size: 12px;
-      color: #94a3b8;
+      color: var(--muted);
       margin-bottom: 15px;
     }
 
@@ -50,8 +74,8 @@
       margin-bottom: 14px;
       border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      background: var(--surface);
     }
 
     .spotlight img {
@@ -69,11 +93,11 @@
     }
 
     .service {
-      background: rgba(255,255,255,0.03);
+      background: var(--surface);
       padding: 12px;
       border-radius: 12px;
       font-size: 12px;
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
     }
 
     .service strong {
@@ -88,9 +112,9 @@
     }
 
     .web-design-toggle button {
-      background: rgba(255,255,255,0.04);
-      color: #cbd5e1;
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 10px 16px;
       font-size: 12px;
@@ -100,8 +124,8 @@
 
     .web-design-panel {
       display: none;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px;
       margin-bottom: 15px;
@@ -112,7 +136,7 @@
     }
 
     .web-design-panel strong {
-      color: #fff;
+      color: var(--text);
       display: block;
       margin-bottom: 8px;
     }
@@ -132,15 +156,16 @@
       height: 34px;
       padding: 0 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      color: #fff;
+      background: var(--surface);
+      color: var(--text);
       text-decoration: none;
       font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
     }
 
     .route-pills a:hover {
       background: linear-gradient(90deg, #38bdf8, #a78bfa);
+      color: #fff;
     }
 
     .why {
@@ -180,15 +205,16 @@
     }
 
     .cta a.secondary {
-      background: rgba(255,255,255,0.05);
+      background: var(--surface);
+      color: var(--text);
       box-shadow: none;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
     }
 
     .footer {
       text-align: center;
       font-size: 10px;
-      color: #64748b;
+      color: var(--muted);
       margin-top: 10px;
     }
 

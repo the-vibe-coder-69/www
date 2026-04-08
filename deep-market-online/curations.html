@@ -11,16 +11,18 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../theme.js"></script>
     <script>
         tailwind.config = {
+            darkMode: ['selector', '[data-theme="dark"]'],
             theme: {
                 extend: {
                     colors: {
                         primary: '#C84B31', // Terracotta
-                        background: '#F4EFE6', // Warm Cream
-                        surface: '#FCFAF8', // Off-White
-                        text: '#2D2825', // Deep Espresso
-                        muted: '#8C827A', // Warm Taupe
+                        background: 'var(--bg)',
+                        surface: 'var(--surface)',
+                        text: 'var(--text)',
+                        muted: 'var(--muted)',
                         accent: '#E9A33A', // Mustard
                     },
                     fontFamily: {
@@ -43,6 +45,18 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <style type="text/tailwindcss">
+        :root {
+            --bg: #F4EFE6;
+            --surface: #FCFAF8;
+            --text: #2D2825;
+            --muted: #8C827A;
+        }
+        [data-theme="dark"] {
+            --bg: #070b16;
+            --surface: rgba(255, 255, 255, 0.05);
+            --text: #eaf0ff;
+            --muted: #9da9c9;
+        }
         @layer base {
             body {
                 @apply bg-background text-text font-body antialiased;
@@ -87,7 +101,12 @@
                 <a href="spotlights.html" class="hover:text-primary transition-colors">Shop Spotlights</a>
                 <a href="how-it-works.html" class="hover:text-primary transition-colors">How it works</a>
             </nav>
-            <a href="https://wa.me/919999999999" class="btn-primary py-3 px-6 text-xs shadow-none" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/919999999999" class="btn-primary py-3 px-6 text-xs shadow-none" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+                <button class="theme-toggle p-2 rounded-full hover:bg-muted/10 transition-colors" aria-label="Toggle dark mode">
+                    <span>🌙</span>
+                </button>
+            </div>
         </div>
     </header>
 
