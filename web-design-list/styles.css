@@ -156,6 +156,16 @@ body.classic-theme .topbar {
   transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
+.nav-links a:focus-visible,
+.ghost-link:focus-visible,
+.outline-link:focus-visible,
+.primary-link:focus-visible,
+.floating-action:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .nav-links a {
   padding: 10px 14px;
   color: var(--muted);
@@ -218,7 +228,7 @@ body.classic-theme .topbar {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
   gap: 38px;
-  padding: 72px 0 56px;
+  padding: 48px 0 40px;
   align-items: center;
 }
 
@@ -386,7 +396,7 @@ body.classic-theme .topbar {
 }
 
 .section-block {
-  padding: 28px 0 80px;
+  padding: 28px 0 48px;
 }
 
 .section-head {
@@ -708,9 +718,53 @@ textarea {
   filter: blur(6px);
 }
 
+.hero-photo-card,
+.service-photo-card,
+.classic-photo-card,
+.brochure-photo-card {
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-height: 240px;
+}
+
+.hero-photo-card img,
+.service-photo-card img,
+.classic-photo-card img,
+.brochure-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.signature-image,
+.showcase-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.showcase-image-panel,
+.compact-image-panel {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-height: 180px;
+}
+
+.showcase-image-panel img,
+.compact-image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 18px;
   padding-bottom: 86px;
 }

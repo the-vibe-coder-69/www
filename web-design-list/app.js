@@ -733,7 +733,7 @@ function buildHeader(currentPage) {
           <a href="${buildPath("/web-design-pricing.html")}">Pricing</a>
           ${currentPage ? `<a href="#services">Services</a><a href="#contact">Contact Layout</a>` : `<a href="#premium">Modern Set</a><a href="#classic">Classic Set</a>`}
           <button class="theme-toggle" aria-label="Toggle dark mode" style="padding: 6px 12px; font-size: 0.75rem; background: none; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; color: var(--text); margin-left: 8px;">
-            <span>🌙</span>
+            <span aria-hidden="true">&#9790;</span>
           </button>
         </nav>
       </div>
@@ -1228,8 +1228,9 @@ function buildContactSection(page, template) {
             </div>
             <textarea name="message" placeholder="Tell us which design number you want and what edits are needed"></textarea>
             <div class="button-row">
-              <a href="https://wa.me/916395906067" class="primary-link" target="_blank" rel="noopener noreferrer">WhatsApp Kritika</a>
-              <a href="tel:+919312645200" class="outline-link">Call Suresh ji</a>
+              <button type="submit" class="primary-link" style="border: none; cursor: pointer;">Send Enquiry</button>
+              <a href="https://wa.me/916395906067" class="outline-link" target="_blank" rel="noopener noreferrer">WhatsApp Kritika</a>
+              <a href="tel:+919312645200" class="ghost-link">Call Suresh ji</a>
             </div>
           </form>
         </article>
