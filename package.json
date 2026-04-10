@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "qa": "playwright test",
+    "qa:update-screens": "playwright test tests/site.qa.spec.js --grep @screens",
+    "qa:headed": "playwright test --headed"
+  },
   "devDependencies": {
     "playwright": "^1.58.2"
   }
