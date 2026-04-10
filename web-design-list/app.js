@@ -656,40 +656,18 @@ function getPrimaryItems(items, count = 2) {
   return items.slice(0, count);
 }
 
-function getVisualAsset(page, template) {
-  const defaultAssets = {
-    editorial: {
-      src: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Business team meeting",
-      label: "Corporate mood",
-    },
-    dashboard: {
-      src: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Data dashboard screens",
-      label: "Tech mood",
-    },
-    service: {
-      src: "https://images.pexels.com/photos/8867434/pexels-photo-8867434.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Support and service workspace",
-      label: "Support mood",
-    },
-    showcase: {
-      src: "https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Creative digital setup",
-      label: "Creative mood",
-    },
-    "classic-formal": {
-      src: "https://images.pexels.com/photos/8112172/pexels-photo-8112172.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Formal office desk",
-      label: "Classic business",
-    },
-    "classic-brochure": {
-      src: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Business presentation desk",
-      label: "Brochure mood",
-    },
+function getVisualAsset(page, styleType) {
+  const isClassic = styleType === "classic";
+  const assets = isClassic ? {
+    src: "https://images.pexels.com/photos/8112172/pexels-photo-8112172.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    alt: "Professional business setting",
+    label: "Corporate Mood",
+  } : {
+    src: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    alt: "Modern business team",
+    label: "Modern Stack",
   };
-  return defaultAssets[template] || defaultAssets.editorial;
+  return assets;
 }
 
 function getBasePrefix() {
@@ -832,22 +810,15 @@ function renderGallery() {
 }
 
 function buildPreviewCard(page) {
-  const template = getPageTemplate(page);
-  const visual = getVisualAsset(page, template);
-  const ctaLabelMap = {
-    editorial: "View concept",
-    dashboard: "Open build",
-    service: "See service page",
-    showcase: "Open creative",
-    "classic-formal": "View brochure",
-    "classic-brochure": "Open classic",
-  };
+  const visual = getVisualAsset(page, page.style);
+  const ctaLabel = page.style === "classic" ? "View Design" : "Open Preview";
+  const cardClass = page.style === "classic" ? "preview-card preview-card-classic" : "preview-card preview-card-modern";
 
   return `
-    <article class="preview-card preview-card-${template} ${page.style === "classic" ? "classic-theme-card" : ""}">
+    <article class="${cardClass}">
+      <span class="preview-tag">${visual.label}</span>
       <div class="preview-media">
         <img src="${visual.src}" alt="${visual.alt}">
-        <span class="preview-media-label">${visual.label}</span>
       </div>
       <div class="preview-head">
         <span class="preview-number">${page.id}</span>
@@ -858,43 +829,41 @@ function buildPreviewCard(page) {
         <p>${compactText(page.lede, 96)}</p>
       </div>
       <div class="preview-signature">
-        <span>${page.signatureTitle}</span>
+        <span>${page.signatureTitle || "Design direction preview"}</span>
       </div>
       <div class="pill-row">
         ${getPrimaryItems(page.highlights, 2).map((item) => `<span class="meta-chip">${item}</span>`).join("")}
       </div>
       <div class="preview-links">
-        <a href="${buildPath(`/web-design-list/${page.id}/`)}">${ctaLabelMap[template]}</a>
-        <a href="${page.source}" target="_blank" rel="noreferrer">Reference</a>
+        <a href="${buildPath(`/web-design-list/${page.id}/`)}">${ctaLabel}</a>
+        <a href="${page.source}" target="_blank" rel="noreferrer">Source</a>
       </div>
     </article>
   `;
 }
 
 function getPageTemplate(page) {
-  if ([1, 10, 14].includes(page.id)) return "editorial";
-  if ([2, 5, 12, 15].includes(page.id)) return "dashboard";
-  if ([3, 6, 8, 11].includes(page.id)) return "service";
-  if ([4, 7, 9, 13].includes(page.id)) return "showcase";
-  if ([16, 18, 20].includes(page.id)) return "classic-formal";
-  return "classic-brochure";
+  return page.style === "classic" ? "classic" : "modern";
 }
 
-function buildHeroVisual(page, template) {
-  const visual = getVisualAsset(page, template);
-  if (template === "editorial") {
+function buildHeroVisual(page, styleType) {
+  const visual = getVisualAsset(page, styleType);
+  const isClassic = styleType === "classic";
+  const isTextFocused = [1, 10, 14, 16, 18, 20].includes(page.id);
+
+  if (isTextFocused) {
     return `
-      <div class="hero-showcase template-editorial">
-        <div class="editorial-visual">
-          <div class="hero-photo-card">
+      <div class="hero-showcase ${isClassic ? 'template-classic' : 'template-modern-text'}">
+        <div class="hero-visual-card">
+          <div class="hero-visual-image">
             <img src="${visual.src}" alt="${visual.alt}">
           </div>
-          <div class="editorial-column">
-            <span class="editorial-label">Advisory led</span>
-            <strong>${page.name}</strong>
-            <p>${compactText(page.signatureText, 110)}</p>
+          <div class="hero-visual-content">
+            <span class="hero-visual-label">${page.category}</span>
+            <strong>${page.signatureTitle || page.name}</strong>
+            <p>${compactText(page.signatureText || page.lede, 100)}</p>
           </div>
-          <div class="editorial-stack">
+          <div class="hero-visual-tags">
             ${getPrimaryItems(page.highlights, 3).map((item) => `<span>${item}</span>`).join("")}
           </div>
         </div>
@@ -902,156 +871,38 @@ function buildHeroVisual(page, template) {
     `;
   }
 
-  if (template === "dashboard") {
-    return `
-      <div class="hero-showcase template-dashboard">
-        <div class="dashboard-frame">
-          <div class="dashboard-sidebar">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="dashboard-main">
-            <div class="dashboard-top">
-              <div class="dashboard-card large"></div>
-              <div class="dashboard-card small"></div>
-            </div>
-            <div class="dashboard-bottom">
-              <div class="dashboard-chart">
-                <span></span><span></span><span></span><span></span><span></span>
-              </div>
-              <div class="dashboard-metrics">
-                ${page.stats.map(([value, label]) => `<div><strong>${value}</strong><small>${label}</small></div>`).join("")}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  if (template === "service") {
-    return `
-      <div class="hero-showcase template-service">
-        <div class="service-hero-grid">
-          <div class="hero-photo-card service-photo-card">
-            <img src="${visual.src}" alt="${visual.alt}">
-          </div>
-          ${getPrimaryItems(page.services, 2).map(([title, text], index) => `
-            <article class="service-hero-card">
-              <small>${String(index + 1).padStart(2, "0")}</small>
-              <strong>${title}</strong>
-              <p>${compactText(text, 78)}</p>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    `;
-  }
-
-  if (template === "showcase") {
-    return `
-      <div class="hero-showcase template-showcase">
-        <div class="showcase-poster">
-          <img class="showcase-photo" src="${visual.src}" alt="${visual.alt}">
-          <div class="showcase-orb a"></div>
-          <div class="showcase-orb b"></div>
-          <div class="showcase-copy">
-            <span class="preview-tag">${page.category}</span>
-            <strong>${page.name}</strong>
-            <p>${compactText(page.offer, 92)}</p>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  if (template === "classic-formal") {
-    return `
-      <div class="hero-showcase template-classic-formal">
-        <div class="classic-formal-frame">
-          <div class="hero-photo-card classic-photo-card">
-            <img src="${visual.src}" alt="${visual.alt}">
-          </div>
-          <div class="classic-badge-bar">
-            <span>Consultation</span>
-            <span>WhatsApp</span>
-            <span>Call now</span>
-          </div>
-          <div class="classic-formal-panel">
-            <strong>${page.name}</strong>
-            <p>${compactText(page.signatureText, 96)}</p>
-            <div class="classic-formal-lines">
-              <span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
   return `
-    <div class="hero-showcase template-classic-brochure">
-      <div class="brochure-frame">
-        <div class="hero-photo-card brochure-photo-card">
-          <img src="${visual.src}" alt="${visual.alt}">
+    <div class="hero-showcase ${isClassic ? 'template-classic' : 'template-modern-cta'}">
+      <div class="cta-visual-frame">
+        <div class="cta-sidebar">
+          <span></span><span></span><span></span><span></span>
         </div>
-        <div class="brochure-top">
-          <strong>${page.name}</strong>
-          <span>${page.category}</span>
-        </div>
-        <div class="brochure-grid">
-          ${getPrimaryItems(page.highlights, 4).map((item) => `<div>${item}</div>`).join("")}
+        <div class="cta-main">
+          <div class="cta-top">
+            <div class="cta-card large"></div>
+            <div class="cta-card small"></div>
+          </div>
+          <div class="cta-bottom">
+            <div class="cta-chart">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="cta-metrics">
+              ${page.stats.map(([value, label]) => `<div><strong>${value}</strong><small>${label}</small></div>`).join("")}
+            </div>
+          </div>
         </div>
       </div>
     </div>
   `;
 }
 
-function buildServicesSection(page, template) {
-  if (template === "dashboard") {
-    return `
-      <section class="section-block" id="services">
-        <div class="shell metric-band">
-          ${page.services.map(([title, text], index) => `
-            <article class="metric-panel">
-              <small>Module ${index + 1}</small>
-              <h3>${title}</h3>
-              <p>${compactText(text, 84)}</p>
-            </article>
-          `).join("")}
-        </div>
-      </section>
-    `;
-  }
-
-  if (template === "service") {
-    return `
-      <section class="section-block" id="services">
-        <div class="shell">
-          <div class="section-head">
-            <div class="section-intro">
-              <span class="section-label">Service blocks</span>
-              <h2>Built like a practical service company homepage.</h2>
-              <p>These layouts favor clarity, offers, contact actions, and conversion over high-concept presentation.</p>
-            </div>
-          </div>
-          <div class="service-strip">
-            ${page.services.map(([title, text], index) => `
-              <article class="service-strip-card">
-              <div class="service-index">${String(index + 1).padStart(2, "0")}</div>
-              <h3>${title}</h3>
-              <p>${compactText(text, 76)}</p>
-            </article>
-          `).join("")}
-          </div>
-        </div>
-      </section>
-    `;
-  }
-
-  if (template === "classic-formal" || template === "classic-brochure") {
-    return `
-      <section class="section-block" id="services">
-        <div class="shell classic-services-layout">
+function buildServicesSection(page, styleType) {
+  const isClassic = styleType === "classic";
+  
+  return `
+    <section class="section-block" id="services">
+      <div class="shell ${isClassic ? 'classic-services-layout' : ''}">
+        ${isClassic ? `
           <article class="classic-side-card">
             <span class="section-label">Business profile</span>
             <h3>${page.name}</h3>
@@ -1068,98 +919,63 @@ function buildServicesSection(page, template) {
               </article>
             `).join("")}
           </div>
-        </div>
-      </section>
-    `;
-  }
-
-  return `
-    <section class="section-block" id="services">
-      <div class="shell">
-        <div class="section-head">
-          <div class="section-intro">
-            <span class="section-label">Layout character</span>
-            <h2>Service framing that matches the target buyer.</h2>
-            <p>Clear category fit with quick adaptation for real client work.</p>
+        ` : `
+          <div class="section-head">
+            <div class="section-intro">
+              <span class="section-label">Service blocks</span>
+              <h2>Service framing that matches the target buyer.</h2>
+              <p>Clear category fit with quick adaptation for real client work.</p>
+            </div>
+            <div class="pill-row">
+              ${getPrimaryItems(page.highlights, 3).map((item) => `<span class="meta-chip">${item}</span>`).join("")}
+            </div>
           </div>
-          <div class="pill-row">
-            ${getPrimaryItems(page.highlights, 3).map((item) => `<span class="meta-chip">${item}</span>`).join("")}
+          <div class="service-strip">
+            ${page.services.map(([title, text], index) => `
+              <article class="service-strip-card">
+                <div class="service-index">${String(index + 1).padStart(2, "0")}</div>
+                <h3>${title}</h3>
+                <p>${compactText(text, 76)}</p>
+              </article>
+            `).join("")}
           </div>
-        </div>
-        <div class="service-grid">
-          ${getPrimaryItems(page.services, 2).map(([title, text], index) => `
-            <article class="service-card">
-              <div class="service-index">${String(index + 1).padStart(2, "0")}</div>
-              <h3>${title}</h3>
-              <p>${compactText(text, 82)}</p>
-            </article>
-          `).join("")}
-        </div>
+        `}
       </div>
     </section>
   `;
 }
 
-function buildMiddleSection(page, template) {
-  const visual = getVisualAsset(page, template);
-  if (template === "showcase") {
-    return `
-      <section class="section-block">
-        <div class="shell showcase-story">
-          <div class="showcase-story-copy">
-            <span class="section-label">Visual language</span>
-            <h2>${page.signatureTitle}</h2>
-            <p>${compactText(page.signatureText, 100)}</p>
-          </div>
-          <div class="showcase-panels">
-            <div class="showcase-image-panel"><img src="${visual.src}" alt="${visual.alt}"></div>
-            ${getPrimaryItems(page.highlights, 3).map((item) => `<div class="showcase-panel">${item}</div>`).join("")}
-          </div>
-        </div>
-      </section>
-    `;
-  }
-
-  if (template === "classic-brochure") {
-    return `
-      <section class="section-block">
-        <div class="shell brochure-columns">
-          <div class="detail-panel">
-            <span class="section-label">Why this route works</span>
-            <h3>${page.signatureTitle}</h3>
-            <p>${compactText(page.signatureText, 96)}</p>
-          </div>
-          <div class="detail-panel">
-            <span class="section-label">Package fit</span>
-            <div class="showcase-image-panel compact-image-panel"><img src="${visual.src}" alt="${visual.alt}"></div>
-            <h3>Classic brochure-style structure.</h3>
-            <p>Responsive, enquiry-ready, and easy to pitch.</p>
-          </div>
-        </div>
-      </section>
-    `;
-  }
+function buildMiddleSection(page, styleType) {
+  const visual = getVisualAsset(page, styleType);
+  const isClassic = styleType === "classic";
 
   return `
     <section class="section-block">
-        <div class="shell detail-grid">
-          <div class="signature-box">
-            <img class="signature-image" src="${visual.src}" alt="${visual.alt}">
-            <div class="signature-copy">
-              <span class="preview-tag">Signature mood</span>
-              <h3>${page.signatureTitle}</h3>
-              <p>${compactText(page.signatureText, 100)}</p>
-            </div>
+      <div class="shell ${isClassic ? 'brochure-columns' : 'detail-grid'}">
+        <div class="${isClassic ? 'detail-panel' : 'signature-box'}">
+          ${isClassic ? '' : `<img class="signature-image" src="${visual.src}" alt="${visual.alt}">`}
+          <div class="signature-copy">
+            <span class="section-label">Why this works</span>
+            <h3>${page.signatureTitle || page.name}</h3>
+            <p>${compactText(page.signatureText || page.lede, 96)}</p>
           </div>
-          <div class="detail-panel">
-            <span class="section-label">Why this route works</span>
-            <h3>${page.name} is set up to sell with clearer hierarchy and cleaner spacing.</h3>
-            <p>${compactText(page.offer, 100)}</p>
-            <div class="pill-row">
-              <span class="meta-chip">Responsive layout</span>
-              <span class="meta-chip">WhatsApp action</span>
-            <span class="meta-chip">Click-to-call ready</span>
-            <span class="meta-chip">SEO-friendly copy zones</span>
+        </div>
+        <div class="detail-panel">
+          <span class="section-label">Package fit</span>
+          ${isClassic ? `
+            <div class="classic-badge-bar">
+              <span>Responsive</span>
+              <span>WhatsApp</span>
+              <span>Call now</span>
+            </div>
+          ` : ''}
+          <h3>${isClassic ? 'Classic brochure-style structure.' : page.name + ' - clear hierarchy and spacing.'}</h3>
+          <p>${compactText(page.offer, 96)}</p>
+          <div class="pill-row">
+            <span class="meta-chip">Responsive</span>
+            <span class="meta-chip">WhatsApp ready</span>
+            <span class="meta-chip">Click-to-call</span>
+            <span class="meta-chip">SEO-friendly</span>
           </div>
         </div>
       </div>
@@ -1167,8 +983,8 @@ function buildMiddleSection(page, template) {
   `;
 }
 
-function buildFlowSection(page, template) {
-  if (template === "editorial") {
+function buildFlowSection(page, styleType) {
+  if (styleType !== "classic") {
     return `
       <section class="section-block">
         <div class="shell timeline-layout">
@@ -1183,54 +999,50 @@ function buildFlowSection(page, template) {
       </section>
     `;
   }
-
   return "";
 }
 
-function buildContactSection(page, template) {
-  const formClass = template.startsWith("classic") ? "form-panel classic-contact-panel" : "form-panel";
-  const contactClass = template.startsWith("classic") ? "contact-card classic-contact-card" : "contact-card";
+function buildContactSection(page, styleType) {
+  const isClassic = styleType === "classic";
+  const formClass = isClassic ? "form-panel classic-contact-panel" : "form-panel";
+  const contactClass = isClassic ? "contact-card classic-contact-card" : "contact-card";
+
   return `
     <section class="section-block" id="contact">
       <div class="shell contact-layout">
         <article class="${contactClass}">
-          <span class="section-label">Contact block</span>
-          <h2>Request this website direction.</h2>
-          <p>Fast customization for modern or classic client work.</p>
+          <span class="section-label">Contact</span>
+          <h2>Request this direction.</h2>
+          <p>Fast customization for your client project.</p>
           <div class="contact-row">
             <div class="contact-item">
-              <strong>Suggested route</strong>
-              <span>${buildPath(`/web-design-list/${page.id}/`)}</span>
+              <strong>Design</strong>
+              <span>#${page.id} - ${page.name}</span>
             </div>
             <div class="contact-item">
-              <strong>Design name</strong>
-              <span>${page.name}</span>
-            </div>
-            <div class="contact-item">
-              <strong>Style type</strong>
-              <span>${page.style === "classic" ? "Classic business" : "Modern business"}</span>
+              <strong>Style</strong>
+              <span>${isClassic ? "Corporate Mood" : "Modern Stack"}</span>
             </div>
           </div>
           <div class="offer-box">
-            <strong>Static package-friendly features</strong>
-            <span>Responsive, enquiry-ready, SEO-friendly, and built for WhatsApp conversion.</span>
+            <strong>Package features</strong>
+            <span>Responsive, enquiry-ready, WhatsApp conversion.</span>
           </div>
         </article>
         <article class="${formClass}">
           <form>
             <div class="field-grid">
-              <input type="text" name="name" placeholder="Your name">
+              <input type="text" name="name" placeholder="Your name" required>
               <input type="text" name="business" placeholder="Business name">
             </div>
             <div class="field-grid">
-              <input type="email" name="email" placeholder="Email address">
+              <input type="email" name="email" placeholder="Email" required>
               <input type="tel" name="phone" placeholder="Phone / WhatsApp">
             </div>
-            <textarea name="message" placeholder="Tell us which design number you want and what edits are needed"></textarea>
+            <textarea name="message" placeholder="Which design do you want? Any changes needed?" required></textarea>
             <div class="button-row">
-              <button type="submit" class="primary-link" style="border: none; cursor: pointer;">Send Enquiry</button>
-              <a href="https://wa.me/916395906067" class="outline-link" target="_blank" rel="noopener noreferrer">WhatsApp Kritika</a>
-              <a href="tel:+919312645200" class="ghost-link">Call Suresh ji</a>
+              <a href="https://wa.me/916395906067" class="primary-link" target="_blank" rel="noopener noreferrer">WhatsApp Kritika</a>
+              <a href="tel:+919312645200" class="outline-link">Call Suresh ji</a>
             </div>
           </form>
         </article>
