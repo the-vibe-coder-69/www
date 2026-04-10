@@ -710,9 +710,6 @@ function buildHeader(currentPage) {
           <a href="${buildPath("/web-design-list/")}">All Designs</a>
           <a href="${buildPath("/web-design-pricing.html")}">Pricing</a>
           ${currentPage ? `<a href="#services">Services</a><a href="#contact">Contact Layout</a>` : `<a href="#premium">Modern Set</a><a href="#classic">Classic Set</a>`}
-          <button class="theme-toggle" aria-label="Toggle dark mode" style="padding: 6px 12px; font-size: 0.75rem; background: none; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; color: var(--text); margin-left: 8px;">
-            <span aria-hidden="true">&#9790;</span>
-          </button>
         </nav>
       </div>
     </header>
