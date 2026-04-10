@@ -2,7 +2,7 @@
   /* Light Mode (Option A: Warm off-white) */
   --bg: #fdfaf6;
   --text: #1a1a1a;
-  --text-muted: #666666;
+  --text-muted: #4b5563;
   --accent: #0055ff;
   --accent-soft: rgba(0, 85, 255, 0.05);
   --border: rgba(0, 0, 0, 0.08);
@@ -218,7 +218,7 @@ header .container {
 }
 
 .card p {
-  color: var(--text-muted);
+  color: #374151;
   font-size: 1rem;
   margin-bottom: 24px;
 }
@@ -269,8 +269,9 @@ header .container {
 
 .index-item span {
   display: block;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.9rem;
+  color: #374151;
+  margin-top: 4px;
 }
 
 /* Footer */

@@ -512,13 +512,15 @@ h2 {
 
 .device-drive-points span {
   padding: 0.8rem 1rem;
-  color: #e4eeff;
+  color: #132033;
   font-weight: 700;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 16px 36px rgba(7, 16, 28, 0.12);
 }
 
 .device-drive-notes div {
   padding: 0.95rem 1rem;
-  color: var(--muted);
+  color: var(--text);
 }
 
 .device-drive-visual {
@@ -542,6 +544,7 @@ h2 {
   left: 1rem;
   right: 1rem;
   bottom: 1rem;
+  max-width: 24rem;
   padding: 1rem 1.1rem;
   border-radius: 22px;
   background: rgba(8, 13, 24, 0.84);
@@ -555,7 +558,7 @@ h2 {
 }
 
 .device-drive-stamp span {
-  color: var(--muted);
+  color: rgba(239, 243, 255, 0.9);
   line-height: 1.65;
 }
 
@@ -708,7 +711,7 @@ h2 {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
-  color: #fff;
+  color: var(--text);
   cursor: pointer;
 }
 
@@ -738,7 +741,7 @@ h2 {
 }
 
 .contact-box a {
-  color: #fff;
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -797,6 +800,13 @@ h2 {
 }
 
 .footer-section a {
+  color: var(--text);
+}
+
+[data-theme="dark"] .device-drive-points span,
+[data-theme="dark"] .copy-btn,
+[data-theme="dark"] .contact-box a,
+[data-theme="dark"] .footer-section a {
   color: #fff;
 }
 
@@ -925,6 +935,10 @@ h2 {
 
   .device-drive-visual {
     min-height: 360px;
+  }
+
+  .device-drive-stamp {
+    max-width: none;
   }
 
   .slider-labels,
