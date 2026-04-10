@@ -142,7 +142,7 @@ h4,
 
 .tagline {
   display: block;
-  color: var(--muted);
+  color: color-mix(in srgb, var(--text) 74%, white 26%);
   font-size: 0.82rem;
 }
 
@@ -532,11 +532,72 @@ h2 {
   min-height: 520px;
 }
 
+.device-drive-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 16, 28, 0.05) 0%, rgba(7, 16, 28, 0.55) 100%);
+  pointer-events: none;
+}
+
 .device-drive-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.device-drive-graphic {
+  height: 100%;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.95rem;
+  background:
+    radial-gradient(circle at top right, rgba(123, 228, 178, 0.22), transparent 38%),
+    radial-gradient(circle at bottom left, rgba(101, 95, 255, 0.22), transparent 42%),
+    linear-gradient(180deg, #102034 0%, #0a1526 100%);
+  color: #f5f8ff;
+}
+
+.device-drive-graphic span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.device-drive-graphic strong {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.device-drive-graphic p {
+  max-width: 26rem;
+  color: rgba(245, 248, 255, 0.82);
+  line-height: 1.7;
+}
+
+.device-drive-tags {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.device-drive-tags b {
+  padding: 0.65rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.86rem;
 }
 
 .device-drive-stamp {
@@ -658,7 +719,7 @@ h2 {
 .upi-detail .value,
 .info-row .value,
 .stat-number {
-  color: #fff;
+  color: var(--text);
   font-weight: 800;
 }
 
@@ -805,6 +866,10 @@ h2 {
 
 [data-theme="dark"] .device-drive-points span,
 [data-theme="dark"] .copy-btn,
+[data-theme="dark"] .amount-display .value,
+[data-theme="dark"] .upi-detail .value,
+[data-theme="dark"] .info-row .value,
+[data-theme="dark"] .stat-number,
 [data-theme="dark"] .contact-box a,
 [data-theme="dark"] .footer-section a {
   color: #fff;
