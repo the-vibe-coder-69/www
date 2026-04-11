@@ -1,10 +1,15 @@
 {
   "scripts": {
+    "start": "node server.js",
     "qa": "playwright test",
     "qa:update-screens": "playwright test tests/site.qa.spec.js --grep @screens",
     "qa:headed": "playwright test --headed",
     "qa:vision": "node qa/vision-review.mjs",
     "qa:style": "npm run qa:update-screens && node qa/vision-review.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "playwright": "^1.58.2"

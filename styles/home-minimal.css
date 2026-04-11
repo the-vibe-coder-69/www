@@ -232,6 +232,37 @@ header .container {
   color: var(--accent);
 }
 
+/* Accessibility: Focus styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skiplink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 8px 16px;
+  z-index: 1000;
+  font-weight: 600;
+}
+
+.skiplink:focus {
+  top: 0;
+}
+
+[data-theme="dark"] .skiplink {
+  color: var(--bg);
+}
+
 /* Route Index */
 .route-index {
   padding: 80px 0;

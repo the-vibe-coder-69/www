@@ -98,6 +98,16 @@ p {
     background-color: var(--gray-50);
 }
 
+/* Accessibility: Focus visibility for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 /* WhatsApp Button Styling */
 .btn-whatsapp {
     background-color: #25D366 !important;
