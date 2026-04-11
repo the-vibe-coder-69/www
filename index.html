@@ -10,8 +10,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Manrope';
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Syne';
+            font-display: swap;
+        }
+    </style>
     
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles/home-minimal.css">
@@ -22,11 +32,11 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo">THE VIBE CODER</a>
-            <div class="header-actions" style="display: flex; gap: 12px; align-items: center;">
-                <a href="internship.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem; border: 1px solid var(--accent); color: var(--accent);">Explore Opportunities</a>
-                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem; background: var(--accent); color: white; border: none;" target="_blank" rel="noopener noreferrer">Build Projects</a>
-                <button class="theme-toggle" aria-label="Toggle dark mode" style="padding: 6px 12px; font-size: 0.75rem;">
-                    <span>🌙</span>
+            <div class="header-actions">
+                <a href="internship.html" class="btn btn-secondary header-btn">Explore Opportunities</a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="btn btn-primary header-btn" target="_blank" rel="noopener noreferrer">Build Projects</a>
+                <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
+                    <span aria-hidden="true">🌙</span>
                 </button>
             </div>
         </div>
