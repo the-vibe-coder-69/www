@@ -387,4 +387,19 @@ footer .container {
   .card {
     min-height: auto;
   }
+
+  .btn {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 14px 24px;
+  }
+}
+
+.card {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card:active {
+  transform: scale(0.98);
 }

@@ -64,7 +64,7 @@ test("philosophy page renders primary CTA and gallery entry @screens", async ({ 
 
   await expect(page).toHaveTitle(/Code Meets Emotion/i);
   await expect(page.getByRole("heading", { level: 1, name: /Code meets/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Explore Gallery/i })).toHaveAttribute("href", "web-design-list/");
+  await expect(page.getByRole("link", { name: /Contact on WhatsApp/i })).toHaveAttribute("href", /wa\.me/);
   await expect(page.getByRole("link", { name: /Let's Connect/i })).toHaveAttribute("href", /wa\.me/);
 
   await capture(page, "the-vibe-coder");
