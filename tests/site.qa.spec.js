@@ -37,6 +37,8 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
+// ===== Existing Core Tests =====
+
 test("home route loads core links and captures screenshot @screens", async ({ page }) => {
   await page.goto("/index.html");
 
@@ -133,6 +135,8 @@ test("shayari search and random stay functional", async ({ page }) => {
   await expect(page.locator(".shayari-card")).toHaveCount(1);
 });
 
+// ===== New Home Page Feature Tests =====
+
 test("home page updated hero rebrand", async ({ page }) => {
   await page.goto("/index.html");
 
@@ -198,4 +202,112 @@ test("_explorations agents expand on click", async ({ page }) => {
 
   await page.locator(".agent-item:has-text('Multica')").click();
   await expect(page.locator(".agent-item:has-text('Multica') .agent-note")).toContainText("Task management");
+});
+
+// ===== Additional Page Tests =====
+
+test("deep market online homepage loads @screens", async ({ page }) => {
+  await page.goto("/deep-market-online/index.html");
+
+  await expect(page).toHaveTitle(/Deep Market Online/i);
+  await expect(page.locator("body")).toContainText("Deep Market");
+
+  await capture(page, "deep-market-online");
+});
+
+test("deep market curations page loads @screens", async ({ page }) => {
+  await page.goto("/deep-market-online/curations.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "deep-market-curations");
+});
+
+test("deep market spotlights page loads @screens", async ({ page }) => {
+  await page.goto("/deep-market-online/spotlights.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "deep-market-spotlights");
+});
+
+test("deep market how it works page loads @screens", async ({ page }) => {
+  await page.goto("/deep-market-online/how-it-works.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "deep-market-how-it-works");
+});
+
+test("deep market product page loads @screens", async ({ page }) => {
+  await page.goto("/deep-market-online/product.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "deep-market-product");
+});
+
+test("card page loads @screens", async ({ page }) => {
+  await page.goto("/card.html");
+
+  await expect(page).toHaveTitle(/Services Card|Vibe Coder/i);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "card");
+});
+
+test("contact page loads @screens", async ({ page }) => {
+  await page.goto("/contact.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "contact");
+});
+
+test("internship page loads @screens", async ({ page }) => {
+  await page.goto("/internship.html");
+
+  await expect(page).toHaveTitle(/Apprenticeship|Vibe Coder/i);
+
+  await capture(page, "internship");
+});
+
+test("local market drops homepage loads @screens", async ({ page }) => {
+  await page.goto("/local-market-drops/index.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "local-market-drops");
+});
+
+test("local market gifting chocolates page loads @screens", async ({ page }) => {
+  await page.goto("/local-market-drops/gifting-chocolates.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "gifting-chocolates");
+});
+
+test("local market fashion purses page loads @screens", async ({ page }) => {
+  await page.goto("/local-market-drops/fast-fashion-purses.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "fast-fashion-purses");
+});
+
+test("shayari audio page loads @screens", async ({ page }) => {
+  await page.goto("/shayari-audio.html");
+
+  await expect(page).toHaveTitle(/Shayari|Audio/i);
+
+  await capture(page, "shayari-audio");
+});
+
+test("lastminute app homepage loads @screens", async ({ page }) => {
+  await page.goto("/lastminute/index.html");
+
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await capture(page, "lastminute");
 });
