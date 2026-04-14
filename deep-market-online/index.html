@@ -3,343 +3,1247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Market Online | Bazaar Chic Discovery</title>
-    <!-- Fonts -->
+    <title>Deep Market Online | Isometric Bazaar Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
     <script src="../theme.js"></script>
-    <script>
-        tailwind.config = {
-            darkMode: ['selector', '[data-theme="dark"]'],
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#C84B31', // Terracotta
-                        background: 'var(--bg)',
-                        surface: 'var(--surface)',
-                        text: 'var(--text)',
-                        muted: 'var(--muted)',
-                        accent: '#E9A33A', // Mustard
-                    },
-                    fontFamily: {
-                        heading: ['Fraunces', 'serif'],
-                        body: ['DM Sans', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        'card': '16px',
-                        'button': '8px',
-                    },
-                    boxShadow: {
-                        'soft': '0 12px 24px -4px rgba(45, 40, 37, 0.04)',
-                    }
-                }
-            }
-        }
-    </script>
     
-    <!-- Alpine.js -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <style type="text/tailwindcss">
+    <style>
         :root {
-            --bg: #F4EFE6;
-            --surface: #FCFAF8;
-            --text: #2D2825;
-            --muted: #8C827A;
+            --bg: #faf8f5;
+            --text: #1a1814;
+            --muted: #7a756d;
+            --primary: #c84b31;
+            --accent: #e9a33a;
+            --surface: #ffffff;
+            --shop-toys: #e879f9;
+            --shop-accessories: #f472b6;
+            --shop-decor: #a78bfa;
+            --shop-textiles: #34d399;
+            --shop-electronics: #60a5fa;
         }
+        
         [data-theme="dark"] {
-            --bg: #070b16;
-            --surface: rgba(255, 255, 255, 0.05);
-            --text: #eaf0ff;
-            --muted: #9da9c9;
+            --bg: #0c0c08;
+            --text: #f0ece6;
+            --muted: #6b6660;
+            --surface: #1a1814;
         }
-        @layer base {
-            body {
-                @apply bg-background text-text font-body antialiased;
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Isometric Container */
+        .iso-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg) 0%, #f0ebe3 50%, var(--bg) 100%);
+            perspective: 1000px;
+        }
+        
+        [data-theme="dark"] .iso-container {
+            background: linear-gradient(135deg, #0c0c08 0%, #141410 50%, #0c0c08 100%);
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            opacity: 0.3;
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            25% { transform: translateY(-100px) translateX(20px); opacity: 0.1; }
+            50% { transform: translateY(-200px) translateX(-10px); opacity: 0.3; }
+            75% { transform: translateY(-300px) translateX(15px); opacity: 0.1; }
+        }
+        
+        /* Header */
+        .iso-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+        }
+        
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        .header-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .header-nav a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-btn {
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(200, 75, 49, 0.4);
+        }
+        
+        /* Main isometric stage */
+        .iso-stage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg);
+            width: 1200px;
+            height: 800px;
+            transform-style: preserve-3d;
+        }
+        
+        .bazaar-ground {
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0px,
+                    transparent 99px,
+                    rgba(200,75,49,0.05) 99px,
+                    rgba(200,7549,0.05) 100px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0px,
+                    transparent 99px,
+                    rgba(200,75,49,0.05) 99px,
+                    rgba(200,75,49,0.05) 100px
+                );
+            background-color: var(--surface);
+            border-radius: 24px;
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.05),
+                0 40px 80px rgba(0,0,0,0.15),
+                inset 0 0 100px rgba(0,0,0,0.02);
+        }
+        
+        /* Building blocks */
+        .building {
+            position: absolute;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        
+        .building:hover {
+            transform: translateZ(20px);
+        }
+        
+        .building-front {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to bottom, var(--surface) 0%, #e8e4dd 100%);
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .building-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(to bottom, #d4d0c7 0%, #c4c0b7 100%);
+            transform: skewY(30deg);
+            transform-origin: bottom left;
+            border-radius: 4px;
+        }
+        
+        .building-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(to bottom, #dedad4 0%, #cecabf 100%);
+            transform: skewY(-30deg);
+            transform-origin: bottom right;
+            border-radius: 4px;
+        }
+        
+        .building-roof {
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 40%;
+            background: linear-gradient(to bottom, var(--primary) 0%, #a83d26 100%);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+        
+        /* Shop windows */
+        .shop-window {
+            position: absolute;
+            bottom: 20%;
+            left: 20%;
+            right: 20%;
+            height: 30%;
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .shop-window img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+        
+        /* Shop labels */
+        .shop-label {
+            position: absolute;
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text);
+            color: var(--bg);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        
+        /* Shop pins on map */
+        .shop-pin {
+            position: absolute;
+            width: 48px;
+            height: 56px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+        
+        .shop-pin:hover {
+            transform: translateZ(30px) scale(1.1);
+        }
+        
+        .pin-marker {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .pin-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.5);
+            border: 3px solid white;
+        }
+        
+        .pin-stem {
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--primary) 0%, #a83d26 100%);
+            border-radius: 2px;
+        }
+        
+        .pin-base {
+            width: 32px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50% 50% 4px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .pin-product {
+            position: absolute;
+            top: -40px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(10px) scale(0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .shop-pin:hover .pin-product {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .pin-product img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Exclusive badge */
+        .exclusive-badge {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .shop-pin.exclusive:hover .exclusive-badge {
+            opacity: 1;
+        }
+        
+        /* Floating labels for zones */
+        .zone-label {
+            position: absolute;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Mini map navigation */
+        .mini-map {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            width: 200px;
+            height: 140px;
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.08);
+            z-index: 50;
+        }
+        
+        .mini-map-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+        
+        .mini-map-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+        }
+        
+        .mini-map-cell {
+            aspect-ratio: 1;
+            background: var(--bg);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .mini-map-cell:hover {
+            background: var(--primary);
+        }
+        
+        .mini-map-cell.active {
+            background: var(--primary);
+        }
+        
+        .mini-map-cell::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.5rem;
+            color: var(--muted);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .mini-map-cell:hover::after {
+            opacity: 1;
+        }
+        
+        /* Category filter pills */
+        .category-filters {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            padding: 12px 24px;
+            background: var(--surface);
+            border-radius: 100px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.08);
+            z-index: 50;
+        }
+        
+        .filter-pill {
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            background: var(--bg);
+            color: var(--text);
+        }
+        
+        .filter-pill:hover, .filter-pill.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Shop Modal */
+        .shop-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .shop-modal.open {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--surface);
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalIn 0.4s ease;
+        }
+        
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
             }
-            h1, h2, h3, h4 {
-                @apply font-heading font-semibold;
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
-        @layer components {
-            .btn-primary {
-                @apply bg-primary text-background px-8 py-4 rounded-button font-bold transition-all duration-300 hover:opacity-90 active:scale-95 text-sm uppercase tracking-wider;
-            }
-            .product-card {
-                @apply bg-surface rounded-card p-4 shadow-soft transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl;
-            }
-            /* Playful Asymmetry: Offset columns */
-            .asymmetric-grid > div:nth-child(2) {
-                @apply md:mt-16; /* Column 2 offset by 64px */
-            }
-            .asymmetric-grid > div:nth-child(3) {
-                @apply md:mt-32; /* Further offset for more playfulness */
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            padding: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, #a83d26 100%);
+            color: white;
+            border-radius: 24px 24px 0 0;
+        }
+        
+        .modal-shop-name {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .modal-shop-type {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        .modal-body {
+            padding: 32px;
+        }
+        
+        .featured-product {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .featured-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: var(--bg);
+        }
+        
+        .featured-info h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+        
+        .featured-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .featured-desc {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        
+        .catalog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .catalog-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+        }
+        
+        .catalog-badge {
+            background: var(--accent);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* Legend */
+        .legend {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--surface);
+            padding: 20px 24px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.08);
+            z-index: 50;
+        }
+        
+        .legend-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+        
+        .legend-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        /* Info Panel */
+        .info-panel {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            width: 280px;
+            background: var(--surface);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.08);
+            z-index: 50;
+        }
+        
+        .info-panel h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .info-panel p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 16px;
+            background: var(--bg);
+            border-radius: 12px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .iso-header {
+                padding: 16px 20px;
             }
             
-            .no-scrollbar::-webkit-scrollbar {
+            .header-nav {
                 display: none;
             }
-            .no-scrollbar {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
+            
+            .iso-stage {
+                width: 400px;
+                height: 300px;
             }
+            
+            .category-filters {
+                top: 80px;
+                padding: 8px 16px;
+                gap: 8px;
+            }
+            
+            .filter-pill {
+                padding: 6px 14px;
+                font-size: 0.65rem;
+            }
+            
+            .info-panel {
+                display: none;
+            }
+            
+            .mini-map {
+                width: 160px;
+                height: 100px;
+                bottom: 20px;
+                left: 20px;
+                padding: 12px;
+            }
+            
+            .legend {
+                bottom: 20px;
+                right: 20px;
+                padding: 16px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .shop-pin:hover .pin-dot {
+            animation: pulse 1s infinite;
+        }
+        
+        /* Scroll hint */
+        .scroll-hint {
+            position: fixed;
+            bottom: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
         }
     </style>
 </head>
-<body x-data="{ mobileMenu: false }">
-
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b border-muted/10">
-        <div class="container mx-auto px-8 py-5 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-heading font-bold text-primary tracking-tight">Deep Market Online</a>
-            
-            <nav class="hidden md:flex space-x-10 text-[13px] font-medium uppercase tracking-[2px]">
-                <a href="curations.html" class="hover:text-primary transition-colors">The Curations</a>
-                <a href="spotlights.html" class="hover:text-primary transition-colors">Shop Spotlights</a>
-                <a href="how-it-works.html" class="hover:text-primary transition-colors">How it works</a>
+<body>
+    <div class="iso-container" id="isoContainer">
+        <!-- Floating particles -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- Header -->
+        <header class="iso-header">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">D</div>
+                Deep Market
+            </a>
+            <nav class="header-nav">
+                <a href="curations.html">Curations</a>
+                <a href="spotlights.html">Spotlights</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="#" class="cta-btn">Explore Map</a>
             </nav>
+            <button class="theme-toggle" style="background: var(--surface); border: none; padding: 10px; border-radius: 50%; cursor: pointer; font-size: 1.2rem;">🌙</button>
+        </header>
+        
+        <!-- Category Filters -->
+        <div class="category-filters">
+            <button class="filter-pill active" data-category="all">All</button>
+            <button class="filter-pill" data-category="toys">🧸 Toys</button>
+            <button class="filter-pill" data-category="accessories">💎 Accessories</button>
+            <button class="filter-pill" data-category="textiles">🧵 Textiles</button>
+            <button class="filter-pill" data-category="decor">🏺 Decor</button>
+            <button class="filter-pill" data-category="electronics">📱 Electronics</button>
+        </div>
+        
+        <!-- Isometric Stage -->
+        <div class="iso-stage" id="isoStage">
+            <div class="bazaar-ground"></div>
             
-            <div class="flex items-center space-x-6">
-                <a href="https://wa.me/919999999999" class="hidden md:block btn-primary py-3 px-6 text-xs" target="_blank" rel="noopener noreferrer">Claim on WhatsApp</a>
-                <button class="theme-toggle p-2 rounded-full hover:bg-muted/10 transition-colors" aria-label="Toggle dark mode">
-                    <span>🌙</span>
-                </button>
-                <button class="md:hidden" @click="mobileMenu = !mobileMenu">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+            <!-- Zone Labels -->
+            <div class="zone-label" style="top: 60px; left: 100px;">Toys & Games</div>
+            <div class="zone-label" style="top: 60px; right: 150px;">Accessories</div>
+            <div class="zone-label" style="bottom: 150px; left: 80px;">Textiles</div>
+            <div class="zone-label" style="bottom: 150px; right: 100px;">Decor</div>
+            <div class="zone-label" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">Electronics</div>
+            
+            <!-- Buildings (decorative) -->
+            <div class="building" style="width: 120px; height: 100px; top: 100px; left: 80px;">
+                <div class="building-front"></div>
+                <div class="building-left"></div>
+                <div class="building-right"></div>
+                <div class="building-roof"></div>
+                <div class="shop-window">
+                    <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=200" alt="">
+                </div>
+                <div class="shop-label">Sharma Toys</div>
+            </div>
+            
+            <div class="building" style="width: 140px; height: 120px; top: 80px; right: 120px;">
+                <div class="building-front"></div>
+                <div class="building-left"></div>
+                <div class="building-right"></div>
+                <div class="building-roof"></div>
+                <div class="shop-window">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=200" alt="">
+                </div>
+                <div class="shop-label">Gupta Jewel</div>
+            </div>
+            
+            <div class="building" style="width: 100px; height: 80px; bottom: 100px; left: 60px;">
+                <div class="building-front"></div>
+                <div class="building-left"></div>
+                <div class="building-right"></div>
+                <div class="building-roof"></div>
+                <div class="shop-window">
+                    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200" alt="">
+                </div>
+                <div class="shop-label">Textile Hub</div>
+            </div>
+            
+            <div class="building" style="width: 130px; height: 110px; bottom: 80px; right: 80px;">
+                <div class="building-front"></div>
+                <div class="building-left"></div>
+                <div class="building-right"></div>
+                <div class="building-roof"></div>
+                <div class="shop-window">
+                    <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=200" alt="">
+                </div>
+                <div class="shop-label">Art House</div>
+            </div>
+            
+            <!-- Shop Pins -->
+            <div class="shop-pin" style="top: 160px; left: 280px;" data-shop="toys" data-exclusive="false">
+                <div class="pin-product">
+                    <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=100" alt="">
+                </div>
+                <div class="pin-marker">
+                    <div class="pin-dot" style="background: var(--shop-toys);"></div>
+                    <div class="pin-stem"></div>
+                    <div class="pin-base">🎁</div>
+                </div>
+            </div>
+            
+            <div class="shop-pin exclusive" style="top: 180px; right: 280px;" data-shop="accessories" data-exclusive="true">
+                <div class="exclusive-badge">Exclusive</div>
+                <div class="pin-product">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=100" alt="">
+                </div>
+                <div class="pin-marker">
+                    <div class="pin-dot" style="background: var(--shop-accessories);"></div>
+                    <div class="pin-stem"></div>
+                    <div class="pin-base">💎</div>
+                </div>
+            </div>
+            
+            <div class="shop-pin" style="bottom: 200px; left: 250px;" data-shop="textiles" data-exclusive="false">
+                <div class="pin-product">
+                    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100" alt="">
+                </div>
+                <div class="pin-marker">
+                    <div class="pin-dot" style="background: var(--shop-textiles);"></div>
+                    <div class="pin-stem"></div>
+                    <div class="pin-base">🧵</div>
+                </div>
+            </div>
+            
+            <div class="shop-pin exclusive" style="bottom: 220px; right: 260px;" data-shop="decor" data-exclusive="true">
+                <div class="exclusive-badge">Exclusive</div>
+                <div class="pin-product">
+                    <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=100" alt="">
+                </div>
+                <div class="pin-marker">
+                    <div class="pin-dot" style="background: var(--shop-decor);"></div>
+                    <div class="pin-stem"></div>
+                    <div class="pin-base">🏺</div>
+                </div>
+            </div>
+            
+            <div class="shop-pin" style="top: 50%; left: 50%; transform: translate(-50%, -20%);" data-shop="electronics" data-exclusive="false">
+                <div class="pin-product">
+                    <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=100" alt="">
+                </div>
+                <div class="pin-marker">
+                    <div class="pin-dot" style="background: var(--shop-electronics);"></div>
+                    <div class="pin-stem"></div>
+                    <div class="pin-base">📱</div>
+                </div>
             </div>
         </div>
-    </header>
-
-    <main>
-        <!-- Hero Split: Editorial Layout -->
-        <section class="flex flex-col md:flex-row min-h-[90vh]">
-            <div class="md:w-[45%] bg-primary text-background p-12 md:p-32 flex flex-col justify-center relative overflow-hidden">
-                <div class="relative z-10">
-                    <span class="text-xs font-bold uppercase tracking-[4px] opacity-70 mb-6 block">Ashok Vihar, Delhi</span>
-                    <h1 class="text-6xl md:text-8xl mb-8 leading-[0.9] tracking-tighter italic">Bazaar Finds,<br>Polished for You.</h1>
-                    <p class="text-xl mb-12 opacity-90 max-w-md font-light leading-relaxed">A curated, discovery-first engine bringing hidden market treasures to your screen. From the raw hustle of the shop to a clean, premium aesthetic.</p>
-                    <a href="curations.html" class="bg-background text-primary px-10 py-5 rounded-button font-bold inline-block hover:bg-accent hover:text-text transition-all transform hover:-translate-y-1 shadow-lg">Explore the Weekly Drop</a>
-                </div>
-                <!-- Decorative element -->
-                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"></div>
-            </div>
-            <div class="md:w-[55%] relative h-[500px] md:h-auto group">
-                <img src="https://images.unsplash.com/photo-1555529669-e69e730f162b?auto=format&fit=crop&q=80&w=2000" alt="Bazaar Lifestyle" class="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
-                <div class="absolute inset-0 bg-gradient-to-t from-text/40 to-transparent opacity-60"></div>
-                
-                <div class="absolute bottom-12 left-12 bg-surface p-8 rounded-card max-w-sm shadow-2xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
-                    <span class="text-[10px] uppercase tracking-[3px] font-bold text-muted mb-3 block">Spotlight No. 01</span>
-                    <h3 class="text-3xl mb-4 italic leading-tight text-primary">The Vintage Brass Collector</h3>
-                    <p class="text-sm text-muted mb-6 leading-relaxed">Found in the hidden alleyways of Ashok Vihar Phase II. Polished for the modern home, retaining its 1970s soul.</p>
-                    <a href="product.html" class="text-primary font-bold text-xs uppercase tracking-widest border-b-2 border-primary/20 hover:border-primary transition-all pb-1 inline-block">View Full Story →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Curated Finds Grid: Playful Asymmetry -->
-        <section class="container mx-auto px-8 py-32">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
-                <div class="max-w-xl">
-                    <span class="text-xs uppercase tracking-[4px] font-bold text-muted mb-4 block">The Weekly Edit</span>
-                    <h2 class="text-5xl md:text-7xl italic leading-tight">Polished Gems from the Deep Market</h2>
-                </div>
-                <a href="curations.html" class="text-primary font-bold text-sm uppercase tracking-[2px] border-b-2 border-primary/20 hover:border-primary pb-2 transition-all">Browse all Curations</a>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 asymmetric-grid">
-                <!-- Product Card 1: Polished Aesthetic -->
-                <div class="product-card group">
-                    <div class="aspect-[4/5] overflow-hidden rounded-lg mb-8 relative bg-[#F9F7F2]">
-                        <!-- Automagically polished look: clean background, sharp focus -->
-                        <img src="../local-market-drops/assets/chocolates.jpg" alt="Custom Gifting" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
-                        <span class="absolute top-6 left-6 bg-primary text-background text-[10px] font-bold uppercase tracking-[2px] px-4 py-2 rounded-full shadow-lg">Cute Gifting</span>
-                    </div>
-                    <div class="flex justify-between items-end">
-                        <div class="max-w-[70%]">
-                            <h3 class="text-2xl italic mb-2 leading-tight">Customized Gifting Chocolates</h3>
-                            <p class="text-muted text-[11px] uppercase tracking-[2px] font-bold">Ashok Vihar • Sweets</p>
-                        </div>
-                        <span class="text-primary font-heading font-bold text-xl italic">₹499+</span>
-                    </div>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div class="product-card group">
-                    <div class="aspect-[4/5] overflow-hidden rounded-lg mb-8 relative bg-white">
-                        <img src="../local-market-drops/assets/purses.jpg" alt="Fashion Bags" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
-                        <span class="absolute top-6 left-6 bg-accent text-text text-[10px] font-bold uppercase tracking-[2px] px-4 py-2 rounded-full shadow-lg">Fast Fashion</span>
-                    </div>
-                    <div class="flex justify-between items-end">
-                        <div class="max-w-[70%]">
-                            <h3 class="text-2xl italic mb-2 leading-tight">Casual Daily Purses</h3>
-                            <p class="text-muted text-[11px] uppercase tracking-[2px] font-bold">Deep Market • Accessories</p>
-                        </div>
-                        <span class="text-primary font-heading font-bold text-xl italic">₹899+</span>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="product-card group">
-                    <div class="aspect-[4/5] overflow-hidden rounded-lg mb-8 relative bg-[#F9F7F2]">
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800" alt="Vintage Piece" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
-                        <span class="absolute top-6 left-6 bg-text text-background text-[10px] font-bold uppercase tracking-[2px] px-4 py-2 rounded-full shadow-lg">One-of-one</span>
-                    </div>
-                    <div class="flex justify-between items-end">
-                        <div class="max-w-[70%]">
-                            <h3 class="text-2xl italic mb-2 leading-tight">Vintage Brass Tiffin Box</h3>
-                            <p class="text-muted text-[11px] uppercase tracking-[2px] font-bold">Market Lane 4 • Decor</p>
-                        </div>
-                        <span class="text-primary font-heading font-bold text-xl italic">₹3,450</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Video Banner: Transition to RAW -->
-        <section class="relative h-[60vh] overflow-hidden flex items-center justify-center">
-            <iframe class="absolute inset-0 w-full h-full scale-150 grayscale opacity-40" 
-                    src="https://www.youtube.com/embed/H_5v8x8o0k8?autoplay=1&mute=1&controls=0&loop=1&playlist=H_5v8x8o0k8" 
-                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
-            <div class="relative z-10 text-center px-6">
-                <h2 class="text-5xl md:text-8xl italic text-background mix-blend-difference leading-[0.8] mb-8">Raw Hustle.<br>Authentic Souls.</h2>
-                <a href="spotlights.html" class="inline-block text-background font-bold uppercase tracking-[4px] border-b-2 border-background pb-2 hover:text-accent hover:border-accent transition-all">Meet the Shop Owners</a>
-            </div>
-        </section>
-
-        <!-- Shop Spotlights: Horizontal Scroll of RAW Footage -->
-        <section class="bg-surface py-32 border-y border-muted/10">
-            <div class="container mx-auto px-8">
-                <div class="flex justify-between items-end mb-16">
-                    <div>
-                        <span class="text-xs uppercase tracking-[4px] font-bold text-muted mb-4 block">The Shop Spotlights</span>
-                        <h2 class="text-4xl md:text-6xl italic leading-tight">The Unfiltered Bazaar</h2>
-                    </div>
-                    <p class="text-muted max-w-xs text-sm italic font-light">Real market footage. Real textures. Captured exactly as it is.</p>
-                </div>
-                
-                <div class="flex overflow-x-auto pb-12 space-x-8 snap-x no-scrollbar -mx-4 px-4">
-                    <!-- Shop Reel Card 1: Sharma Textiles -->
-                    <div class="flex-none w-[320px] md:w-[400px] aspect-[9/16] bg-text rounded-card overflow-hidden relative group snap-start cursor-pointer shadow-2xl">
-                        <iframe class="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-500 scale-110 pointer-events-none" 
-                                src="https://www.youtube.com/embed/v9A_Xk2xY1I?controls=0&mute=1&autoplay=0" frameborder="0"></iframe>
-                        
-                        <div class="absolute inset-0 bg-gradient-to-t from-text/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
-                        
-                        <!-- Metadata Overlay -->
-                        <div class="absolute bottom-8 left-8 right-8">
-                            <span class="text-[10px] font-bold uppercase tracking-[4px] text-accent mb-2 block">Shop Spotlight</span>
-                            <h4 class="text-3xl italic font-medium text-background leading-tight mb-2">Sharma Textiles</h4>
-                            <p class="text-xs text-background/60 uppercase tracking-[2px] font-bold">Featured: Hand-woven Ikat</p>
-                        </div>
-                        
-                        <!-- Play Indicator -->
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div class="w-20 h-20 bg-background/20 rounded-full flex items-center justify-center backdrop-blur-md border border-background/30">
-                                <svg class="w-10 h-10 text-background" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Shop Reel Card 2: Gupta Ceramic House -->
-                    <div class="flex-none w-[320px] md:w-[400px] aspect-[9/16] bg-text rounded-card overflow-hidden relative group snap-start cursor-pointer shadow-2xl">
-                        <iframe class="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-500 scale-110 pointer-events-none" 
-                                src="https://www.youtube.com/embed/H_5v8x8o0k8?controls=0&mute=1&autoplay=0" frameborder="0"></iframe>
-                        <div class="absolute inset-0 bg-gradient-to-t from-text/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
-                        <div class="absolute bottom-8 left-8 right-8">
-                            <span class="text-[10px] font-bold uppercase tracking-[4px] text-accent mb-2 block">Shop Spotlight</span>
-                            <h4 class="text-3xl italic font-medium text-background leading-tight mb-2">Gupta Ceramic House</h4>
-                            <p class="text-xs text-background/60 uppercase tracking-[2px] font-bold">Featured: Blue Glazed Pottery</p>
-                        </div>
-                    </div>
-
-                    <!-- Shop Reel Card 3: New Look Accessories -->
-                    <div class="flex-none w-[320px] md:w-[400px] aspect-[9/16] bg-text rounded-card overflow-hidden relative group snap-start cursor-pointer shadow-2xl">
-                        <iframe class="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-500 scale-110 pointer-events-none" 
-                                src="https://www.youtube.com/embed/v5W8T8z8o0A?controls=0&mute=1&autoplay=0" frameborder="0"></iframe>
-                        <div class="absolute inset-0 bg-gradient-to-t from-text/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
-                        <div class="absolute bottom-8 left-8 right-8">
-                            <span class="text-[10px] font-bold uppercase tracking-[4px] text-accent mb-2 block">Shop Spotlight</span>
-                            <h4 class="text-3xl italic font-medium text-background leading-tight mb-2">New Look Accessories</h4>
-                            <p class="text-xs text-background/60 uppercase tracking-[2px] font-bold">Featured: Trending Totes</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- How It Works: Minimal Editorial 3-Step -->
-        <section class="container mx-auto px-8 py-32 text-center">
-            <span class="text-xs uppercase tracking-[4px] font-bold text-muted mb-4 block">The Concierge Process</span>
-            <h2 class="text-5xl md:text-7xl italic mb-24">Three Steps to Local Treasures</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-6xl mx-auto">
-                <div class="group">
-                    <div class="w-24 h-24 bg-accent/20 rounded-full flex items-center justify-center text-primary mx-auto mb-10 text-3xl font-heading font-bold italic group-hover:bg-primary group-hover:text-background transition-all duration-500">01</div>
-                    <h3 class="text-3xl italic mb-4">Discover</h3>
-                    <p class="text-muted leading-relaxed font-light">Browse polished curations or raw spotlights. Find your obsession.</p>
-                </div>
-                <div class="group">
-                    <div class="w-24 h-24 bg-accent/20 rounded-full flex items-center justify-center text-primary mx-auto mb-10 text-3xl font-heading font-bold italic group-hover:bg-primary group-hover:text-background transition-all duration-500">02</div>
-                    <h3 class="text-3xl italic mb-4">Claim</h3>
-                    <p class="text-muted leading-relaxed font-light">Initiate a direct WhatsApp conversation with our deep market concierge.</p>
-                </div>
-                <div class="group">
-                    <div class="w-24 h-24 bg-accent/20 rounded-full flex items-center justify-center text-primary mx-auto mb-10 text-3xl font-heading font-bold italic group-hover:bg-primary group-hover:text-background transition-all duration-500">03</div>
-                    <h3 class="text-3xl italic mb-4">Own</h3>
-                    <p class="text-muted leading-relaxed font-light">From the bazaar to your doorstep. Every piece tells a story.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-text text-background py-24">
-        <div class="container mx-auto px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-16 mb-24">
-                <div class="max-w-md">
-                    <h2 class="text-4xl font-heading italic text-primary mb-8 tracking-tighter">Deep Market Online</h2>
-                    <p class="text-muted text-lg leading-relaxed font-light mb-10">Bringing the soul of Ashok Vihar's local markets to the internet. Polished aesthetics, authentic hustles.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="w-12 h-12 border border-muted/30 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                            <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.353 2.612 6.773 6.978 6.973 1.28.057 1.688.072 4.947.072s3.667-.015 4.947-.072c4.351-.2 6.77-2.612 6.97-6.973.058-1.28.073-1.689.073-4.947s-.015-3.667-.072-4.947c-.2-4.349-2.612-6.77-6.973-6.97C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-24">
-                    <div>
-                        <h4 class="text-primary uppercase tracking-[4px] text-[10px] font-bold mb-10">Shop</h4>
-                        <ul class="space-y-6 text-sm text-muted font-light tracking-[1px]">
-                            <li><a href="curations.html" class="hover:text-background transition-colors">The Curations</a></li>
-                            <li><a href="spotlights.html" class="hover:text-background transition-colors">Shop Spotlights</a></li>
-                            <li><a href="#" class="hover:text-background transition-colors">New Drops</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-primary uppercase tracking-[4px] text-[10px] font-bold mb-10">Support</h4>
-                        <ul class="space-y-6 text-sm text-muted font-light tracking-[1px]">
-                            <li><a href="how-it-works.html" class="hover:text-background transition-colors">How it works</a></li>
-                            <li><a href="#" class="hover:text-background transition-colors">Concierge Service</a></li>
-                            <li><a href="#" class="hover:text-background transition-colors">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-12 border-t border-muted/10 text-center text-[10px] uppercase tracking-[3px] text-muted">
-                <p>&copy; 2026 Deep Market Online. A Vibe Coder Project.</p>
+        
+        <!-- Mini Map Navigation -->
+        <div class="mini-map">
+            <div class="mini-map-title">Quick Navigate</div>
+            <div class="mini-map-grid">
+                <div class="mini-map-cell" data-zone="toys" data-label="Toys"></div>
+                <div class="mini-map-cell" data-zone="electronics" data-label="Electronics"></div>
+                <div class="mini-map-cell" data-zone="accessories" data-label="Jewelry"></div>
+                <div class="mini-map-cell" data-zone="textiles" data-label="Textiles"></div>
+                <div class="mini-map-cell" data-zone="decor" data-label="Decor"></div>
+                <div class="mini-map-cell" data-zone="food" data-label="Food"></div>
+                <div class="mini-map-cell" data-zone="wholesale" data-label="Wholesale"></div>
+                <div class="mini-map-cell" data-zone="export" data-label="Export"></div>
             </div>
         </div>
-    </footer>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-title">Categories</div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--shop-toys);"></div>
+                    Toys & Games
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--shop-accessories);"></div>
+                    Accessories
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--shop-textiles);"></div>
+                    Textiles
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--shop-decor);"></div>
+                    Home Decor
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--shop-electronics);"></div>
+                    Electronics
+                </div>
+            </div>
+        </div>
+        
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <h2>Welcome to Deep Market</h2>
+            <p>Explore the isometric bazaar. Click on any shop pin to discover featured products and exclusive catalogs from the heart of Old Delhi's wholesale markets.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Shops</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Exclusive</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Zones</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Vibe</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Hint -->
+        <div class="scroll-hint">
+            <span>Click pins to explore</span>
+            <span>↓</span>
+        </div>
+    </div>
+    
+    <!-- Shop Modal -->
+    <div class="shop-modal" id="shopModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-header">
+                <div class="modal-shop-name" id="modalShopName">Shop Name</div>
+                <div class="modal-shop-type" id="modalShopType">Category • Zone</div>
+            </div>
+            <div class="modal-body">
+                <div class="featured-product">
+                    <img src="" alt="" class="featured-image" id="modalImage">
+                    <div class="featured-info">
+                        <h4 id="modalProductName">Featured Product</h4>
+                        <div class="featured-price" id="modalPrice">₹XXX</div>
+                        <p class="featured-desc" id="modalDesc">Product description goes here...</p>
+                    </div>
+                </div>
+                <a href="#" class="catalog-link" id="modalCatalogLink">
+                    View Full Catalog
+                    <span class="catalog-badge" id="modalBadge">Exclusive</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <!-- WhatsApp Float: Playful and Vibrant -->
-    <a href="https://wa.me/919999999999" class="fixed bottom-10 right-10 bg-accent text-text w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50 group hover:bg-primary hover:text-background" target="_blank" rel="noopener noreferrer">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <span class="absolute right-full mr-8 bg-surface px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-[3px] text-text shadow-2xl opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap pointer-events-none transform translate-x-4 group-hover:translate-x-0">Chat with Concierge</span>
-    </a>
-
+    <script>
+        // Shop data
+        const shops = {
+            toys: {
+                name: "Sharma Toys Emporium",
+                type: "Toys & Games • Zone A",
+                product: "Vintage Mechanical Toy Set",
+                price: "₹2,450",
+                desc: "Hand-crafted mechanical toys from the 1970s. Working gears, original paint, collectible grade.",
+                image: "https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=200",
+                catalog: "curations.html"
+            },
+            accessories: {
+                name: "Gupta Jewel House",
+                type: "Accessories • Zone B",
+                product: "Oxidized Silver Set",
+                price: "₹3,800",
+                desc: "Traditional oxidized jewelry, handcrafted in Moradabad. Perfect for festive seasons.",
+                image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=200",
+                catalog: "curations.html"
+            },
+            textiles: {
+                name: "Textile Hub",
+                type: "Textiles • Zone C",
+                product: "Handloom Cotton Saree",
+                price: "₹4,200",
+                desc: "Pure cotton handloom saree from Bengal. Natural dyes, traditional patterns.",
+                image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200",
+                catalog: "curations.html"
+            },
+            decor: {
+                name: "Art House Decor",
+                type: "Home Decor • Zone D",
+                product: "Brass Wall Art",
+                price: "₹5,600",
+                desc: "Hand-engraved brass wall art featuring traditional Delhi motifs. Made to order.",
+                image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=200",
+                catalog: "curations.html"
+            },
+            electronics: {
+                name: "Tech Plaza",
+                type: "Electronics • Zone E",
+                product: "Vintage Transistor Radio",
+                price: "₹1,800",
+                desc: "Restored vintage transistor radios from the 1960s. Fully functional, authentic sound.",
+                image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200",
+                catalog: "curations.html"
+            }
+        };
+        
+        // Generate particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Pin click handlers
+        document.querySelectorAll('.shop-pin').forEach(pin => {
+            pin.addEventListener('click', () => {
+                const shopType = pin.dataset.shop;
+                const isExclusive = pin.dataset.exclusive === 'true';
+                const shop = shops[shopType];
+                
+                if (shop) {
+                    document.getElementById('modalShopName').textContent = shop.name;
+                    document.getElementById('modalShopType').textContent = shop.type;
+                    document.getElementById('modalProductName').textContent = shop.product;
+                    document.getElementById('modalPrice').textContent = shop.price;
+                    document.getElementById('modalDesc').textContent = shop.desc;
+                    document.getElementById('modalImage').src = shop.image;
+                    document.getElementById('modalBadge').textContent = isExclusive ? 'Exclusive' : 'Featured';
+                    document.getElementById('modalBadge').style.display = isExclusive ? 'inline-block' : 'none';
+                    document.getElementById('modalCatalogLink').href = shop.catalog;
+                    
+                    document.getElementById('shopModal').classList.add('open');
+                }
+            });
+        });
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('shopModal').classList.remove('open');
+        }
+        
+        document.getElementById('shopModal').addEventListener('click', (e) => {
+            if (e.target.id === 'shopModal') {
+                closeModal();
+            }
+        });
+        
+        // Category filter
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                
+                const category = pill.dataset.category;
+                document.querySelectorAll('.shop-pin').forEach(pin => {
+                    if (category === 'all' || pin.dataset.shop === category) {
+                        pin.style.display = 'flex';
+                    } else {
+                        pin.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Mini map navigation
+        document.querySelectorAll('.mini-map-cell').forEach(cell => {
+            cell.addEventListener('click', () => {
+                document.querySelectorAll('.mini-map-cell').forEach(c => c.classList.remove('active'));
+                cell.classList.add('active');
+                
+                // Could add scroll/pan logic here
+                console.log('Navigate to zone:', cell.dataset.zone);
+            });
+        });
+        
+        // Drag to rotate (simplified)
+        let isDragging = false;
+        let startX, startY, rotateZ = 0;
+        
+        document.querySelector('.iso-stage').addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const delta = e.clientX - startX;
+            rotateZ += delta * 0.1;
+            document.querySelector('.iso-stage').style.transform = 
+                `translate(-50%, -50%) rotateX(60deg) rotateZ(${rotateZ}deg)`;
+            startX = e.clientX;
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+        
+        // Touch support for mobile
+        document.querySelector('.iso-stage').addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+        });
+        
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const delta = e.touches[0].clientX - startX;
+            rotateZ += delta * 0.1;
+            document.querySelector('.iso-stage').style.transform = 
+                `translate(-50%, -50%) rotateX(60deg) rotateZ(${rotateZ}deg)`;
+            startX = e.touches[0].clientX;
+        });
+        
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+    </script>
 </body>
 </html>

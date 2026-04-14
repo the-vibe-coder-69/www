@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "ui-audit": {
+      "source": "tommygeoco/ui-audit",
+      "sourceType": "github",
+      "computedHash": "a47ac5842ee16bd2b83a248f360d56b5b63724da1496de4bd2f0d5e58721907a"
+    }
+  }
+}

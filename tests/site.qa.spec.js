@@ -41,7 +41,7 @@ test("home route loads core links and captures screenshot @screens", async ({ pa
   await page.goto("/index.html");
 
   await expect(page).toHaveTitle(/Master Directory/i);
-  await expect(page.getByRole("heading", { level: 1, name: /Every site, experiment, and digital destination/i })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /Every site\. Every experiment\. Every destination\./i })).toBeVisible();
   await expect(page.getByRole("link", { name: /View Philosophy/i })).toHaveAttribute("href", "the-vibe-coder.html");
   await expect(page.getByRole("link", { name: /View Product/i })).toHaveAttribute("href", "vibe-station.html");
 
@@ -131,4 +131,71 @@ test("shayari search and random stay functional", async ({ page }) => {
 
   await page.getByRole("button", { name: /Random/i }).click();
   await expect(page.locator(".shayari-card")).toHaveCount(1);
+});
+
+test("home page updated hero rebrand", async ({ page }) => {
+  await page.goto("/index.html");
+
+  await expect(page.getByRole("heading", { level: 1, name: /Every site\. Every experiment\. Every destination\./i })).toBeVisible();
+  await expect(page.getByText("Digital Experiments")).toBeVisible();
+});
+
+test("home page has quick card as first featured destination", async ({ page }) => {
+  await page.goto("/index.html");
+
+  const cards = page.locator(".card");
+  await expect(cards.first()).toContainText("Quick Card");
+  await expect(cards.first()).toContainText("⚡ Fast shareable profile");
+});
+
+test("home page has highlighted web design services card", async ({ page }) => {
+  await page.goto("/index.html");
+
+  await expect(page.getByRole("heading", { name: "Web Design Services" })).toBeVisible();
+  await expect(page.locator(".card.card-highlight")).toContainText("Web Design Services");
+});
+
+test("home page has deep market online with isometric preview", async ({ page }) => {
+  await page.goto("/index.html");
+
+  await expect(page.getByRole("heading", { name: "Deep Market Online" })).toBeVisible();
+  await expect(page.getByText("🏪 Isometric bazaar experience")).toBeVisible();
+  await expect(page.getByRole("link", { name: /Explore Map/ })).toHaveAttribute("href", "deep-market-online/index.html");
+});
+
+test("home page has terminal portfolio card in featured destinations", async ({ page }) => {
+  await page.goto("/index.html");
+
+  await expect(page.getByRole("heading", { name: "Terminal Portfolio" })).toBeVisible();
+  await expect(page.getByText("🤖 AI-native terminal")).toBeVisible();
+  await expect(page.getByRole("link", { name: /Run Experiment/ })).toHaveAttribute("href", "https://ayush-mandowara.vercel.app");
+});
+
+test("home page shows _explorations section with 8 agents", async ({ page }) => {
+  await page.goto("/index.html");
+
+  await expect(page.getByRole("heading", { name: "_explorations" })).toBeVisible();
+  await expect(page.getByText("[8 agents active — ongoing experiments]")).toBeVisible();
+
+  const agents = page.locator(".agent-item");
+  await expect(agents).toHaveCount(8);
+
+  await expect(page.getByText("OpenCode")).toBeVisible();
+  await expect(page.getByText("Multica")).toBeVisible();
+  await expect(page.getByText("Qwen")).toBeVisible();
+  await expect(page.getByText("OpenClaw")).toBeVisible();
+  await expect(page.getByText("Gemini CLI")).toBeVisible();
+  await expect(page.getByText("Antigravity")).toBeVisible();
+  await expect(page.getByText("ChatGPT Atlas")).toBeVisible();
+  await expect(page.getByText("OpenAI Codex")).toBeVisible();
+});
+
+test("_explorations agents expand on click", async ({ page }) => {
+  await page.goto("/index.html");
+
+  await page.locator(".agent-item:has-text('OpenCode')").click();
+  await expect(page.locator(".agent-item:has-text('OpenCode') .agent-note")).toContainText("Big Pickle model");
+
+  await page.locator(".agent-item:has-text('Multica')").click();
+  await expect(page.locator(".agent-item:has-text('Multica') .agent-note")).toContainText("Task management");
 });
