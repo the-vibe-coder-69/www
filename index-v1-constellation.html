@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibe Coder | Constellation</title>
+    <meta name="description" content="Interactive node map of all Vibe Coder digital properties.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home-minimal.css">
+    <script src="theme.js"></script>
+
+    <style>
+        /* ===== Option 1: Constellation ===== */
+
+        .constellation-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            padding: 100px 0 40px;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Node Map Section */
+        .node-map-section {
+            padding: 40px 0 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .node-map-container {
+            position: relative;
+            width: 100%;
+            min-height: 700px;
+        }
+
+        .node-map-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .node-connection {
+            stroke: var(--accent);
+            stroke-width: 1.5;
+            opacity: 0.15;
+            transition: all 0.5s ease;
+        }
+
+        .node-connection.active {
+            opacity: 0.7;
+            stroke-width: 2.5;
+            filter: drop-shadow(0 0 6px var(--accent));
+        }
+
+        [data-theme="dark"] .node-connection {
+            opacity: 0.2;
+        }
+
+        .node-items {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            padding: 0 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .node-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+
+        .node-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), 0 0 40px var(--accent-soft);
+            z-index: 10;
+        }
+
+        .node-item .node-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .node-item h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .node-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .node-item .node-group-tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .node-item .card-link {
+            font-size: 0.8rem;
+        }
+
+        /* Node Preview Popup */
+        .node-preview {
+            position: absolute;
+            z-index: 9999;
+            width: 360px;
+            max-width: 85vw;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 56px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            transform: scale(0.9) translateY(6px);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+        }
+
+        .node-preview.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .node-preview .preview-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.7rem;
+            font-family: ui-monospace, monospace;
+            color: var(--text-muted);
+        }
+
+        .node-preview .preview-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.6;
+        }
+
+        .node-preview iframe {
+            width: 100%;
+            height: 220px;
+            border: none;
+            background: var(--bg);
+        }
+
+        .node-preview .preview-footer {
+            padding: 6px 14px 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section-v1 {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-section-v1 h2 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            margin-bottom: 12px;
+        }
+
+        .portfolio-section-v1 > .container > p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .portfolio-grid-v1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .portfolio-card-v1 {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .portfolio-card-v1:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-card-v1 .card-type {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 3px 8px;
+            border-radius: 999px;
+            display: inline-block;
+            width: fit-content;
+            font-weight: 700;
+        }
+
+        .portfolio-card-v1 h3 {
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .portfolio-card-v1 p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .portfolio-card-v1 .card-link {
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .node-items {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .node-preview {
+                width: 300px;
+            }
+
+            .node-preview iframe {
+                height: 180px;
+            }
+
+            .portfolio-grid-v1 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Version Nav */
+        .version-nav {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9000;
+            display: flex;
+            gap: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .version-nav a {
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .version-nav a:hover,
+        .version-nav a.active {
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skiplink">Skip to main content</a>
+
+    <!-- Constellation Background Canvas -->
+    <canvas class="constellation-canvas" id="constellationBg"></canvas>
+
+    <!-- Node Preview Popup -->
+    <div class="node-preview" id="nodePreview">
+        <div class="preview-header">
+            <span class="preview-dot"></span>
+            <span class="preview-dot"></span>
+            <span class="preview-dot"></span>
+            <span id="nodePreviewUrl" style="margin-left: 8px;"></span>
+        </div>
+        <iframe id="nodePreviewFrame" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+        <div class="preview-footer" id="nodePreviewLabel">LIVE PREVIEW</div>
+    </div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">THE VIBE CODER</a>
+            <div class="header-actions">
+                <a href="internship.html" class="btn btn-secondary header-btn">Explore Opportunities</a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="btn btn-primary header-btn" target="_blank" rel="noopener noreferrer">Build Projects</a>
+                <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
+                    <span aria-hidden="true">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="container">
+                <span class="eyebrow">The Constellation</span>
+                <h1>Every site connected. Every path visible.</h1>
+                <p>An interactive map of all digital properties. Hover a node to preview. Follow the lines to discover relationships.</p>
+                <div class="hero-actions">
+                    <a href="#nodemap" class="btn btn-primary">Explore the Map</a>
+                    <a href="#portfolios" class="btn btn-secondary">View Templates</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="nodemap" class="node-map-section">
+            <div class="container">
+                <h2 class="section-title">Node Map</h2>
+                <div class="node-map-container" id="nodeMapContainer">
+                    <!-- SVG connections layer -->
+                    <svg class="node-map-svg" id="nodeMapSvg"></svg>
+
+                    <!-- Node items -->
+                    <div class="node-items" id="nodeItems">
+                        <div class="node-item" data-group="core" data-preview="card.html" data-preview-label="Quick Card">
+                            <span class="node-group-tag">Core</span>
+                            <span class="node-icon">⚡</span>
+                            <h3>Quick Card</h3>
+                            <p>Fast shareable profile</p>
+                            <a href="card.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="core" data-preview="web-design-v2/index.html" data-preview-label="Web Design Services">
+                            <span class="node-group-tag">Core</span>
+                            <span class="node-icon">✨</span>
+                            <h3>Web Design Services</h3>
+                            <p>Premium Modern Design Stack</p>
+                            <a href="web-design-v2/index.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="core" data-preview="the-vibe-coder.html" data-preview-label="The Vibe Coder">
+                            <span class="node-group-tag">Core</span>
+                            <span class="node-icon">🧠</span>
+                            <h3>The Vibe Coder</h3>
+                            <p>Code meets emotion</p>
+                            <a href="the-vibe-coder.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="product" data-preview="vibe-station.html" data-preview-label="Vibe Station">
+                            <span class="node-group-tag">Product</span>
+                            <span class="node-icon">🖥️</span>
+                            <h3>Vibe Station</h3>
+                            <p>Turn phone into computer</p>
+                            <a href="vibe-station.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="market" data-preview="deep-market-online/index.html" data-preview-label="Deep Market Online">
+                            <span class="node-group-tag">Market</span>
+                            <span class="node-icon">🏪</span>
+                            <h3>Deep Market Online</h3>
+                            <p>Isometric bazaar experience</p>
+                            <a href="deep-market-online/index.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="market" data-preview="local-market-drops/index.html" data-preview-label="Local Market Drops">
+                            <span class="node-group-tag">Market</span>
+                            <span class="node-icon">🛍️</span>
+                            <h3>Local Market Drops</h3>
+                            <p>Mobile-first commerce</p>
+                            <a href="local-market-drops/index.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="market" data-preview="lastminute/index.html" data-preview-label="LastMinute">
+                            <span class="node-group-tag">Market</span>
+                            <span class="node-icon">⚡</span>
+                            <h3>LastMinute</h3>
+                            <p>High-speed resale</p>
+                            <a href="lastminute/index.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="media" data-preview="shayari.html" data-preview-label="Shayari Vault">
+                            <span class="node-group-tag">Media</span>
+                            <span class="node-icon">🎵</span>
+                            <h3>Shayari Vault</h3>
+                            <p>Poetry & audio sanctuary</p>
+                            <a href="shayari.html" class="card-link">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="media" data-preview="https://www.youtube.com/@thevibecoder69" data-preview-label="YouTube Channel">
+                            <span class="node-group-tag">Media</span>
+                            <span class="node-icon">📺</span>
+                            <h3>YouTube Channel</h3>
+                            <p>Watch @thevibecoder69</p>
+                            <a href="https://www.youtube.com/@thevibecoder69" class="card-link" target="_blank" rel="noopener noreferrer">View →</a>
+                        </div>
+
+                        <div class="node-item" data-group="portfolio" data-preview="https://ayush-mandowara.vercel.app" data-preview-label="Terminal Portfolio">
+                            <span class="node-group-tag">Portfolio</span>
+                            <span class="node-icon">🤖</span>
+                            <h3>Terminal Portfolio</h3>
+                            <p>AI-native terminal</p>
+                            <a href="https://ayush-mandowara.vercel.app" class="card-link" target="_blank" rel="noopener noreferrer">View →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Templates -->
+        <section id="portfolios" class="portfolio-section-v1">
+            <div class="container">
+                <h2>Design Templates</h2>
+                <p>Each site is a different design approach. Pick the vibe that fits your project.</p>
+
+                <div class="portfolio-grid-v1">
+                    <a href="index.html" class="portfolio-card-v1" target="_blank">
+                        <span class="card-type">Business Landing</span>
+                        <h3>the-vibe-coder.com</h3>
+                        <p>Master directory & brand hub — clean, minimal, editorial.</p>
+                        <span class="card-link">Visit Site →</span>
+                    </a>
+
+                    <a href="https://ayush-mandowara.vercel.app" class="portfolio-card-v1" target="_blank" rel="noopener noreferrer">
+                        <span class="card-type">Terminal / Ultra Custom</span>
+                        <h3>ayush-mandowara.vercel.app</h3>
+                        <p>Terminal-inspired portfolio — raw, CLI-native, developer-first.</p>
+                        <span class="card-link">Visit Site →</span>
+                    </a>
+
+                    <a href="https://ayush-blog.netlify.app" class="portfolio-card-v1" target="_blank" rel="noopener noreferrer">
+                        <span class="card-type">Obsidian Blog</span>
+                        <h3>ayush-blog.netlify.app</h3>
+                        <p>Knowledge-base style — notes, links, and long-form thinking.</p>
+                        <span class="card-link">Visit Site →</span>
+                    </a>
+
+                    <a href="https://ayushxx7.github.io" class="portfolio-card-v1" target="_blank" rel="noopener noreferrer">
+                        <span class="card-type">Simple Portfolio</span>
+                        <h3>ayushxx7.github.io</h3>
+                        <p>Clean & minimal — straight to the point, no fluff.</p>
+                        <span class="card-link">Visit Site →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="explorations">
+            <div class="container">
+                <h2 class="section-title">_explorations</h2>
+                <p class="explorations-note">[8 agents active — ongoing experiments]</p>
+                <div class="agents-grid">
+                    <details class="agent-item"><summary>OpenCode</summary><span class="agent-note">Big Pickle model · MIT licensed · 140K stars</span></details>
+                    <details class="agent-item"><summary>Multica</summary><span class="agent-note">Task management · Agents as teammates</span></details>
+                    <details class="agent-item"><summary>Qwen</summary><span class="agent-note">Alibaba · Open-source LLMs</span></details>
+                    <details class="agent-item"><summary>OpenClaw</summary><span class="agent-note">Nostr identity · Multi-channel</span></details>
+                    <details class="agent-item"><summary>Gemini CLI</summary><span class="agent-note">Google · 1M token context</span></details>
+                    <details class="agent-item"><summary>Antigravity</summary><span class="agent-note">Cloud-native IDE · Gemini 3</span></details>
+                    <details class="agent-item"><summary>ChatGPT Atlas</summary><span class="agent-note">OpenAI · AI browser · Agent mode</span></details>
+                    <details class="agent-item"><summary>OpenAI Codex</summary><span class="agent-note">CLI coding agent</span></details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">THE VIBE CODER</div>
+            <p>Ready to start a project or need a custom digital setup?</p>
+            <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
+            <p style="margin-top: 32px; font-size: 0.85rem; color: var(--text-muted);">© 2026 The Vibe Coder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Version Nav -->
+    <nav class="version-nav">
+        <a href="index-v3-hybrid.html">v3 Hybrid</a>
+        <a href="index-v1-constellation.html" class="active">v1 Constellation</a>
+        <a href="index-v2-portal.html">v2 Portal</a>
+    </nav>
+
+    <script src="script.js"></script>
+    <script>
+        // ===== Animated Constellation Background =====
+        const canvas = document.getElementById('constellationBg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animFrame;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function createParticles() {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 18000);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    r: Math.random() * 1.5 + 0.5
+                });
+            }
+        }
+
+        function drawConstellation() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Get accent color from CSS variable
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const accentColor = isDark ? 'rgba(0, 242, 255,' : 'rgba(0, 85, 255,';
+
+            // Update & draw particles
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                // Draw particle
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = accentColor + '0.15)';
+                ctx.fill();
+
+                // Draw connections to nearby particles
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[j].x - p.x;
+                    const dy = particles[j].y - p.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = accentColor + (0.08 * (1 - dist / 120)) + ')';
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            animFrame = requestAnimationFrame(drawConstellation);
+        }
+
+        resizeCanvas();
+        createParticles();
+        drawConstellation();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+
+        // ===== SVG Node Connections =====
+        function drawNodeConnections() {
+            const svg = document.getElementById('nodeMapSvg');
+            const container = document.getElementById('nodeMapContainer');
+            const items = document.querySelectorAll('.node-item');
+            if (!svg || !container || items.length === 0) return;
+
+            const containerRect = container.getBoundingClientRect();
+            svg.setAttribute('width', containerRect.width);
+            svg.setAttribute('height', containerRect.height);
+
+            const groups = {};
+            items.forEach(item => {
+                const group = item.dataset.group;
+                if (!groups[group]) groups[group] = [];
+                groups[group].push(item);
+            });
+
+            let pathsHTML = '';
+
+            Object.entries(groups).forEach(([groupName, groupItems]) => {
+                for (let i = 0; i < groupItems.length - 1; i++) {
+                    const itemA = groupItems[i];
+                    const itemB = groupItems[i + 1];
+                    const rectA = itemA.getBoundingClientRect();
+                    const rectB = itemB.getBoundingClientRect();
+
+                    const x1 = rectA.left + rectA.width / 2 - containerRect.left;
+                    const y1 = rectA.top + rectA.height / 2 - containerRect.top;
+                    const x2 = rectB.left + rectB.width / 2 - containerRect.left;
+                    const y2 = rectB.top + rectB.height / 2 - containerRect.top;
+
+                    pathsHTML += `<line class="node-connection" data-group="${groupName}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
+                }
+            });
+
+            svg.innerHTML = pathsHTML;
+        }
+
+        // ===== Node Hover Preview =====
+        const nodePreview = document.getElementById('nodePreview');
+        const nodePreviewFrame = document.getElementById('nodePreviewFrame');
+        const nodePreviewUrl = document.getElementById('nodePreviewUrl');
+        const nodePreviewLabel = document.getElementById('nodePreviewLabel');
+        let previewTimeout = null;
+
+        document.querySelectorAll('.node-item[data-preview]').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const previewUrlVal = item.dataset.preview;
+                const previewLabelVal = item.dataset.previewLabel || 'Preview';
+
+                if (previewTimeout) clearTimeout(previewTimeout);
+
+                previewTimeout = setTimeout(() => {
+                    // Highlight related connections
+                    const group = item.dataset.group;
+                    document.querySelectorAll(`.node-connection[data-group="${group}"]`).forEach(line => {
+                        line.classList.add('active');
+                    });
+
+                    // Load preview
+                    if (previewUrlVal.startsWith('http')) {
+                        nodePreviewFrame.src = previewUrlVal;
+                    } else {
+                        nodePreviewFrame.src = window.location.origin + '/' + previewUrlVal;
+                    }
+
+                    nodePreviewUrl.textContent = previewUrlVal;
+                    nodePreviewLabel.textContent = previewLabelVal.toUpperCase() + ' — LIVE PREVIEW';
+
+                    // Position near item
+                    const rect = item.getBoundingClientRect();
+                    let x = rect.right + 16;
+                    let y = rect.top;
+
+                    if (x + 360 > window.innerWidth) x = rect.left - 376;
+                    if (y + 300 > window.innerHeight) y = window.innerHeight - 310;
+
+                    nodePreview.style.left = x + 'px';
+                    nodePreview.style.top = y + 'px';
+                    nodePreview.classList.add('active');
+                }, 400);
+            });
+
+            item.addEventListener('mouseleave', () => {
+                if (previewTimeout) clearTimeout(previewTimeout);
+
+                // Remove active connections
+                const group = item.dataset.group;
+                document.querySelectorAll(`.node-connection[data-group="${group}"]`).forEach(line => {
+                    line.classList.remove('active');
+                });
+
+                setTimeout(() => {
+                    nodePreview.classList.remove('active');
+                }, 150);
+            });
+        });
+
+        // Draw connections on load & resize
+        window.addEventListener('load', () => {
+            setTimeout(drawNodeConnections, 200);
+        });
+        window.addEventListener('resize', drawNodeConnections);
+        document.fonts?.ready?.then(() => setTimeout(drawNodeConnections, 100));
+    </script>
+</body>
+</html>

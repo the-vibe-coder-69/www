@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibe Coder | Portal Wall</title>
+    <meta name="description" content="A preview-first wall of all Vibe Coder digital properties.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home-minimal.css">
+    <script src="theme.js"></script>
+
+    <style>
+        /* ===== Option 2: Portal Wall ===== */
+
+        .hero {
+            padding: 100px 0 40px;
+        }
+
+        /* Portal Wall Section */
+        .portal-wall {
+            padding: 40px 0 80px;
+        }
+
+        .portal-masonry {
+            columns: 3;
+            column-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .portal-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .portal-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent);
+        }
+
+        .portal-preview {
+            width: 100%;
+            height: 200px;
+            border: none;
+            background: var(--bg);
+            pointer-events: none;
+            transition: height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .portal-item:hover .portal-preview {
+            height: 240px;
+        }
+
+        .portal-item.tall .portal-preview {
+            height: 280px;
+        }
+
+        .portal-item.tall:hover .portal-preview {
+            height: 320px;
+        }
+
+        .portal-info {
+            padding: 20px;
+        }
+
+        .portal-info .portal-type {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 3px 10px;
+            border-radius: 999px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .portal-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .portal-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .portal-info .card-link {
+            font-size: 0.8rem;
+        }
+
+        /* Overlay on hover */
+        .portal-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(to top, var(--card-bg) 0%, transparent 100%);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .portal-item:hover .portal-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portal-overlay .portal-url {
+            font-size: 0.7rem;
+            font-family: ui-monospace, monospace;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .portal-overlay .portal-cta {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* Portal Templates Section */
+        .portal-templates {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .portal-templates-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .portal-templates-header h2 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            margin-bottom: 12px;
+        }
+
+        .portal-templates-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .template-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .template-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .template-card .template-preview {
+            width: 100%;
+            height: 160px;
+            border: none;
+            background: var(--bg);
+            pointer-events: none;
+        }
+
+        .template-card .template-info {
+            padding: 18px;
+        }
+
+        .template-info .card-type {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 3px 8px;
+            border-radius: 999px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .template-info h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .template-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .portal-masonry {
+                columns: 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .portal-masonry {
+                columns: 1;
+            }
+
+            .portal-preview {
+                height: 180px;
+            }
+
+            .portal-item.tall .portal-preview {
+                height: 220px;
+            }
+
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Version Nav */
+        .version-nav {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9000;
+            display: flex;
+            gap: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .version-nav a {
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .version-nav a:hover,
+        .version-nav a.active {
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skiplink">Skip to main content</a>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">THE VIBE CODER</a>
+            <div class="header-actions">
+                <a href="internship.html" class="btn btn-secondary header-btn">Explore Opportunities</a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="btn btn-primary header-btn" target="_blank" rel="noopener noreferrer">Build Projects</a>
+                <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
+                    <span aria-hidden="true">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="container">
+                <span class="eyebrow">The Portal Wall</span>
+                <h1>Every site is a doorway.</h1>
+                <p>Preview-first. Click later. A wall of live previews — each card is a window into the destination.</p>
+                <div class="hero-actions">
+                    <a href="#portalwall" class="btn btn-primary">Browse the Wall</a>
+                    <a href="#templates" class="btn btn-secondary">View Templates</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="portalwall" class="portal-wall">
+            <div class="container">
+                <h2 class="section-title">The Wall</h2>
+            </div>
+            <div class="portal-masonry">
+                <!-- Quick Card - Standard -->
+                <div class="portal-item">
+                    <iframe class="portal-preview" src="card.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Core</span>
+                        <h3>Quick Card</h3>
+                        <p>⚡ Fast shareable profile</p>
+                        <a href="card.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/card.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- Web Design Services - Tall -->
+                <div class="portal-item tall">
+                    <iframe class="portal-preview" src="web-design-v2/index.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Core</span>
+                        <h3>Web Design Services</h3>
+                        <p>✨ Premium Modern Design Stack</p>
+                        <a href="web-design-v2/index.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/web-design-v2/index.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- The Vibe Coder - Standard -->
+                <div class="portal-item">
+                    <iframe class="portal-preview" src="the-vibe-coder.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Core</span>
+                        <h3>The Vibe Coder</h3>
+                        <p>🧠 Code meets emotion</p>
+                        <a href="the-vibe-coder.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/the-vibe-coder.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- Vibe Station - Standard -->
+                <div class="portal-item">
+                    <iframe class="portal-preview" src="vibe-station.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Product</span>
+                        <h3>Vibe Station</h3>
+                        <p>🖥️ Turn phone into computer</p>
+                        <a href="vibe-station.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/vibe-station.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- Deep Market - Tall -->
+                <div class="portal-item tall">
+                    <iframe class="portal-preview" src="deep-market-online/index.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Market</span>
+                        <h3>Deep Market Online</h3>
+                        <p>🏪 Isometric bazaar experience</p>
+                        <a href="deep-market-online/index.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/deep-market-online/index.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- Local Market Drops - Standard -->
+                <div class="portal-item">
+                    <iframe class="portal-preview" src="local-market-drops/index.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Market</span>
+                        <h3>Local Market Drops</h3>
+                        <p>🛍️ Mobile-first commerce</p>
+                        <a href="local-market-drops/index.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/local-market-drops/index.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- LastMinute - Standard -->
+                <div class="portal-item">
+                    <iframe class="portal-preview" src="lastminute/index.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Market</span>
+                        <h3>LastMinute</h3>
+                        <p>⚡ High-speed resale</p>
+                        <a href="lastminute/index.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/lastminute/index.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- Shayari Vault - Standard -->
+                <div class="portal-item">
+                    <iframe class="portal-preview" src="shayari.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Media</span>
+                        <h3>Shayari Vault</h3>
+                        <p>🎵 Poetry & audio sanctuary</p>
+                        <a href="shayari.html" class="card-link">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">/shayari.html</div>
+                        <div class="portal-cta">Click to enter →</div>
+                    </div>
+                </div>
+
+                <!-- Terminal Portfolio - Tall -->
+                <div class="portal-item tall">
+                    <iframe class="portal-preview" src="https://ayush-mandowara.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="portal-info">
+                        <span class="portal-type">Portfolio</span>
+                        <h3>Terminal Portfolio</h3>
+                        <p>🤖 AI-native terminal</p>
+                        <a href="https://ayush-mandowara.vercel.app" class="card-link" target="_blank" rel="noopener noreferrer">Open Portal →</a>
+                    </div>
+                    <div class="portal-overlay">
+                        <div class="portal-url">ayush-mandowara.vercel.app</div>
+                        <div class="portal-cta">Opens in new tab →</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Templates Section -->
+        <section id="templates" class="portal-templates">
+            <div class="portal-templates-header">
+                <h2>Design Templates</h2>
+                <p>Each site is a different design approach. Pick the vibe that fits your project.</p>
+            </div>
+
+            <div class="template-grid">
+                <div class="template-card">
+                    <iframe class="template-preview" src="index.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="template-info">
+                        <span class="card-type">Business Landing</span>
+                        <h3>the-vibe-coder.com</h3>
+                        <p>Master directory & brand hub — clean, minimal, editorial.</p>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <iframe class="template-preview" src="https://ayush-mandowara.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="template-info">
+                        <span class="card-type">Terminal / Ultra Custom</span>
+                        <h3>ayush-mandowara.vercel.app</h3>
+                        <p>Terminal-inspired portfolio — raw, CLI-native, developer-first.</p>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <iframe class="template-preview" src="https://ayush-blog.netlify.app" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="template-info">
+                        <span class="card-type">Obsidian Blog</span>
+                        <h3>ayush-blog.netlify.app</h3>
+                        <p>Knowledge-base style — notes, links, and long-form thinking.</p>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <iframe class="template-preview" src="https://ayushxx7.github.io" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <div class="template-info">
+                        <span class="card-type">Simple Portfolio</span>
+                        <h3>ayushxx7.github.io</h3>
+                        <p>Clean & minimal — straight to the point, no fluff.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="explorations">
+            <div class="container">
+                <h2 class="section-title">_explorations</h2>
+                <p class="explorations-note">[8 agents active — ongoing experiments]</p>
+                <div class="agents-grid">
+                    <details class="agent-item"><summary>OpenCode</summary><span class="agent-note">Big Pickle model · MIT licensed · 140K stars</span></details>
+                    <details class="agent-item"><summary>Multica</summary><span class="agent-note">Task management · Agents as teammates</span></details>
+                    <details class="agent-item"><summary>Qwen</summary><span class="agent-note">Alibaba · Open-source LLMs</span></details>
+                    <details class="agent-item"><summary>OpenClaw</summary><span class="agent-note">Nostr identity · Multi-channel</span></details>
+                    <details class="agent-item"><summary>Gemini CLI</summary><span class="agent-note">Google · 1M token context</span></details>
+                    <details class="agent-item"><summary>Antigravity</summary><span class="agent-note">Cloud-native IDE · Gemini 3</span></details>
+                    <details class="agent-item"><summary>ChatGPT Atlas</summary><span class="agent-note">OpenAI · AI browser · Agent mode</span></details>
+                    <details class="agent-item"><summary>OpenAI Codex</summary><span class="agent-note">CLI coding agent</span></details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">THE VIBE CODER</div>
+            <p>Ready to start a project or need a custom digital setup?</p>
+            <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
+            <p style="margin-top: 32px; font-size: 0.85rem; color: var(--text-muted);">© 2026 The Vibe Coder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Version Nav -->
+    <nav class="version-nav">
+        <a href="index-v3-hybrid.html">v3 Hybrid</a>
+        <a href="index-v1-constellation.html">v1 Constellation</a>
+        <a href="index-v2-portal.html" class="active">v2 Portal</a>
+    </nav>
+
+    <script src="script.js"></script>
+    <script>
+        // ===== Clickable Portal Items =====
+        document.querySelectorAll('.portal-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Don't trigger if clicking the actual link
+                if (e.target.tagName === 'A' || e.target.closest('a')) return;
+
+                const link = item.querySelector('.card-link');
+                if (link) {
+                    const href = link.getAttribute('href');
+                    const target = link.getAttribute('target');
+                    if (target === '_blank') {
+                        window.open(href, '_blank');
+                    } else {
+                        window.location.href = href;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
