@@ -3,166 +3,465 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Vibe Coder | Shayari Collection</title>
+  <title>Shayari Vault | The Vibe Coder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --bg: #020617;
+      --card-bg: rgba(15, 23, 42, 0.6);
+      --border: rgba(30, 41, 59, 0.5);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     header {
-      padding: 20px;
+      padding: 60px 20px 40px;
       text-align: center;
-      font-size: 22px;
-      font-weight: 600;
-      background: #020617;
-      border-bottom: 1px solid #1e293b;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
     }
 
+    /* Filters & Controls */
     .controls {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
     }
 
-    input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      background: #1e293b;
-      color: white;
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    button {
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: none;
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
       cursor: pointer;
-      background: #38bdf8;
-      color: black;
-      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    input#search {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.4);
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    input#search:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+
+    /* Cards */
+    #list {
+      display: grid;
+      gap: 20px;
     }
 
     .shayari-card {
-      background: #020617;
-      padding: 16px;
-      margin-bottom: 12px;
-      border-radius: 12px;
-      border: 1px solid #1e293b;
-      transition: transform 0.15s ease;
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
     }
 
     .shayari-card:hover {
-      transform: scale(1.01);
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .tag-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
     }
 
     .tag {
-      font-size: 12px;
-      opacity: 0.7;
-      margin-bottom: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      padding: 4px 12px;
+      background: var(--accent-glow);
+      border-radius: 6px;
+    }
+
+    .type-badge {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 600;
     }
 
     .text {
-      font-size: 16px;
-      line-height: 1.5;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.6;
       white-space: pre-line;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    /* Audio Player Redesign */
+    .audio-container {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .audio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    audio {
+      width: 100%;
+      height: 40px;
+      filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Custom-ish look for standard player */
+    }
+
+    .empty-transcript {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      opacity: 0.6;
     }
 
     .footer {
       text-align: center;
-      margin-top: 40px;
-      font-size: 12px;
-      opacity: 0.6;
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Random Button Pop */
+    .btn-random {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 30px var(--accent-glow);
+      transition: all 0.3s ease;
+      z-index: 200;
+    }
+
+    .btn-random:hover {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    @media (max-width: 600px) {
+      header { padding-top: 40px; }
+      .shayari-card { padding: 24px; }
+      .text { font-size: 1.1rem; }
+      .btn-random { bottom: 20px; right: 20px; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  ✨ Shayari Vault — The Vibe Coder
+  <h1>Shayari Vault</h1>
+  <p>A digital sanctuary for poetry and spoken emotions. Read the text or listen to the vibe.</p>
 </header>
 
 <div class="container">
-
   <div class="controls">
-    <input type="text" id="search" placeholder="Search mood, words..." />
-    <button onclick="showRandom()">Random</button>
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Search by mood, tag, or words..." />
+    </div>
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">All Explorations</button>
+      <button class="filter-btn" data-filter="audio">Audio Experience</button>
+      <button class="filter-btn" data-filter="text">Poetry Only</button>
+    </div>
   </div>
 
   <div id="list"></div>
 
   <div class="footer">
-    Built with ❤️ by The Vibe Coder
+    <p>Curated by <a href="index.html">The Vibe Coder</a> · Built in Bharat</p>
   </div>
-
 </div>
 
-<script>
+<button class="btn-random" onclick="showRandom()" title="Shuffle Emotions">🎲</button>
 
-// 👉 EASY EDIT ZONE (just add more objects here)
+<script>
+// The Data Fusion - Decoupled and Labeled
 const shayaris = [
+  // --- Audio Entries (Placeholder Transcripts + Mood Guesses) ---
   {
+    type: "audio",
+    tag: "Deep Reflection",
+    text: "", // Proper transcript placeholder
+    audio: "audio/samaksh-1.mp3",
+    mood: "Contemplative"
+  },
+  {
+    type: "audio",
+    tag: "Soft Romance",
+    text: "", // Proper transcript placeholder
+    audio: "audio/samaksh-2.mp3",
+    mood: "Affectionate"
+  },
+  {
+    type: "audio",
+    tag: "Heartfelt Pain",
+    text: "", // Proper transcript placeholder
+    audio: "audio/samaksh-3.mp3",
+    mood: "Emotional"
+  },
+  {
+    type: "audio",
+    tag: "Bold Perspective",
+    text: "", // Proper transcript placeholder
+    audio: "audio/samaksh-4.mp3",
+    mood: "Stoic"
+  },
+
+  // --- Text-Only Entries (Standalone Poetry) ---
+  {
+    type: "text",
+    tag: "Original • Deep",
+    text: `Koshish toh bahut ki use rokne ki,
+par usne jaane ka pehle hi faisla kar liya tha.
+Ab toh bas yaadein hain aur ye khamosh raste.`,
+  },
+  {
+    type: "text",
+    tag: "Original • Love",
+    text: `Teri muskurahat mein wo sukoon hai,
+jo duniya ki kisi aur cheez mein nahi.
+Bas ek baar dekh lo toh har dard mit jata hai.`,
+  },
+  {
+    type: "text",
+    tag: "Original • Pain",
+    text: `Dard jab had se badh jaye toh insaan rota nahi,
+bas khamosh ho jata hai.
+Aur wo khamoshi duniya ka sabse bada shor hai.`,
+  },
+  {
+    type: "text",
+    tag: "Original • Attitude",
+    text: `Log kehte hain badal gaye ho tum,
+unhe kya pata ki waqt ne hamein sikhaya hai.
+Ab hum wo nahi jo har baat par muskurate the.`,
+  },
+  {
+    type: "text",
     tag: "Motivation",
     text: "Khud par bharosa karna seekh le dost,\nlog toh waqt ke saath badalte rehte hain."
   },
   {
+    type: "text",
     tag: "Love",
     text: "Teri muskaan se shuru hui meri kahani,\nwarna hum toh khud se bhi anjaan the."
   },
   {
+    type: "text",
     tag: "Attitude",
     text: "Jo log mujhe samajh nahi paaye,\nwoh meri kahani kya samjhenge."
   },
   {
+    type: "text",
     tag: "Sad",
     text: "Kuch khoya hai maine zindagi mein,\nwarna muskurana mujhe bhi aata tha."
   }
 ];
 
 const list = document.getElementById("list");
-const search = document.getElementById("search");
+const searchInput = document.getElementById("search");
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+let currentFilter = "all";
 
 function render(data) {
   list.innerHTML = "";
+  
+  if (data.length === 0) {
+    list.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--text-muted);">No echoes found for this search.</div>`;
+    return;
+  }
+
   data.forEach(s => {
-    const div = document.createElement("div");
-    div.className = "shayari-card";
-    div.innerHTML = `
-      <div class="tag">${s.tag}</div>
-      <div class="text">${s.text}</div>
-    `;
-    list.appendChild(div);
+    const card = document.createElement("div");
+    card.className = "shayari-card";
+    card.setAttribute('data-aos', 'fade-up');
+
+    let contentHTML = "";
+    
+    if (s.type === "audio") {
+      contentHTML = `
+        <div class="tag-row">
+          <span class="tag">${s.tag}</span>
+          <span class="type-badge">🎧 Audio Vibe</span>
+        </div>
+        <div class="text empty-transcript">[ Transcript unavailable — Mood: ${s.mood} ]</div>
+        <div class="audio-container">
+          <div class="audio-label"><span>🔊</span> Spoken Word</div>
+          <audio controls src="${s.audio}"></audio>
+        </div>
+      `;
+    } else {
+      contentHTML = `
+        <div class="tag-row">
+          <span class="tag">${s.tag}</span>
+          <span class="type-badge">✍️ Written Word</span>
+        </div>
+        <div class="text">${s.text}</div>
+      `;
+    }
+
+    card.innerHTML = contentHTML;
+    list.appendChild(card);
   });
 }
 
 function showRandom() {
   const random = shayaris[Math.floor(Math.random() * shayaris.length)];
   render([random]);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-search.addEventListener("input", () => {
-  const val = search.value.toLowerCase();
-  const filtered = shayaris.filter(s =>
-    s.text.toLowerCase().includes(val) ||
-    s.tag.toLowerCase().includes(val)
-  );
+function handleFilter() {
+  const searchTerm = searchInput.value.toLowerCase();
+  
+  const filtered = shayaris.filter(s => {
+    const matchesSearch = s.tag.toLowerCase().includes(searchTerm) || 
+                          (s.text && s.text.toLowerCase().includes(searchTerm)) ||
+                          (s.mood && s.mood.toLowerCase().includes(searchTerm));
+    
+    const matchesFilter = currentFilter === "all" || s.type === currentFilter;
+    
+    return matchesSearch && matchesFilter;
+  });
+  
   render(filtered);
+}
+
+searchInput.addEventListener("input", handleFilter);
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    handleFilter();
+  });
 });
 
+// Initial render
 render(shayaris);
 
 </script>
 
 </body>
 </html>
-

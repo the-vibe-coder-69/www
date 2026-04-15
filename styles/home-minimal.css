@@ -312,6 +312,12 @@ header .container {
   color: var(--accent);
 }
 
+.card-links-group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
 /* Accessibility: Focus styles for keyboard navigation */
 a:focus-visible,
 button:focus-visible {
