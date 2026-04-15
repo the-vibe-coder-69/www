@@ -296,34 +296,39 @@
 <script>
 // The Data Fusion - Decoupled and Labeled
 const shayaris = [
-  // --- Audio Entries (Placeholder Transcripts + Mood Guesses) ---
+  // --- Audio Entries (With Correct Hindi Transcripts) ---
   {
     type: "audio",
-    tag: "Deep Reflection",
-    text: "", // Proper transcript placeholder
+    tag: "Mohabbat • Pure",
+    text: `Mohabbat mein hamein milavat nahi pasand,
+ishq hai humse, toh khwab bhi hamare hi dekhe.`,
     audio: "audio/samaksh-1.mp3",
-    mood: "Contemplative"
+    mood: "Possessive / Pure"
   },
   {
     type: "audio",
-    tag: "Soft Romance",
-    text: "", // Proper transcript placeholder
+    tag: "Ishq • Zeher",
+    text: `Kaun ek din mein kitne aashiq marega,
+ishq zeher se shart lagate hain.`,
     audio: "audio/samaksh-2.mp3",
-    mood: "Affectionate"
+    mood: "Intense / Dark"
   },
   {
     type: "audio",
-    tag: "Heartfelt Pain",
-    text: "", // Proper transcript placeholder
+    tag: "Naseeb • Faraz",
+    text: `Sabko sab kuch nahi milta Faraz,
+jo dil mein hai, woh naseeb mein nahi.`,
     audio: "audio/samaksh-3.mp3",
-    mood: "Emotional"
+    mood: "Melancholy / Reality"
   },
   {
     type: "audio",
-    tag: "Bold Perspective",
-    text: "", // Proper transcript placeholder
+    tag: "Shayari • Sacrifice",
+    text: `Main koi shayar toh nahi, lekin jinko shero shayari ki dunia mein aana hai, unke liye ek sher hai:
+Ki shayari mohabbat ka khoon mangti hai, 
+kabhi sher kehna ho toh mehboob gawana padta hai.`,
     audio: "audio/samaksh-4.mp3",
-    mood: "Stoic"
+    mood: "Philosophical / Sacrifice"
   },
 
   // --- Text-Only Entries (Standalone Poetry) ---
@@ -402,11 +407,11 @@ function render(data) {
       contentHTML = `
         <div class="tag-row">
           <span class="tag">${s.tag}</span>
-          <span class="type-badge">🎧 Audio Vibe</span>
+          <span class="type-badge">🎧 Audio Experience</span>
         </div>
-        <div class="text empty-transcript">[ Transcript unavailable — Mood: ${s.mood} ]</div>
+        <div class="text">${s.text}</div>
         <div class="audio-container">
-          <div class="audio-label"><span>🔊</span> Spoken Word</div>
+          <div class="audio-label"><span>🔊</span> Spoken Word · ${s.mood}</div>
           <audio controls src="${s.audio}"></audio>
         </div>
       `;
