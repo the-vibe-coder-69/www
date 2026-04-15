@@ -237,4 +237,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Featured Cards - Clickable Entire Card
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Prevent if clicking an actual link or button inside the card
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+                return;
+            }
+            
+            const link = card.querySelector('.card-link');
+            if (link) {
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+                if (target === '_blank') {
+                    window.open(href, '_blank');
+                } else {
+                    window.location.href = href;
+                }
+            }
+        });
+    });
+
 });
