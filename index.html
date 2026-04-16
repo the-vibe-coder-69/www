@@ -376,6 +376,48 @@
             border-color: #818cf8;
         }
 
+        /* ===== Card Theming Sprinkles ===== */
+        .card-terminal {
+            background-color: #000 !important;
+            border-color: #00ff41 !important;
+            color: #00ff41 !important;
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace';
+        }
+        
+        .card-terminal h3, .card-terminal p, .card-terminal .card-link {
+            color: #00ff41 !important;
+        }
+
+        .card-terminal::before {
+            background-image: radial-gradient(circle at 2px 2px, #00ff41 1px, transparent 0) !important;
+        }
+
+        .card-terminal .card-group-badge {
+            background: rgba(0, 255, 65, 0.1) !important;
+            color: #00ff41 !important;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+        }
+
+        .card-youtube {
+            border-color: #ff0000 !important;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 0, 0, 0.03) 100%) !important;
+        }
+
+        .card-youtube:hover {
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.1), 0 0 32px rgba(255, 0, 0, 0.05) !important;
+        }
+
+        .card-youtube .card-group-badge {
+            background: rgba(255, 0, 0, 0.1) !important;
+            color: #ff0000 !important;
+        }
+
+        .card-youtube h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         /* Subtle floating animation for hero */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -518,22 +560,22 @@
                         <a href="shayari.html" class="card-link">Read & Listen →</a>
                     </article>
 
-                    <article class="card" data-group="media" data-preview="https://www.youtube.com/@thevibecoder69" data-preview-label="YouTube Channel">
+                    <article class="card card-youtube" data-group="media" data-preview="https://www.youtube.com/@thevibecoder69" data-preview-label="YouTube Channel">
                         <div>
                             <span class="card-group-badge">Media</span>
-                            <h3>YouTube Channel</h3>
+                            <h3><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="color: #ff0000;"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg> YouTube Channel</h3>
                             <p>📺 Watch @thevibecoder69</p>
                         </div>
                         <a href="https://www.youtube.com/@thevibecoder69" class="card-link" target="_blank" rel="noopener noreferrer">Subscribe →</a>
                     </article>
 
-                    <article class="card" data-group="portfolio" data-preview="https://ayush-mandowara.vercel.app" data-preview-label="Terminal Portfolio">
+                    <article class="card card-terminal" data-group="portfolio" data-preview="https://ayush-mandowara.vercel.app" data-preview-label="Terminal Portfolio">
                         <div>
                             <span class="card-group-badge">Portfolio</span>
                             <h3>Terminal Portfolio</h3>
-                            <p>🤖 AI-native terminal</p>
+                            <p>🤖 AI-native terminal [root@vibe-coder ~]$</p>
                         </div>
-                        <a href="https://ayush-mandowara.vercel.app" class="card-link" target="_blank" rel="noopener noreferrer">Run Experiment →</a>
+                        <a href="https://ayush-mandowara.vercel.app" class="card-link" target="_blank" rel="noopener noreferrer">Run Experiment _</a>
                     </article>
                 </div>
             </div>
