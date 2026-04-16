@@ -418,6 +418,55 @@
             gap: 8px;
         }
 
+        /* ===== LastMinute Neobrutalism ===== */
+        .card-lastminute {
+            background: #fff !important;
+            border: 3px solid #000 !important;
+            box-shadow: 8px 8px 0 #000 !important;
+            color: #000 !important;
+        }
+
+        .card-lastminute:hover {
+            transform: translate(-4px, -4px) !important;
+            box-shadow: 12px 12px 0 #000 !important;
+        }
+
+        .card-lastminute h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .card-lastminute .card-group-badge {
+            background: #ccff00 !important; /* Neon Yellow */
+            color: #000 !important;
+            border: 2px solid #000;
+            font-weight: 800;
+        }
+
+        .card-lastminute .card-link {
+            background: #ff0080; /* Hot Pink */
+            color: #fff !important;
+            padding: 8px 16px;
+            border: 2px solid #000;
+            width: fit-content;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .card-lastminute .card-link:hover {
+            box-shadow: 2px 2px 0 #000;
+            transform: translate(2px, 2px);
+        }
+
+        /* Static Preview Styles */
+        .preview-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: none;
+            background: var(--bg);
+        }
+
         /* Subtle floating animation for hero */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -449,6 +498,7 @@
                 <span id="previewUrl" style="margin-left: 8px;"></span>
             </div>
             <iframe id="previewFrame" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+            <img id="previewImage" class="preview-image" alt="Preview">
             <div class="preview-label" id="previewLabel">LIVE PREVIEW</div>
         </div>
     </div>
@@ -542,7 +592,7 @@
                         <a href="local-market-drops/index.html" class="card-link">Open Hub →</a>
                     </article>
 
-                    <article class="card" data-group="market" data-preview="lastminute/index.html" data-preview-label="LastMinute">
+                    <article class="card card-lastminute" data-group="market" data-preview="lastminute/index.html" data-preview-label="LastMinute">
                         <div>
                             <span class="card-group-badge">Market</span>
                             <h3>LastMinute</h3>
@@ -560,7 +610,7 @@
                         <a href="shayari.html" class="card-link">Read & Listen →</a>
                     </article>
 
-                    <article class="card card-youtube" data-group="media" data-preview="https://www.youtube.com/@thevibecoder69" data-preview-label="YouTube Channel">
+                    <article class="card card-youtube" data-group="media" data-preview-static="images/channels4_profile.jpg" data-preview-label="YouTube Channel">
                         <div>
                             <span class="card-group-badge">Media</span>
                             <h3><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="color: #ff0000;"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg> YouTube Channel</h3>
@@ -700,14 +750,16 @@
         // ===== Hover Preview Logic =====
         const previewOverlay = document.getElementById('previewOverlay');
         const previewFrame = document.getElementById('previewFrame');
+        const previewImage = document.getElementById('previewImage');
         const previewUrl = document.getElementById('previewUrl');
         const previewLabel = document.getElementById('previewLabel');
         let previewTimeout = null;
         let currentPreviewCard = null;
 
-        document.querySelectorAll('.card[data-preview]').forEach(card => {
+        document.querySelectorAll('.card[data-preview], .card[data-preview-static]').forEach(card => {
             card.addEventListener('mouseenter', (e) => {
                 const previewUrlVal = card.dataset.preview;
+                const previewStaticVal = card.dataset.previewStatic;
                 const previewLabelVal = card.dataset.previewLabel || 'Preview';
 
                 // Clear previous timeout
@@ -718,15 +770,26 @@
                     if (currentPreviewCard === card) return;
                     currentPreviewCard = card;
 
-                    // Set iframe source
-                    if (previewUrlVal.startsWith('http')) {
-                        previewFrame.src = previewUrlVal;
-                    } else {
-                        // Use relative path directly to handle sub-directories correctly
-                        previewFrame.src = previewUrlVal;
+                    if (previewStaticVal) {
+                        // Show static image
+                        previewFrame.style.display = 'none';
+                        previewImage.style.display = 'block';
+                        previewImage.src = previewStaticVal;
+                        previewUrl.textContent = previewStaticVal;
+                    } else if (previewUrlVal) {
+                        // Show iframe
+                        previewImage.style.display = 'none';
+                        previewFrame.style.display = 'block';
+                        
+                        if (previewUrlVal.startsWith('http')) {
+                            previewFrame.src = previewUrlVal;
+                        } else {
+                            // Use relative path directly to handle sub-directories correctly
+                            previewFrame.src = previewUrlVal;
+                        }
+                        previewUrl.textContent = previewUrlVal;
                     }
 
-                    previewUrl.textContent = previewUrlVal;
                     previewLabel.textContent = previewLabelVal.toUpperCase() + ' — LIVE PREVIEW';
                     previewOverlay.classList.add('active');
                 }, 300);
