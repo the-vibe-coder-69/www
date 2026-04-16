@@ -680,8 +680,8 @@
                     if (previewUrlVal.startsWith('http')) {
                         previewFrame.src = previewUrlVal;
                     } else {
-                        // Relative URL — construct from current origin
-                        previewFrame.src = window.location.origin + '/' + previewUrlVal;
+                        // Use relative path directly to handle sub-directories correctly
+                        previewFrame.src = previewUrlVal;
                     }
 
                     previewUrl.textContent = previewUrlVal;
