@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "node server.js",
+    "test": "playwright test",
     "qa": "playwright test",
     "qa:update-screens": "playwright test tests/site.qa.spec.js --grep @screens",
     "qa:headed": "playwright test --headed",
