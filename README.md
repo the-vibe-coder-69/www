@@ -1,30 +1,94 @@
-# [The Vibe Coder](https://the-vibe-coder-69.github.io/www/)
+# [✨ The Vibe Coder ✨](https://the-vibe-coder-69.github.io/www/)
 
-The Vibe Coder is your go-to partner for transforming digital interactions into meaningful conversations powered by AI and smart automation. We specialize in creating AI-driven WhatsApp chatbots and Instagram growth hacks that boost engagement, generate leads, and build authentic relationships — all with minimal effort from you.
+[![Live Demo](https://img.shields.io/badge/TRY%20LIVE-Click%20Here-FF4B4B?style=for-the-badge&logo=rocket)](https://the-vibe-coder-69.github.io/www/)
 
-# Why The Vibe Coder?
-🚀 Next-level automation: Say goodbye to manual messaging and hello to intelligent chatbots that talk like humans.
+The Vibe Coder is a design and automation ecosystem focused on transforming digital interactions into meaningful conversations. We blend high-end aesthetics with smart AI-driven automation to help businesses grow authentically.
 
-📈 Social media growth: Amplify your Instagram presence organically with data-backed strategies and growth tools.
+---
 
-🤖 AI-powered marketing: Use smart tech that learns and adapts to your audience’s needs in real-time.
+## 🌌 The Design Universe
 
-💬 Conversational commerce: Turn casual chats into sales opportunities seamlessly.
+A curated collection of web experiments, service portals, and interactive experiences.
 
-🎯 Tailored solutions: Every business is unique — our services are customized to your vibe and goals.
+| 🏠 Home Hub | 📚 Master Directory |
+| :---: | :---: |
+| ![Home](qa/screenshots/home.png) | ![Directory](qa/screenshots/index-directory.png) |
 
-# What We Offer
-**WhatsApp Chatbots**: Automate customer support, lead qualification, bookings, and more, right inside WhatsApp.
+---
 
-**Instagram Growth & Analytics**: Grow your followers with genuine engagement and get detailed insights to optimize your strategy.
+## 🏪 E-Commerce & Market Experiments
 
-**Analytics & Reporting**: Transparent, easy-to-understand reports that show exactly how your campaigns perform.
+Explorations in digital storefronts, isometric bazaars, and localized "drops".
 
-**Vibe Station**:
-🔥 Our killer hardware solution that turns your smartphone into a full-fledged PC and gaming console.
-Plug, play, and vibe with seamless phone-to-PC transformation powered by smart tech — perfect for work, gaming, and streaming on the go!
+| 🏙️ Deep Market Online | 🛍️ Local Market Drops |
+| :---: | :---: |
+| ![Deep Market](qa/screenshots/deep-market-online.png) | ![Local Drops](qa/screenshots/local-market-drops.png) |
 
-**Personalized Support**: We're here to help you vibe right, every step of the way.
+### 🔍 Deep Dive: Market Ecosystem
+- **Deep Market**: An isometric bazaar experience for exploring products in a spatial context.
+- **Local Drops**: Targeted, high-conversion landing pages for specific product categories like chocolates and fashion.
 
-# Our Mission
-To empower businesses of all sizes to connect smarter, grow faster, and vibe better by blending technology, creativity, and simplicity — because real impact comes from real conversations.
+| 🍫 Gifting Chocolates | 👜 Fashion Purses |
+| :---: | :---: |
+| ![Chocolates](qa/screenshots/gifting-chocolates.png) | ![Purses](qa/screenshots/fast-fashion-purses.png) |
+
+---
+
+## 🛠️ Service Portals
+
+Professional tools and pricing structures for the modern digital agency.
+
+| 💻 Vibe Station | 💰 Web Design Pricing |
+| :---: | :---: |
+| ![Vibe Station](qa/screenshots/the-vibe-coder.png) | ![Pricing](qa/screenshots/web-design-pricing.png) |
+
+- **Vibe Station**: Our flagship hardware-to-software solution that transforms smartphones into full-fledged workstations.
+- **Transparent Pricing**: Ready-to-use design packages for businesses that need to move fast.
+
+---
+
+## 🤖 Tech Stack & Quality
+
+Built with a focus on performance, persistence, and verified quality.
+
+### 🛠️ Core Technologies
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Playwright](https://img.shields.io/badge/Playwright-%232EAD33.svg?style=for-the-badge&logo=Playwright&logoColor=white)
+
+### ✅ Verified Quality
+- **Automated QA**: Full visual regression suite using Playwright.
+- **Vision Reviews**: AI-powered UI audits to ensure pixel perfection.
+- **Responsive**: Tested across Desktop and Mobile viewports.
+
+---
+
+## 🚀 Quick Start
+
+1. **Clone & Install**:
+   ```bash
+   git clone https://github.com/the-vibe-coder-69/www.git
+   cd www
+   npm install
+   ```
+
+2. **Run Dev Server**:
+   ```bash
+   npm start
+   ```
+
+3. **Run Visual Tests**:
+   ```bash
+   npm run qa:update-screens
+   ```
+
+---
+
+## 📮 Contact & Community
+
+Ready to vibe? Let's build something meaningful.
+
+[**WhatsApp Us**](https://wa.me/916395906067) | [**Explore Directory**](https://the-vibe-coder-69.github.io/www/index-directory.html)
