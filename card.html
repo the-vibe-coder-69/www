@@ -52,7 +52,7 @@
 
     .header {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .header h1 {
@@ -67,7 +67,7 @@
       text-align: center;
       font-size: 12px;
       color: var(--muted);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .spotlight {
@@ -85,29 +85,58 @@
       object-fit: cover;
     }
 
+    /* CTA above the fold */
+    .cta-primary {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(90deg, #38bdf8, #a78bfa);
+      padding: 13px 18px;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      box-shadow: 0 5px 15px rgba(56,189,248,0.3);
+      margin-bottom: 14px;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(167,139,250,0.4);
+    }
+
     .services {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 15px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
 
     .service {
       background: var(--surface);
-      padding: 12px;
+      padding: 10px 12px;
       border-radius: 12px;
-      font-size: 12px;
+      font-size: 11px;
       border: 1px solid var(--border);
     }
 
     .service strong {
       display: block;
       color: #38bdf8;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
+      font-size: 12px;
+    }
+
+    .service .price {
+      display: block;
+      color: #a78bfa;
+      font-weight: 600;
+      font-size: 10px;
+      margin-top: 3px;
     }
 
     .web-design-toggle {
-      margin: 8px 0 14px;
+      margin: 6px 0 12px;
       text-align: center;
     }
 
@@ -128,7 +157,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
     }
 
     .web-design-panel.active {
@@ -168,9 +197,54 @@
       color: #fff;
     }
 
+    /* Social proof section */
+    .social-proof {
+      margin-bottom: 14px;
+      padding: 12px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .social-proof-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #a78bfa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .testimonial {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .testimonial:last-child {
+      margin-bottom: 0;
+    }
+
+    .testimonial .stars {
+      color: #fbbf24;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .testimonial .author {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 10px;
+      margin-top: 3px;
+    }
+
     .why {
       font-size: 12px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .why span {
@@ -181,20 +255,20 @@
 
     .cta {
       display: grid;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     .cta a {
       display: inline-block;
       text-decoration: none;
       background: linear-gradient(90deg, #38bdf8, #a78bfa);
-      padding: 12px 18px;
+      padding: 11px 18px;
       border-radius: 25px;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       box-shadow: 0 5px 15px rgba(56,189,248,0.3);
       text-align: center;
     }
@@ -238,45 +312,73 @@
     <img src="images/thevibecoderoriginal.jpeg" alt="The Vibe Coder mascot artwork">
   </div>
 
+  <!-- Primary CTA above the fold -->
+  <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." target="_blank" rel="noopener noreferrer" class="cta-primary">
+    💬 Get Free Consultation on WhatsApp
+  </a>
+
   <div class="services">
     <div class="service">
       <strong>Website Dev 🌐</strong>
       Fast, modern & conversion-focused
+      <span class="price">From ₹5,000</span>
     </div>
 
     <div class="service">
       <strong>App Dev 📱</strong>
       Android & iOS solutions
+      <span class="price">From ₹15,000</span>
     </div>
 
     <div class="service">
       <strong>AI Solutions 🤖</strong>
       Chatbots & automation
+      <span class="price">From ₹8,000</span>
     </div>
 
     <div class="service">
       <strong>WhatsApp Marketing 💬</strong>
       Bulk & automation tools
+      <span class="price">From ₹3,000</span>
     </div>
 
     <div class="service">
       <strong>Instagram Growth 📈</strong>
       Strategy & analytics
+      <span class="price">From ₹5,000</span>
     </div>
 
     <div class="service">
       <strong>Custom Software 🛠️</strong>
       Dashboards & systems
+      <span class="price">From ₹10,000</span>
     </div>
 
     <div class="service">
       <strong>2D Game Dev 🎮</strong>
       Simple & engaging games
+      <span class="price">From ₹8,000</span>
     </div>
 
     <div class="service">
       <strong>Billing Software 🧾</strong>
       Easy invoicing for businesses
+      <span class="price">From ₹5,000</span>
+    </div>
+  </div>
+
+  <!-- Social Proof -->
+  <div class="social-proof">
+    <div class="social-proof-title">What clients say</div>
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      "Got my business website live in 3 days. Professional and affordable."
+      <span class="author">— Rajesh S., Local Business Owner</span>
+    </div>
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      "The WhatsApp automation they built saved us hours every week."
+      <span class="author">— Priya M., E-commerce Seller</span>
     </div>
   </div>
 
@@ -308,7 +410,7 @@
 
   <div class="cta">
     <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." target="_blank" rel="noopener noreferrer">
-      WhatsApp Kritika: +91 63959 06067
+      WhatsApp: +91 63959 06067
     </a>
     <a class="secondary" href="the-vibe-coder.html">
       Open The Vibe Coder Philosophy

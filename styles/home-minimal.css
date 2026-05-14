@@ -391,56 +391,6 @@ button:focus-visible {
   margin-top: 4px;
 }
 
-/* Explorations Section */
-.explorations {
-  padding: 60px 0;
-  background-color: var(--bg);
-  border-top: 1px solid var(--border);
-}
-
-.explorations-note {
-  font-size: 0.85rem;
-  color: #6b7280;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  margin-bottom: 24px;
-  margin-top: -8px;
-}
-
-.agents-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.agent-item {
-  background: var(--accent-soft);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 12px 16px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.9rem;
-}
-
-.agent-item summary {
-  cursor: pointer;
-  color: var(--text);
-  font-weight: 500;
-}
-
-.agent-item summary:hover {
-  color: var(--accent);
-}
-
-.agent-note {
-  display: block;
-  font-size: 0.75rem;
-  color: #6b7280;
-  margin-top: 6px;
-}
-
 /* Footer */
 footer {
   padding: 60px 0;

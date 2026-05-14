@@ -15,46 +15,47 @@
     <script src="theme.js"></script>
     <style>
         .contact-section { padding: 80px 0; }
-        .contact-form { max-width: 500px; margin: 0 auto; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
-        .form-group input, .form-group textarea { 
-            width: 100%; 
-            padding: 12px 16px; 
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            background: var(--bg);
+        .contact-options {
+            max-width: 500px;
+            margin: 0 auto;
+            display: grid;
+            gap: 24px;
+        }
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            text-decoration: none;
             color: var(--text);
+            transition: all 0.3s ease;
         }
-        .form-group textarea { min-height: 120px; resize: vertical; }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
+        .contact-card:hover {
             border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow);
         }
-        .btn-submit {
-            width: 100%;
-            padding: 14px 24px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s;
+        .contact-card-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
         }
-        .btn-submit:hover { opacity: 0.9; }
-        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-        .form-message { 
-            padding: 16px; 
-            border-radius: 8px; 
-            margin-bottom: 20px;
-            text-align: center;
+        .contact-card-info h3 {
+            margin: 0 0 4px;
+            font-size: 1.1rem;
         }
-        .form-message.success { background: #d4edda; color: #155724; }
-        .form-message.error { background: #f8d7da; color: #721c24; }
+        .contact-card-info p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        .contact-card-arrow {
+            margin-left: auto;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
@@ -73,85 +74,54 @@
             <div class="container">
                 <h1 style="text-align: center; margin-bottom: 12px;">Get in Touch</h1>
                 <p style="text-align: center; margin-bottom: 40px; color: var(--text-secondary);">
-                    Have a project in mind? Fill out the form below and we'll get back to you.
+                    Have a project in mind? Reach out through any of these channels.
                 </p>
                 
-                <form id="contactForm" class="contact-form">
-                    <div id="formMessage"></div>
-                    
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">Send Message</button>
-                </form>
+                <div class="contact-options">
+                    <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20discuss%20a%20project%20with%20The%20Vibe%20Coder." class="contact-card" target="_blank" rel="noopener noreferrer">
+                        <span class="contact-card-icon">💬</span>
+                        <div class="contact-card-info">
+                            <h3>WhatsApp</h3>
+                            <p>+91 63959 06067 — Quick response</p>
+                        </div>
+                        <span class="contact-card-arrow">→</span>
+                    </a>
+
+                    <a href="mailto:thevibecoder@gmail.com?subject=Project%20Inquiry%20-%20The%20Vibe%20Coder" class="contact-card">
+                        <span class="contact-card-icon">📧</span>
+                        <div class="contact-card-info">
+                            <h3>Email</h3>
+                            <p>thevibecoder@gmail.com</p>
+                        </div>
+                        <span class="contact-card-arrow">→</span>
+                    </a>
+
+                    <a href="card.html" class="contact-card">
+                        <span class="contact-card-icon">📋</span>
+                        <div class="contact-card-info">
+                            <h3>View Services Card</h3>
+                            <p>See all services and pricing</p>
+                        </div>
+                        <span class="contact-card-arrow">→</span>
+                    </a>
+
+                    <a href="web-design-v2/index.html" class="contact-card">
+                        <span class="contact-card-icon">🎨</span>
+                        <div class="contact-card-info">
+                            <h3>Web Design Pricing</h3>
+                            <p>Design packages and gallery</p>
+                        </div>
+                        <span class="contact-card-arrow">→</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="page-footer">
         <div class="container">
-            <p>&copy; 2024 The Vibe Coder. All rights reserved.</p>
+            <p>&copy; 2026 The Vibe Coder. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const form = e.target;
-            const messageEl = document.getElementById('formMessage');
-            const submitBtn = form.querySelector('.btn-submit');
-            
-            const data = {
-                name: form.name.value,
-                email: form.email.value,
-                phone: form.phone.value,
-                message: form.message.value
-            };
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            messageEl.innerHTML = '';
-            
-            try {
-                const res = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await res.json();
-                
-                if (result.success) {
-                    messageEl.innerHTML = '<div class="form-message success">' + result.message + '</div>';
-                    form.reset();
-                } else {
-                    messageEl.innerHTML = '<div class="form-message error">' + result.message + '</div>';
-                }
-            } catch (err) {
-                messageEl.innerHTML = '<div class="form-message error">Something went wrong. Please try again.</div>';
-            }
-            
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-        });
-    </script>
 </body>
 </html>
