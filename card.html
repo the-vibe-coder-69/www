@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Vibe Coder - Services Card</title>
+  <meta name="description" content="Quick shareable profile card for The Vibe Coder services and contact.">
+  <meta property="og:title" content="The Vibe Coder - Services Card">
+  <meta property="og:description" content="Quick shareable profile card for The Vibe Coder services and contact.">
+  <meta property="og:image" content="https://thevibecoder.com/images/thevibecoder.png">
+  <meta property="og:url" content="https://thevibecoder.com/card.html">
+  <meta property="og:type" content="website">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <script src="theme.js"></script>
   <style>
     :root {
@@ -29,7 +38,7 @@
       margin: 0;
       padding: 0;
       background: var(--bg);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Manrope', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -286,17 +295,79 @@
       border: 1px solid var(--border);
     }
 
+    .card-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-nav a {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card-nav a:hover {
+      color: var(--text);
+    }
+
     .footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
       text-align: center;
       font-size: 10px;
       color: var(--muted);
-      margin-top: 10px;
     }
 
     audio {
       width: 100%;
       margin-top: 10px;
       opacity: 0.7;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+    }
+    .floating-whatsapp svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+    @media (max-width: 768px) {
+      .floating-whatsapp {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+      .floating-whatsapp svg {
+        width: 24px;
+        height: 24px;
+      }
     }
   </style>
 </head>
@@ -391,8 +462,8 @@
     <strong>Classic + modern design library</strong>
     A curated The Vibe Coder design library we can use for faster pitches across lawyers, consultants, CA firms, travel, immigration, tech, cloud, and local businesses.
     <div class="why" style="margin-top: 10px; margin-bottom: 0;">
-      <span>₹3,500 classic</span>
-      <span>₹4,500 modern</span>
+      <span>₹5,000 classic</span>
+      <span>₹7,500 modern</span>
       <span>selected demos</span>
     </div>
     <div class="route-pills">
@@ -424,13 +495,14 @@
     </a>
   </div>
 
-  <audio controls loop>
-    <source src="audio/vibe_coder_card_background.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <div class="card-nav">
+    <a href="index.html">&larr; Home</a>
+    <span style="color: var(--muted); font-size: 0.75rem;">THE VIBE CODER</span>
+  </div>
 
   <div class="footer">
-    Strategic IT Solutions for websites, AI, and automation
+    <a href="index.html" style="color: var(--muted); text-decoration: none;">&larr; Back to The Vibe Coder</a>
+    <span>Strategic IT Solutions &mdash; Websites, Apps, AI, Automation</span>
   </div>
 </div>
 

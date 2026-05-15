@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website Pricing | The Vibe Coder</title>
   <meta name="description" content="Website pricing, sample sites, and ready-to-customize design routes by The Vibe Coder.">
+  <meta property="og:title" content="Website Pricing | The Vibe Coder">
+  <meta property="og:description" content="Website pricing, sample sites, and ready-to-customize design routes by The Vibe Coder.">
+  <meta property="og:image" content="https://thevibecoder.com/images/thevibecoder.png">
+  <meta property="og:url" content="https://thevibecoder.com/web-design-pricing.html">
+  <meta property="og:type" content="website">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,73 +96,15 @@
       text-decoration: none;
     }
 
-    .page-shell {
-      position: relative;
-      z-index: 1;
-    }
-
     .container {
       width: min(1180px, calc(100vw - 32px));
       margin: 0 auto;
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(18px);
-      background: var(--surface);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .topbar-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    .brand strong,
     h1,
     h2,
     h3 {
       font-family: "Sora", sans-serif;
-    }
-
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.78rem;
-      margin-top: 0.1rem;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      font-weight: 600;
-      font-size: 0.96rem;
-    }
-
-    .nav-links a {
-      color: #374151;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
     }
 
     .hero {
@@ -575,18 +522,9 @@
         grid-template-columns: 1fr;
       }
 
-      .topbar-inner {
-        min-height: 84px;
-        align-items: flex-start;
-        padding: 1rem 0;
-      }
     }
 
     @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
       .hero {
         padding-top: 4.6rem;
       }
@@ -642,26 +580,58 @@
         font-size: 0.98rem;
       }
     }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+    }
+    .floating-whatsapp svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+    @media (max-width: 768px) {
+      .floating-whatsapp {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+      .floating-whatsapp svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <a class="brand" href="index.html">
-          <img src="images/thevibecoder.png" alt="The Vibe Coder logo">
-          <div>
-            <strong>The Vibe Coder</strong>
-            <small>Strategic IT Solutions · Built in Bharat</small>
-          </div>
-        </a>
-        <nav class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20discuss%20web%20design." target="_blank" rel="noopener noreferrer">Contact on WhatsApp</a>
-          <a href="#offers">Offers</a>
-          <a href="#design-library">Samples</a>
-          <a href="#contact">Contact</a>
-          <button class="theme-toggle" aria-label="Toggle dark mode" style="padding: 6px 12px; font-size: 0.75rem;">
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">THE VIBE CODER</a>
+        <nav class="site-nav">
+          <a href="index.html" class="nav-home">Home</a>
+          <a href="the-vibe-coder.html">Services</a>
+          <a href="web-design-pricing.html" class="active">Pricing</a>
+          <a href="the-vibe-coder.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="nav-cta" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
             <span>🌙</span>
           </button>
         </nav>
@@ -676,12 +646,12 @@
             <h1>Ready website designs we can customize fast for real businesses.</h1>
             <p>Choose between Classic brochure-style websites and Modern business websites, then tailor the design to match the brand.</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20website%20pricing%20for%20The%20Vibe%20Coder." target="_blank" rel="noopener noreferrer">WhatsApp Kritika</a>
+              <a class="btn btn-primary" href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20website%20pricing%20for%20The%20Vibe%20Coder." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
               <a class="btn btn-secondary" href="#design-library">Open Design Library</a>
             </div>
             <div class="button-row">
-              <span class="chip">Classic package from ₹3,500</span>
-              <span class="chip">Modern package from ₹4,500</span>
+              <span class="chip">Classic package from ₹5,000</span>
+              <span class="chip">Modern package from ₹7,500</span>
               <span class="chip">selected demos + design library</span>
             </div>
           </div>
@@ -709,41 +679,72 @@
           </div>
           <div class="offer-grid">
             <article class="offer-card">
-              <span class="price-tag">Professional Business Website · ₹3,500</span>
-              <h3>Classic static business website</h3>
+              <span class="price-tag">Classic Essentials · ₹5,000</span>
+              <h3>Classic business website</h3>
               <p>Best for local business clients who want a familiar, trustworthy website and need fast turnaround.</p>
               <span class="subline">Includes</span>
               <ul>
                 <li>Up to 5 static pages</li>
                 <li>Mobile responsive design</li>
                 <li>WhatsApp chat integration</li>
-                <li>Social media links</li>
                 <li>Visitor counter</li>
-                <li>Dynamic enquiry form with email alerts</li>
-                <li>Minor content updates up to 5 times</li>
-                <li>Basic SEO setup with title, keywords, and description</li>
+                <li>Dynamic enquiry form</li>
+                <li>Basic SEO setup</li>
               </ul>
               <div class="mini-grid">
-                <span>WhatsApp floating button</span>
-                <span>Click-to-call for mobile</span>
-                <span>Great for brochure websites</span>
+                <span>Fast 3-day delivery</span>
+                <span>Brochure style</span>
               </div>
             </article>
             <article class="offer-card">
-              <span class="price-tag">Modern Design Direction · ₹4,500</span>
-              <h3>Modern business website</h3>
-              <p>Best for clients who want a stronger first impression with richer sections, sharper visuals, and a more current digital presentation.</p>
-              <span class="subline">Best use cases</span>
+              <span class="price-tag">Modern Business · ₹7,500</span>
+              <h3>Modern design website</h3>
+              <p>Best for clients who want a stronger first impression with richer sections and a more current digital presentation.</p>
+              <span class="subline">Includes</span>
               <ul>
-                <li>Consulting, software, cloud, support, agencies, and IT service brands</li>
-                <li>Founder-led service companies that want better positioning</li>
-                <li>Clients who respond well to modern motion, stronger hierarchy, and more visual sales material</li>
-                <li>Sales calls where design quality itself helps justify the price</li>
+                <li>Up to 10 pages</li>
+                <li>Premium UI/UX design</li>
+                <li>Custom animations</li>
+                <li>Contact form integration</li>
+                <li>Google Maps setup</li>
+                <li>Advanced SEO optimization</li>
               </ul>
               <div class="mini-grid">
                 <span>Visual-first selling</span>
-                <span>Modern look and feel</span>
-                <span>Faster proposal-to-delivery cycle</span>
+                <span>Modern tech stack</span>
+              </div>
+            </article>
+            <article class="offer-card">
+              <span class="price-tag">AI Growth Suite · ₹15,000</span>
+              <h3>Website + AI Automation</h3>
+              <p>Transform your site into a lead-generation machine with integrated AI tools and smart workflows.</p>
+              <span class="subline">Includes</span>
+              <ul>
+                <li>Everything in Modern package</li>
+                <li>Custom AI Chatbot (24/7)</li>
+                <li>Lead capture automation</li>
+                <li>WhatsApp automation setup</li>
+                <li>Monthly performance report</li>
+              </ul>
+              <div class="mini-grid">
+                <span>AI-native growth</span>
+                <span>High ROI automation</span>
+              </div>
+            </article>
+            <article class="offer-card">
+              <span class="price-tag">Custom Solution · ₹25,000+</span>
+              <h3>Bespoke Web App & Software</h3>
+              <p>For businesses that need more than a website—custom dashboards, portals, and complex integrations.</p>
+              <span class="subline">Best for</span>
+              <ul>
+                <li>E-commerce platforms</li>
+                <li>SaaS products & Dashboards</li>
+                <li>Internal business systems</li>
+                <li>API-driven applications</li>
+              </ul>
+              <div class="mini-grid">
+                <span>Scalable architecture</span>
+                <span>Full custom build</span>
               </div>
             </article>
           </div>
@@ -835,14 +836,41 @@
         </div>
       </section>
 
+      <section id="faq">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">FAQ</span>
+            <h2>Common Questions</h2>
+          </div>
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>How long does it take?</h3>
+              <p>For a Classic Essentials website, we deliver in 3-5 business days. More complex Modern or AI Growth projects typically take 2-3 weeks.</p>
+            </article>
+            <article class="info-card">
+              <h3>What about hosting and domain?</h3>
+              <p>Domain name and hosting are not included in the base price. We can help you set them up or manage them for a small annual fee.</p>
+            </article>
+            <article class="info-card">
+              <h3>Can I update the website later?</h3>
+              <p>Yes! We build our sites to be easily updatable. We also offer maintenance packages if you'd like us to handle the updates for you.</p>
+            </article>
+            <article class="info-card">
+              <h3>Do you provide content?</h3>
+              <p>We need you to provide the text and images. However, we can help with basic copywriting and sourcing stock images as part of the project.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="contact">
         <div class="container info-grid">
           <article class="contact-card">
             <strong>Talk to the sales desk</strong>
             <p>If a client says “show me options,” this page, the gallery, and the quick card work together as the sales kit.</p>
             <div class="contact-lines">
-              <a href="tel:+916395906067">+91 6395906067</a>
-              <a href="tel:+919312645200">+91 9312645200</a>
+              <a href="tel:+916395906067">+91 63959 06067</a>
+              <a href="tel:+919312645200">+91 93126 45200</a>
               <a href="https://wa.me/916395906067?text=YES%20-%20I%20want%20a%20website%20quote." target="_blank" rel="noopener noreferrer">Reply YES on WhatsApp</a>
             </div>
           </article>
@@ -854,12 +882,21 @@
       </section>
     </main>
 
-    <footer class="page-footer">
+    <footer>
       <div class="container">
-        <p>The Vibe Coder website sales system: quick card, pricing page, featured demos, and a full design library.</p>
-        <a href="index.html">Back to home</a>
+        <div class="footer-brand">THE VIBE CODER</div>
+        <p class="footer-tagline">Strategic IT Solutions — Websites, Apps, AI, Automation. Built in Bharat.</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="the-vibe-coder.html">Services</a>
+          <a href="web-design-pricing.html">Pricing</a>
+          <a href="the-vibe-coder.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="internship.html">Internship</a>
+        </div>
+        <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
+        <p class="footer-copy">&copy; 2026 The Vibe Coder — Maheshwari Tech & Solutions. All rights reserved.</p>
       </div>
     </footer>
-  </div>
 </body>
 </html>

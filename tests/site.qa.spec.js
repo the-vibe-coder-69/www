@@ -42,8 +42,8 @@ test.beforeEach(async ({ page }) => {
 test("home route loads core links and captures screenshot @screens", async ({ page }) => {
   await page.goto("/index.html");
 
-  await expect(page).toHaveTitle(/Design Ecosystem/i);
-  await expect(page.getByRole("heading", { level: 1, name: /Welcome to the Design Universe/i })).toBeVisible();
+  await expect(page).toHaveTitle(/Web Design & IT Solutions/i);
+  await expect(page.getByRole("heading", { level: 1, name: /Professional Websites/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /View Our Work/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Get in Touch/i })).toHaveAttribute("href", /wa\.me/);
 
@@ -125,9 +125,9 @@ test("pricing page renders offers and captures screenshot @screens", async ({ pa
   await page.goto("/web-design-pricing.html");
 
   await expect(page).toHaveTitle(/Website Pricing/i);
-  await expect(page.getByRole("heading", { level: 1, name: /Ready website designs we can customize fast for real businesses/i })).toBeVisible();
-  await expect(page.getByText("Professional Business Website")).toBeVisible();
-  await expect(page.getByText("Modern Design Direction")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /Ready website designs/i })).toBeVisible();
+  await expect(page.getByText("Classic business website")).toBeVisible();
+  await expect(page.getByText("Modern design website")).toBeVisible();
 
   await capture(page, "web-design-pricing");
 });
@@ -151,7 +151,7 @@ test.skip("shayari search and random stay functional", async ({ page }) => {
 test("home page updated hero rebrand", async ({ page }) => {
   await page.goto("/index.html");
 
-  await expect(page.getByRole("heading", { level: 1, name: /Welcome to the Design Universe/i })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /Professional Websites/i })).toBeVisible();
   await expect(page.locator("header").getByText("THE VIBE CODER")).toBeVisible();
 });
 
@@ -191,33 +191,13 @@ test("home page has terminal portfolio card in featured destinations", async ({ 
   await expect(page.getByRole("link", { name: /Run Experiment/ })).toHaveAttribute("href", "https://ayush-mandowara.vercel.app");
 });
 
-test("home page shows _explorations section with 8 agents", async ({ page }) => {
+test("home page shows full route index section", async ({ page }) => {
   await page.goto("/index.html");
 
-  await expect(page.getByRole("heading", { name: "_explorations" })).toBeVisible();
-  await expect(page.getByText("[8 agents active — ongoing experiments]")).toBeVisible();
-
-  const agents = page.locator(".agent-item");
-  await expect(agents).toHaveCount(8);
-
-  await expect(page.getByText("OpenCode")).toBeVisible();
-  await expect(page.getByText("Multica")).toBeVisible();
-  await expect(page.getByText("Qwen")).toBeVisible();
-  await expect(page.getByText("OpenClaw")).toBeVisible();
-  await expect(page.getByText("Gemini CLI")).toBeVisible();
-  await expect(page.getByText("Antigravity")).toBeVisible();
-  await expect(page.getByText("ChatGPT Atlas")).toBeVisible();
-  await expect(page.getByText("OpenAI Codex")).toBeVisible();
-});
-
-test("_explorations agents expand on click", async ({ page }) => {
-  await page.goto("/index.html");
-
-  await page.locator(".agent-item:has-text('OpenCode')").click();
-  await expect(page.locator(".agent-item:has-text('OpenCode') .agent-note")).toContainText("Big Pickle model");
-
-  await page.locator(".agent-item:has-text('Multica')").click();
-  await expect(page.locator(".agent-item:has-text('Multica') .agent-note")).toContainText("Task management");
+  await expect(page.getByRole("heading", { name: "Full Route Index" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Core Business" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Market & Commerce" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Experiments & Media" })).toBeVisible();
 });
 
 // ===== Additional Page Tests =====
