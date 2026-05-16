@@ -13,100 +13,11 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/home-minimal.css">
   <script src="theme.js"></script>
   <style>
-    :root {
-      --bg: #fdfaf6;
-      --surface: #ffffff;
-      --surface-soft: rgba(0, 0, 0, 0.04);
-      --line: rgba(0, 0, 0, 0.08);
-      --text: #1a1a1a;
-       --muted: #374151;
-      --accent: #0055ff;
-      --accent-2: #f18b4d;
-      --accent-3: #7be4b2;
-    }
-
-    [data-theme="dark"] {
-      --bg: #07101d;
-      --surface: rgba(12, 19, 35, 0.9);
-      --surface-soft: rgba(255, 255, 255, 0.04);
-      --line: rgba(166, 185, 255, 0.16);
-      --text: #eef3ff;
-      --muted: #98a8cf;
-      --accent: #6a63ff;
-      --accent-2: #f18b4d;
-      --accent-3: #7be4b2;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Manrope", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    [data-theme="dark"] body {
-      background:
-        radial-gradient(circle at top center, rgba(106, 99, 255, 0.2), transparent 26%),
-        linear-gradient(180deg, #050b16 0%, #08111f 52%, #050b15 100%);
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: auto;
-      pointer-events: none;
-      z-index: 0;
-      border-radius: 50%;
-      filter: blur(4px);
-    }
-
-    body::before {
-      width: 22rem;
-      height: 22rem;
-      left: -7rem;
-      bottom: 8vh;
-      background: radial-gradient(circle, rgba(123, 228, 178, 0.14), transparent 68%);
-    }
-
-    body::after {
-      width: 20rem;
-      height: 20rem;
-      right: 8vw;
-      top: 16vh;
-      background: radial-gradient(circle, rgba(241, 139, 77, 0.12), transparent 70%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1180px, calc(100vw - 32px));
-      margin: 0 auto;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Sora", sans-serif;
-    }
-
+    /* Page-specific pricing styles */
     .hero {
       padding: 5.5rem 0 3rem;
     }
@@ -125,8 +36,8 @@
       gap: 0.45rem;
       padding: 0.65rem 0.95rem;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      background: var(--accent-soft);
       color: var(--text);
       font-size: 0.92rem;
     }
@@ -139,7 +50,7 @@
     }
 
     .hero-copy p {
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 1.05rem;
       line-height: 1.8;
       max-width: 760px;
@@ -158,49 +69,26 @@
       align-items: center;
       justify-content: center;
       min-height: 50px;
-      padding: 0 20px;
+      padding: 0 24px;
       border-radius: 999px;
       font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #9183ff);
-      color: #fff;
-      box-shadow: 0 18px 44px rgba(106, 99, 255, 0.28);
+      background: var(--accent);
+      color: white;
     }
 
     .btn-secondary {
-      background: var(--surface-soft);
-      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
       color: var(--text);
     }
 
-    /* Accessibility: Focus styles for keyboard navigation */
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    /* Skip link for keyboard users */
-    .skiplink {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--accent);
-      color: #fff;
-      padding: 8px 16px;
-      z-index: 1000;
-      font-weight: 600;
-    }
-
-    .skiplink:focus {
-      top: 0;
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     .hero-note,
@@ -211,22 +99,10 @@
     .contact-card,
     .disclaimer-card,
     .showcase-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 28px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
-    }
-
-    [data-theme="dark"] .hero-note,
-    [data-theme="dark"] .offer-card,
-    [data-theme="dark"] .info-card,
-    [data-theme="dark"] .reference-card,
-    [data-theme="dark"] .sample-card,
-    [data-theme="dark"] .contact-card,
-    [data-theme="dark"] .disclaimer-card,
-    [data-theme="dark"] .showcase-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+      box-shadow: var(--card-shadow);
     }
 
     .hero-note {
@@ -250,7 +126,7 @@
     .reference-card p,
     .disclaimer-card p,
     .contact-card p {
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.75;
     }
 
@@ -273,7 +149,7 @@
     }
 
     .section-head p {
-      color: var(--muted);
+      color: var(--text-muted);
       max-width: 760px;
       line-height: 1.75;
     }
@@ -300,11 +176,23 @@
       align-items: center;
       padding: 0.5rem 0.85rem;
       border-radius: 999px;
-      background: rgba(123, 228, 178, 0.14);
-      border: 1px solid rgba(35, 112, 78, 0.2);
-      color: #1f6a47;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      color: var(--accent);
       font-weight: 700;
       margin-bottom: 0.9rem;
+    }
+
+    /* Standardized Card Style (Clean Classic Vibe) */
+    .offer-card {
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+    
+    .offer-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
 
     .offer-card h3,
@@ -317,7 +205,7 @@
 
     .offer-card .subline {
       display: block;
-      color: var(--accent-2);
+      color: var(--accent);
       font-weight: 700;
       margin-top: 0.6rem;
       margin-bottom: 0.9rem;
@@ -333,9 +221,9 @@
     .mini-grid span {
       padding: 0.8rem 0.9rem;
       border-radius: 18px;
-      background: rgba(17, 24, 39, 0.04);
-      border: 1px solid rgba(17, 24, 39, 0.12);
-      color: #243244;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      color: var(--text);
       font-size: 0.92rem;
       font-weight: 700;
     }
@@ -355,25 +243,17 @@
       gap: 1rem;
       padding: 0.95rem 1rem;
       border-radius: 18px;
-      background: var(--surface-soft);
-      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
       color: var(--text);
+      transition: all 0.2s ease;
     }
 
     .sample-links a:hover,
     .reference-item:hover {
       border-color: var(--accent);
-      background: var(--surface);
-    }
-
-    .sample-links span,
-    .reference-item span,
-    .reference-item small {
-      color: var(--muted);
-    }
-
-    .reference-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      background: var(--card-bg);
+      transform: translateX(4px);
     }
 
     .showcase-grid {
@@ -385,76 +265,33 @@
     .showcase-card {
       position: relative;
       overflow: hidden;
-      min-height: 380px;
-      display: grid;
-      grid-template-rows: 160px 1fr;
-      background: var(--surface);
-    }
-
-    .showcase-card::before {
-      content: "";
-      display: block;
-      background:
-        radial-gradient(circle at top right, rgba(123, 228, 178, 0.34), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(5, 85, 255, 0.28), transparent 34%),
-        linear-gradient(135deg, rgba(5, 11, 22, 0.94), rgba(20, 32, 58, 0.92));
-      border-bottom: 1px solid var(--line);
-    }
-
-    .showcase-card::after {
-      content: "";
-      position: absolute;
-      inset: 0 auto auto 0;
-      width: 100%;
-      height: 160px;
-      background:
-        linear-gradient(180deg, rgba(5, 11, 22, 0.1) 0%, rgba(5, 11, 22, 0.45) 100%);
-      pointer-events: none;
-    }
-
-    [data-theme="dark"] .showcase-card::after {
-      background: linear-gradient(180deg, rgba(5, 11, 22, 0.08), rgba(5, 11, 22, 0.54));
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      background: var(--card-bg);
+      padding: 1.5rem;
     }
 
     .showcase-card-content {
-      position: relative;
-      z-index: 1;
-      height: auto;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 0.55rem;
-      padding: 1.35rem;
-      background: var(--surface);
+      height: 100%;
     }
 
     .showcase-card-content span {
-      color: #335eea;
-      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--accent-soft);
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .showcase-card-content h3 {
-      color: var(--text);
-    }
-
-    .showcase-card-content p {
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: none;
-    }
-
-    .showcase-card .link-pair a {
-      background: rgba(5, 85, 255, 0.08);
-      color: #173fb6;
-      border: 1px solid rgba(23, 63, 182, 0.14);
-    }
-
-    .reference-item strong {
-      display: block;
-      margin-bottom: 0.2rem;
-      color: var(--text);
+      letter-spacing: 0.1em;
+      width: fit-content;
     }
 
     .link-pair {
@@ -467,17 +304,9 @@
     .link-pair a {
       padding: 0.45rem 0.75rem;
       border-radius: 999px;
-      background: var(--surface-soft);
-      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
       font-size: 0.88rem;
-      color: var(--text);
-    }
-
-    .contact-card strong,
-    .disclaimer-card strong {
-      display: block;
-      margin-bottom: 0.6rem;
-      font-size: 1.15rem;
       color: var(--text);
     }
 
@@ -493,21 +322,6 @@
       font-size: 1rem;
     }
 
-    .page-footer {
-      padding: 1rem 0 3rem;
-      color: #374151;
-      font-size: 0.98rem;
-    }
-
-    .page-footer .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
-    }
-
     @media (max-width: 980px) {
       .hero-shell,
       .offer-grid,
@@ -521,7 +335,6 @@
       .mini-grid {
         grid-template-columns: 1fr;
       }
-
     }
 
     @media (max-width: 720px) {
@@ -543,11 +356,6 @@
         justify-content: flex-start;
       }
 
-      .section-head h2 {
-        font-size: 2rem;
-        line-height: 1.1;
-      }
-
       .offer-card,
       .info-card,
       .sample-card,
@@ -564,81 +372,30 @@
         width: 100%;
         justify-content: center;
         text-align: center;
-        padding: 0.7rem 0.9rem;
-        line-height: 1.35;
-        white-space: normal;
-      }
-
-      .offer-card h3 {
-        font-size: 1.8rem;
-        line-height: 1.05;
-      }
-
-      .offer-card p,
-      .offer-card li,
-      .mini-grid span {
-        font-size: 0.98rem;
-      }
-    }
-
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 9999;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .floating-whatsapp:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
-    }
-    .floating-whatsapp svg {
-      width: 28px;
-      height: 28px;
-      fill: white;
-    }
-    @media (max-width: 768px) {
-      .floating-whatsapp {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-      }
-      .floating-whatsapp svg {
-        width: 24px;
-        height: 24px;
       }
     }
   </style>
 </head>
 <body>
+    <a href="#main" class="skiplink">Skip to main content</a>
     <header>
-      <div class="container">
-        <a href="index.html" class="logo">THE VIBE CODER</a>
-        <nav class="site-nav">
-          <a href="index.html" class="nav-home">Home</a>
-          <a href="the-vibe-coder.html">Services</a>
-          <a href="web-design-pricing.html" class="active">Pricing</a>
-          <a href="the-vibe-coder.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="nav-cta" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
-            <span>🌙</span>
-          </button>
-        </nav>
-      </div>
+        <div class="container">
+            <a href="index.html" class="logo">THE VIBE CODER</a>
+            <nav class="site-nav">
+                <a href="index.html" class="nav-home">Home</a>
+                <a href="the-vibe-coder.html">Services</a>
+                <a href="web-design-pricing.html" class="active">Pricing</a>
+                <a href="the-vibe-coder.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="nav-cta" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
+                    <span aria-hidden="true">🌙</span>
+                </button>
+            </nav>
+        </div>
     </header>
 
-    <main>
+    <main id="main">
       <section class="hero">
         <div class="container hero-shell">
           <div class="hero-copy">
@@ -883,20 +640,26 @@
     </main>
 
     <footer>
-      <div class="container">
-        <div class="footer-brand">THE VIBE CODER</div>
-        <p class="footer-tagline">Strategic IT Solutions — Websites, Apps, AI, Automation. Built in Bharat.</p>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="the-vibe-coder.html">Services</a>
-          <a href="web-design-pricing.html">Pricing</a>
-          <a href="the-vibe-coder.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="internship.html">Internship</a>
+        <div class="container">
+            <div class="footer-brand">THE VIBE CODER</div>
+            <p class="footer-tagline">Strategic IT Solutions — Websites, Apps, AI, Automation. Built in Bharat.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="the-vibe-coder.html">Services</a>
+                <a href="web-design-pricing.html">Pricing</a>
+                <a href="the-vibe-coder.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="internship.html">Internship</a>
+            </div>
+            <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
+            <p class="footer-copy">© 2026 The Vibe Coder — Maheshwari Tech & Solutions. All rights reserved.</p>
         </div>
-        <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
-        <p class="footer-copy">&copy; 2026 The Vibe Coder — Maheshwari Tech & Solutions. All rights reserved.</p>
-      </div>
     </footer>
+
+    <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="script.js"></script>
 </body>
 </html>
