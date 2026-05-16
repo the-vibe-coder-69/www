@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Pricing | The Vibe Coder</title>
-  <meta name="description" content="Website pricing, sample sites, and ready-to-customize design routes by The Vibe Coder.">
-  <meta property="og:title" content="Website Pricing | The Vibe Coder">
-  <meta property="og:description" content="Website pricing, sample sites, and ready-to-customize design routes by The Vibe Coder.">
+  <title>Design Catalog | The Vibe Coder</title>
+  <meta name="description" content="Browse our design directions — classic and modern website styles crafted for Indian businesses. Pick a direction, we build it.">
+  <meta property="og:title" content="Design Catalog | The Vibe Coder">
+  <meta property="og:description" content="Browse our design directions — classic and modern website styles crafted for Indian businesses. Pick a direction, we build it.">
   <meta property="og:image" content="https://thevibecoder.com/images/thevibecoder.png">
   <meta property="og:url" content="https://thevibecoder.com/web-design-pricing.html">
   <meta property="og:type" content="website">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/home-minimal.css">
   <script src="theme.js"></script>
   <style>
@@ -25,9 +25,24 @@
       font-family: 'Syne', sans-serif;
     }
 
+    /* ─── Hero ─── */
     .catalog-hero {
-      padding: 3rem 0 1rem;
+      padding: 4rem 0 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .catalog-hero::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
+      transform: translateX(-50%);
+      pointer-events: none;
     }
 
     .breadcrumb {
@@ -35,56 +50,128 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
     }
 
-    .breadcrumb a {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .breadcrumb span {
-      opacity: 0.4;
-    }
+    .breadcrumb a { color: var(--accent); font-weight: 600; }
+    .breadcrumb span { opacity: 0.35; }
 
     .catalog-hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.1;
-      margin-bottom: 0.6rem;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      line-height: 1.08;
+      margin-bottom: 0.75rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .catalog-hero h1 .accent-word {
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .catalog-hero p {
       color: var(--text-muted);
-      font-size: 1rem;
-      max-width: 540px;
+      font-size: 1.05rem;
+      max-width: 520px;
       margin: 0 auto;
       line-height: 1.7;
     }
 
-    section {
-      padding: 1.6rem 0 2.5rem;
+    /* ─── Section Tabs / Divider ─── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-top: 0.5rem;
     }
 
-    .section-head {
-      margin-bottom: 1.2rem;
+    .section-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
+
+    .section-marker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-muted);
+    }
+
+    .section-marker .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .section-marker.classic .dot { background: #d97706; }
+    .section-marker.modern .dot { background: #6366f1; }
+    .section-marker.contact .dot { background: #059669; }
+
+    section {
+      padding: 2rem 0 3rem;
+      position: relative;
+    }
+
+    /* ─── Section Theme Decorations ─── */
+    #classic {
+      background:
+        radial-gradient(ellipse 80% 60% at 0% 50%, rgba(217,119,6,0.03) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(217,119,6,0.02) 0%, transparent 70%);
+    }
+
+    #modern {
+      background:
+        radial-gradient(ellipse 80% 60% at 0% 50%, rgba(99,102,241,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(99,102,241,0.03) 0%, transparent 70%);
+    }
+
+    #contact {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(5,150,105,0.03) 0%, transparent 70%);
+    }
+
+    .section-head { margin-bottom: 1.2rem; }
 
     .section-head h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.3rem;
+      font-size: 1.6rem;
+      margin-bottom: 0.2rem;
+      font-weight: 800;
     }
+
+    #classic .section-head h2 { color: #d97706; }
+    #modern .section-head h2 { color: #6366f1; }
+    #contact .section-head h2 { color: #059669; }
+
+    [data-theme="dark"] #classic .section-head h2 { color: #f59e0b; }
+    [data-theme="dark"] #modern .section-head h2 { color: #818cf8; }
+    [data-theme="dark"] #contact .section-head h2 { color: #34d399; }
 
     .section-head p {
       color: var(--text-muted);
       font-size: 0.92rem;
     }
 
+    /* ─── Direction Cards (Classic / Modern) ─── */
     .direction-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.7rem;
     }
 
     .dir-card {
@@ -92,62 +179,138 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1rem 1.2rem;
+      padding: 1rem 1.3rem;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-      transition: all 0.2s ease;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
       color: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dir-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    #classic .dir-card::before {
+      background: linear-gradient(135deg, rgba(217,119,6,0.04), transparent 60%);
+    }
+    #modern .dir-card::before {
+      background: linear-gradient(135deg, rgba(99,102,241,0.04), transparent 60%);
+    }
+    #contact .contact-stack a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(5,150,105,0.04), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .dir-card:hover::before,
+    #contact .contact-stack a:hover::before {
+      opacity: 1;
     }
 
     .dir-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 20px rgba(0, 85, 255, 0.1);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    #classic .dir-card:hover {
+      border-color: #d97706;
+      box-shadow: 0 8px 24px rgba(217,119,6,0.1);
+    }
+    #modern .dir-card:hover {
+      border-color: #6366f1;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.1);
     }
 
     .dir-card .domain {
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text);
+      position: relative;
+      z-index: 1;
     }
 
     .dir-card .tag {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       white-space: nowrap;
       flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
     }
 
+    #classic .dir-card .tag { background: rgba(217,119,6,0.08); color: #b45309; }
+    #modern .dir-card .tag { background: rgba(99,102,241,0.08); color: #6366f1; }
+
+    [data-theme="dark"] #classic .dir-card .tag { background: rgba(217,119,6,0.15); color: #fbbf24; }
+    [data-theme="dark"] #modern .dir-card .tag { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+
+    /* ─── Contact Stack ─── */
     .contact-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.7rem;
     }
 
     .contact-stack a {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 1.2rem;
+      gap: 0.85rem;
+      padding: 1rem 1.3rem;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       color: var(--text);
       font-weight: 600;
-      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+      position: relative;
+      overflow: hidden;
     }
 
     .contact-stack a:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 20px rgba(0, 85, 255, 0.1);
-      transform: translateY(-2px);
+      border-color: #059669;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(5,150,105,0.1);
     }
 
     .contact-stack .contact-icon {
       font-size: 1.3rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-stack a .contact-icon { background: rgba(5,150,105,0.08); }
+
+    .contact-stack a span:not(.contact-icon) {
+      position: relative;
+      z-index: 1;
     }
 
     .catalog-cta {
@@ -156,86 +319,32 @@
       justify-content: center;
       gap: 0.5rem;
       margin-top: 1.5rem;
-      padding: 0.85rem 2rem;
-      background: var(--accent);
+      padding: 0.9rem 2.2rem;
+      background: linear-gradient(135deg, #059669, #10b981);
       color: #fff;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.95rem;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(5,150,105,0.25);
     }
 
     .catalog-cta:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 85, 255, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(5,150,105,0.35);
     }
 
-    .offer-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
+    /* ─── Footer ─── */
+    footer { margin-top: 1rem; }
 
-    .offer-card {
-      padding: 1.4rem;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .offer-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .offer-card .price {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .offer-card p {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    .offer-card ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.7rem;
-    }
-
-    .offer-card ul li {
-      font-size: 0.78rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-    }
-
+    /* ─── Responsive ─── */
     @media (max-width: 640px) {
-      .offer-grid {
-        grid-template-columns: 1fr;
-      }
+      .catalog-hero { padding: 2.5rem 0 1.5rem; }
 
-      .dir-card {
-        padding: 0.85rem 1rem;
-      }
-
-      .dir-card .domain {
-        font-size: 0.88rem;
-      }
-
-      .dir-card .tag {
-        font-size: 0.75rem;
-      }
+      .dir-card { padding: 0.8rem 1rem; }
+      .dir-card .domain { font-size: 0.85rem; }
+      .dir-card .tag { font-size: 0.72rem; }
+      .contact-stack a { padding: 0.85rem 1rem; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -266,45 +375,52 @@
             <span>/</span>
             <span>Design Catalog</span>
           </nav>
-          <h1>Browse design directions</h1>
+          <h1>Browse <span class="accent-word">design directions</span></h1>
           <p>Pre-built website styles across classic and modern categories. Pick a direction, then we customise it for your brand.</p>
         </div>
       </section>
 
       <section id="classic">
         <div class="container">
+          <div class="section-divider">
+            <span class="section-marker classic"><span class="dot"></span> Classic</span>
+          </div>
           <div class="section-head">
-            <h2>Classic</h2>
+            <h2>Warm & Trustworthy</h2>
             <p>Strong layouts for legal, industrial, CA, travel, immigration, and brochure-style business websites.</p>
           </div>
           <div class="direction-stack">
             <a href="https://www.divorcelawyerncr.org.in" target="_blank" rel="noopener noreferrer" class="dir-card">
               <span class="domain">divorcelawyerncr.org.in</span>
-              <span class="tag">Law / consultancy style</span>
+              <span class="tag">Law / Consultancy</span>
             </a>
             <a href="https://www.mekaster.com" target="_blank" rel="noopener noreferrer" class="dir-card">
               <span class="domain">mekaster.com</span>
-              <span class="tag">Industrial / company profile style</span>
+              <span class="tag">Industrial / Company</span>
             </a>
             <a href="https://www.jcgoel.com" target="_blank" rel="noopener noreferrer" class="dir-card">
               <span class="domain">jcgoel.com</span>
-              <span class="tag">CA / business services style</span>
+              <span class="tag">CA / Business Services</span>
             </a>
             <a href="https://www.maasonatours.com" target="_blank" rel="noopener noreferrer" class="dir-card">
               <span class="domain">maasonatours.com</span>
-              <span class="tag">Travel business style</span>
+              <span class="tag">Travel Business</span>
             </a>
             <a href="https://www.hapjourneys.com" target="_blank" rel="noopener noreferrer" class="dir-card">
               <span class="domain">hapjourneys.com</span>
-              <span class="tag">Travel and packages style</span>
+              <span class="tag">Travel & Packages</span>
             </a>
             <a href="https://www.videshvision.com" target="_blank" rel="noopener noreferrer" class="dir-card">
               <span class="domain">videshvision.com</span>
-              <span class="tag">Overseas / immigration style</span>
+              <span class="tag">Overseas / Immigration</span>
             </a>
             <a href="https://www.casperimmigration.com" target="_blank" rel="noopener noreferrer" class="dir-card">
               <span class="domain">casperimmigration.com</span>
-              <span class="tag">Immigration consultancy style</span>
+              <span class="tag">Immigration Consultancy</span>
+            </a>
+            <a href="https://www.globalweb.net.in" target="_blank" rel="noopener noreferrer" class="dir-card">
+              <span class="domain">globalweb.net.in</span>
+              <span class="tag">Global Web Services</span>
             </a>
           </div>
         </div>
@@ -312,8 +428,11 @@
 
       <section id="modern">
         <div class="container">
+          <div class="section-divider">
+            <span class="section-marker modern"><span class="dot"></span> Modern</span>
+          </div>
           <div class="section-head">
-            <h2>Modern</h2>
+            <h2>Sleek & Forward</h2>
             <p>Premium layouts for consulting, software, cloud, support, agency, and IT service pitches.</p>
           </div>
           <div class="direction-stack">
@@ -383,9 +502,12 @@
 
       <section id="contact">
         <div class="container">
+          <div class="section-divider">
+            <span class="section-marker contact"><span class="dot"></span> Contact</span>
+          </div>
           <div class="section-head">
-            <h2>Contact</h2>
-            <p>Ready to start? Reach out and we'll take it from there.</p>
+            <h2>Start your project</h2>
+            <p>Ready to build? Reach out and let's make it happen.</p>
           </div>
           <div class="contact-stack">
             <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20see%20web%20design%20demos." target="_blank" rel="noopener noreferrer">
@@ -403,10 +525,6 @@
             <a href="card.html">
               <span class="contact-icon">📇</span>
               Quick card — portable sales entry
-            </a>
-            <a href="https://www.globalweb.net.in" target="_blank" rel="noopener noreferrer">
-              <span class="contact-icon">🌐</span>
-              globalweb.net.in
             </a>
           </div>
           <div style="text-align:center">
