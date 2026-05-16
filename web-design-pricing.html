@@ -97,8 +97,7 @@
     .reference-card,
     .sample-card,
     .contact-card,
-    .disclaimer-card,
-    .showcase-card {
+    .disclaimer-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 28px;
@@ -158,7 +157,7 @@
     .info-grid,
     .samples-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.2rem;
     }
 
@@ -256,60 +255,6 @@
       transform: translateX(4px);
     }
 
-    .showcase-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .showcase-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      background: var(--card-bg);
-      padding: 1.5rem;
-    }
-
-    .showcase-card-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 0.55rem;
-      height: 100%;
-    }
-
-    .showcase-card-content span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.4rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--accent-soft);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      width: fit-content;
-    }
-
-    .link-pair {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .link-pair a {
-      padding: 0.45rem 0.75rem;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid var(--border);
-      font-size: 0.88rem;
-      color: var(--text);
-    }
-
     .contact-lines {
       display: grid;
       gap: 0.8rem;
@@ -327,8 +272,7 @@
       .offer-grid,
       .info-grid,
       .samples-grid,
-      .reference-list,
-      .showcase-grid {
+      .reference-list {
         grid-template-columns: 1fr;
       }
 
@@ -350,10 +294,6 @@
       .reference-item {
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      .link-pair {
-        justify-content: flex-start;
       }
 
       .offer-card,
@@ -533,8 +473,8 @@
       <section id="design-library">
         <div class="container">
           <div class="section-head">
-            <span class="eyebrow">Classic + Modern Library</span>
-            <h2>Use a clean design library to compare styles with confidence.</h2>
+            <span class="eyebrow">Design Library</span>
+            <h2>Browse classic and modern design directions side by side.</h2>
             <p>Classic layouts work well for familiar brochure websites, while modern layouts help businesses that want a sharper, more visual online presence.</p>
           </div>
           <div class="samples-grid">
@@ -552,6 +492,27 @@
               </div>
             </article>
             <article class="sample-card">
+              <h3>Modern design styles</h3>
+              <p>Premium layouts for consulting, software, cloud, support, agency, and IT service pitches.</p>
+              <div class="sample-links">
+                <a href="https://html.themehour.net/atek/demo/home-consulting.html" target="_blank" rel="noopener noreferrer"><strong>Boardroom Advisory</strong><span>Modern • Consulting — corporate trust</span></a>
+                <a href="https://html.themehour.net/atek/demo/home-cloud.html" target="_blank" rel="noopener noreferrer"><strong>Nimbus Cloud</strong><span>Modern • Cloud — hosting &amp; infrastructure</span></a>
+                <a href="https://html.themehour.net/atek/demo/home-tech-support.html" target="_blank" rel="noopener noreferrer"><strong>Helpdesk Pro</strong><span>Modern • Support — AMC &amp; service teams</span></a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20see%20the%20AppForge%20demo." target="_blank" rel="noopener noreferrer"><strong>AppForge Studio</strong><span>Modern • Startup — app &amp; creative pitches</span></a>
+                <a href="https://templates.thememodern.com/engitech/index.html" target="_blank" rel="noopener noreferrer"><strong>Engitech Systems</strong><span>Modern • Software — enterprise IT direction</span></a>
+                <a href="https://expert-themes.com/html/ithub/ithub/index.html" target="_blank" rel="noopener noreferrer"><strong>iThub Nexus</strong><span>Modern • IT Services — clean service depth</span></a>
+                <a href="https://expert-themes.com/html/ithub/ithub/index-3.html" target="_blank" rel="noopener noreferrer"><strong>iThub Velocity</strong><span>Modern • Startup IT — sharper services</span></a>
+                <a href="https://html.webextheme.com/ziptech/index.html" target="_blank" rel="noopener noreferrer"><strong>Ziptech Core</strong><span>Modern • IT Solutions — mainstream business</span></a>
+                <a href="https://expert-themes.com/html/globex/index-3.html" target="_blank" rel="noopener noreferrer"><strong>Globex Orbit</strong><span>Modern • Global Services — commercial framing</span></a>
+                <a href="https://expert-themes.com/html/globex/index.html" target="_blank" rel="noopener noreferrer"><strong>Globex Prime</strong><span>Modern • Corporate — service websites</span></a>
+                <a href="https://html.webextheme.com/ziptech/home2.html" target="_blank" rel="noopener noreferrer"><strong>Ziptech Motion</strong><span>Modern • Service — local-business warmth</span></a>
+                <a href="https://html.themegenix.com/techzo/index.html" target="_blank" rel="noopener noreferrer"><strong>Techzo Matrix</strong><span>Modern • Tech — clean agency framing</span></a>
+                <a href="https://html.themegenix.com/techzo/index-3.html" target="_blank" rel="noopener noreferrer"><strong>Techzo Pulse</strong><span>Modern • Creative Tech — bolder decks</span></a>
+                <a href="https://html.kodesolution.com/2022/oitech-html/index-2.html" target="_blank" rel="noopener noreferrer"><strong>Oitech Horizon</strong><span>Modern • Solutions — refined option</span></a>
+                <a href="https://modinatheme.com/html/quantech-html/index-2.html" target="_blank" rel="noopener noreferrer"><strong>Quantech Works</strong><span>Modern • Software Agency — high-end positioning</span></a>
+              </div>
+            </article>
+            <article class="sample-card">
               <h3>Contact for demos</h3>
               <p>Reach out on WhatsApp to see demo designs and discuss your project requirements.</p>
               <div class="button-row">
@@ -562,33 +523,6 @@
                 <a href="https://www.globalweb.net.in" target="_blank" rel="noopener noreferrer"><strong>globalweb.net.in</strong><span>Business website style stack</span></a>
               </div>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow">Modern Design Stack</span>
-            <h2>Premium layouts for every niche. Launch your professional presence with a single click.</h2>
-            <p>A stronger modern stack for consulting, software, cloud, support, agency, and IT service pitches.</p>
-          </div>
-          <div class="showcase-grid">
-            <article class="showcase-card" style="--shot:url('images/reference-shots/atek-consulting.png')"><div class="showcase-card-content"><span>Modern • Consulting</span><h3>Boardroom Advisory</h3><p>Structured consulting and strategy mood with corporate trust.</p><div class="link-pair"><a href="https://html.themehour.net/atek/demo/home-consulting.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/atek-cloud.png')"><div class="showcase-card-content"><span>Modern • Cloud</span><h3>Nimbus Cloud</h3><p>Cloud hosting, migration, and infrastructure visual language.</p><div class="link-pair"><a href="https://html.themehour.net/atek/demo/home-cloud.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/atek-support.png')"><div class="showcase-card-content"><span>Modern • Support</span><h3>Helpdesk Pro</h3><p>Support-led layout for AMC, maintenance, and service teams.</p><div class="link-pair"><a href="https://html.themehour.net/atek/demo/home-tech-support.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/inhouse-modern.png')"><div class="showcase-card-content"><span>Modern • Startup</span><h3>AppForge Studio</h3><p>A stronger modern demo route for startup, app, and creative client pitches.</p><div class="link-pair"><a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20see%20the%20AppForge%20demo." target="_blank" rel="noopener noreferrer">Request demo</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/engitech.png')"><div class="showcase-card-content"><span>Modern • Software</span><h3>Engitech Systems</h3><p>Enterprise software and IT services direction with more depth.</p><div class="link-pair"><a href="https://templates.thememodern.com/engitech/index.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/ithub-1.png')"><div class="showcase-card-content"><span>Modern • IT Services</span><h3>iThub Nexus</h3><p>All-purpose IT solutions presentation with clean service depth.</p><div class="link-pair"><a href="https://expert-themes.com/html/ithub/ithub/index.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/ithub-3.png')"><div class="showcase-card-content"><span>Modern • Startup IT</span><h3>iThub Velocity</h3><p>Sharper, more startup-facing IT services direction.</p><div class="link-pair"><a href="https://expert-themes.com/html/ithub/ithub/index-3.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/ziptech-1.png')"><div class="showcase-card-content"><span>Modern • IT Solutions</span><h3>Ziptech Core</h3><p>Dependable modern business style for mainstream IT companies.</p><div class="link-pair"><a href="https://html.webextheme.com/ziptech/index.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/globex-3.png')"><div class="showcase-card-content"><span>Modern • Global Services</span><h3>Globex Orbit</h3><p>Commercial framing for globally-positioned services brands.</p><div class="link-pair"><a href="https://expert-themes.com/html/globex/index-3.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/globex-1.png')"><div class="showcase-card-content"><span>Modern • Corporate</span><h3>Globex Prime</h3><p>Corporate-safe modern direction for service websites.</p><div class="link-pair"><a href="https://expert-themes.com/html/globex/index.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/ziptech-1.png')"><div class="showcase-card-content"><span>Modern • Service</span><h3>Ziptech Motion</h3><p>Warmer modern service layout with more local-business warmth.</p><div class="link-pair"><a href="https://html.webextheme.com/ziptech/home2.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/inhouse-modern.png')"><div class="showcase-card-content"><span>Modern • Tech</span><h3>Techzo Matrix</h3><p>Clean tech agency framing with stronger motion cues.</p><div class="link-pair"><a href="https://html.themegenix.com/techzo/index.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/engitech.png')"><div class="showcase-card-content"><span>Modern • Creative Tech</span><h3>Techzo Pulse</h3><p>More expressive creative-tech option for bolder sales decks.</p><div class="link-pair"><a href="https://html.themegenix.com/techzo/index-3.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/atek-cloud.png')"><div class="showcase-card-content"><span>Modern • Solutions</span><h3>Oitech Horizon</h3><p>Calm and refined option for conservative modern clients.</p><div class="link-pair"><a href="https://html.kodesolution.com/2022/oitech-html/index-2.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
-            <article class="showcase-card" style="--shot:url('images/reference-shots/globex-3.png')"><div class="showcase-card-content"><span>Modern • Software Agency</span><h3>Quantech Works</h3><p>High-end software agency direction for strong digital positioning.</p><div class="link-pair"><a href="https://modinatheme.com/html/quantech-html/index-2.html" target="_blank" rel="noopener noreferrer">View design</a></div></div></article>
           </div>
         </div>
       </section>
