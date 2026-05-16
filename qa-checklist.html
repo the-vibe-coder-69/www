@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website QA Checklist | Free Download | The Vibe Coder</title>
+    <meta name="description" content="Free Website QA Checklist — 50+ quality checks covering design, performance, SEO, accessibility, and more. Downloadable PDF.">
+    <meta property="og:title" content="Website QA Checklist | Free Download | The Vibe Coder">
+    <meta property="og:description" content="Comprehensive QA checklist for your website — 50+ checks across 7 categories.">
+    <meta property="og:image" content="https://thevibecoder.com/images/thevibecoder.png">
+    <meta property="og:url" content="https://thevibecoder.com/qa-checklist.html">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home-minimal.css">
+    <script src="theme.js"></script>
+    <style>
+        .checklist-hero { padding: 80px 0 60px; text-align: center; background: var(--accent-soft); }
+        .checklist-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; }
+        .checklist-hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; font-size: 1.1rem; }
+        .checklist-badge { display: inline-block; padding: 6px 16px; background: var(--card-bg); border: 1px solid var(--accent); border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
+        .download-card { display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; background: var(--accent); color: white; border-radius: 999px; font-weight: 700; font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .download-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0, 85, 255, 0.3); color: white; opacity: 1; }
+        .checklist-stats { display: flex; justify-content: center; gap: 48px; margin-top: 40px; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent); font-family: 'Syne', sans-serif; }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+        .checklist-content { padding: 60px 0; max-width: 800px; margin: 0 auto; }
+        .checklist-category { margin-bottom: 40px; }
+        .checklist-category h2 { font-size: 1.5rem; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+        .category-count { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+        .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-radius: 8px; transition: background 0.2s; cursor: default; }
+        .check-item:hover { background: var(--accent-soft); }
+        .check-item input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+        .check-item label { font-size: 0.95rem; cursor: pointer; flex: 1; }
+        .check-item .check-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+        .print-section { text-align: center; padding: 40px 0; }
+        .print-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--text); }
+        .print-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
+        .lead-form { max-width: 500px; margin: 40px auto; padding: 32px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; text-align: center; }
+        .lead-form h3 { margin-bottom: 8px; font-size: 1.3rem; }
+        .lead-form p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+        .lead-form input { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; background: var(--bg); color: var(--text); font-family: inherit; }
+        .lead-form button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+        .lead-form button:hover { opacity: 0.9; transform: translateY(-2px); }
+        .lead-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 12px; }
+        @media print {
+            header, footer, .floating-whatsapp, .download-card, .print-btn, .lead-form, .checklist-stats { display: none !important; }
+            .checklist-hero { background: none; padding: 20px 0; }
+            .check-item:hover { background: none; }
+            body { font-size: 11px; }
+            .checklist-category h2 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skiplink">Skip to main content</a>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">THE VIBE CODER</a>
+            <nav class="site-nav">
+                <a href="index.html" class="nav-home">Home</a>
+                <a href="the-vibe-coder.html">Services</a>
+                <a href="web-design-pricing.html">Pricing</a>
+                <a href="our-process.html">Our Process</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="nav-cta" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
+                    <span aria-hidden="true">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="checklist-hero">
+            <div class="container">
+                <span class="checklist-badge">📋 Free Resource</span>
+                <h1>Website QA Checklist</h1>
+                <p>50+ quality checks to ensure your website is fast, accessible, secure, and conversion-ready. Use it before launch — or as a regular site health check.</p>
+                <a href="javascript:window.print()" class="download-card">
+                    <span>📥</span> Download PDF / Print
+                </a>
+                <div class="checklist-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Quality Checks</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Categories</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">Always</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="checklist-content">
+            <div class="container">
+
+                <div class="checklist-category">
+                    <h2>1. Content & Copy <span class="category-count">(8 checks)</span></h2>
+                    <div class="check-item"><input type="checkbox" id="c1"><label for="c1">No spelling or grammar errors across all pages<label></div>
+                    <div class="check-item"><input type="checkbox" id="c2"><label for="c2">All contact details are correct (phone, email, address)</label></div>
+                    <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Business name / branding is consistent everywhere</label></div>
+                    <div class="check-item"><input type="checkbox" id="c4"><label for="c4">No placeholder text (Lorem Ipsum) remaining</label></div>
+                    <div class="check-item"><input type="checkbox" id="c5"><label for="c5">All CTAs have clear, action-oriented text</label></div>
+                    <div class="check-item"><input type="checkbox" id="c6"><label for="c6">Privacy policy, terms, and legal pages exist (if needed)</label></div>
+                    <div class="check-item"><input type="checkbox" id="c7"><label for="c7">Copyright year is current</label></div>
+                    <div class="check-item"><input type="checkbox" id="c8"><label for="c8">All links open in correct tab (same vs new window)</label></div>
+                </div>
+
+                <div class="checklist-category">
+                    <h2>2. Design & Visual <span class="category-count">(8 checks)</span></h2>
+                    <div class="check-item"><input type="checkbox" id="d1"><label for="d1">Consistent spacing, typography, and color usage</label></div>
+                    <div class="check-item"><input type="checkbox" id="d2"><label for="d2">No overlapping elements or broken layouts</label></div>
+                    <div class="check-item"><input type="checkbox" id="d3"><label for="d3">Images are high quality and properly compressed</label></div>
+                    <div class="check-item"><input type="checkbox" id="d4"><label for="d4">Favicon is set and visible in browser tab</label></div>
+                    <div class="check-item"><input type="checkbox" id="d5"><label for="d5">Logo is crisp (not pixelated) on all screens</label></div>
+                    <div class="check-item"><input type="checkbox" id="d6"><label for="d6">All icons render correctly (no broken SVGs)</label></div>
+                    <div class="check-item"><input type="checkbox" id="d7"><label for="d7">Hover states exist for all clickable elements</label></div>
+                    <div class="check-item"><input type="checkbox" id="d8"><label for="d8">Loading states / skeleton screens present where needed</label></div>
+                </div>
+
+                <div class="checklist-category">
+                    <h2>3. Responsive & Mobile <span class="category-count">(8 checks)</span></h2>
+                    <div class="check-item"><input type="checkbox" id="r1"><label for="r1">Layout works on mobile (320px width)</label></div>
+                    <div class="check-item"><input type="checkbox" id="r2"><label for="r2">Layout works on tablet (768px width)</label></div>
+                    <div class="check-item"><input type="checkbox" id="r3"><label for="r3">Layout works on desktop (1920px width)</label></div>
+                    <div class="check-item"><input type="checkbox" id="r4"><label for="r4">Touch targets are at least 44x44px (mobile)</label></div>
+                    <div class="check-item"><input type="checkbox" id="r5"><label for="r5">No horizontal scroll on any device</label></div>
+                    <div class="check-item"><input type="checkbox" id="r6"><label for="r6">Mobile menu / hamburger works correctly</label></div>
+                    <div class="check-item"><input type="checkbox" id="r7"><label for="r7">Forms are usable on touch devices</label></div>
+                    <div class="check-item"><input type="checkbox" id="r8"><label for="r8">Viewport meta tag is set correctly</label></div>
+                </div>
+
+                <div class="checklist-category">
+                    <h2>4. Performance & Speed <span class="category-count">(8 checks)</span></h2>
+                    <div class="check-item"><input type="checkbox" id="p1"><label for="p1">Lighthouse performance score ≥ 80</label></div>
+                    <div class="check-item"><input type="checkbox" id="p2"><label for="p2">Images are optimized (WebP format, lazy loaded)</label></div>
+                    <div class="check-item"><input type="checkbox" id="p3"><label for="p3">CSS and JS are minified</label></div>
+                    <div class="check-item"><input type="checkbox" id="p4"><label for="p4">First Contentful Paint (FCP) ≤ 2 seconds</label></div>
+                    <div class="check-item"><input type="checkbox" id="p5"><label for="p5">Largest Contentful Paint (LCP) ≤ 2.5 seconds</label></div>
+                    <div class="check-item"><input type="checkbox" id="p6"><label for="p6">Cumulative Layout Shift (CLS) ≤ 0.1</label></div>
+                    <div class="check-item"><input type="checkbox" id="p7"><label for="p7">Fonts are preloaded / no FOIT</label></div>
+                    <div class="check-item"><input type="checkbox" id="p8"><label for="p8">Unused CSS/JS is removed</label></div>
+                </div>
+
+                <div class="checklist-category">
+                    <h2>5. SEO & Meta <span class="category-count">(8 checks)</span></h2>
+                    <div class="check-item"><input type="checkbox" id="s1"><label for="s1">Every page has a unique, descriptive title tag</label></div>
+                    <div class="check-item"><input type="checkbox" id="s2"><label for="s2">Every page has a meta description</label></div>
+                    <div class="check-item"><input type="checkbox" id="s3"><label for="s3">Open Graph tags are set (og:title, og:image, etc.)</label></div>
+                    <div class="check-item"><input type="checkbox" id="s4"><label for="s4">Canonical URLs are set correctly</label></div>
+                    <div class="check-item"><input type="checkbox" id="s5"><label for="s5">Heading hierarchy is logical (h1 → h2 → h3)</label></div>
+                    <div class="check-item"><input type="checkbox" id="s6"><label for="s6">Alt text is present on all images</label></div>
+                    <div class="check-item"><input type="checkbox" id="s7"><label for="s7">Sitemap.xml exists and is valid</label></div>
+                    <div class="check-item"><input type="checkbox" id="s8"><label for="s8">robots.txt is configured correctly</label></div>
+                </div>
+
+                <div class="checklist-category">
+                    <h2>6. Accessibility <span class="category-count">(6 checks)</span></h2>
+                    <div class="check-item"><input type="checkbox" id="a1"><label for="a1">Color contrast passes WCAG AA (4.5:1 ratio)</label></div>
+                    <div class="check-item"><input type="checkbox" id="a2"><label for="a2">All form inputs have labels</label></div>
+                    <div class="check-item"><input type="checkbox" id="a3"><label for="a3">Keyboard navigation works (Tab, Enter, Escape)</label></div>
+                    <div class="check-item"><input type="checkbox" id="a4"><label for="a4">Focus indicators are visible</label></div>
+                    <div class="check-item"><input type="checkbox" id="a5"><label for="a5">ARIA landmarks are used appropriately</label></div>
+                    <div class="check-item"><input type="checkbox" id="a6"><label for="a6">Skip navigation link is present</label></div>
+                </div>
+
+                <div class="checklist-category">
+                    <h2>7. Security & Technical <span class="category-count">(6 checks)</span></h2>
+                    <div class="check-item"><input type="checkbox" id="t1"><label for="t1">SSL certificate is valid and active (HTTPS)</label></div>
+                    <div class="check-item"><input type="checkbox" id="t2"><label for="t2">No mixed content warnings (HTTP resources on HTTPS)</label></div>
+                    <div class="check-item"><input type="checkbox" id="t3"><label for="t3">Contact forms have CSRF / spam protection</label></div>
+                    <div class="check-item"><input type="checkbox" id="t4"><label for="t4">Form validation works (client + server side)</label></div>
+                    <div class="check-item"><input type="checkbox" id="t5"><label for="t5">Console has zero JavaScript errors</label></div>
+                    <div class="check-item"><input type="checkbox" id="t6"><label for="t6">Broken link check passes (no 404s)</label></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="lead-form">
+            <h3>🎯 Want Us to Run This Checklist on Your Site?</h3>
+            <p>We'll audit your website and send you a personalized report with findings and fixes — completely free.</p>
+            <input type="text" placeholder="Your Name" id="leadName">
+            <input type="email" placeholder="Your Email" id="leadEmail">
+            <input type="url" placeholder="Your Website URL" id="leadUrl">
+            <button onclick="submitLead()">Get My Free Website Audit</button>
+            <p class="lead-note">No spam. We'll send one personalized audit report and that's it.</p>
+        </section>
+
+        <section class="print-section">
+            <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 12px;">Use your browser's "Save as PDF" option for a clean downloadable copy.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">THE VIBE CODER</div>
+            <p class="footer-tagline">Strategic IT Solutions — Websites, Apps, AI, Automation. Built in Bharat.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="web-design-pricing.html">Pricing</a>
+                <a href="our-process.html">Our Process</a>
+                <a href="contact.html">Contact</a>
+                <a href="internship.html">Internship</a>
+            </div>
+            <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
+            <p class="footer-copy">© 2026 The Vibe Coder — Maheshwari Tech & Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        function submitLead() {
+            const name = document.getElementById('leadName').value.trim();
+            const email = document.getElementById('leadEmail').value.trim();
+            const url = document.getElementById('leadUrl').value.trim();
+            if (!name || !email || !url) { alert('Please fill in all fields.'); return; }
+            const msg = encodeURIComponent(`Hi! I'd like a free website audit. Name: ${name}, Email: ${email}, URL: ${url}`);
+            window.open(`https://wa.me/916395906067?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>

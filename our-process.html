@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Process | QA-Driven Development | The Vibe Coder</title>
+    <meta name="description" content="Our QA-driven development process: from discovery through delivery with rigorous quality assurance at every stage.">
+    <meta property="og:title" content="Our Process | QA-Driven Development | The Vibe Coder">
+    <meta property="og:description" content="How we build websites and apps with quality built in at every stage.">
+    <meta property="og:image" content="https://thevibecoder.com/images/thevibecoder.png">
+    <meta property="og:url" content="https://thevibecoder.com/our-process.html">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home-minimal.css">
+    <script src="theme.js"></script>
+    <style>
+        .process-hero { padding: 80px 0 60px; text-align: center; }
+        .process-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 16px; }
+        .process-hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        .process-qa-badge { display: inline-block; padding: 6px 16px; background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
+        .process-timeline { max-width: 800px; margin: 60px auto; position: relative; padding-left: 40px; }
+        .process-timeline::before { content: ""; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: var(--accent); opacity: 0.3; }
+        .process-step { position: relative; margin-bottom: 48px; padding: 32px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; }
+        .process-step:hover { border-color: var(--accent); box-shadow: var(--card-shadow); }
+        .process-step:last-child { margin-bottom: 0; }
+        .step-number { position: absolute; left: -33px; top: 32px; width: 32px; height: 32px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+        .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .step-header h2 { font-size: 1.3rem; margin: 0; }
+        .step-duration { font-size: 0.75rem; color: var(--text-muted); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+        .step-desc p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; }
+        .step-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .step-detail-card { padding: 16px; background: var(--bg); border-radius: 12px; border: 1px solid var(--border); }
+        .step-detail-card h4 { font-size: 0.85rem; margin-bottom: 8px; color: var(--accent); }
+        .step-detail-card ul { list-style: none; padding: 0; margin: 0; }
+        .step-detail-card li { font-size: 0.85rem; color: var(--text-muted); padding: 4px 0; padding-left: 16px; position: relative; }
+        .step-detail-card li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+        .qa-principles { padding: 80px 0; background: var(--accent-soft); }
+        .qa-principles h2 { text-align: center; font-size: 2rem; margin-bottom: 48px; }
+        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .principle-card { text-align: center; padding: 32px 24px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; }
+        .principle-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+        .principle-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .principle-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .principle-card p { font-size: 0.85rem; color: var(--text-muted); }
+        .qa-tools { padding: 80px 0; }
+        .qa-tools h2 { text-align: center; font-size: 1.8rem; margin-bottom: 32px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
+        .tool-item { display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; }
+        .tool-item:hover { border-color: var(--accent); }
+        .tool-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .tool-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
+        .tool-info p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+        @media (max-width: 768px) {
+            .step-details { grid-template-columns: 1fr; }
+            .process-timeline { padding-left: 32px; }
+            .step-number { left: -25px; width: 26px; height: 26px; font-size: 0.7rem; }
+        }
+        .cta-process { padding: 80px 0; text-align: center; }
+        .cta-process h2 { font-size: 2rem; margin-bottom: 16px; }
+        .cta-process p { color: var(--text-muted); margin-bottom: 32px; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skiplink">Skip to main content</a>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">THE VIBE CODER</a>
+            <nav class="site-nav">
+                <a href="index.html" class="nav-home">Home</a>
+                <a href="the-vibe-coder.html">Services</a>
+                <a href="web-design-pricing.html">Pricing</a>
+                <a href="our-process.html" class="active">Our Process</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="nav-cta" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
+                    <span aria-hidden="true">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="process-hero">
+            <div class="container">
+                <span class="process-qa-badge">✅ QA-Driven Development</span>
+                <h1>Our Process: Quality Built In,<br>Not Bolted On</h1>
+                <p>From your first conversation to launch and beyond — every phase is guided by rigorous quality assurance. Here's exactly how we work.</p>
+            </div>
+        </section>
+
+        <section class="process-timeline">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-header">
+                    <h2>Discovery & Requirements</h2>
+                    <span class="step-duration">1-2 days</span>
+                </div>
+                <div class="step-desc">
+                    <p>We start by understanding your business, your audience, and your goals. No assumptions — just questions until we truly get it.</p>
+                </div>
+                <div class="step-details">
+                    <div class="step-detail-card">
+                        <h4>What We Do</h4>
+                        <ul>
+                            <li>Business goals workshop</li>
+                            <li>Audience analysis</li>
+                            <li>Competitive research</li>
+                            <li>Technical requirements</li>
+                        </ul>
+                    </div>
+                    <div class="step-detail-card">
+                        <h4>QA Check</h4>
+                        <ul>
+                            <li>Requirements clarity review</li>
+                            <li>Scope boundary verification</li>
+                            <li>Stakeholder sign-off</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-header">
+                    <h2>Design & Prototyping</h2>
+                    <span class="step-duration">2-4 days</span>
+                </div>
+                <div class="step-desc">
+                    <p>We design the look, feel, and flow — starting with wireframes, then moving to high-fidelity mockups that match your brand.</p>
+                </div>
+                <div class="step-details">
+                    <div class="step-detail-card">
+                        <h4>What We Do</h4>
+                        <ul>
+                            <li>Wireframes & sitemap</li>
+                            <li>Visual design mockups</li>
+                            <li>Responsive layout planning</li>
+                            <li>User flow mapping</li>
+                        </ul>
+                    </div>
+                    <div class="step-detail-card">
+                        <h4>QA Check</h4>
+                        <ul>
+                            <li>Design consistency audit</li>
+                            <li>Accessibility review (WCAG)</li>
+                            <li>Responsive breakpoint check</li>
+                            <li>Client feedback round</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-header">
+                    <h2>Development</h2>
+                    <span class="step-duration">3-10 days</span>
+                </div>
+                <div class="step-desc">
+                    <p>We build your project using modern, clean code. Every feature is developed with testing in mind from the first line.</p>
+                </div>
+                <div class="step-details">
+                    <div class="step-detail-card">
+                        <h4>What We Do</h4>
+                        <ul>
+                            <li>Frontend implementation</li>
+                            <li>Backend & API development</li>
+                            <li>Database setup</li>
+                            <li>Integration work</li>
+                        </ul>
+                    </div>
+                    <div class="step-detail-card">
+                        <h4>QA Check</h4>
+                        <ul>
+                            <li>Code review (peer-reviewed)</li>
+                            <li>Unit testing</li>
+                            <li>Integration testing</li>
+                            <li>Cross-browser testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-header">
+                    <h2>Quality Assurance</h2>
+                    <span class="step-duration">1-3 days</span>
+                </div>
+                <div class="step-desc">
+                    <p>Our dedicated QA team puts everything through rigorous testing — systematic, automated, and manual — to catch every edge case.</p>
+                </div>
+                <div class="step-details">
+                    <div class="step-detail-card">
+                        <h4>Automated Testing</h4>
+                        <ul>
+                            <li>Playwright visual regression</li>
+                            <li>Responsive layout snapshots</li>
+                            <li>Form validation testing</li>
+                            <li>Performance benchmarking</li>
+                        </ul>
+                    </div>
+                    <div class="step-detail-card">
+                        <h4>Manual Testing</h4>
+                        <ul>
+                            <li>Functional walkthrough</li>
+                            <li>User flow validation</li>
+                            <li>Content accuracy check</li>
+                            <li>Load & stress testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-header">
+                    <h2>Client Review & Revisions</h2>
+                    <span class="step-duration">1-2 days</span>
+                </div>
+                <div class="step-desc">
+                    <p>You review the live preview. We collect your feedback, make revisions, and re-test. This cycle continues until it's perfect.</p>
+                </div>
+                <div class="step-details">
+                    <div class="step-detail-card">
+                        <h4>What We Do</h4>
+                        <ul>
+                            <li>Live preview deployment</li>
+                            <li>Structured feedback session</li>
+                            <li>Revision implementation</li>
+                            <li>Re-testing after changes</li>
+                        </ul>
+                    </div>
+                    <div class="step-detail-card">
+                        <h4>QA Check</h4>
+                        <ul>
+                            <li>Regression test pass</li>
+                            <li>Pixel-perfect verification</li>
+                            <li>Content accuracy sign-off</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">6</div>
+                <div class="step-header">
+                    <h2>Launch & Deploy</h2>
+                    <span class="step-duration">1 day</span>
+                </div>
+                <div class="step-desc">
+                    <p>We handle the entire launch — domain setup, hosting, SSL, deployment. Your site goes live with a final QA stamp of approval.</p>
+                </div>
+                <div class="step-details">
+                    <div class="step-detail-card">
+                        <h4>What We Do</h4>
+                        <ul>
+                            <li>Production deployment</li>
+                            <li>DNS & SSL configuration</li>
+                            <li>CDN & performance tuning</li>
+                            <li>Analytics setup</li>
+                        </ul>
+                    </div>
+                    <div class="step-detail-card">
+                        <h4>QA Check</h4>
+                        <ul>
+                            <li>Production smoke test</li>
+                            <li>Speed test (Core Web Vitals)</li>
+                            <li>Security scan</li>
+                            <li>Mobile device testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">7</div>
+                <div class="step-header">
+                    <h2>Post-Launch Support</h2>
+                    <span class="step-duration">Ongoing</span>
+                </div>
+                <div class="step-desc">
+                    <p>We don't disappear after launch. Every project comes with post-launch support, monitoring, and maintenance options.</p>
+                </div>
+                <div class="step-details">
+                    <div class="step-detail-card">
+                        <h4>What We Do</h4>
+                        <ul>
+                            <li>30-day bug fix window</li>
+                            <li>Performance monitoring</li>
+                            <li>Monthly maintenance</li>
+                            <li>Priority support channel</li>
+                        </ul>
+                    </div>
+                    <div class="step-detail-card">
+                        <h4>QA Check</h4>
+                        <ul>
+                            <li>Weekly uptime monitoring</li>
+                            <li>Monthly regression suite</li>
+                            <li>Quarterly security audit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="qa-principles">
+            <div class="container">
+                <h2>Our QA Principles</h2>
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <div class="principle-icon">🔍</div>
+                        <h3>Test Early, Test Often</h3>
+                        <p>Quality starts on day one, not the day before launch. Every phase includes its own QA checkpoint.</p>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-icon">🤖</div>
+                        <h3>Automated First</h3>
+                        <p>We use Playwright and automated visual regression to catch regressions instantly.</p>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-icon">📱</div>
+                        <h3>Every Screen Matters</h3>
+                        <p>We test on desktop, tablet, and mobile — every breakpoint, every browser.</p>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-icon">♿</div>
+                        <h3>Accessibility by Design</h3>
+                        <p>WCAG standards are built into every project, not retrofitted at the end.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="qa-tools">
+            <div class="container">
+                <h2>Our Testing Toolchain</h2>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <span class="tool-icon">🎭</span>
+                        <div class="tool-info">
+                            <h4>Playwright</h4>
+                            <p>Automated browser testing & visual regression</p>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">⚡</span>
+                        <div class="tool-info">
+                            <h4>Lighthouse</h4>
+                            <p>Performance, accessibility & SEO audits</p>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">🌐</span>
+                        <div class="tool-info">
+                            <h4>Cross-Browser Testing</h4>
+                            <p>Chrome, Firefox, Safari, Edge — all covered</p>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">📊</span>
+                        <div class="tool-info">
+                            <h4>Core Web Vitals</h4>
+                            <p>Real-user performance metrics monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-process">
+            <div class="container">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Follow our proven process and get a website you can be proud of — delivered on time, tested thoroughly.</p>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder.%20I%20saw%20your%20process%20page." class="btn btn-glow" style="background: var(--accent); color: white; border: none; padding: 16px 36px; border-radius: 999px;">Start on WhatsApp →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">THE VIBE CODER</div>
+            <p class="footer-tagline">Strategic IT Solutions — Websites, Apps, AI, Automation. Built in Bharat.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="web-design-pricing.html">Pricing</a>
+                <a href="our-process.html">Our Process</a>
+                <a href="contact.html">Contact</a>
+                <a href="internship.html">Internship</a>
+            </div>
+            <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
+            <p class="footer-copy">© 2026 The Vibe Coder — Maheshwari Tech & Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+</body>
+</html>

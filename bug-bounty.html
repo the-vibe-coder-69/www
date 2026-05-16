@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Website Audit & Bug Bounty | The Vibe Coder</title>
+    <meta name="description" content="Get a free website audit from The Vibe Coder. We'll review your site and give you actionable fixes — no strings attached.">
+    <meta property="og:title" content="Free Website Audit & Bug Bounty | The Vibe Coder">
+    <meta property="og:description" content="Free website audit for local businesses. We find issues, you get fixes. Goodwill + leads for everyone.">
+    <meta property="og:image" content="https://thevibecoder.com/images/thevibecoder.png">
+    <meta property="og:url" content="https://thevibecoder.com/bug-bounty.html">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home-minimal.css">
+    <script src="theme.js"></script>
+    <style>
+        .bounty-hero { padding: 80px 0 60px; text-align: center; background: radial-gradient(circle at top, rgba(0, 242, 255, 0.05) 0%, transparent 70%); }
+        .bounty-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 16px; }
+        .bounty-hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; font-size: 1.1rem; }
+        .bounty-badge { display: inline-block; padding: 6px 16px; background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
+        .bounty-cta-big { display: inline-flex; align-items: center; gap: 12px; padding: 20px 40px; background: linear-gradient(135deg, var(--accent), #a855f7); color: white; border-radius: 999px; font-weight: 800; font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 8px 32px rgba(0, 85, 255, 0.3); }
+        .bounty-cta-big:hover { transform: translateY(-4px); box-shadow: 0 12px 48px rgba(0, 85, 255, 0.4); color: white; opacity: 1; }
+        .bounty-subtitle { font-size: 0.9rem; color: var(--text-muted); margin-top: 16px; }
+        .how-it-works { padding: 80px 0; }
+        .how-it-works h2 { text-align: center; font-size: 2rem; margin-bottom: 48px; }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .step-card { text-align: center; padding: 32px 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; position: relative; }
+        .step-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: var(--card-shadow); }
+        .step-num { width: 36px; height: 36px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; margin: 0 auto 16px; }
+        .step-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .step-card p { font-size: 0.85rem; color: var(--text-muted); }
+        .what-we-check { padding: 60px 0; background: var(--accent-soft); }
+        .what-we-check h2 { text-align: center; font-size: 1.8rem; margin-bottom: 40px; }
+        .check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
+        .check-area { padding: 24px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 14px; }
+        .check-area:hover { border-color: var(--accent); }
+        .check-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .check-text h4 { font-size: 0.95rem; margin-bottom: 4px; }
+        .check-text p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+        .bounty-faq { max-width: 700px; margin: 60px auto; }
+        .bounty-faq h2 { text-align: center; font-size: 1.8rem; margin-bottom: 32px; }
+        .bounty-faq-item { margin-bottom: 24px; }
+        .bounty-faq-item h4 { font-size: 1rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .bounty-faq-item p { font-size: 0.9rem; color: var(--text-muted); margin: 0; padding-left: 24px; }
+        .bounty-form-section { padding: 60px 0; text-align: center; }
+        .bounty-form { max-width: 500px; margin: 0 auto; padding: 32px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; text-align: left; }
+        .bounty-form h3 { text-align: center; margin-bottom: 24px; }
+        .bounty-form label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
+        .bounty-form input, .bounty-form textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; background: var(--bg); color: var(--text); font-family: inherit; font-size: 0.95rem; }
+        .bounty-form button { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent), #a855f7); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
+        .bounty-form button:hover { opacity: 0.9; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skiplink">Skip to main content</a>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">THE VIBE CODER</a>
+            <nav class="site-nav">
+                <a href="index.html" class="nav-home">Home</a>
+                <a href="services.html">Services</a>
+                <a href="web-design-pricing.html">Pricing</a>
+                <a href="our-process.html">Our Process</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="nav-cta" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <button class="theme-toggle header-theme-toggle" aria-label="Toggle dark mode">
+                    <span aria-hidden="true">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="bounty-hero">
+            <div class="container">
+                <span class="bounty-badge">🎯 Free Community Program</span>
+                <h1>Free Website Audit<br>For Local Businesses</h1>
+                <p>We'll review your website — find issues, security gaps, and performance problems — and give you a detailed report with actionable fixes. No cost. No obligation.</p>
+                <a href="#audit-form" class="bounty-cta-big">🎯 Claim Your Free Audit</a>
+                <p class="bounty-subtitle">Limited to 20 audits per month. First come, first served.</p>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <h3>Submit Your Site</h3>
+                        <p>Fill out the simple form below with your website URL and business details.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <h3>We Audit It</h3>
+                        <p>Our QA team runs 50+ checks across performance, SEO, accessibility, security, and design.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <h3>Get Your Report</h3>
+                        <p>You receive a detailed report within 48 hours — issues found, severity, and fix recommendations.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">4</div>
+                        <h3>Optional: We Fix It</h3>
+                        <p>If you want us to fix the issues, we'll quote a fair price. No pressure to buy anything.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="what-we-check">
+            <div class="container">
+                <h2>What We Check</h2>
+                <div class="check-grid">
+                    <div class="check-area">
+                        <span class="check-icon">⚡</span>
+                        <div class="check-text">
+                            <h4>Performance</h4>
+                            <p>Load speed, Core Web Vitals, image optimization</p>
+                        </div>
+                    </div>
+                    <div class="check-area">
+                        <span class="check-icon">🔒</span>
+                        <div class="check-text">
+                            <h4>Security</h4>
+                            <p>SSL, mixed content, vulnerable dependencies</p>
+                        </div>
+                    </div>
+                    <div class="check-area">
+                        <span class="check-icon">📱</span>
+                        <div class="check-text">
+                            <h4>Mobile Readiness</h4>
+                            <p>Responsive design, touch targets, mobile UX</p>
+                        </div>
+                    </div>
+                    <div class="check-area">
+                        <span class="check-icon">🔍</span>
+                        <div class="check-text">
+                            <h4>SEO Basics</h4>
+                            <p>Meta tags, headings, alt text, sitemap</p>
+                        </div>
+                    </div>
+                    <div class="check-area">
+                        <span class="check-icon">♿</span>
+                        <div class="check-text">
+                            <h4>Accessibility</h4>
+                            <p>Color contrast, keyboard nav, screen reader</p>
+                        </div>
+                    </div>
+                    <div class="check-area">
+                        <span class="check-icon">🐛</span>
+                        <div class="check-text">
+                            <h4>Broken Elements</h4>
+                            <p>Broken links, broken images, console errors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bounty-form-section" id="audit-form">
+            <div class="container">
+                <div class="bounty-form">
+                    <h3>Request Your Free Audit</h3>
+                    <form onsubmit="submitAudit(event)">
+                        <label for="bizName">Business Name</label>
+                        <input type="text" id="bizName" required placeholder="Your business name">
+
+                        <label for="ownerName">Your Name</label>
+                        <input type="text" id="ownerName" required placeholder="Full name">
+
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" required placeholder="best@email.com">
+
+                        <label for="phone">Phone / WhatsApp</label>
+                        <input type="tel" id="phone" required placeholder="+91 98765 43210">
+
+                        <label for="siteUrl">Website URL</label>
+                        <input type="url" id="siteUrl" required placeholder="https://yourbusiness.com">
+
+                        <label for="notes">Anything specific you want us to check?</label>
+                        <textarea id="notes" rows="3" placeholder="Optional: Tell us about any issues you've noticed..."></textarea>
+
+                        <button type="submit">🔍 Submit for Free Audit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="bounty-faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="bounty-faq-item">
+                    <h4>🔹 Is this really free?</h4>
+                    <p>Yes. No hidden fees, no credit card required. We do this because (a) it builds goodwill in the local business community, and (b) if you like our work, you might hire us to fix things. But there's zero obligation.</p>
+                </div>
+                <div class="bounty-faq-item">
+                    <h4>🔹 How long does the audit take?</h4>
+                    <p>We deliver the audit report within 48 hours of receiving your request. It's comprehensive but fast.</p>
+                </div>
+                <div class="bounty-faq-item">
+                    <h4>🔹 What if I find a bug on my own site?</h4>
+                    <p>Report it through this page! We love catching bugs — and if it's a genuine security issue, we'll fix it for free as part of our community goodwill program.</p>
+                </div>
+                <div class="bounty-faq-item">
+                    <h4>🔹 Are there any limits?</h4>
+                    <p>We offer 20 free audits per month to keep quality high. Each audit covers one website. If you need multiple sites, we can discuss a custom plan.</p>
+                </div>
+                <div class="bounty-faq-item">
+                    <h4>🔹 Will you try to upsell me?</h4>
+                    <p>The audit report stands on its own — it's genuinely useful whether or not you hire us. The report will mention "we can fix these for you" but there's no sales pitch, no follow-up calls, no pressure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="text-align: center; padding: 40px 0 80px;">
+            <div class="container">
+                <h2 style="margin-bottom: 12px;">Know a Business That Needs This?</h2>
+                <p style="color: var(--text-muted); margin-bottom: 24px;">Share this page with a local business owner. Help us make the web better, one site at a time.</p>
+                <a href="https://wa.me/916395906067?text=Hi%2C%20a%20friend%20recommended%20I%20check%20out%20The%20Vibe%20Coder's%20free%20website%20audit%20program." class="btn btn-secondary" style="padding: 14px 28px;">Share via WhatsApp →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">THE VIBE CODER</div>
+            <p class="footer-tagline">Strategic IT Solutions — Websites, Apps, AI, Automation. Built in Bharat.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="web-design-pricing.html">Pricing</a>
+                <a href="our-process.html">Our Process</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20know%20more%20about%20The%20Vibe%20Coder%20services." class="whatsapp-cta" target="_blank" rel="noopener noreferrer">💬 Start on WhatsApp</a>
+            <p class="footer-copy">© 2026 The Vibe Coder — Maheshwari Tech & Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/916395906067?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20The%20Vibe%20Coder." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        function submitAudit(e) {
+            e.preventDefault();
+            const biz = document.getElementById('bizName').value.trim();
+            const name = document.getElementById('ownerName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const url = document.getElementById('siteUrl').value.trim();
+            const notes = document.getElementById('notes').value.trim();
+            if (!biz || !name || !email || !phone || !url) { alert('Please fill in all required fields.'); return; }
+            const msg = encodeURIComponent(
+                `Hi! I'd like a free website audit.\n\nBusiness: ${biz}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nWebsite: ${url}${notes ? `\nNotes: ${notes}` : ''}`
+            );
+            window.open(`https://wa.me/916395906067?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
