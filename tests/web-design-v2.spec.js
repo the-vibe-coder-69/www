@@ -32,14 +32,14 @@ test.describe("Web Design V2 Page", () => {
 
   test("should render pricing packages", async ({ page }) => {
     const packages = page.locator(".pricing-card");
-    await expect(packages).toHaveCount(2);
-    
+    await expect(packages).toHaveCount(4);
+
     await expect(page.getByRole("heading", { name: "Classic Business" })).toBeVisible();
-    await expect(page.locator(".amount").filter({ hasText: "3,500" })).toBeVisible();
-    
+    await expect(page.locator(".pricing-card").filter({ hasText: "Classic Business" }).locator(".amount")).toHaveText("5,000");
+
     await expect(page.getByRole("heading", { name: "Modern Business" })).toBeVisible();
-    await expect(page.locator(".amount").filter({ hasText: "4,500" })).toBeVisible();
-    
+    await expect(page.locator(".pricing-card").filter({ hasText: "Modern Business" }).locator(".amount")).toHaveText("7,500");
+
     await capture(page, "v2-pricing");
   });
 

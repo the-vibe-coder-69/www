@@ -124,10 +124,10 @@ test("donate page mobile hamburger opens and closes", async ({ page }) => {
 test("pricing page renders offers and captures screenshot @screens", async ({ page }) => {
   await page.goto("/web-design-pricing.html");
 
-  await expect(page).toHaveTitle(/Website Pricing/i);
-  await expect(page.getByRole("heading", { level: 1, name: /Ready website designs/i })).toBeVisible();
-  await expect(page.getByText("Classic business website")).toBeVisible();
-  await expect(page.getByText("Modern design website")).toBeVisible();
+  await expect(page).toHaveTitle(/Design Catalog/i);
+  await expect(page.getByRole("heading", { level: 1, name: /Browse design directions/i })).toBeVisible();
+  await expect(page.getByText("Warm & Trustworthy")).toBeVisible();
+  await expect(page.getByText("Sleek & Forward")).toBeVisible();
 
   await capture(page, "web-design-pricing");
 });
@@ -157,7 +157,7 @@ test("home page updated hero rebrand", async ({ page }) => {
 
 test("home page has Design Universe section", async ({ page }) => {
   await page.goto("/index.html");
-  await expect(page.locator("#featured").getByRole("heading", { name: "Design Universe" })).toBeVisible();
+  await expect(page.locator("#featured").getByRole("heading", { name: "Our Services" })).toBeVisible();
 });
 
 test("home page has quick card as first featured destination", async ({ page }) => {
